@@ -8,7 +8,7 @@
     
 	* 采用远程数据源：
 		
-		地址：47.96.179.77 账号：root 密码：sansan`123
+		地址：47.96.179.77 账号：root 密码：sansan`123 数据库：
 	
 	* 项目数据库文件：/application/database.php
 		
