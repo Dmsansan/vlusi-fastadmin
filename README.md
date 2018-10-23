@@ -1,91 +1,42 @@
-FastAdmin是一款基于ThinkPHP5+Bootstrap的极速后台开发框架。
+基于fastAdmin开发的微信公众号项目，ThinkPHP5+Bootstrap2.0。
 ===============
 
 
-## **主要特性**
+## **主要配置**
 
-* 基于Auth的权限管理系统
-    * 支持无限级父子级权限继承，父级的管理员可任意增删改子级管理员及权限设置
-    * 支持单管理员多角色
-    * 支持管理子级数据或个人数据
-* 强大的一键生成功能
-    * 一键生成CRUD,包括控制器、模型、视图、JS、语言包、菜单等
-    * 一键压缩打包JS和CSS文件，一键CDN静态资源部署
-    * 一键生成控制器菜单和规则
-    * 一键生成API接口文档
-* 完善的前端功能组件
-    * 基于AdminLTE二次开发
-    * 基于Bootstrap开发，自适应手机、平板、PC
-    * 基于RequireJS进行JS模块管理，按需加载
-    * 基于Bower进行前端组件包管理
-* 强大的插件扩展功能，在线安装卸载升级插件
-* 通用的会员模块和API模块
-* 共用同一账号体系的Web端会员中心权限验证和API接口会员权限验证
-* 二级域名部署支持，同时域名支持绑定到插件
-* 多语言支持，服务端及客户端支持
-* 强大的第三方模块支持(CMS、博客、文档生成)
-* 整合第三方短信接口(阿里云、创蓝短信)
-* 无缝整合第三方云存储(七牛、阿里云OSS、又拍云)功能
-* 第三方富文本编辑器支持(Summernote、Tinymce、百度编辑器)
-* 第三方登录(QQ、微信、微博)整合
-* Ucenter整合第三方应用
+* 数据库配置
+    
+	* 采用远程数据源：
+		
+		地址：47.96.179.77 账号：root 密码：sansan`123
+	
+	* 项目数据库文件：/application/database.php
+		
+		
+		// 数据库类型
 
-## **安装使用**
+	    'type'            => Env::get('database.type', 'mysql'),
 
-https://doc.fastadmin.net
+	    // 服务器地址
 
-## **在线演示**
+	    'hostname'        => Env::get('database.hostname', '47.96.179.77'),
 
-https://demo.fastadmin.net
+	    // 数据库名
 
-用户名：admin
+	    'database'        => Env::get('database.database', 'vlusi_fastadmin'),
 
-密　码：123456
+	    // 用户名
 
-提　示：演示站数据无法进行修改，请下载源码安装体验全部功能
+	    'username'        => Env::get('database.username', 'root'),
 
-## **界面截图**
-![控制台](https://gitee.com/uploads/images/2017/0411/113717_e99ff3e7_10933.png "控制台")
+	    // 密码
 
-## **问题反馈**
+	    'password'        => Env::get('database.password', 'sansan`123'),
 
-在使用中有任何问题，请使用以下联系方式联系我们
+	    // 端口
 
-交流社区: https://forum.fastadmin.net
+	    'hostport'        => Env::get('database.hostport', ''),
 
-QQ群: [636393962](https://jq.qq.com/?_wv=1027&k=487PNBb)(交流群①) [708784003](https://jq.qq.com/?_wv=1027&k=5ObjtwM)(交流群②) [696992864](https://jq.qq.com/?_wv=1027&k=5R2AB00)(高级群,付费加入)
-
-Email: (karsonzhang#163.com, 把#换成@)
-
-Github: https://github.com/karsonzhang/fastadmin
-
-Gitee: https://gitee.com/karson/fastadmin
-
-## **特别鸣谢**
-
-感谢以下的项目,排名不分先后
-
-ThinkPHP：http://www.thinkphp.cn
-
-AdminLTE：https://adminlte.io
-
-Bootstrap：http://getbootstrap.com
-
-jQuery：http://jquery.com
-
-Bootstrap-table：https://github.com/wenzhixin/bootstrap-table
-
-Nice-validator: https://validator.niceue.com
-
-SelectPage: https://github.com/TerryZ/SelectPage
-
-
-## 版权信息
-
-FastAdmin遵循Apache2开源协议发布，并提供免费使用。
-
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-版权所有Copyright © 2017-2018 by FastAdmin (https://www.fastadmin.net)
-
-All rights reserved。
+* 访问地址：
+	* 前端：http://localhost/vlusi_fastadmin/public/index.php
+	* 后端：http://localhost/vlusi_fastadmin/public/admin/dashboard?ref=addtabs
