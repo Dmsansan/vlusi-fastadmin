@@ -395,3 +395,120 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020205s ]
 [ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020405s ]
 [ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.019692s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:18:46+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/general/profile?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030111s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.020259s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019545s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.034646s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020612s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:18:46+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/general/profile/index?sort=id&order=desc&offset=0&limit=10&_=1540455526205
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028723s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019488s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019981s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020171s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.020235s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.020179s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.019860s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:18:50+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/logout
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030158s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.019712s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.019408s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `token`='',`updatetime`=1540455530  WHERE  `id` = 1 [ RunTime:0.023296s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:22+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/index/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033672s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.021856s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.023737s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `logintime`=1540455682,`token`='596ba39d-251b-4476-b9e3-c0e3d6f83bdc',`updatetime`=1540455682  WHERE  `id` = 1 [ RunTime:0.024414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.021280s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"__token__\":\"f5989e67474594bc9490aff97405795d\",\"username\":\"admin\"}' , '/vlusi_fastadmin/public/admin/index/login' , 1 , 'admin' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36' , '0.0.0.0' , 1540455682) [ RunTime:0.026724s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:23+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028634s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019602s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020103s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019868s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020401s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:23+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028476s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.021611s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019799s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019670s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020491s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.018602s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:27+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/logout
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030308s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.020778s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.020359s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `token`='',`updatetime`=1540455687  WHERE  `id` = 1 [ RunTime:0.023347s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:37+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/index/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030706s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.020343s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.020412s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `logintime`=1540455697,`token`='7cb82ad3-0716-4981-babc-fe89b9ec63c5',`updatetime`=1540455697  WHERE  `id` = 1 [ RunTime:0.025686s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.020886s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"__token__\":\"8f9cebf4168e40e8cba6c1d8a5728a8c\",\"username\":\"admin\"}' , '/vlusi_fastadmin/public/admin/index/login' , 1 , 'admin' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36' , '0.0.0.0' , 1540455697) [ RunTime:0.023630s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:38+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034682s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.023654s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.021096s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.021247s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.023527s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:38+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028446s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.022159s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018924s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019746s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020123s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.018961s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:21:43+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/logout
+[ sql ] [ DB ] CONNECT:[ UseTime:0.044878s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.020309s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.019745s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `token`='',`updatetime`=1540455703  WHERE  `id` = 1 [ RunTime:0.023162s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:28:33+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/index/login?url=%2Fvlusi_fastadmin%2Fpublic%2Fadmin%2Fdashboard%3Fref%3Daddtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:3.032506s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.021189s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.240428s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `logintime`=1540456113,`token`='7ef54171-3b39-4484-91be-cedf9e80e20f',`updatetime`=1540456113  WHERE  `id` = 1 [ RunTime:0.023339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.021448s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"url\":\"\\/vlusi_fastadmin\\/public\\/admin\\/dashboard?ref=addtabs\",\"__token__\":\"ea24221b6855bc17fac2803f35952f0a\",\"username\":\"admin\"}' , '/vlusi_fastadmin/public/admin/index/login?url=%2Fvlusi_fastadmin%2Fpublic%2Fadmin%2Fdashboard%3Fref%3Daddtabs' , 1 , 'admin' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36' , '0.0.0.0' , 1540456113) [ RunTime:0.036080s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:28:33+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029063s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019883s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019693s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.021069s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:28:34+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.111003s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.037382s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.021103s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.021546s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.022088s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:28:35+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033649s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.022753s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019353s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.019769s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.018851s ]
+---------------------------------------------------------------
+[ 2018-10-25T16:28:37+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/index/logout
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028990s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.020253s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.020049s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `token`='',`updatetime`=1540456117  WHERE  `id` = 1 [ RunTime:0.021379s ]
