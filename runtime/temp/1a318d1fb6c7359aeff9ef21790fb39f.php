@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:93:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\index\index.html";i:1536636085;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\header.html";i:1536636085;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\menu.html";i:1540454800;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\control.html";i:1536636085;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:93:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\index\index.html";i:1536636085;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\header.html";i:1540455436;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\menu.html";i:1540454800;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\control.html";i:1536636085;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -133,19 +133,19 @@
                             </p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="https://www.fastadmin.net" target="_blank"><?php echo __('FastAdmin'); ?></a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="https://forum.fastadmin.net" target="_blank"><?php echo __('Forum'); ?></a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="https://doc.fastadmin.net" target="_blank"><?php echo __('Docs'); ?></a>
-                                </div>
-                            </div>
-                        </li>
+                        <!--<li class="user-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-xs-4 text-center">-->
+                                    <!--<a href="https://www.fastadmin.net" target="_blank"><?php echo __('FastAdmin'); ?></a>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-4 text-center">-->
+                                    <!--<a href="https://forum.fastadmin.net" target="_blank"><?php echo __('Forum'); ?></a>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-4 text-center">-->
+                                    <!--<a href="https://doc.fastadmin.net" target="_blank"><?php echo __('Docs'); ?></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
