@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/index\view\index\index.html";i:1536636085;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/index\view\index\index.html";i:1540468746;}*/ ?>
 <!DOCTYPE html>
 <html>
 

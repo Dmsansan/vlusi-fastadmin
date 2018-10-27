@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '后台管理',
+  'name' => 'FastAdmin',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',

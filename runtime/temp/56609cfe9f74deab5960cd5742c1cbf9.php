@@ -1,10 +1,11 @@
-{__NOLAYOUT__}<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\phpStudy\WWW\fastadmin_test\public/../application/common\view\tpl\dispatch_jump.tpl";i:1536636085;}*/ ?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{:__('Warning')}</title>
+    <title><?php echo __('Warning'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico" />
+    <link rel="shortcut icon" href="/fastadmin_test/public/assets/img/favicon.ico" />
     <style type="text/css">
         *{box-sizing:border-box;margin:0;padding:0;font-family:Lantinghei SC,Open Sans,Arial,Hiragino Sans GB,Microsoft YaHei,"微软雅黑",STHeiti,WenQuanYi Micro Hei,SimSun,sans-serif;-webkit-font-smoothing:antialiased}
         body{padding:70px 0;background:#edf1f4;font-weight:400;font-size:1pc;-webkit-text-size-adjust:none;color:#333}
@@ -27,40 +28,40 @@
     </style>
 </head>
 <body>
-{php}$codeText=$code == 1 ? 'success' : ($code == 0 ? 'error' : 'info');{/php}
-<div class="system-message {$codeText}">
+<?php $codeText=$code == 1 ? 'success' : ($code == 0 ? 'error' : 'info'); ?>
+<div class="system-message <?php echo $codeText; ?>">
     <div class="image">
-        <img src="__CDN__/assets/img/{$codeText}.svg" alt="" width="150" />
+        <img src="/fastadmin_test/public/assets/img/<?php echo $codeText; ?>.svg" alt="" width="150" />
     </div>
-    <h1>{$msg}</h1>
-    {if $url}
+    <h1><?php echo $msg; ?></h1>
+    <?php if($url): ?>
         <p class="jump">
-            {:__('This page will be re-directed in %s seconds', '<span id="wait">' . $wait . '</span>')}
+            <?php echo __('This page will be re-directed in %s seconds', '<span id="wait">' . $wait . '</span>'); ?>
         </p>
-    {/if}
+    <?php endif; ?>
     <p class="clearfix">
-        <a href="__PUBLIC__" class="btn btn-grey">{:__('Go back')}</a>
-        {if $url}
-            <a href="{$url}" class="btn btn-primary">{:__('Jump now')}</a>
-        {/if}
+        <a href="/fastadmin_test/public/" class="btn btn-grey"><?php echo __('Go back'); ?></a>
+        <?php if($url): ?>
+            <a href="<?php echo $url; ?>" class="btn btn-primary"><?php echo __('Jump now'); ?></a>
+        <?php endif; ?>
     </p>
 </div>
 <div class="copyright">
     <p>Powered by <a href="https://www.fastadmin.net/?ref=jump">FastAdmin</a></p>
 </div>
-{if $url}
+<?php if($url): ?>
     <script type="text/javascript">
         (function () {
             var wait = document.getElementById('wait');
             var interval = setInterval(function () {
                 var time = --wait.innerHTML;
                 if (time <= 0) {
-                    location.href = "{$url}";
+                    location.href = "<?php echo $url; ?>";
                     clearInterval(interval);
                 }
             }, 1000);
         })();
     </script>
-{/if}
+<?php endif; ?>
 </body>
 </html>

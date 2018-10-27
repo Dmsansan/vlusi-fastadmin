@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/admin\view\index\login.html";i:1536636085;s:71:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:73:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/admin\view\index\login.html";i:1540468746;s:71:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1540468746;s:73:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1540468746;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     <!-- FastAdmin是开源程序，建议在您的网站底部保留一个FastAdmin的链接 -->
-                    <p class="copyright"><a href="https://www.fastadmin.net">Powered By FastAdmin</a></p>
+                    <!--<p class="copyright"><a href="https://www.fastadmin.net">Powered By FastAdmin</a></p>-->
                 </div>
             </div>
         </div>
