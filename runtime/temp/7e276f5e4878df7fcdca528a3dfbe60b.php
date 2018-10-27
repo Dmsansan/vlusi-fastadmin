@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/common\view\tpl\dispatch_jump.tpl";i:1540468746;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/common\view\tpl\dispatch_jump.tpl";i:1540623131;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
