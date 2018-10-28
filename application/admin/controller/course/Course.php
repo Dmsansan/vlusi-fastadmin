@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\course;
 
 use app\admin\model\AdminLog;
 use app\common\controller\Backend;
@@ -9,10 +9,10 @@ use think\Hook;
 use think\Validate;
 
 /**
- * 资讯管理
+ * 课程管理
  * @internal
  */
-class Information extends Backend
+class Course extends Backend
 {
 
     protected $noNeedLogin = ['login'];
@@ -25,17 +25,17 @@ class Information extends Backend
     }
 
     /**
-     * 资讯列表
+     * 课程列表
      */
-    public function information_list(){
-        echo "资讯列表页";
+    public function course_list(){
+        echo "课程列表页";
     }
 
     /**
      * 评论列表
      */
     public function comment_list(){
-        echo "评论列表";
+        echo "评论列表页";
     }
     /**
      * 后台首页
