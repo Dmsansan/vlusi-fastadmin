@@ -30,7 +30,7 @@ class Information extends Backend
      * 资讯列表
      */
     public function information_list(){
-        echo "资讯列表";
+       return $this->view->fetch();
     }
 
     /**
