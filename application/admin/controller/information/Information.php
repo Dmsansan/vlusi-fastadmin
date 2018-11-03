@@ -5,7 +5,7 @@ namespace app\admin\controller\information;
 use app\common\controller\Backend;
 
 /**
- * 会员管理
+ * 资讯管理
  *
  * @icon fa fa-user
  */
