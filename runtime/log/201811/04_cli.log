@@ -1,0 +1,22 @@
+[ 2018-11-04T20:51:15+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000108s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-04T20:51:15+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-04T20:51:15+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002244s ]
+[ 2018-11-04T20:51:15+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-04T20:51:16+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.452362s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-04T20:51:16+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'information' [ RunTime:0.121130s ]
+[ 2018-11-04T20:51:16+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_information' [ RunTime:0.091466s ]
+[ 2018-11-04T20:51:16+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'information_categroy' [ RunTime:0.109215s ]
+[ 2018-11-04T20:51:16+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_information_categroy' [ RunTime:0.270707s ]
+[ 2018-11-04T20:52:18+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000112s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-04T20:52:18+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-04T20:52:18+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002229s ]
+[ 2018-11-04T20:52:18+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.066109s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'information' [ RunTime:0.032114s ]
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_information' [ RunTime:0.030300s ]
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'information_categroy' [ RunTime:0.031090s ]
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_information_categroy' [ RunTime:0.034573s ]
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_information' ORDER BY ORDINAL_POSITION [ RunTime:0.030783s ]
+[ 2018-11-04T20:52:18+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_information_categroy' ORDER BY ORDINAL_POSITION [ RunTime:0.031273s ]
