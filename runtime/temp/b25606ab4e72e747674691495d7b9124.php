@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:110:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/admin\view\information\information\information_list.html";i:1536636085;s:74:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1536636085;s:71:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:73:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:110:"D:\phpStudy\WWW\vlusi_fastadmin\public/../application/admin\view\information\information\information_list.html";i:1541319598;s:74:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1536636085;s:71:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:73:"D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     <table id="table" class="table table-striped table-bordered table-hover" 
-                           data-operate-edit="<?php echo $auth->check('user/user/edit'); ?>" 
-                           data-operate-del="<?php echo $auth->check('user/user/del'); ?>" 
+                           data-operate-edit="<?php echo $auth->check('Information/Information/edit'); ?>"
+                           data-operate-del="<?php echo $auth->check('Information/Information/del'); ?>"
                            width="100%">
                     </table>
                 </div>

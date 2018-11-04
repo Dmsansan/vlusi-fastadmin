@@ -23,14 +23,43 @@ class Information extends Backend
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = model('User');
+        $this->model = model('Information');
     }
 
     /**
      * 资讯列表
      */
     public function information_list(){
-       return $this->view->fetch();
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
+        if ($this->request->isAjax())
+        {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField'))
+            {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->with('group')
+                ->where($where)
+                ->order($sort, $order)
+                ->count();
+            $list = $this->model
+                ->with('group')
+                ->where($where)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+            foreach ($list as $k => $v)
+            {
+                $v->hidden(['password', 'salt']);
+            }
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
     }
 
     /**
