@@ -1,0 +1,4 @@
+#两张表相互关联
+php think crud -t test -r category -k category_id -p id -c information/Information
+#多表关联
+php think crud -t test --relation=category --relation=admin --relationforeignkey=category_id --relationforeignkey=admin_id

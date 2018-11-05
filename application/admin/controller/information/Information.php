@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\information;
 
 use app\common\controller\Backend;
 
