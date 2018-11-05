@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:97:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\auth\group\edit.html";i:1536636085;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1536636085;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1536636085;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1536636085;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:97:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\information\add.html";i:1541402489;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1541402489;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1541402489;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1541402489;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -50,37 +50,58 @@
                             <!-- END RIBBON -->
                             <?php endif; ?>
                             <div class="content">
-                                <form id="edit-form" class="form-horizontal form-ajax" role="form" method="POST" action="">
-    <input type="hidden" name="row[rules]" value="" />
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Parent'); ?>:</label>
-        <div class="col-xs-12 col-sm-8">
-            <?php echo build_select('row[pid]', $groupdata, $row['pid'], ['class'=>'form-control selectpicker', 'data-rule'=>'required', 'data-id'=>$row['id'], 'data-pid'=>$row['pid']]); ?>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Name'); ?>:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type="text" class="form-control" id="name" name="row[name]" value="<?php echo $row['name']; ?>" data-rule="required" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Permission'); ?>:</label>
-        <div class="col-xs-12 col-sm-8">
-            <span class="text-muted"><input type="checkbox" name="" id="checkall" /> <label for="checkall"><small><?php echo __('Check all'); ?></small></label></span>
-            <span class="text-muted"><input type="checkbox" name="" id="expandall" /> <label for="expandall"><small><?php echo __('Expand all'); ?></small></label></span>
+                                <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
 
-            <div id="treeview"></div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Title'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" class="form-control form-control" name="row[title]" type="text">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Status'); ?>:</label>
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Categroy_id'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <?php echo build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden')], $row['status']); ?>
+            <input id="c-categroy_id" data-rule="required" data-source="categroy/index" class="form-control selectpage form-control" name="row[categroy_id]" type="text" value="">
         </div>
     </div>
-    <div class="form-group hidden layer-footer">
-        <label class="control-label col-xs-12 col-sm-2 col-xs-2"></label>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Content'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" class="form-control editor form-control" rows="5" name="row[content]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Comment_num'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-comment_num" class="form-control form-control" name="row[comment_num]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Praise_num'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-praise_num" class="form-control form-control" name="row[praise_num]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Collection_num'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-collection_num" class="form-control form-control" name="row[collection_num]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Report_time'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-report_time" class="form-control datetimepicker form-control" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[report_time]" type="text" value="<?php echo date('Y-m-d H:i:s'); ?>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><?php echo __('Add_time'); ?>:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-add_time" class="form-control datetimepicker form-control" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[add_time]" type="text" value="<?php echo date('Y-m-d H:i:s'); ?>">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
         <div class="col-xs-12 col-sm-8">
             <button type="submit" class="btn btn-success btn-embossed disabled"><?php echo __('OK'); ?></button>
             <button type="reset" class="btn btn-default btn-embossed"><?php echo __('Reset'); ?></button>
