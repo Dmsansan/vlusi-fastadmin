@@ -54,7 +54,7 @@ class Banner extends Backend
                 ->order($sort, $order)
                 ->limit($offset, $limit)
                 ->select();
-            
+
             foreach ($list as $k => &$v) {
                 $v['fullurl'] =  $this->view->config['upload']['cdnurl'] . $v['img_url'];
             }

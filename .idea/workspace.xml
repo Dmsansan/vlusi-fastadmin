@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24ae9eca-560f-43ef-a86d-bfcb3a72d007" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/lang/zh-cn/information/information.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/lang/zh-cn/information/information.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/view/information/information/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/information/information/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201811/06.log" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/log/201811/06.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,25 +31,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="15" />
-          <entry key="js" value="7" />
-          <entry key="php" value="52" />
+          <entry key="html" value="16" />
+          <entry key="js" value="9" />
+          <entry key="php" value="56" />
           <entry key="tpl" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="15" />
-          <entry key="JavaScript" value="7" />
-          <entry key="PHP" value="52" />
+          <entry key="HTML" value="16" />
+          <entry key="JavaScript" value="9" />
+          <entry key="PHP" value="56" />
           <entry key="Smarty" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="235" />
-          <entry key="js" value="125" />
-          <entry key="php" value="229" />
+          <entry key="js" value="131" />
+          <entry key="php" value="307" />
           <entry key="tpl" value="7" />
           <entry key="txt" value="251" />
         </counts>
@@ -52,8 +57,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="235" />
-          <entry key="JavaScript" value="125" />
-          <entry key="PHP" value="229" />
+          <entry key="JavaScript" value="131" />
+          <entry key="PHP" value="307" />
           <entry key="PLAIN_TEXT" value="251" />
           <entry key="Smarty" value="7" />
         </counts>
@@ -108,52 +113,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/backend/banner/banner.js">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/information/Information.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="59" column="36" lean-forward="true" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="326">
+              <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/backend/general/attachment.js">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/information/information/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="131" column="82" lean-forward="true" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="82" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/general/attachment.php">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/backend/information/information.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="36" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="36" />
+            <state relative-caret-position="408">
+              <caret line="36" column="91" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="91" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/admin/controller/banner/Banner.php">
+        <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/information/information.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/controller/general/Attachment.php">
+        <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="64" column="22" lean-forward="true" selection-start-line="60" selection-start-column="11" selection-end-line="64" selection-end-column="22" />
+            <state relative-caret-position="204">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -196,11 +195,13 @@
         <option value="$PROJECT_DIR$/public/assets/js/backend/information.js" />
         <option value="$PROJECT_DIR$/auto_curd.txt" />
         <option value="$PROJECT_DIR$/application/admin/view/banner/banner/add.html" />
-        <option value="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" />
         <option value="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" />
         <option value="$PROJECT_DIR$/application/admin/view/banner/banner/index.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" />
         <option value="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" />
+        <option value="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" />
+        <option value="$PROJECT_DIR$/application/admin/view/information/information/index.html" />
+        <option value="$PROJECT_DIR$/application/admin/lang/zh-cn/information/information.php" />
+        <option value="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" />
       </list>
     </option>
   </component>
@@ -299,22 +300,23 @@
               <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
               <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+              <item name="zh-cn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
               <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+              <item name="zh-cn" type="462c0819:PsiDirectoryNode" />
               <item name="banner" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,40 +324,9 @@
               <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="lang" type="462c0819:PsiDirectoryNode" />
               <item name="zh-cn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="zh-cn" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
@@ -385,7 +356,7 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="banner" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
@@ -393,25 +364,8 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="banner" type="462c0819:PsiDirectoryNode" />
-              <item name="banner" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
-              <item name="attachment" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
@@ -446,16 +400,7 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="banner" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vlusi_fastadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vlusi_fastadmin" type="b2602c69:ProjectViewProjectNode" />
@@ -481,11 +426,11 @@
       <recent name="D:\phpStudy\WWW\vlusi_fastadmin\application\admin\controller\information" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\lang\zh-cn\information" />
       <recent name="D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\lang\zh-cn\banner" />
       <recent name="D:\phpStudy\WWW\vlusi_fastadmin\public\assets\js\backend\information" />
       <recent name="D:\phpStudy\WWW\vlusi_fastadmin\application\admin\model" />
       <recent name="D:\phpStudy\WWW\vlusi_fastadmin\application\admin\view\information\information" />
-      <recent name="D:\phpStudy\WWW\vlusi_fastadmin\application\admin\controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -516,7 +461,7 @@
       <workItem from="1540713592136" duration="1738000" />
       <workItem from="1541224405279" duration="10998000" />
       <workItem from="1541404415291" duration="5339000" />
-      <workItem from="1541467461756" duration="9170000" />
+      <workItem from="1541467461756" duration="9980000" />
     </task>
     <task id="LOCAL-00001" summary="commit banner">
       <created>1541475362137</created>
@@ -529,7 +474,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34366000" />
+    <option name="totallyTimeSpent" value="35176000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -567,20 +512,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit banner" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/admin/model/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/backend/user/rule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153" />
@@ -692,20 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/information/Information.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/information/information.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/general/config.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -740,13 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1411">
           <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -825,18 +735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/backend/general/attachment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="190">
           <caret line="131" column="82" lean-forward="true" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/banner/banner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="59" column="36" lean-forward="true" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
           </folding>
@@ -845,8 +745,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/banner/Banner.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
+        <state relative-caret-position="421">
           <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/banner/banner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/information/Information.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/information/information.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" column="91" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/information/information/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/lang/zh-cn/information/information.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
         </state>
       </provider>
     </entry>

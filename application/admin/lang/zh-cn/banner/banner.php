@@ -11,4 +11,5 @@ return [
     'Upload to local'=> '上传到本地',
     'Yes'            => '显示',
     'No'             => '隐藏',
+    'Preview'        => '预览',
 ];

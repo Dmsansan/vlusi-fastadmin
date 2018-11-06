@@ -55,9 +55,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             formatter: {
                 status: function (value, row, index) {
                     if (row.status == 1) {
-                        return "显示";
+                        return __('Yes');
                     } else {
-                        return "隐藏";
+                        return __('No');
                     }
                 },
                 url: function (value, row, index) {
