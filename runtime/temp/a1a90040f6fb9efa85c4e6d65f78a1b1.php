@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:103:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\categroy\categroy\add.html";i:1541490265;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1541402489;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1541402489;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1541402489;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:104:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\categroy\categroy\edit.html";i:1541480013;s:86:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\layout\default.html";i:1541402489;s:83:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\meta.html";i:1541402489;s:85:"D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\view\common\script.html";i:1541402489;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -50,12 +50,12 @@
                             <!-- END RIBBON -->
                             <?php endif; ?>
                             <div class="content">
-                                <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2"><?php echo __('Categroy_name'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-categroy_name" data-rule="required" class="form-control form-control" name="row[categroy_name]" type="text">
+            <input id="c-categroy_name" class="form-control form-control" name="row[categroy_name]" type="text" value="<?php echo $row['categroy_name']; ?>">
         </div>
     </div>
     <div class="form-group layer-footer">
