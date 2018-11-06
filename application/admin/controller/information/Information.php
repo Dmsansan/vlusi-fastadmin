@@ -49,6 +49,7 @@ class Information extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
             $total = $this->model
                     ->with(['categroy'])
                     ->where($where)
@@ -66,6 +67,7 @@ class Information extends Backend
                 
                 
             }
+
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
 

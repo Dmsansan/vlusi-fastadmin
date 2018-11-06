@@ -1,0 +1,9 @@
+[ 2018-11-06T12:53:31+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000134s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-06T12:53:31+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-06T12:53:31+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007461s ]
+[ 2018-11-06T12:53:32+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-06T12:53:32+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.292025s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-06T12:53:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'information_categroy' [ RunTime:0.327869s ]
+[ 2018-11-06T12:53:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_information_categroy' [ RunTime:0.051735s ]
+[ 2018-11-06T12:53:33+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_information_categroy' ORDER BY ORDINAL_POSITION [ RunTime:0.335839s ]

@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'information/information/index',
-                    add_url: 'information/information/add',
-                    edit_url: 'information/information/edit',
-                    del_url: 'information/information/del',
-                    multi_url: 'information/information/multi',
-                    table: 'information',
+                    index_url: 'categroy/categroy/index',
+                    add_url: 'categroy/categroy/add',
+                    edit_url: 'categroy/categroy/edit',
+                    del_url: 'categroy/categroy/del',
+                    multi_url: 'categroy/categroy/multi',
+                    table: 'information_categroy',
                 }
             });
 
@@ -25,14 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'title', title: __('Title')},
-                        {field: 'categroy.categroy_name', title: __('Categroy.categroy_name')},
-                        {field: 'content', title: __('Content')},
-                        {field: 'comment_num', title: __('Comment_num')},
-                        {field: 'praise_num', title: __('Praise_num')},
-                        {field: 'collection_num', title: __('Collection_num')},
-                        {field: 'report_time', title: __('Report_time'), operate:'RANGE', addclass:'datetimerange'},
-                        {field: 'add_time', title: __('Add_time'), operate:'RANGE', addclass:'datetimerange'},
+                        {field: 'categroy_name', title: __('Categroy_name')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
