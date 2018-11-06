@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24ae9eca-560f-43ef-a86d-bfcb3a72d007" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,17 +43,17 @@
         <counts>
           <entry key="html" value="235" />
           <entry key="js" value="70" />
-          <entry key="php" value="205" />
+          <entry key="php" value="206" />
           <entry key="tpl" value="7" />
-          <entry key="txt" value="238" />
+          <entry key="txt" value="251" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="235" />
           <entry key="JavaScript" value="70" />
-          <entry key="PHP" value="205" />
-          <entry key="PLAIN_TEXT" value="238" />
+          <entry key="PHP" value="206" />
+          <entry key="PLAIN_TEXT" value="251" />
           <entry key="Smarty" value="7" />
         </counts>
       </usages-collector>
@@ -140,8 +139,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/admin/controller/banner/Banner.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="404">
+              <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -195,8 +194,8 @@
         <option value="$PROJECT_DIR$/application/admin/lang/zh-cn/banner/banner.php" />
         <option value="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" />
         <option value="$PROJECT_DIR$/application/admin/view/banner/banner/index.html" />
-        <option value="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" />
         <option value="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" />
+        <option value="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" />
       </list>
     </option>
   </component>
@@ -530,12 +529,20 @@
       <workItem from="1540713592136" duration="1738000" />
       <workItem from="1541224405279" duration="10998000" />
       <workItem from="1541404415291" duration="5339000" />
-      <workItem from="1541467461756" duration="7584000" />
+      <workItem from="1541467461756" duration="7663000" />
     </task>
+    <task id="LOCAL-00001" summary="commit banner">
+      <created>1541475362137</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541475362137</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32780000" />
+    <option name="totallyTimeSpent" value="32859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -567,6 +574,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit banner" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit banner" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/application/admin/model/User.php">
@@ -846,8 +857,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/banner/Banner.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="404">
+          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
         </state>
       </provider>
     </entry>
