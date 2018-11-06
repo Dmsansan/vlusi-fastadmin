@@ -41,7 +41,6 @@ class Common extends Api
                 'coverdata'   => Config::get("cover"),
             ];
             $this->success('', $content);
-
         } else {
             $this->error(__('Invalid parameters'));
         }
