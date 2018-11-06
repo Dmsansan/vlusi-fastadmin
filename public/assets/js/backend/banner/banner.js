@@ -26,7 +26,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'title', title: __('Title')},
-                        {field: 'img_url', title: __('Img_url'), formatter: Table.api.formatter.url},
+                        {field: 'img_url', title: __('Preview'), formatter: Controller.api.formatter.thumb},
+                        {field: 'img_url', title: __('Img_url'), formatter: Controller.api.formatter.url},
                         {field: 'link_url', title: __('Link_url'), formatter: Table.api.formatter.url},
                         {field: 'status', title: __('Status'), formatter: Controller.api.formatter.status, operate: false},
                         {field: 'remark', title: __('Remark')},
@@ -58,7 +59,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     } else {
                         return "隐藏";
                     }
-                }
+                },
+                url: function (value, row, index) {
+                    return '<a href="' + row.fullurl + '" target="_blank" class="label bg-green">' + value + '</a>';
+                },thumb: function (value, row, index) {
+                    if(row.img_url != null){
+                        var style = row.storage == 'upyun' ? '!/fwfh/120x90' : '';
+                        return '<a href="' + row.fullurl + '" target="_blank"><img src="' + row.fullurl + style + '" alt="" style="max-height:90px;max-width:120px"></a>';
+                    } else {
+                        return '<a href="' + row.fullurl + '" target="_blank">' + __('None') + '</a>';
+                    }
+                },
             }
         }
     };
