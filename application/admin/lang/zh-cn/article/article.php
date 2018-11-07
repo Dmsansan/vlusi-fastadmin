@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Id'  =>  '日常id',
+    'Id'  =>  'id',
     'Title'  =>  '标题',
     'Article_category_id'  =>  '所属分类',
     'Coverimage'  =>  '封面图',

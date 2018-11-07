@@ -26767,3 +26767,2700 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.018165s ]
 [ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article_comment` `comment` LEFT JOIN `fa_article` `article` ON `comment`.`article_id`=`article`.`id` LEFT JOIN `fa_user` `user` ON `comment`.`user_id`=`user`.`id` ORDER BY `comment`.`id` DESC LIMIT 1 [ RunTime:0.016756s ]
 [ sql ] [ SQL ] SELECT `comment`.`id`,`comment`.`article_id`,`comment`.`user_id`,`comment`.`content`,`comment`.`createtime`,article.id AS article__id,article.title AS article__title,article.article_category_id AS article__article_category_id,article.coverimage AS article__coverimage,article.content AS article__content,article.videofile AS article__videofile,article.views AS article__views,article.comments AS article__comments,article.auth AS article__auth,article.createtime AS article__createtime,article.flag AS article__flag,user.id AS user__id,user.group_id AS user__group_id,user.username AS user__username,user.nickname AS user__nickname,user.password AS user__password,user.salt AS user__salt,user.email AS user__email,user.mobile AS user__mobile,user.avatar AS user__avatar,user.level AS user__level,user.gender AS user__gender,user.birthday AS user__birthday,user.bio AS user__bio,user.score AS user__score,user.successions AS user__successions,user.maxsuccessions AS user__maxsuccessions,user.prevtime AS user__prevtime,user.logintime AS user__logintime,user.loginip AS user__loginip,user.loginfailure AS user__loginfailure,user.joinip AS user__joinip,user.jointime AS user__jointime,user.createtime AS user__createtime,user.updatetime AS user__updatetime,user.token AS user__token,user.status AS user__status,user.verification AS user__verification FROM `fa_article_comment` `comment` LEFT JOIN `fa_article` `article` ON `comment`.`article_id`=`article`.`id` LEFT JOIN `fa_user` `user` ON `comment`.`user_id`=`user`.`id` ORDER BY `comment`.`id` DESC LIMIT 0,10 [ RunTime:0.022040s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:40:43+08:00 ] 0.0.0.0 GET /admin/article/category?addtabs=1
+[ info ] wxyanglao.cc/admin/article/category?addtabs=1 [运行时间：0.446929s][吞吐率：2.24req/s] [内存消耗：5,118.38kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000063s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006309s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?ref=addtabs',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005916s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/category/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.001122s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032383s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.032826s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.024743s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.025376s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.047864s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'article/category' LIMIT 1 [ RunTime:0.021451s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:40:43+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.category&v=1541580043
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.category&v=1541580043 [运行时间：0.094705s][吞吐率：10.56req/s] [内存消耗：3,844.82kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000044s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006529s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.category',
+  'v' => '1541580043',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004074s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000290s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:40:44+08:00 ] 0.0.0.0 GET /admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043827
+[ info ] wxyanglao.cc/admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043827 [运行时间：0.299906s][吞吐率：3.33req/s] [内存消耗：5,209.60kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000065s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002328s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580043827',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003664s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000256s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043040s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.021522s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.015835s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.015255s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.023195s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.030929s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article_category` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.015247s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.015142s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:40:47+08:00 ] 0.0.0.0 GET /admin/article/category/edit/ids/5?dialog=1
+[ info ] wxyanglao.cc/admin/article/category/edit/ids/5?dialog=1 [运行时间：0.356967s][吞吐率：2.80req/s] [内存消耗：5,319.70kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000328s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.009072s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'dialog' => '1',
+  'ids' => '5',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003923s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->edit[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/category/edit.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'row',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000338s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040958s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.017924s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.015118s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020506s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.025600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.018050s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.023020s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:40:47+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.category&v=1541580046
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.category&v=1541580046 [运行时间：0.094841s][吞吐率：10.54req/s] [内存消耗：3,844.77kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000058s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002288s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/category/edit/ids/5?dialog=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.category',
+  'v' => '1541580046',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004247s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000178s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:40:55+08:00 ] 0.0.0.0 POST /admin/article/category/edit/ids/5?dialog=1
+[ info ] wxyanglao.cc/admin/article/category/edit/ids/5?dialog=1 [运行时间：0.318435s][吞吐率：3.14req/s] [内存消耗：5,220.69kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005805s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://wxyanglao.cc',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://wxyanglao.cc/admin/article/category/edit/ids/5?dialog=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'dialog' => '1',
+  'row' => 
+  array (
+    'name' => '日常',
+  ),
+  'ids' => '5',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003297s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->edit[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.041423s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026055s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.017701s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.017215s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.016834s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.017886s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.021410s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.015964s ]
+[ sql ] [ SQL ] UPDATE `fa_article_category`  SET `name`='日常'  WHERE  `id` = 5 [ RunTime:0.025950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.015824s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('文章 分类管理 编辑' , '{\"dialog\":\"1\",\"row\":{\"name\":\"\\u65e5\\u5e38\"},\"ids\":\"5\"}' , '/admin/article/category/edit/ids/5?dialog=1' , 1 , 'admin' , 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' , '0.0.0.0' , 1541580054) [ RunTime:0.020391s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:40:55+08:00 ] 0.0.0.0 GET /admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043828
+[ info ] wxyanglao.cc/admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043828 [运行时间：0.269355s][吞吐率：3.71req/s] [内存消耗：5,210.06kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000100s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007609s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580043828',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.009634s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000195s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.023453s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.014413s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.016676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.016805s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020714s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.015663s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article_category` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.013242s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.013950s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:01+08:00 ] 0.0.0.0 GET /admin/article/category/edit/ids/4?dialog=1
+[ info ] wxyanglao.cc/admin/article/category/edit/ids/4?dialog=1 [运行时间：0.359595s][吞吐率：2.78req/s] [内存消耗：5,124.58kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000117s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003315s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'dialog' => '1',
+  'ids' => '4',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002946s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->edit[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/category/edit.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'row',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000156s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032286s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.036723s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019789s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019580s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.027468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.030898s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.051223s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:02+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.category&v=1541580061
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.category&v=1541580061 [运行时间：0.090541s][吞吐率：11.04req/s] [内存消耗：3,844.77kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000057s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008384s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/category/edit/ids/4?dialog=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.category',
+  'v' => '1541580061',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003004s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000217s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:41:06+08:00 ] 0.0.0.0 POST /admin/article/category/edit/ids/4?dialog=1
+[ info ] wxyanglao.cc/admin/article/category/edit/ids/4?dialog=1 [运行时间：0.608038s][吞吐率：1.64req/s] [内存消耗：5,220.77kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000088s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004818s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://wxyanglao.cc',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://wxyanglao.cc/admin/article/category/edit/ids/4?dialog=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'dialog' => '1',
+  'row' => 
+  array (
+    'name' => '资讯',
+  ),
+  'ids' => '4',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005550s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->edit[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.047573s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114986s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.079582s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.114835s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020143s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.033310s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.023637s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.023639s ]
+[ sql ] [ SQL ] UPDATE `fa_article_category`  SET `name`='资讯'  WHERE  `id` = 4 [ RunTime:0.024893s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.020849s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('文章 分类管理 编辑' , '{\"dialog\":\"1\",\"row\":{\"name\":\"\\u8d44\\u8baf\"},\"ids\":\"4\"}' , '/admin/article/category/edit/ids/4?dialog=1' , 1 , 'admin' , 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' , '0.0.0.0' , 1541580066) [ RunTime:0.024335s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:06+08:00 ] 0.0.0.0 GET /admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043829
+[ info ] wxyanglao.cc/admin/article/category/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580043829 [运行时间：0.343090s][吞吐率：2.91req/s] [内存消耗：5,209.91kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008722s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.category',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/category?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580043829',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.013324s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/category.php
+[ info ] [ RUN ] app\common\controller\Backend->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/library/traits/Backend.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000218s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.020010s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.021750s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.016594s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.014844s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.018748s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.041117s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article_category` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.014714s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_article_category` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.014127s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:13+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541579969010
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541579969010 [运行时间：0.349603s][吞吐率：2.86req/s] [内存消耗：5,412.05kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000306s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003892s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541579969010',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002928s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000156s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.071950s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.024881s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.016656s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.013747s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.025912s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.020008s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.013265s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.014251s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.025998s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:15+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541579969011
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541579969011 [运行时间：0.342927s][吞吐率：2.92req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000081s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008018s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541579969011',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.008536s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000168s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.024699s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.021763s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.017864s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.014351s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.026288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.019532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.019674s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.017120s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.019000s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:16+08:00 ] 0.0.0.0 GET /admin/article/article?ref=addtabs
+[ info ] wxyanglao.cc/admin/article/article?ref=addtabs [运行时间：0.232758s][吞吐率：4.30req/s] [内存消耗：4,610.30kb] [文件加载：73]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000076s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003278s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'ref' => 'addtabs',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005128s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000255s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034227s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.021568s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020195s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.021045s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.029227s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:20+08:00 ] 0.0.0.0 GET /admin/index/index
+[ info ] wxyanglao.cc/admin/index/index [运行时间：3.213183s][吞吐率：0.31req/s] [内存消耗：5,502.80kb] [文件加载：88]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000071s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002245s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003084s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/index/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'menulist',
+  6 => 'navlist',
+  7 => 'fixedmenu',
+  8 => 'referermenu',
+  9 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000291s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.021976s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.017983s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.018804s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.021609s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:21+08:00 ] 0.0.0.0 GET /admin/article/article?addtabs=1
+[ info ] wxyanglao.cc/admin/article/article?addtabs=1 [运行时间：0.860898s][吞吐率：1.16req/s] [内存消耗：5,135.78kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000077s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003424s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005932s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/article/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'flagList',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000145s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.380872s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.161564s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.034778s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.074131s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.041823s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'article/article' LIMIT 1 [ RunTime:0.011768s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:21+08:00 ] 0.0.0.0 GET /admin/dashboard?addtabs=1
+[ info ] wxyanglao.cc/admin/dashboard?addtabs=1 [运行时间：1.068765s][吞吐率：0.94req/s] [内存消耗：5,171.63kb] [文件加载：78]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000068s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003029s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'dashboard',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005106s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ RUN ] app\admin\controller\Dashboard->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Dashboard.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/dashboard/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'totaluser',
+  6 => 'totalviews',
+  7 => 'totalorder',
+  8 => 'totalorderamount',
+  9 => 'todayuserlogin',
+  10 => 'todayusersignup',
+  11 => 'todayorder',
+  12 => 'unsettleorder',
+  13 => 'sevendnu',
+  14 => 'sevendau',
+  15 => 'paylist',
+  16 => 'createlist',
+  17 => 'addonversion',
+  18 => 'uploadmode',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000183s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028662s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.027690s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.026742s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019714s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.026604s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.019940s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:21+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=index&v=1541580077
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=index&v=1541580077 [运行时间：0.874564s][吞吐率：1.14req/s] [内存消耗：3,852.30kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000055s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006766s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'index',
+  'v' => '1541580077',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003015s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.001818s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:41:21+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.article&v=1541580080
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.article&v=1541580080 [运行时间：0.087799s][吞吐率：11.39req/s] [内存消耗：3,846.08kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000047s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002568s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.article',
+  'v' => '1541580080',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004618s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000172s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:41:21+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=dashboard&v=1541580080
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=dashboard&v=1541580080 [运行时间：0.152467s][吞吐率：6.56req/s] [内存消耗：3,850.12kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000089s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.016339s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/dashboard?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'dashboard',
+  'v' => '1541580080',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003886s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000216s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:41:22+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081247
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081247 [运行时间：0.378737s][吞吐率：2.64req/s] [内存消耗：5,412.14kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000059s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004112s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580081247',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.008285s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000201s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040420s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018966s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018609s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.025025s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.021563s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.024331s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.023855s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.020169s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.026868s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:50+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081248
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081248 [运行时间：0.399272s][吞吐率：2.50req/s] [内存消耗：5,412.14kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007492s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580081248',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.010976s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.001471s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.023773s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018269s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.014486s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.015923s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020128s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.016456s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.014707s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.016743s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.017869s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:51+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081249
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081249 [运行时间：0.311384s][吞吐率：3.21req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000052s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001933s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580081249',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005111s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000201s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.034086s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.025351s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018685s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019363s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.024433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.020088s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.019399s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.020046s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.025797s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:41:53+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081250
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580081250 [运行时间：0.306996s][吞吐率：3.26req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000066s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003344s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580081250',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003080s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000197s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039186s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018362s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020965s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.024584s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.029666s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.017699s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.015132s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.023073s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.018414s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:05+08:00 ] 0.0.0.0 GET /admin/article/article?ref=addtabs
+[ info ] wxyanglao.cc/admin/article/article?ref=addtabs [运行时间：0.313525s][吞吐率：3.19req/s] [内存消耗：4,610.27kb] [文件加载：73]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000103s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006234s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'ref' => 'addtabs',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.008172s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.001577s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027087s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018784s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.017919s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.014513s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.016758s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:09+08:00 ] 0.0.0.0 GET /admin/index/index
+[ info ] wxyanglao.cc/admin/index/index [运行时间：3.513736s][吞吐率：0.28req/s] [内存消耗：5,502.80kb] [文件加载：88]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000055s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002943s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003333s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/index/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'menulist',
+  6 => 'navlist',
+  7 => 'fixedmenu',
+  8 => 'referermenu',
+  9 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000309s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026090s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.016182s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.022771s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.013944s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020179s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:09+08:00 ] 0.0.0.0 GET /admin/dashboard?addtabs=1
+[ info ] wxyanglao.cc/admin/dashboard?addtabs=1 [运行时间：0.479124s][吞吐率：2.09req/s] [内存消耗：5,171.73kb] [文件加载：78]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000077s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002916s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'dashboard',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.006674s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ RUN ] app\admin\controller\Dashboard->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Dashboard.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/dashboard/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'totaluser',
+  6 => 'totalviews',
+  7 => 'totalorder',
+  8 => 'totalorderamount',
+  9 => 'todayuserlogin',
+  10 => 'todayusersignup',
+  11 => 'todayorder',
+  12 => 'unsettleorder',
+  13 => 'sevendnu',
+  14 => 'sevendau',
+  15 => 'paylist',
+  16 => 'createlist',
+  17 => 'addonversion',
+  18 => 'uploadmode',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000309s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.242488s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019143s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.021687s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.017975s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.026298s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.020898s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:09+08:00 ] 0.0.0.0 GET /admin/article/article?addtabs=1
+[ info ] wxyanglao.cc/admin/article/article?addtabs=1 [运行时间：0.681323s][吞吐率：1.47req/s] [内存消耗：5,135.97kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003586s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004342s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/article/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'flagList',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000166s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.023995s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018655s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020904s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.013755s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.017903s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'article/article' LIMIT 1 [ RunTime:0.029871s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:09+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=index&v=1541580125
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=index&v=1541580125 [运行时间：0.464899s][吞吐率：2.15req/s] [内存消耗：3,852.30kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000077s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006460s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'index',
+  'v' => '1541580125',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003403s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000354s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:09+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=dashboard&v=1541580129
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=dashboard&v=1541580129 [运行时间：0.084472s][吞吐率：11.84req/s] [内存消耗：3,850.16kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000060s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002042s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/dashboard?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'dashboard',
+  'v' => '1541580129',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002880s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000312s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:10+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.article&v=1541580129
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.article&v=1541580129 [运行时间：0.171386s][吞吐率：5.83req/s] [内存消耗：3,845.96kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000092s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.016610s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.article',
+  'v' => '1541580129',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.015139s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000314s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:11+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580130008
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580130008 [运行时间：0.609158s][吞吐率：1.64req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000465s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.013484s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580130008',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.009472s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000239s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027878s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.025315s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.024127s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019686s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.024108s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.242061s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.021332s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.016582s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.021058s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:36+08:00 ] 0.0.0.0 GET /admin/article/article?ref=addtabs
+[ info ] wxyanglao.cc/admin/article/article?ref=addtabs [运行时间：0.242561s][吞吐率：4.12req/s] [内存消耗：4,610.30kb] [文件加载：73]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000099s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002420s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'ref' => 'addtabs',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004852s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.001497s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.037667s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019761s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.013824s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.012353s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.013827s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:39+08:00 ] 0.0.0.0 GET /admin/index/index
+[ info ] wxyanglao.cc/admin/index/index [运行时间：3.318262s][吞吐率：0.30req/s] [内存消耗：5,503.00kb] [文件加载：88]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000048s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001847s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003595s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/index/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'menulist',
+  6 => 'navlist',
+  7 => 'fixedmenu',
+  8 => 'referermenu',
+  9 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000318s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028090s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.020036s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.025138s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.022055s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:39+08:00 ] 0.0.0.0 GET /admin/article/article?addtabs=1
+[ info ] wxyanglao.cc/admin/article/article?addtabs=1 [运行时间：0.310410s][吞吐率：3.22req/s] [内存消耗：5,335.20kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000074s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002770s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005323s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/article/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'flagList',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000198s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026860s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019295s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.023678s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.021223s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'article/article' LIMIT 1 [ RunTime:0.021129s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:40+08:00 ] 0.0.0.0 GET /admin/dashboard?addtabs=1
+[ info ] wxyanglao.cc/admin/dashboard?addtabs=1 [运行时间：0.544648s][吞吐率：1.84req/s] [内存消耗：5,171.63kb] [文件加载：78]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000074s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003370s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'dashboard',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.007144s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ RUN ] app\admin\controller\Dashboard->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Dashboard.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/dashboard/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'totaluser',
+  6 => 'totalviews',
+  7 => 'totalorder',
+  8 => 'totalorderamount',
+  9 => 'todayuserlogin',
+  10 => 'todayusersignup',
+  11 => 'todayorder',
+  12 => 'unsettleorder',
+  13 => 'sevendnu',
+  14 => 'sevendau',
+  15 => 'paylist',
+  16 => 'createlist',
+  17 => 'addonversion',
+  18 => 'uploadmode',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000262s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027462s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.020619s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.022254s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.021021s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.031853s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.040694s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:42:40+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=index&v=1541580156
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=index&v=1541580156 [运行时间：0.340508s][吞吐率：2.94req/s] [内存消耗：3,852.30kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000046s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.010173s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'index',
+  'v' => '1541580156',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002794s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000318s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:40+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.article&v=1541580159
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.article&v=1541580159 [运行时间：0.116268s][吞吐率：8.60req/s] [内存消耗：3,845.96kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000057s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002221s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.article',
+  'v' => '1541580159',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005127s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000355s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:40+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=dashboard&v=1541580159
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=dashboard&v=1541580159 [运行时间：0.135558s][吞吐率：7.38req/s] [内存消耗：3,850.13kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000230s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008390s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/dashboard?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'dashboard',
+  'v' => '1541580159',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004747s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000335s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:42:41+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580159914
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580159914 [运行时间：0.373130s][吞吐率：2.68req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000053s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002084s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580159914',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003136s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000210s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026929s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.022559s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.021841s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.028576s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.040481s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.022079s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.017242s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.018905s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.015946s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:03+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580159915
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580159915 [运行时间：0.252656s][吞吐率：3.96req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000069s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004549s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580159915',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002565s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000266s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029258s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.014978s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.011693s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.015930s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.017006s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.013163s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.012680s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.010905s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.014879s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:06+08:00 ] 0.0.0.0 GET /admin/article/article?ref=addtabs
+[ info ] wxyanglao.cc/admin/article/article?ref=addtabs [运行时间：0.178685s][吞吐率：5.60req/s] [内存消耗：4,610.30kb] [文件加载：73]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000042s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001985s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'ref' => 'addtabs',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003705s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000202s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.021100s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.017001s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.012591s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.017681s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020395s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:09+08:00 ] 0.0.0.0 GET /admin/index/index
+[ info ] wxyanglao.cc/admin/index/index [运行时间：3.192039s][吞吐率：0.31req/s] [内存消耗：5,502.80kb] [文件加载：88]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000061s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002764s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002664s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ RUN ] app\admin\controller\Index->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/index/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'menulist',
+  6 => 'navlist',
+  7 => 'fixedmenu',
+  8 => 'referermenu',
+  9 => 'title',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000180s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030259s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.024043s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020550s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.022628s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:09+08:00 ] 0.0.0.0 GET /admin/article/article?addtabs=1
+[ info ] wxyanglao.cc/admin/article/article?addtabs=1 [运行时间：0.281663s][吞吐率：3.55req/s] [内存消耗：5,135.97kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000074s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004593s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.006009s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/article/article/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'flagList',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000163s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031603s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.023170s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.026971s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.017991s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.027255s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'article/article' LIMIT 1 [ RunTime:0.019687s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:09+08:00 ] 0.0.0.0 GET /admin/dashboard?addtabs=1
+[ info ] wxyanglao.cc/admin/dashboard?addtabs=1 [运行时间：0.473915s][吞吐率：2.11req/s] [内存消耗：5,171.63kb] [文件加载：78]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000080s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.012605s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'dashboard',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.016004s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ RUN ] app\admin\controller\Dashboard->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Dashboard.php ]
+[ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/dashboard/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'totaluser',
+  6 => 'totalviews',
+  7 => 'totalorder',
+  8 => 'totalorderamount',
+  9 => 'todayuserlogin',
+  10 => 'todayusersignup',
+  11 => 'todayorder',
+  12 => 'unsettleorder',
+  13 => 'sevendnu',
+  14 => 'sevendau',
+  15 => 'paylist',
+  16 => 'createlist',
+  17 => 'addonversion',
+  18 => 'uploadmode',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000247s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.020639s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.012360s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018565s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.017137s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.016197s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.014373s ]
+---------------------------------------------------------------
+[ 2018-11-07T16:43:09+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=index&v=1541580186
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=index&v=1541580186 [运行时间：0.229313s][吞吐率：4.36req/s] [内存消耗：3,852.18kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000052s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007626s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'index',
+  'v' => '1541580186',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004458s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.002184s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:43:09+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=article.article&v=1541580189
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=article.article&v=1541580189 [运行时间：0.102828s][吞吐率：9.72req/s] [内存消耗：3,846.08kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000091s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003910s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'article.article',
+  'v' => '1541580189',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003812s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000454s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:43:10+08:00 ] 0.0.0.0 GET /admin/ajax/lang?callback=define&controllername=dashboard&v=1541580189
+[ info ] wxyanglao.cc/admin/ajax/lang?callback=define&controllername=dashboard&v=1541580189 [运行时间：0.169751s][吞吐率：5.89req/s] [内存消耗：3,850.12kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000068s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.021734s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://wxyanglao.cc/admin/dashboard?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'dashboard',
+  'v' => '1541580189',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.013753s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/dashboard.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000300s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-07T16:43:10+08:00 ] 0.0.0.0 GET /admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580189765
+[ info ] wxyanglao.cc/admin/article/article/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541580189765 [运行时间：0.320092s][吞吐率：3.12req/s] [内存消耗：5,412.73kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000059s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002039s ]
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article.article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wxyanglao.cc',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/json',
+  'referer' => 'http://wxyanglao.cc/admin/article/article?addtabs=1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541558327',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541580189765',
+)
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004328s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/article/article.php
+[ info ] [ RUN ] app\admin\controller\article\Article->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/article/Article.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000328s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.049047s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.025844s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.014208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.018921s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.018705s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.019954s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article_category` [ RunTime:0.013423s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 1 [ RunTime:0.016275s ]
+[ sql ] [ SQL ] SELECT `article`.`id`,`article`.`title`,`article`.`article_category_id`,`article`.`coverimage`,`article`.`content`,`article`.`videofile`,`article`.`views`,`article`.`comments`,`article`.`auth`,`article`.`createtime`,`article`.`flag`,category.id AS category__id,category.name AS category__name FROM `fa_article` `article` LEFT JOIN `fa_article_category` `category` ON `article`.`article_category_id`=`category`.`id` ORDER BY `article`.`id` DESC LIMIT 0,10 [ RunTime:0.019124s ]

@@ -1262,3 +1262,15 @@
 [ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.015218s ]
 [ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.016555s ]
 [ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.020049s ]
+[ 2018-11-07T16:42:32+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001799s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:42:32+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:42:32+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004051s ]
+[ 2018-11-07T16:42:32+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.031278s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.019257s ]
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.018889s ]
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.020426s ]
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.019532s ]
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.024635s ]
+[ 2018-11-07T16:42:32+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.030996s ]
