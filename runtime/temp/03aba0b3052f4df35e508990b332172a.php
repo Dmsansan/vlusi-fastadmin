@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:103:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/daily/daily/index.html";i:1541569353;s:90:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/layout/default.html";i:1541494985;s:87:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/meta.html";i:1541494985;s:89:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/script.html";i:1541494985;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:103:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/daily/daily/index.html";i:1541572137;s:90:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/layout/default.html";i:1541494985;s:87:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/meta.html";i:1541494985;s:89:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/script.html";i:1541494985;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>

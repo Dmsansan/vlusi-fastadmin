@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:102:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/daily/daily/edit.html";i:1541569353;s:90:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/layout/default.html";i:1541494985;s:87:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/meta.html";i:1541494985;s:89:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/script.html";i:1541494985;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:102:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/daily/daily/edit.html";i:1541572137;s:90:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/layout/default.html";i:1541494985;s:87:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/meta.html";i:1541494985;s:89:"/Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/view/common/script.html";i:1541494985;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -68,7 +68,7 @@
         <label class="control-label col-xs-12 col-sm-2"><?php echo __('Coverimage'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
             <div class="input-group">
-                <input id="c-coverimage" data-rule="required" class="form-control form-control" size="50" name="row[coverimage]" type="text" value="<?php echo $row['coverimage']; ?>">
+                <input id="c-coverimage" class="form-control form-control" size="50" name="row[coverimage]" type="text" value="<?php echo $row['coverimage']; ?>">
                 <div class="input-group-addon no-border no-padding">
                     <span><button type="button" id="plupload-coverimage" class="btn btn-danger plupload" data-input-id="c-coverimage" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-coverimage"><i class="fa fa-upload"></i> <?php echo __('Upload'); ?></button></span>
                     <span><button type="button" id="fachoose-coverimage" class="btn btn-primary fachoose" data-input-id="c-coverimage" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> <?php echo __('Choose'); ?></button></span>

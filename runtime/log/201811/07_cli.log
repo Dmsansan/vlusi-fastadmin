@@ -934,3 +934,331 @@
 [ 2018-11-07T13:42:33+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_categroy' [ RunTime:0.069065s ]
 [ 2018-11-07T13:42:33+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily' ORDER BY ORDINAL_POSITION [ RunTime:0.035633s ]
 [ 2018-11-07T13:42:33+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_categroy' ORDER BY ORDINAL_POSITION [ RunTime:0.019246s ]
+[ 2018-11-07T14:28:56+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002190s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T14:28:56+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T14:28:56+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007878s ]
+[ 2018-11-07T14:28:56+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.052847s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily' [ RunTime:0.105247s ]
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily' [ RunTime:0.024009s ]
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily_categroy' [ RunTime:0.019031s ]
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_categroy' [ RunTime:0.027409s ]
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily' ORDER BY ORDINAL_POSITION [ RunTime:0.021134s ]
+[ 2018-11-07T14:28:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_categroy' ORDER BY ORDINAL_POSITION [ RunTime:0.024733s ]
+[ 2018-11-07T14:55:57+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002555s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T14:55:57+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T14:55:57+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008129s ]
+[ 2018-11-07T14:55:57+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.089139s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily_comment' [ RunTime:0.042787s ]
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_comment' [ RunTime:0.021074s ]
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.021138s ]
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.022844s ]
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_comment' ORDER BY ORDINAL_POSITION [ RunTime:0.034318s ]
+[ 2018-11-07T14:55:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.024561s ]
+[ 2018-11-07T14:56:38+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002236s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T14:56:38+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T14:56:38+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007277s ]
+[ 2018-11-07T14:56:38+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T14:56:38+08:00 ][ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/lang/zh-cn.php
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.062204s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.018183s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'daily' LIMIT 1 [ RunTime:0.017705s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'daily/comment' LIMIT 1 [ RunTime:0.021100s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`pid` , `name` , `title` , `icon` , `remark` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (118 , 'daily/comment' , 'Comment' , 'fa fa-circle-o' , '' , 1 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.053871s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'daily/comment/index' LIMIT 1 [ RunTime:0.017142s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'daily/comment/add' LIMIT 1 [ RunTime:0.016842s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'daily/comment/edit' LIMIT 1 [ RunTime:0.023305s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'daily/comment/del' LIMIT 1 [ RunTime:0.018079s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'daily/comment/multi' LIMIT 1 [ RunTime:0.018606s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 173 , 'daily/comment/index' , 'fa fa-circle-o' , '查看' , 0 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.018872s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 173 , 'daily/comment/add' , 'fa fa-circle-o' , '添加' , 0 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.008620s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 173 , 'daily/comment/edit' , 'fa fa-circle-o' , '编辑' , 0 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.013914s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 173 , 'daily/comment/del' , 'fa fa-circle-o' , '删除' , 0 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.007689s ]
+[ 2018-11-07T14:56:38+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 173 , 'daily/comment/multi' , 'fa fa-circle-o' , '批量更新' , 0 , 'normal' , 1541573798 , 1541573798) [ RunTime:0.008900s ]
+[ 2018-11-07T15:03:34+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003910s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:03:34+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:03:34+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008028s ]
+[ 2018-11-07T15:03:34+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.037112s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily_comment' [ RunTime:0.020674s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_comment' [ RunTime:0.019954s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily' [ RunTime:0.019252s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily' [ RunTime:0.026186s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.019658s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.020546s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_comment' ORDER BY ORDINAL_POSITION [ RunTime:0.024855s ]
+[ 2018-11-07T15:03:34+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily' ORDER BY ORDINAL_POSITION [ RunTime:0.020858s ]
+[ 2018-11-07T15:03:35+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.022744s ]
+[ 2018-11-07T15:04:14+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000182s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:04:14+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:04:14+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002582s ]
+[ 2018-11-07T15:04:14+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.031281s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily_comment' [ RunTime:0.025791s ]
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_comment' [ RunTime:0.022720s ]
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily' [ RunTime:0.019618s ]
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily' [ RunTime:0.027314s ]
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_comment' ORDER BY ORDINAL_POSITION [ RunTime:0.029408s ]
+[ 2018-11-07T15:04:14+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily' ORDER BY ORDINAL_POSITION [ RunTime:0.030794s ]
+[ 2018-11-07T15:07:57+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002033s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:07:57+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:07:57+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007039s ]
+[ 2018-11-07T15:07:57+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.021059s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily_comment' [ RunTime:0.019063s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily_comment' [ RunTime:0.018214s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily' [ RunTime:0.022945s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily' [ RunTime:0.014253s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.015057s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.013131s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily_comment' ORDER BY ORDINAL_POSITION [ RunTime:0.016923s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_daily' ORDER BY ORDINAL_POSITION [ RunTime:0.015696s ]
+[ 2018-11-07T15:07:57+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.015789s ]
+[ 2018-11-07T15:28:58+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003369s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:28:58+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:28:58+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008045s ]
+[ 2018-11-07T15:28:58+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:28:58+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.037203s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:28:58+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'daily' [ RunTime:0.019440s ]
+[ 2018-11-07T15:28:58+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_daily' [ RunTime:0.020928s ]
+[ 2018-11-07T15:31:17+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004620s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:31:17+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:31:17+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007899s ]
+[ 2018-11-07T15:31:17+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:31:17+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.036125s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:31:17+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.030666s ]
+[ 2018-11-07T15:31:17+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.022435s ]
+[ 2018-11-07T15:31:38+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001958s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:31:38+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:31:38+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007413s ]
+[ 2018-11-07T15:31:38+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:31:38+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.034988s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:31:38+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.022876s ]
+[ 2018-11-07T15:31:38+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.035408s ]
+[ 2018-11-07T15:31:38+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.027761s ]
+[ 2018-11-07T15:32:24+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001975s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:32:24+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:32:24+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007297s ]
+[ 2018-11-07T15:32:24+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:32:53+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000214s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:32:53+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:32:53+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002310s ]
+[ 2018-11-07T15:32:53+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:32:53+08:00 ][ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/lang/zh-cn.php
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.024157s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.016677s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article' LIMIT 1 [ RunTime:0.015864s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`pid` , `name` , `title` , `icon` , `remark` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (0 , 'article' , 'article' , 'fa fa-list' , '' , 1 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.016140s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article/category' LIMIT 1 [ RunTime:0.024216s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`pid` , `name` , `title` , `icon` , `remark` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (179 , 'article/category' , '日常分类管理' , 'fa fa-circle-o' , '' , 1 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.020043s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/index' LIMIT 1 [ RunTime:0.016693s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/add' LIMIT 1 [ RunTime:0.012380s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/edit' LIMIT 1 [ RunTime:0.014160s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/del' LIMIT 1 [ RunTime:0.015517s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/multi' LIMIT 1 [ RunTime:0.026304s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 180 , 'article/category/index' , 'fa fa-circle-o' , '查看' , 0 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.013278s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 180 , 'article/category/add' , 'fa fa-circle-o' , '添加' , 0 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.008038s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 180 , 'article/category/edit' , 'fa fa-circle-o' , '编辑' , 0 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.006916s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 180 , 'article/category/del' , 'fa fa-circle-o' , '删除' , 0 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.007148s ]
+[ 2018-11-07T15:32:53+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 180 , 'article/category/multi' , 'fa fa-circle-o' , '批量更新' , 0 , 'normal' , 1541575973 , 1541575973) [ RunTime:0.013719s ]
+[ 2018-11-07T15:50:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004653s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:50:04+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:50:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004769s ]
+[ 2018-11-07T15:50:04+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:50:04+08:00 ][ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/lang/zh-cn.php
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.037113s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020323s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article' LIMIT 1 [ RunTime:0.030103s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article/category' LIMIT 1 [ RunTime:0.024266s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/index' LIMIT 1 [ RunTime:0.016081s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/add' LIMIT 1 [ RunTime:0.020200s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/edit' LIMIT 1 [ RunTime:0.017111s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/del' LIMIT 1 [ RunTime:0.018701s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/category/multi' LIMIT 1 [ RunTime:0.022337s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] UPDATE `fa_auth_rule`  SET `pid`=180,`name`='article/category/index',`icon`='fa fa-circle-o',`title`='查看',`ismenu`=0,`status`='normal',`updatetime`=1541577004  WHERE  `id` = 181 [ RunTime:0.024572s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] UPDATE `fa_auth_rule`  SET `pid`=180,`name`='article/category/add',`icon`='fa fa-circle-o',`title`='添加',`ismenu`=0,`status`='normal',`updatetime`=1541577004  WHERE  `id` = 182 [ RunTime:0.020864s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] UPDATE `fa_auth_rule`  SET `pid`=180,`name`='article/category/edit',`icon`='fa fa-circle-o',`title`='编辑',`ismenu`=0,`status`='normal',`updatetime`=1541577004  WHERE  `id` = 183 [ RunTime:0.013029s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] UPDATE `fa_auth_rule`  SET `pid`=180,`name`='article/category/del',`icon`='fa fa-circle-o',`title`='删除',`ismenu`=0,`status`='normal',`updatetime`=1541577004  WHERE  `id` = 184 [ RunTime:0.009311s ]
+[ 2018-11-07T15:50:04+08:00 ][ sql ] [ SQL ] UPDATE `fa_auth_rule`  SET `pid`=180,`name`='article/category/multi',`icon`='fa fa-circle-o',`title`='批量更新',`ismenu`=0,`status`='normal',`updatetime`=1541577004  WHERE  `id` = 185 [ RunTime:0.008382s ]
+[ 2018-11-07T15:51:46+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001799s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:51:46+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:51:46+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004273s ]
+[ 2018-11-07T15:51:46+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:51:46+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.025765s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:51:46+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.020282s ]
+[ 2018-11-07T15:51:46+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.016707s ]
+[ 2018-11-07T15:51:46+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_categroy' [ RunTime:0.023009s ]
+[ 2018-11-07T15:51:46+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_categroy' [ RunTime:0.016285s ]
+[ 2018-11-07T15:52:25+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000184s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:52:25+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:52:25+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002211s ]
+[ 2018-11-07T15:52:25+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.034984s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.023425s ]
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.018980s ]
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.022713s ]
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.021101s ]
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.035073s ]
+[ 2018-11-07T15:52:25+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.021739s ]
+[ 2018-11-07T15:52:40+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000221s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:52:40+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:52:40+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002368s ]
+[ 2018-11-07T15:52:40+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:52:40+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.038221s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:52:40+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.023242s ]
+[ 2018-11-07T15:52:41+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.022058s ]
+[ 2018-11-07T15:52:41+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.019124s ]
+[ 2018-11-07T15:52:41+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.027060s ]
+[ 2018-11-07T15:52:41+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.018515s ]
+[ 2018-11-07T15:52:41+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.023491s ]
+[ 2018-11-07T15:52:53+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000188s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:52:53+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:52:53+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003140s ]
+[ 2018-11-07T15:52:53+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.029807s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.020989s ]
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.021185s ]
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.015385s ]
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.024111s ]
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.015293s ]
+[ 2018-11-07T15:52:53+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.019262s ]
+[ 2018-11-07T15:53:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000190s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T15:53:04+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T15:53:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002280s ]
+[ 2018-11-07T15:53:04+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T15:53:04+08:00 ][ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/lang/zh-cn.php
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.041435s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.023738s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article' LIMIT 1 [ RunTime:0.017445s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article/article' LIMIT 1 [ RunTime:0.020275s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`pid` , `name` , `title` , `icon` , `remark` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (179 , 'article/article' , '日常管理' , 'fa fa-circle-o' , '' , 1 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.027245s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/article/index' LIMIT 1 [ RunTime:0.019100s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/article/add' LIMIT 1 [ RunTime:0.025050s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/article/edit' LIMIT 1 [ RunTime:0.023706s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/article/del' LIMIT 1 [ RunTime:0.023137s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/article/multi' LIMIT 1 [ RunTime:0.026528s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 186 , 'article/article/index' , 'fa fa-circle-o' , '查看' , 0 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.022714s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 186 , 'article/article/add' , 'fa fa-circle-o' , '添加' , 0 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.010894s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 186 , 'article/article/edit' , 'fa fa-circle-o' , '编辑' , 0 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.009454s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 186 , 'article/article/del' , 'fa fa-circle-o' , '删除' , 0 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.008917s ]
+[ 2018-11-07T15:53:04+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 186 , 'article/article/multi' , 'fa fa-circle-o' , '批量更新' , 0 , 'normal' , 1541577184 , 1541577184) [ RunTime:0.010524s ]
+[ 2018-11-07T16:04:09+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003375s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:04:09+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:04:09+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.009119s ]
+[ 2018-11-07T16:04:09+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.051656s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.023519s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.024893s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.037086s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.021017s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.022536s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.025195s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.022939s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.025268s ]
+[ 2018-11-07T16:04:09+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.021734s ]
+[ 2018-11-07T16:05:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002712s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:05:04+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:05:04+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008734s ]
+[ 2018-11-07T16:05:05+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.031699s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.020411s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.015641s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.017213s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.015319s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.019180s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.017014s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.017413s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.017324s ]
+[ 2018-11-07T16:05:05+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.019510s ]
+[ 2018-11-07T16:06:10+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002935s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:06:10+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:06:10+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.009063s ]
+[ 2018-11-07T16:06:10+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.035564s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_comment' [ RunTime:0.028559s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_comment' [ RunTime:0.021574s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.023878s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.021732s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'user' [ RunTime:0.022593s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_user' [ RunTime:0.029949s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_comment' ORDER BY ORDINAL_POSITION [ RunTime:0.033506s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.028893s ]
+[ 2018-11-07T16:06:10+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_user' ORDER BY ORDINAL_POSITION [ RunTime:0.022534s ]
+[ 2018-11-07T16:06:20+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000254s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:06:20+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:06:20+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006599s ]
+[ 2018-11-07T16:06:20+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:06:20+08:00 ][ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/lang/zh-cn.php
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.027171s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.018666s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article' LIMIT 1 [ RunTime:0.016448s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'article/comment' LIMIT 1 [ RunTime:0.020294s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`pid` , `name` , `title` , `icon` , `remark` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (179 , 'article/comment' , '评论管理' , 'fa fa-circle-o' , '' , 1 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.018041s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/comment/index' LIMIT 1 [ RunTime:0.015361s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/comment/add' LIMIT 1 [ RunTime:0.012182s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/comment/edit' LIMIT 1 [ RunTime:0.013429s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/comment/del' LIMIT 1 [ RunTime:0.012564s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] SELECT `id` FROM `fa_auth_rule` WHERE  `name` = 'article/comment/multi' LIMIT 1 [ RunTime:0.014712s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 192 , 'article/comment/index' , 'fa fa-circle-o' , '查看' , 0 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.013624s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 192 , 'article/comment/add' , 'fa fa-circle-o' , '添加' , 0 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.010142s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 192 , 'article/comment/edit' , 'fa fa-circle-o' , '编辑' , 0 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.007916s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 192 , 'article/comment/del' , 'fa fa-circle-o' , '删除' , 0 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.007042s ]
+[ 2018-11-07T16:06:20+08:00 ][ sql ] [ SQL ] INSERT INTO `fa_auth_rule` (`id` , `pid` , `name` , `icon` , `title` , `ismenu` , `status` , `createtime` , `updatetime`) VALUES (NULL , 192 , 'article/comment/multi' , 'fa fa-circle-o' , '批量更新' , 0 , 'normal' , 1541577980 , 1541577980) [ RunTime:0.009319s ]
+[ 2018-11-07T16:28:15+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001851s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:28:15+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:28:15+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008131s ]
+[ 2018-11-07T16:28:15+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.029244s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.020212s ]
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.018539s ]
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.021254s ]
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.019151s ]
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.019010s ]
+[ 2018-11-07T16:28:15+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.020507s ]
+[ 2018-11-07T16:29:46+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002360s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:29:46+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:29:46+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007865s ]
+[ 2018-11-07T16:29:46+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:29:46+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.031699s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:29:46+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.024654s ]
+[ 2018-11-07T16:29:47+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.021082s ]
+[ 2018-11-07T16:29:47+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.028254s ]
+[ 2018-11-07T16:29:47+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.023177s ]
+[ 2018-11-07T16:29:47+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.027796s ]
+[ 2018-11-07T16:29:47+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.036156s ]
+[ 2018-11-07T16:30:03+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000209s ]
+[ info ] [ LOG ] INIT File
+[ 2018-11-07T16:30:03+08:00 ][ info ] [ CACHE ] INIT File
+[ 2018-11-07T16:30:03+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002469s ]
+[ 2018-11-07T16:30:03+08:00 ][ info ] [ DB ] INIT mysql
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.027898s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article' [ RunTime:0.015736s ]
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article' [ RunTime:0.024474s ]
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'article_category' [ RunTime:0.015262s ]
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SHOW TABLE STATUS LIKE 'fa_article_category' [ RunTime:0.015218s ]
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article' ORDER BY ORDINAL_POSITION [ RunTime:0.016555s ]
+[ 2018-11-07T16:30:03+08:00 ][ sql ] [ SQL ] SELECT * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'vlusi_fastadmin' AND table_name = 'fa_article_category' ORDER BY ORDINAL_POSITION [ RunTime:0.020049s ]
