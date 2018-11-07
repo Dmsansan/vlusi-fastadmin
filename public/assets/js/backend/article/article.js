@@ -29,7 +29,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'flag', title: __('Flag'), searchList: {"recommend":__('Flag recommend')}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
                         {field: 'title', title: __('Title')},
                         {field: 'coverimage', title: __('Coverimage'), formatter: Table.api.formatter.image},
-                        {field: 'content', title: __('Content')},
+                        // {field: 'content', title: __('Content')},
                         {field: 'videofile', title: __('Videofile')},
                         {field: 'views', title: __('Views')},
                         {field: 'comments', title: __('Comments')},
