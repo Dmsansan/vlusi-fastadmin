@@ -17,3 +17,12 @@ FastAdmin是一款基于ThinkPHP5+Bootstrap的极速后台开发框架。
 	#多表关联
 	php think crud -t test --relation=category --relation=admin --relationforeignkey=category_id --relationforeignkey=admin_id
 
+## **数据表**
+
+fa_information 资讯信息表
+fa_information_categroy 资讯分类表
+
+fa_banner banner图数据表
+
+fa_course 课程信息表
+fa_keywords 关键字数据表
