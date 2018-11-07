@@ -19202,6 +19202,7 @@ File
 [ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000143s ]
 [ info ] [ LOG ] INIT File
 ---------------------------------------------------------------
+<<<<<<< HEAD
 [ 2018-11-06T17:23:04+08:00 ] 0.0.0.0 GET /
 [ info ] wxyanglao.cc/ [运行时间：0.231030s][吞吐率：4.33req/s] [内存消耗：3,726.45kb] [文件加载：65]
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007307s ]
@@ -19274,11 +19275,20 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008042s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ 2018-11-06T15:46:18+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/information/information/index?addtabs=1
+[ info ] localhost/vlusi_fastadmin/public/admin/information/information/index?addtabs=1 [运行时间：0.183979s][吞吐率：5.44req/s] [内存消耗：3,288.99kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000020s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002407s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'index',
     2 => 'login',
   ),
@@ -19298,6 +19308,28 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003474s ]
+=======
+    1 => 'information.information',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/index?ref=addtabs',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001246s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19305,14 +19337,22 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
 [ info ] [ RUN ] app\admin\controller\Index->login[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
 [ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/index/login.html [ array (
+=======
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/information/information.php
+[ info ] [ RUN ] app\admin\controller\information\Information->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\information\Information.php ]
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\information\information\index.html [ array (
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
   0 => 'breadcrumb',
   1 => 'site',
   2 => 'config',
   3 => 'auth',
   4 => 'admin',
+<<<<<<< HEAD
   5 => 'background',
   6 => 'title',
 ) ]
@@ -19325,6 +19365,24 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002881s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000271s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027813s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018984s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018760s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019920s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020032s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'information/information' LIMIT 1 [ RunTime:0.018490s ]
+---------------------------------------------------------------
+[ 2018-11-06T15:46:18+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=information.information&v=1541490378
+[ info ] localhost/vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=information.information&v=1541490378 [运行时间：0.036550s][吞吐率：27.36req/s] [内存消耗：2,440.06kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000025s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003140s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -19335,6 +19393,7 @@ File
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
@@ -19351,6 +19410,24 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.004377s ]
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/index?addtabs=1',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'information.information',
+  'v' => '1541490378',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001622s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19358,6 +19435,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
 [ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
@@ -19370,11 +19448,26 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008534s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\Ajax.php ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/information/information.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000158s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:46:19+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/information/information/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490378539
+[ info ] localhost/vlusi_fastadmin/public/admin/information/information/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490378539 [运行时间：0.235851s][吞吐率：4.24req/s] [内存消耗：3,394.41kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000025s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003272s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'index',
     2 => 'login',
   ),
@@ -19400,6 +19493,35 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.009087s ]
+=======
+    1 => 'information.information',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/index?addtabs=1',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'sort' => 'id',
+  'order' => 'desc',
+  'offset' => '0',
+  'limit' => '10',
+  'filter' => '{}',
+  'op' => '{}',
+  '_' => '1541490378539',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001146s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19407,6 +19529,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
 [ info ] [ RUN ] app\admin\controller\Index->login[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
 [ info ] [ DB ] INIT mysql
@@ -19425,11 +19548,35 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002093s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/information/information.php
+[ info ] [ RUN ] app\admin\controller\information\Information->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\information\Information.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000356s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027317s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019355s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019071s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019247s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_information` [ RunTime:0.019244s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_information_categroy` [ RunTime:0.018807s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_information` `information` LEFT JOIN `fa_information_categroy` `categroy` ON `information`.`categroy_id`=`categroy`.`id` ORDER BY `information`.`id` DESC LIMIT 1 [ RunTime:0.018335s ]
+[ sql ] [ SQL ] SELECT `information`.`id`,`information`.`title`,`information`.`categroy_id`,`information`.`content`,`information`.`comment_num`,`information`.`praise_num`,`information`.`collection_num`,`information`.`report_time`,`information`.`add_time`,categroy.id AS categroy__id,categroy.categroy_name AS categroy__categroy_name FROM `fa_information` `information` LEFT JOIN `fa_information_categroy` `categroy` ON `information`.`categroy_id`=`categroy`.`id` ORDER BY `information`.`id` DESC LIMIT 0,10 [ RunTime:0.019129s ]
+---------------------------------------------------------------
+[ 2018-11-06T15:46:36+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/information/information/add?dialog=1
+[ info ] localhost/vlusi_fastadmin/public/admin/information/information/add?dialog=1 [运行时间：0.273087s][吞吐率：3.66req/s] [内存消耗：3,246.02kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000055s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005034s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'index',
     2 => 'login',
   ),
@@ -19455,6 +19602,28 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002507s ]
+=======
+    1 => 'information.information',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/index?addtabs=1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'dialog' => '1',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002118s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19462,6 +19631,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
 [ info ] [ RUN ] app\admin\controller\Index->login[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
 [ info ] [ DB ] INIT mysql
@@ -19480,11 +19650,38 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004724s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/information/information.php
+[ info ] [ RUN ] app\common\controller\Backend->add[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\library\traits\Backend.php ]
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\information\information\add.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000148s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028099s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018870s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018639s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019339s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.019550s ]
+---------------------------------------------------------------
+[ 2018-11-06T15:46:36+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=information.information&v=1541490396
+[ info ] localhost/vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=information.information&v=1541490396 [运行时间：0.045851s][吞吐率：21.81req/s] [内存消耗：2,440.06kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000015s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002407s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'index',
     2 => 'index',
   ),
@@ -19504,6 +19701,29 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002981s ]
+=======
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/add?dialog=1',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'information.information',
+  'v' => '1541490396',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001063s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19511,6 +19731,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/index.php
 [ info ] [ RUN ] app\admin\controller\Index->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Index.php ]
 [ info ] [ DB ] INIT mysql
@@ -19540,11 +19761,26 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008650s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\Ajax.php ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/information/information.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000200s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:46:38+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/categroy/index
+[ info ] localhost/vlusi_fastadmin/public/admin/categroy/index [运行时间：0.077831s][吞吐率：12.85req/s] [内存消耗：1,683.00kb] [文件加载：55]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002510s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'dashboard',
     2 => NULL,
   ),
@@ -19611,11 +19847,67 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002854s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+    1 => 'categroy',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/add?dialog=1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://localhost',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '171',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'q_word' => 
+  array (
+    0 => '',
+  ),
+  'pageNumber' => '1',
+  'pageSize' => '10',
+  'andOr' => 'AND',
+  'orderBy' => 
+  array (
+    0 => 
+    array (
+      0 => 'name',
+      1 => 'ASC',
+    ),
+  ),
+  'searchTable' => 'tbl',
+  'showField' => 'name',
+  'keyField' => 'id',
+  'searchField' => 
+  array (
+    0 => 'name',
+  ),
+  'name' => '',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001470s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:46:41+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/categroy/index
+[ info ] localhost/vlusi_fastadmin/public/admin/categroy/index [运行时间：0.028813s][吞吐率：34.71req/s] [内存消耗：1,683.00kb] [文件加载：55]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000016s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003057s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'ajax',
     2 => 'lang',
   ),
@@ -19656,11 +19948,67 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.020541s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+    1 => 'categroy',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/add?dialog=1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://localhost',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '171',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'q_word' => 
+  array (
+    0 => '',
+  ),
+  'pageNumber' => '1',
+  'pageSize' => '10',
+  'andOr' => 'AND',
+  'orderBy' => 
+  array (
+    0 => 
+    array (
+      0 => 'name',
+      1 => 'ASC',
+    ),
+  ),
+  'searchTable' => 'tbl',
+  'showField' => 'name',
+  'keyField' => 'id',
+  'searchField' => 
+  array (
+    0 => 'name',
+  ),
+  'name' => '',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001226s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:46:44+08:00 ] 0.0.0.0 POST /vlusi_fastadmin/public/admin/categroy/index
+[ info ] localhost/vlusi_fastadmin/public/admin/categroy/index [运行时间：0.032781s][吞吐率：30.51req/s] [内存消耗：1,683.00kb] [文件加载：55]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000018s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003177s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'ajax',
     2 => 'lang',
   ),
@@ -19701,11 +20049,67 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001915s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+    1 => 'categroy',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information/information/add?dialog=1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://localhost',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '171',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'q_word' => 
+  array (
+    0 => '',
+  ),
+  'pageNumber' => '1',
+  'pageSize' => '10',
+  'andOr' => 'AND',
+  'orderBy' => 
+  array (
+    0 => 
+    array (
+      0 => 'name',
+      1 => 'ASC',
+    ),
+  ),
+  'searchTable' => 'tbl',
+  'showField' => 'name',
+  'keyField' => 'id',
+  'searchField' => 
+  array (
+    0 => 'name',
+  ),
+  'name' => '',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001055s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:47:00+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/information_comment/comment/index?addtabs=1
+[ info ] localhost/vlusi_fastadmin/public/admin/information_comment/comment/index?addtabs=1 [运行时间：0.175029s][吞吐率：5.71req/s] [内存消耗：3,229.69kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000026s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002124s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'auth.admin',
     2 => NULL,
   ),
@@ -19720,12 +20124,33 @@ File
   'accept-encoding' => 'gzip, deflate',
   'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
   'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138',
+=======
+    1 => 'information_comment.comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information_comment/comment/index?ref=addtabs',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'localhost',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 )
 [ info ] [ PARAM ] array (
   'addtabs' => '1',
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003147s ]
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001193s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19734,14 +20159,20 @@ File
   'auto_start' => true,
 )
 [ info ] [ DB ] INIT mysql
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/auth/admin.php
 [ info ] [ RUN ] app\admin\controller\auth\Admin->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/auth/Admin.php ]
 [ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/auth/admin/index.html [ array (
+=======
+[ info ] [ RUN ] app\admin\controller\information_comment\Comment->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\information_comment\Comment.php ]
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\information_comment\comment\index.html [ array (
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
   0 => 'breadcrumb',
   1 => 'site',
   2 => 'config',
   3 => 'auth',
   4 => 'admin',
+<<<<<<< HEAD
   5 => 'groupdata',
 ) ]
 [ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000196s ]
@@ -19764,6 +20195,24 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002380s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000296s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028732s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019863s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019184s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019489s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020470s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'informationcomment/comment' LIMIT 1 [ RunTime:0.018791s ]
+---------------------------------------------------------------
+[ 2018-11-06T15:47:01+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=informationcomment.comment&v=1541490420
+[ info ] localhost/vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=informationcomment.comment&v=1541490420 [运行时间：0.034837s][吞吐率：28.71req/s] [内存消耗：2,439.36kb] [文件加载：68]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002346s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -19774,6 +20223,7 @@ File
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
@@ -19790,6 +20240,24 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003091s ]
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information_comment/comment/index?addtabs=1',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'informationcomment.comment',
+  'v' => '1541490420',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001389s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19797,6 +20265,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
 [ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/auth/admin.php
@@ -19809,16 +20278,34 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002251s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\Ajax.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000149s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:47:01+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/information_comment/comment/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490420984
+[ info ] localhost/vlusi_fastadmin/public/admin/information_comment/comment/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490420984 [运行时间：0.163029s][吞吐率：6.13req/s] [内存消耗：3,325.65kb] [文件加载：79]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000017s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003834s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
   array (
     0 => 'admin',
+<<<<<<< HEAD
     1 => 'auth.admin',
+=======
+    1 => 'information_comment.comment',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
     2 => 'index',
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'accept' => 'application/json, text/javascript, */*; q=0.01',
@@ -19829,6 +20316,18 @@ File
   'accept-encoding' => 'gzip, deflate',
   'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
   'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138',
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/information_comment/comment/index?addtabs=1',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'close',
+  'host' => 'localhost',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 )
 [ info ] [ PARAM ] array (
   'sort' => 'id',
@@ -19837,10 +20336,17 @@ File
   'limit' => '10',
   'filter' => '{}',
   'op' => '{}',
+<<<<<<< HEAD
   '_' => '1541496335925',
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003419s ]
+=======
+  '_' => '1541490420984',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001991s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19849,6 +20355,7 @@ File
   'auto_start' => true,
 )
 [ info ] [ DB ] INIT mysql
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/auth/admin.php
 [ info ] [ RUN ] app\admin\controller\auth\Admin->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/auth/Admin.php ]
 [ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000181s ]
@@ -19874,6 +20381,23 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005704s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ RUN ] app\admin\controller\information_comment\Comment->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\information_comment\Comment.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028694s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.019590s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.020188s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020337s ]
+[ error ] [0]致命错误: Class 'app\admin\model\information\Information' not found[D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\library\think\model\relation\BelongsTo.php:37]
+---------------------------------------------------------------
+[ 2018-11-06T15:47:07+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/banner/banner/index?addtabs=1
+[ info ] localhost/vlusi_fastadmin/public/admin/banner/banner/index?addtabs=1 [运行时间：0.167249s][吞吐率：5.98req/s] [内存消耗：3,286.97kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002080s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -19884,6 +20408,7 @@ File
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'upgrade-insecure-requests' => '1',
@@ -19893,12 +20418,28 @@ File
   'accept-encoding' => 'gzip, deflate',
   'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
   'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138',
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/banner/banner/index?ref=addtabs',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'localhost',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 )
 [ info ] [ PARAM ] array (
   'addtabs' => '1',
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003028s ]
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001090s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19907,15 +20448,22 @@ File
   'auto_start' => true,
 )
 [ info ] [ DB ] INIT mysql
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/banner/banner.php
 [ info ] [ RUN ] app\admin\controller\banner\Banner->index[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/banner/Banner.php ]
 [ info ] [ VIEW ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/view/banner/banner/index.html [ array (
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/banner/banner.php
+[ info ] [ RUN ] app\admin\controller\banner\Banner->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\banner\Banner.php ]
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\view\banner\banner\index.html [ array (
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
   0 => 'breadcrumb',
   1 => 'site',
   2 => 'config',
   3 => 'auth',
   4 => 'admin',
 ) ]
+<<<<<<< HEAD
 [ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000286s ]
 [ info ] [ LOG ] INIT File
 [ sql ] [ DB ] CONNECT:[ UseTime:0.027977s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
@@ -19931,6 +20479,23 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002353s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000223s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026951s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.018773s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.018240s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019192s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.019230s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'banner/banner' LIMIT 1 [ RunTime:0.018206s ]
+---------------------------------------------------------------
+[ 2018-11-06T15:47:07+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=banner.banner&v=1541490426
+[ info ] localhost/vlusi_fastadmin/public/admin/ajax/lang?callback=define&controllername=banner.banner&v=1541490426 [运行时间：0.033547s][吞吐率：29.81req/s] [内存消耗：2,439.81kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000042s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003213s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -19941,6 +20506,7 @@ File
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
@@ -19949,14 +20515,31 @@ File
   'accept-encoding' => 'gzip, deflate',
   'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
   'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138',
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/banner/banner/index?addtabs=1',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 )
 [ info ] [ PARAM ] array (
   'callback' => 'define',
   'controllername' => 'banner.banner',
+<<<<<<< HEAD
   'v' => '1541496341',
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003648s ]
+=======
+  'v' => '1541490426',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001135s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -19964,6 +20547,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/ajax.php
 [ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Ajax.php ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/banner/banner.php
@@ -19976,6 +20560,20 @@ File
 [ info ] [ CACHE ] INIT File
 [ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007854s ]
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/thinkphp/lang/zh-cn.php
+=======
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/ajax.php
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\Ajax.php ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/banner/banner.php
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000147s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-06T15:47:07+08:00 ] 0.0.0.0 GET /vlusi_fastadmin/public/admin/banner/banner/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490427096
+[ info ] localhost/vlusi_fastadmin/public/admin/banner/banner/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1541490427096 [运行时间：0.230016s][吞吐率：4.35req/s] [内存消耗：3,286.86kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000027s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003017s ]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\thinkphp\lang\zh-cn.php
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ ROUTE ] array (
   'type' => 'module',
   'module' => 
@@ -19986,6 +20584,7 @@ File
   ),
 )
 [ info ] [ HEADER ] array (
+<<<<<<< HEAD
   'host' => 'wxyanglao.cc',
   'connection' => 'keep-alive',
   'accept' => 'application/json, text/javascript, */*; q=0.01',
@@ -19996,6 +20595,18 @@ File
   'accept-encoding' => 'gzip, deflate',
   'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
   'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541496186; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541496186; PHPSESSID=329a69459d6ecd56ed0482b3e3253138',
+=======
+  'cookie' => 'PHPSESSID=arv0k5gm3er3eil617u7oe5gg5; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1541402911; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1541402911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/vlusi_fastadmin/public/admin/banner/banner/index?addtabs=1',
+  'content-type' => 'application/json',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'close',
+  'host' => 'localhost',
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 )
 [ info ] [ PARAM ] array (
   'sort' => 'id',
@@ -20004,6 +20615,7 @@ File
   'limit' => '10',
   'filter' => '{}',
   'op' => '{}',
+<<<<<<< HEAD
   '_' => '1541496341406',
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
@@ -22826,6 +23438,12 @@ File
 )
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn.php
 [ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005969s ]
+=======
+  '_' => '1541490427096',
+)
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001081s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
 [ info ] [ SESSION ] INIT array (
   'id' => '',
   'var_session_id' => '',
@@ -22833,6 +23451,7 @@ File
   'type' => '',
   'auto_start' => true,
 )
+<<<<<<< HEAD
 [ info ] [ LANG ] /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/public/../application/admin/lang/zh-cn/category.php
 [ info ] [ DB ] INIT mysql
 [ info ] [ RUN ] app\admin\controller\Category->selectpage[ /Users/wangqiqi/Desktop/web/Amy/vlusi_fastadmin/application/admin/controller/Category.php ]
@@ -22845,3 +23464,18 @@ File
 [ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  (  `name` LIKE '%%'  AND `type` = 'test' ) ORDER BY `name` ASC LIMIT 0,10 [ RunTime:0.071288s ]
 [ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.072968s ]
 [ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\",\"custom\":{\"type\":\"test\"}}' , '/admin/category/selectpage' , 1 , 'admin' , 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' , '0.0.0.0' , 1541513307) [ RunTime:0.136350s ]
+=======
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\public/../application/admin/lang/zh-cn/banner/banner.php
+[ info ] [ RUN ] app\admin\controller\banner\Banner->index[ D:\phpStudy\PHPTutorial\WWW\vlusi_fastadmin\application\admin\controller\banner\Banner.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.004412s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028052s ] mysql:host=47.96.179.77;dbname=vlusi_fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.020810s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.020659s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.019707s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.020233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_banner` [ RunTime:0.019652s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_banner` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.019383s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_banner` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.019183s ]
+>>>>>>> b4742d00a858b1c6a59b9aa98a0f45ed3d0549c5
