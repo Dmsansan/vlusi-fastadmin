@@ -1,13 +1,13 @@
 <?php
 
-namespace app\admin\model\information;
+namespace app\admin\model;
 
 use think\Model;
 
-class Categroy extends Model
+class Course extends Model
 {
     // 表名
-    protected $name = 'information_categroy';
+    protected $name = 'course';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = false;
