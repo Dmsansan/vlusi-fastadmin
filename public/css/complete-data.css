@@ -1,0 +1,181 @@
+html,body,div.mui-content{
+    height: 100%;
+}
+.mui-bar-nav{
+    box-shadow: none;
+    background: #ffffff;
+}
+a{
+    color: #333;
+}
+div#app {
+    padding: 84px 15px;
+}
+div.mui-input-group:before,div.mui-input-group:after{
+    background-color: transparent;
+}
+.mui-input-group {
+    padding: 2rem 0;
+}
+.mui-input-group .mui-input-row{
+    height: 60px;
+}
+input{
+    height: 60px !important;
+}
+.mui-btn, button, input[type=button], input[type=reset], input[type=submit]{
+    line-height: 1;
+    margin-bottom: 20px;
+}
+.mui-btn-block{
+    width: 90%;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+footer {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 40px 0;
+}
+button.send-code-btn{
+    position: absolute;
+    top: 25%;
+    right: 15px;
+    height: 30px;
+}
+button.mui-confirm{
+    background: #f5ab00;
+    color: #ffffff;
+    border: none;
+}
+button.disabled{
+    color: #ffffff;
+    background: #cccccc;
+}
+button.mui-skip{
+    border-color: #f5ab00;
+    color: #f5ab00;
+}
+
+span.mui-icon-clear-phone {
+    position: absolute;
+    top: 30%;
+    right: 15px;
+    color: #cccccc;
+    font-size: 1.2rem;
+}
+span.mui-icon-clear-code {
+    position: absolute;
+    top: 30%;
+    right: 120px;
+    color: #cccccc;
+    font-size: 1.2rem;
+}
+.mui-input-row label{
+    width: 25%;
+    height: 60px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea{
+    width: 75%;
+}
+div.sex-group{
+    float: right;
+    width: 75%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+    height: 60px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+span.sex-group-item {
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    margin-right: 15px;
+    border-radius: 6px;
+}
+span.sex-group-item.male.active{
+    background: rgba(140,219,255,1);
+    color: #ffffff;
+    border: none;
+}
+span.sex-group-item.female.active{
+    background: rgba(255,184,205,1);
+    color: #ffffff;
+    border: none;
+}
+i.mui-icon.mui-icon-arrowright {
+    position: absolute;
+    right: 0;
+    top: 30%;
+    color: #cccccc;
+    font-size: 2rem;
+}
+.mui-picker{
+    background: #ffffff;
+}
+.mui-dtpicker-title h5,.mui-poppicker-title h5{
+    background: #ffffff;
+}
+.mui-dtpicker-header,.mui-poppicker-header{
+    background: #ffffff;
+}
+.mui-dtpicker-header button,.mui-poppicker-header button{
+    margin: 0;
+}
+button.mui-btn[data-id=btn-cancel],.mui-poppicker-btn-cancel{
+    background: #ffffff;
+    font-size: 1rem;
+    border: none;
+}
+button.mui-btn[data-id=btn-ok],.mui-poppicker-btn-ok{
+    font-size: 1rem;
+    background: #ffffff;
+    color: #f5ab00;
+    border: none;
+}
+.mui-dtpicker-title {
+    display: none;
+}
+input#city,input#show-date{
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 40px;
+    text-overflow: ellipsis;
+}
+li.highlight {
+    font-size: .8rem;
+    background: rgba(246, 246, 249, 0.75);
+}
+li.visible {
+    font-size: .7rem;
+}
+.mui-poppicker-body{
+    border: none;
+}
+.mui-pciker-rule-ft{
+    border: none;
+}
+div.mui-poppicker.mui-active {
+    border: none;
+}

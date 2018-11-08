@@ -1,0 +1,152 @@
+header{
+    position: relative;
+    background: #000;
+    padding-top: 44px;
+}
+video.video-player{
+    width: 100%;
+    display: block;
+}
+img.back-icon-white{
+    width: 25px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+}
+img.video-play,img.video-stop{
+    position: absolute;
+    left: 43%;
+    top: 43%;
+    width: 15%;
+}
+img.video-full-screen {
+    width: 7%;
+}
+img.video-toggle{
+    display: none;
+}
+img.video-toggle.active{
+    display: block;
+}
+div#video-progress-bar {
+    background: #FFFFFF;
+    width: 80%;
+    height: 1px;
+}
+.mui-progressbar span{
+    background: #f5ab00;
+}
+.video-progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    padding: 0 10px 5px 0;
+}
+span.played-time, span.all-time {
+    color: #FFFFFF;
+    font-size: 0.5rem;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+.class-hour-desc {
+    padding: 25px 15px;
+}
+.class-hour-desc-title {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+span.title-number {
+    background: #5f5f71;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-style: italic;
+    font-weight: 400;
+    display: inline-flex;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+p.title-name {
+    font-size: 1.6rem;
+    padding-left: 1rem;
+    color: #333333;
+    font-weight: 400;
+}
+.class-hour-album {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    background: #f6f6f9;
+    -webkit-align-items: center;
+    border-radius: 10px;
+    padding: 15px;
+}
+img.album-logo {
+    width: 42px;
+    border-radius: 100%;
+}
+span.album-title {
+    font-size: 1.2rem;
+    color: #666666;
+    font-weight: 400;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+span.album-date {
+    color: #999999;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+p.go-album {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+img.go-album-logo {
+    width: 25px;
+}
+span.go-album-title {
+    color: #999999;
+}
+p.album-desc{
+    padding-left: 10px;
+    overflow: hidden;
+}
+.course-hour-active-introduction {
+    padding: 15px;
+    line-height: 1.5;
+    color: #999999;
+}
+.course-hour-introduction {
+    padding: 15px;
+}
+p.course-hour-introduction-title {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+p.course-hour-introduction-content {
+    margin-top: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+.mui-bar.mui-bar-nav {
+    box-shadow: none;
+    background: #FFFFFF;
+}
+a.mui-action-back.mui-icon.mui-icon-left-nav.mui-pull-left {
+    color: #333333;
+}

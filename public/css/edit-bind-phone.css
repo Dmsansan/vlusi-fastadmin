@@ -1,0 +1,65 @@
+html,body,div.mui-content{
+    background: rgb(246,246,249);
+}
+header.mui-bar.mui-bar-nav {
+    background: #FFFFFF;
+    box-shadow: none;
+}
+a.mui-action-back.mui-icon.mui-icon-left-nav.mui-pull-left {
+    color: #333333;
+}
+.mui-input-group {
+    margin-top: 20px;
+}
+.mui-input-group:before,.mui-input-group:after{
+    height: 0;
+}
+.mui-input-group .mui-input-row{
+    height: 50px;
+    display: flex;
+    display: -webkit-flex;
+    align-self: center;
+    -webkit-align-items: center;
+    font-size: 1rem;
+    position: relative;
+}
+.mui-input-group .mui-input-row:last-child:after {
+    height: 0;
+}
+.mui-input-group .mui-input-row:after{
+    background: rgba(228,228,228,1);
+}
+.mui-input-row label{
+    width: 30%;
+}
+input[type="text"] {
+    font-size: 1rem;
+}
+button.button-send {
+    position: absolute;
+    right: 5px;
+    border: 1px solid #f5ab00;
+    color: #f5ab00;
+    background: #ffffff;
+    border-radius: 30px;
+    font-size: .8rem;
+    padding: 4px 8px;
+}
+button.button-send.send{
+
+}
+button.confirm-edit-btn {
+    display: block;
+    width: 80%;
+    height: 50px;
+    border-radius: 30px;
+    margin: 40px auto;
+    background: #f5ab00;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+button.button-send.send {
+    border: 1px solid #ccc;
+    color: #ccc;
+}

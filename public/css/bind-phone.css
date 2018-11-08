@@ -1,0 +1,92 @@
+html,body,div.mui-content{
+    height: 100%;
+}
+.mui-bar-nav{
+    box-shadow: none;
+    background: #ffffff;
+}
+a{
+    color: #333;
+}
+div#app {
+    padding: 84px 15px;
+}
+div.mui-input-group:before,div.mui-input-group:after{
+    background-color: transparent;
+}
+.mui-input-group {
+    padding: 2rem 0;
+}
+.mui-input-group .mui-input-row{
+    height: 60px;
+}
+input{
+    height: 60px !important;
+}
+.mui-btn, button, input[type=button], input[type=reset], input[type=submit]{
+    line-height: 1;
+    margin-bottom: 20px;
+}
+.mui-btn-block{
+    width: 90%;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+footer {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 40px 0;
+}
+button.send-code-btn{
+    position: absolute;
+    top: 25%;
+    right: 15px;
+    height: 30px;
+}
+button.mui-confirm{
+    background: #f5ab00;
+    color: #ffffff;
+    border: none;
+}
+button.disabled{
+    color: #ffffff;
+    background: #cccccc;
+}
+button.mui-skip{
+    border-color: #f5ab00;
+    color: #f5ab00;
+}
+
+span.mui-icon-clear-phone {
+    position: absolute;
+    top: 30%;
+    right: 15px;
+    color: #cccccc;
+    font-size: 1.2rem;
+}
+span.mui-icon-clear-code {
+    position: absolute;
+    top: 30%;
+    right: 120px;
+    color: #cccccc;
+    font-size: 1.2rem;
+}
+img.icon-delete {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    width: 30px;
+}
+img.icon-delete-code {
+    position: absolute;
+    width: 30px;
+    bottom: 15px;
+    right: 120px;
+}

@@ -1,0 +1,233 @@
+.logo-container {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 15px;
+    position: relative;
+}
+img.logo-img {
+    width: 50px;
+    border-radius: 100%;
+    margin-right: 1rem;
+}
+p.logo-title {
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 6px 0;
+}
+p.discovery-detail-title {
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #333333;
+    line-height: 1.5;
+}
+.logo-container:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgb(246,246,249);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.read-and-like {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    padding: 15px 0;
+    position: relative;
+}
+.read-and-like-item {
+    border: 1px solid #999999;
+    border-radius: 30px;
+    width: 40%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    height: 50px;
+    color: #999999;
+}
+img.like-article {
+    width: 30px;
+    display: none;
+}
+img.like-article.active{
+    display: block;
+}
+.read-and-like-item.like.active{
+    border-color: #f95859;
+}
+.read-and-like-item.like {
+    border-color: #999999;
+}
+p.like-num.active{
+    color:#f95859;
+}
+.read-and-like:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: rgb(246,246,249);
+    bottom: -10px;
+}
+.course-comments-container {
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 15px 0;
+    position: relative;
+}
+div.user-info {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+span.user-nickname {
+    color: #3f6599;
+    margin-left: 10px;
+}
+img.like-comment {
+    width: 25px;
+    margin-right: 10px;
+}
+img.user-logo {
+    width: 35px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+ul.course-comments-list {
+    list-style: none;
+    padding: 0 15px;
+}
+p.comments-content {
+    padding: 15px;
+    color: #333333;
+}
+p.comments-img img {
+    width: 30%;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+p.comments-img {
+    padding: 0 15px;
+}
+.comments-operation {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 15px;
+}
+button.reply-comments {
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: none;
+    background: rgb(246,246,249);
+    color: rgb(202,202,204);
+    margin-left: 15px;
+}
+.no-more-comments {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 1rem;
+    background: rgb(246,246,249);
+}
+
+
+footer.bottom-common {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #FFFFFF;
+}
+img.bottom-icon-comment {
+    width: 25px;
+}
+img.icon-like.bottom-icon-comment{
+    display: none;
+}
+img.icon-like.active.bottom-icon-comment {
+    display: block;
+}
+input.comment-input {
+    padding-right: 50px;
+    margin: 0;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 0.8rem;
+    color: #999999;
+    background: rgb(246,246,249);
+    border: none;
+}
+.mui-content{
+    padding-bottom: 60px;
+}
+.comment-input-container{
+    position: relative;
+    width: 60%;
+}
+img.icon-expression.bottom-icon-comment {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+}
+img.icon-expression.bottom-icon-comment.invisible{
+    display: none;
+}
+.comment-icon-container {
+    width: 40%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.comment-icon-container.invisible{
+    display: none;
+}
+button.comments-send-btn {
+    border: none;
+    color: #f5ab00;
+    padding: 0;
+}
+header{
+    background: transparent;
+    height: auto;
+    min-height: auto;
+}
+.img-and-characters {
+    padding: 15px;
+    color: #333333;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+.img-and-characters img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+p.like-num {
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    color: #999999;
+}

@@ -1,0 +1,65 @@
+header.mui-bar.mui-bar-nav {
+    box-shadow: none;
+    background: #FFFFFF;
+}
+a.mui-action-back.mui-icon.mui-icon-left-nav.mui-pull-left {
+    color: #333333;
+}
+ul.replyer-comments,ul.replyer-replyer-comments {
+    padding:30px 15px;
+    list-style: none;
+}
+ul.replyer-replyer-comments {
+    background: #f6f6f9;
+    margin-left: 15px;
+    border-radius: 5px;
+    padding: 0;
+}
+p.user-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+}
+p.user-comments-comment {
+    padding: 5px 15px;
+}
+span.user-nickname {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+span.reply-title {
+    color: #8f8f94;
+    font-size: 0.8rem;
+}
+.replyer-container {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    white-space: nowrap;
+}
+p.user-comments-comment {
+    padding: 5px 15px;
+    font-size: 0.75rem;
+}
+.commenter-comments:after {
+    display: block;
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 10px;
+    background: #f6f6f9;
+    left: 0;
+}
+.course-comments-container{
+    margin-top: 0 !important;
+}
+.comment-icon-container{
+    width: 25%;
+}
+.comment-input-container{
+    width: 75%;
+}

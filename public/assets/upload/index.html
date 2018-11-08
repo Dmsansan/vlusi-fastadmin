@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN" id="index">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<title>图片裁剪</title>
+	</head>
+
+	<body>
+		<div id="sheet" class="mui-popover mui-popover-bottom mui-popover-action ">
+			<div id="clipArea"></div>
+			<button id="cancel-btn"><i class="mui-icon mui-icon mui-icon-closeempty"></i></button>
+			<button onclick="closeSheet()" id="confirm-btn"><i class="mui-icon mui-icon mui-icon-checkmarkempty"></i></button>
+		</div>
+		<label for="file">
+			<div id="view">
+			</div>
+			<button onclick="saveImg()" id="save-btn" disabled class="mui-btn mui-btn-block-save">保存</button>
+		</label>
+		<input type="file" id="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+		<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script src="js/iscroll-zoom.js"></script>
+		<script src="js/hammer.js"></script>
+		<script src="js/lrz.all.bundle.js"></script>
+		<script src="js/jquery.photoClip.js"></script>
+		<script>
+			var clipArea = new bjj.PhotoClip("#clipArea", {
+				size: [260, 260],
+				outputSize: [640, 640],
+				file: "#file",
+				view: "#view",
+				ok: "#confirm-btn",
+				loadStart: function() {
+					console.log("照片读取中");
+				},
+				loadComplete: function() {
+					mui('#sheet').popover('toggle');
+				},
+				clipFinish: function(dataURL) {
+					//接触按钮禁用
+					$("#save-btn").removeAttr("disabled");
+				}
+			});
+			//关闭actionsheet
+			function closeSheet() {
+				mui('#sheet').popover('toggle');
+			}
+			//保存头像
+			function saveImg() {
+				console.log('111');
+			}
+		</script>
+
+	</body>
+
+</html>

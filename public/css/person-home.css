@@ -1,0 +1,109 @@
+html,body,div.mui-content{
+    background:rgba(246,246,249,1);
+    height: 100%;
+}
+section{
+    height: 100%;
+}
+img.user-info-logo {
+    width: 80px;
+    border-radius: 100%;
+    border: 10px solid #FFFFFF;
+    max-width: 200px;
+}
+
+.top-part {
+    width: 100%;
+    background: #f5ab00;
+    height: 40%;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+.user-info {
+    padding: 15px;
+    position: relative;
+    height: 40%;
+    min-height: 240px;
+}
+
+.bottom-part {
+    position: relative;
+    height: 60%;
+    border-radius: 0 0 10px 10px;
+    background: #ffffff;
+}
+.img-container {
+    text-align: center;
+    position: absolute;
+    top: -45px;
+    width: 100%;
+}
+p.user-info-nickname {
+    font-size: 1rem;
+    color: #333333;
+}
+.user-info-authentication {
+    width: 45%;
+    border: 1px solid #f5ab00;
+    color: #f5ab00;
+    border-radius: 20px;
+    margin: 15px auto;
+    font-size: 1rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 5px;
+}
+img.auth-img {
+    width: 8px;
+    margin-left: 8px;
+}
+img.user-info-icon-set {
+    width: 25px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.user-function {
+    padding: 15px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+.user-function-item {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 48%;
+    display: inline-block;
+    background: #ffffff;
+    text-align: center;
+    height: 100px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-direction: column;
+    -webkit-flex-display: column;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+img.user-function-item-img {
+    width: 30px;
+}
+p.user-function-item-title {
+    color: #333333;
+}
+.user-function-item {
+    box-shadow: 0 4px 5px #ccc;
+}
+.bottom-part {
+    box-shadow: 0 4px 5px #ccc;
+}

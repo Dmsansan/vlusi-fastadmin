@@ -1,0 +1,35 @@
+[
+  {
+    "id": 0,
+    "type":0,
+    "img": "img/show.jpg",
+    "label": "养生",
+    "title": "这是标题",
+    "content": "这是内容",
+    "date": "2018-02-25",
+    "times":2000,
+    "comments":100
+  },
+  {
+    "id": 1,
+    "type":1,
+    "img": "img/show.jpg",
+    "label": "养生",
+    "title": "这是标题",
+    "content": "这是内容",
+    "date": "2018-02-25",
+    "times":2000,
+    "comments":100
+  },
+  {
+    "id": 2,
+    "type":2,
+    "img": "img/show.jpg",
+    "label": "养生",
+    "title": "这是标题",
+    "content": "这是内容",
+    "date": "2018-02-25",
+    "times":2000,
+    "comments":100
+  }
+]

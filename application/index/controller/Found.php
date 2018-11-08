@@ -5,7 +5,7 @@ namespace app\index\controller;
 use app\common\controller\Frontend;
 use app\common\library\Token;
 
-class Index extends Frontend
+class Found extends Frontend
 {
 
     protected $noNeedLogin = '*';
@@ -18,12 +18,6 @@ class Index extends Frontend
     }
 
     public function index()
-    {
-        return $this->view->fetch();
-    }
-
-
-    public function found()
     {
         return $this->view->fetch();
     }

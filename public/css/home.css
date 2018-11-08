@@ -1,0 +1,240 @@
+html,body,div.mui-content,div#app{
+    height: 100%;
+}
+div.mui-search-container{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    padding:10px 15px;
+}
+div.mui-search-container input {
+    margin: 0;
+    width: 100%;
+    height: 35px;
+    font-size: 0.8rem;
+    background: rgba(242,242,242,1);
+    border: none;
+    padding-left: 2rem;
+}
+div.mui-search-container button{
+    height: 30px;
+    width: 45px;
+    color: #f5ab00;
+    font-weight: 500;
+    border: none;
+    padding: 0;
+    text-align: right;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.tab-container {
+    white-space: nowrap;
+    width: 100%;
+    overflow: scroll;
+    background: #FFFFFF;
+    z-index: 999;
+}
+
+.tab-container::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 0px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0px;
+}
+a.tab-item{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 8px 30px;
+    color: rgba(187,187,187,1);
+    font-size: 0.8rem;
+}
+a.tab-item.active{
+    color: #f5ab00;
+}
+a.tab-item.active:after {
+    content: '';
+    width: 50%;
+    height: 2px;
+    background: #f5ab00;
+    position: relative;
+    top: 4px;
+}
+.tab-content {
+    display: none;
+    background:rgba(246,246,249,1);
+    padding: 10px 15px;
+}
+.tab-content.active {
+    display: block;
+}
+.tab-content-item {
+    border-radius: 8px;
+    background: #FFFFFF;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+header {
+    background: #FFFFFF;
+}
+.tab-content-item img{
+    border-radius: 8px 8px 0 0;
+}
+.tab-content-desc {
+    padding: 5px 15px;
+}
+p.tab-content-desc-title,p.tab-content-desc-content,p.tab-content-desc-date{
+    padding: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+p.tab-content-desc-title {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+p.tab-content-desc-content {
+    color: #333;
+    font-size: 1rem;
+}
+p.tab-content-desc-date {
+    font-size: .8rem;
+}
+.class-label {
+    position: absolute;
+    width: 35px;
+    top: -5px;
+    right: 10px;
+}
+p.class-label-name {
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    top: 22%;
+    width: 100%;
+}
+/*header{*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*background: #FFFFFF;*/
+    /*z-index: 999;*/
+/*}*/
+nav.mui-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+#tab-container.fixed{
+    position: fixed;
+    top: 0;
+    margin-bottom: 40px;
+}
+div.tab-content.over-scroll.fixed{
+    overflow: scroll;
+    position: absolute;
+    top: 40px;
+}
+img.icon-search {
+    position: absolute;
+    width: 0.8rem;
+    left: 1.5rem;
+}
+.img-container {
+    position: relative;
+}
+p.comments-and-times {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: #FFFFFF;
+    padding: 2px 15px;
+    border-radius: 12px 0 0 0;
+}
+
+div#page2 .history-record {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    padding: 15px;
+}
+img.history-record-img {
+    width: 18px;
+    margin-right: 0.5rem;
+}
+.history-title ,.history-clear{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+span.history-clear-btn {
+    background: transparent;
+    border: none;
+    color: #999999;
+    padding: 0;
+    font-size: 0.9rem;
+}
+p.history-record-tips{
+    color: #999999;
+}
+div#page2{
+    height: 100%;
+    background:rgba(246,246,249,1);
+}
+p.history-record-item {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #FFFFFF;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    color: #333333;
+}
+.history-record-show {
+    padding:0 15px;
+}
+div#page2 img.icon-search {
+    left: 3.5rem;
+}
+img.back-icon {
+    width: 25px;
+    height: 25px;
+}
+div.page{
+    display: none;
+}
+div.page.active{
+    display: block;
+}
+div.search-section{
+    display: none;
+    margin-top: 55px;
+}
+div.search-section.active{
+    display: block;
+}
+.search-content-container.search-section.active {
+    padding: 15px;
+    overflow: scroll;
+}
+div#page2 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}

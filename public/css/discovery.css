@@ -1,0 +1,14 @@
+img.icon-video-play {
+    position: absolute;
+    width: 10%;
+    top: 45%;
+    left: 45%;
+}
+.no-more-comments {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 1rem;
+}
