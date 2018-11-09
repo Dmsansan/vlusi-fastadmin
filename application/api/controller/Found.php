@@ -21,7 +21,7 @@ class Found extends Api
      * 发现分类
      *
      * @ApiTitle    (发现的分类)
-     * @ApiMethod   (POST)
+     * @ApiMethod   (GET)
      * @ApiRoute    (/api/found/category)
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -57,7 +57,7 @@ class Found extends Api
      */
     public function recommend()
     {
-        $page =   (int)$this->request->request("page");
+        $page =   (int)$this->request->post("page");
         //分类数据
         $list=db('article')->order('flag desc,views desc')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
@@ -85,10 +85,10 @@ class Found extends Api
      */
     public function article()
     {
-        $page   =   (int)$this->request->request("page");
-        $typeid =  (int)$this->request->request("type_id");
+        $page   =   (int)$this->request->post("page");
+        $typeid =  (int)$this->request->post("type_id");
 
-        $search = $this->request->request('title');
+        $search = $this->request->post('title');
 
         //分类数据
         $list=db('article')->order('flag desc,views desc');
@@ -105,13 +105,25 @@ class Found extends Api
 
     /**
      * 获取文章详情及评论接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/found/detail)
+     * @ApiParams   (name="page", type="integer", required=true, description="页码")
+     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
      */
     public function detail()
     {
-        $userid=1;
+        $userid=47;
 
-        $page   =  (int)$this->request->request("page");
-        $article_id  =  (int)$this->request->request("article_id");
+        $page   =  (int)$this->request->post("page");
+        $article_id  =  (int)$this->request->post("article_id");
 
         if($page>0){
             $data['detail'] =db('article')->where(['id'=>$article_id])->find();
@@ -136,6 +148,18 @@ class Found extends Api
 
     /**
      * 提交评论接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/found/comment)
+     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiParams   (name="content", type="string", required=true, description="评论信息")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
      */
     public function comment()
     {
@@ -158,6 +182,17 @@ class Found extends Api
 
     /**
      * 收藏接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/found/collection)
+     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
      */
     public function collection()
     {

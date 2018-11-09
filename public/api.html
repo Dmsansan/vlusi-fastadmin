@@ -1396,7 +1396,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-8">
                         <h4 class="panel-title">
-                            <span class="label label-primary">POST</span>
+                            <span class="label label-success">GET</span>
                             <a data-toggle="collapse" data-parent="#accordion8" href="#collapseOne8"> 发现的分类 <span class="text-muted">/api/found/category</span></a>
                         </h4>
                     </div>
@@ -1469,7 +1469,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/category" method="POST" name="form8" id="form8">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/category" method="GET" name="form8" id="form8">
                                                                                                                 <div class="form-group">
                                                             无
                                                         </div>
@@ -1896,7 +1896,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-11">
                         <h4 class="panel-title">
-                            <span class="label label-success">GET</span>
+                            <span class="label label-primary">POST</span>
                             <a data-toggle="collapse" data-parent="#accordion11" href="#collapseOne11"> 获取文章详情及评论接口 <span class="text-muted">/api/found/detail</span></a>
                         </h4>
                     </div>
@@ -1919,13 +1919,53 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>Headers</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>参数</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>page</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>页码</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>article_id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>文章id</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
@@ -1939,11 +1979,27 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/detail" method="get" name="form11" id="form11">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/detail" method="POST" name="form11" id="form11">
                                                                                                                 <div class="form-group">
-                                                            无
+                                                            <label class="control-label" for="page">page</label>
+                                                            <input type="integer" class="form-control input-sm" id="page" required placeholder="页码" name="page">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="article_id">article_id</label>
+                                                            <input type="integer" class="form-control input-sm" id="article_id" required placeholder="文章id" name="article_id">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <button type="submit" class="btn btn-success send" rel="11">提交</button>
@@ -1966,7 +2022,32 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>返回参数</strong></div>
                                                 <div class="panel-body">
-                                                                                                        无
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>msg</td>
+                                                                <td>string</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>data</td>
+                                                                <td>object</td>
+                                                                <td>扩展数据返回</td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
                                                                                                     </div>
                                             </div>
                                         </div>
@@ -1976,7 +2057,10 @@
                                 <div class="tab-pane" id="sample11">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response11">无</pre>
+                                            <pre id="sample_response11">{
+    'code':'1',
+    'mesg':'返回成功'
+     * }</pre>
                                         </div>
                                     </div>
                                 </div><!-- #sample -->
@@ -1988,7 +2072,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-12">
                         <h4 class="panel-title">
-                            <span class="label label-success">GET</span>
+                            <span class="label label-primary">POST</span>
                             <a data-toggle="collapse" data-parent="#accordion12" href="#collapseOne12"> 提交评论接口 <span class="text-muted">/api/found/comment</span></a>
                         </h4>
                     </div>
@@ -2011,13 +2095,53 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>Headers</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>参数</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>article_id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>文章id</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>content</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>评论信息</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
@@ -2031,11 +2155,27 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/comment" method="get" name="form12" id="form12">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/comment" method="POST" name="form12" id="form12">
                                                                                                                 <div class="form-group">
-                                                            无
+                                                            <label class="control-label" for="article_id">article_id</label>
+                                                            <input type="integer" class="form-control input-sm" id="article_id" required placeholder="文章id" name="article_id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="content">content</label>
+                                                            <input type="string" class="form-control input-sm" id="content" required placeholder="评论信息" name="content">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <button type="submit" class="btn btn-success send" rel="12">提交</button>
@@ -2058,7 +2198,32 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>返回参数</strong></div>
                                                 <div class="panel-body">
-                                                                                                        无
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>msg</td>
+                                                                <td>string</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>data</td>
+                                                                <td>object</td>
+                                                                <td>扩展数据返回</td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
                                                                                                     </div>
                                             </div>
                                         </div>
@@ -2068,7 +2233,10 @@
                                 <div class="tab-pane" id="sample12">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response12">无</pre>
+                                            <pre id="sample_response12">{
+    'code':'1',
+    'mesg':'返回成功'
+     * }</pre>
                                         </div>
                                     </div>
                                 </div><!-- #sample -->
@@ -2080,7 +2248,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-13">
                         <h4 class="panel-title">
-                            <span class="label label-success">GET</span>
+                            <span class="label label-primary">POST</span>
                             <a data-toggle="collapse" data-parent="#accordion13" href="#collapseOne13"> 收藏接口 <span class="text-muted">/api/found/collection</span></a>
                         </h4>
                     </div>
@@ -2103,13 +2271,47 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>Headers</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>参数</strong></div>
                                         <div class="panel-body">
-                                                                                        无
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>article_id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>文章id</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
                                                                                     </div>
                                     </div>
                                     <div class="panel panel-default">
@@ -2123,11 +2325,23 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/collection" method="get" name="form13" id="form13">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/found/collection" method="POST" name="form13" id="form13">
                                                                                                                 <div class="form-group">
-                                                            无
+                                                            <label class="control-label" for="article_id">article_id</label>
+                                                            <input type="integer" class="form-control input-sm" id="article_id" required placeholder="文章id" name="article_id">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <button type="submit" class="btn btn-success send" rel="13">提交</button>
@@ -2150,7 +2364,32 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>返回参数</strong></div>
                                                 <div class="panel-body">
-                                                                                                        无
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>msg</td>
+                                                                <td>string</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td>data</td>
+                                                                <td>object</td>
+                                                                <td>扩展数据返回</td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
                                                                                                     </div>
                                             </div>
                                         </div>
@@ -2160,7 +2399,10 @@
                                 <div class="tab-pane" id="sample13">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response13">无</pre>
+                                            <pre id="sample_response13">{
+    'code':'1',
+    'mesg':'返回成功'
+     * }</pre>
                                         </div>
                                     </div>
                                 </div><!-- #sample -->
@@ -4493,7 +4735,7 @@
 
             <div class="row mt0 footer">
                 <div class="col-md-6" align="left">
-                    Generated on 2018-11-09 11:07:43                </div>
+                    Generated on 2018-11-09 11:18:15                </div>
                 <div class="col-md-6" align="right">
                     <a href="https://www.fastadmin.net" target="_blank">FastAdmin</a>
                 </div>
