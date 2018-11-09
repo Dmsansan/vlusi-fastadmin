@@ -58,6 +58,7 @@ class Found extends Api
     public function recommend()
     {
         $page =   (int)$this->request->post("page");
+        $page = $page?$page-1:0;
         //分类数据
         $list=db('article')->order('flag desc,views desc')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
@@ -87,7 +88,7 @@ class Found extends Api
     {
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
-
+        $page = $page?$page-1:0;
         $search = $this->request->post('title');
 
         //分类数据
@@ -107,7 +108,7 @@ class Found extends Api
      * 获取文章详情及评论接口
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/found/detail)
-     * @ApiParams   (name="page", type="integer", required=true, description="页码")
+     * @ApiParams   (name="page", type="integer", required=true, description="评论页码")
      * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -123,9 +124,11 @@ class Found extends Api
         $userid=47;
 
         $page   =  (int)$this->request->post("page");
+        $page = $page?$page-1:0;
+
         $article_id  =  (int)$this->request->post("article_id");
 
-        if($page>0){
+        if($page==1){
             $data['detail'] =db('article')->where(['id'=>$article_id])->find();
         }
 
@@ -181,6 +184,37 @@ class Found extends Api
 
 
     /**
+     * 评论点赞接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/found/comment_zan)
+     * @ApiParams   (name="comment_id", type="integer", required=true, description="评论id")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
+     */
+    public function comment_zan()
+    {
+        $userid=47;
+        $article_id  =  (int)$this->request->request("comment_id");
+
+        $insert['article_id']=$article_id;
+        $insert['user_id']=$userid;
+        $insert['createtime']=time();
+        $res=db('article_comment')->insert($insert);
+        if($res){
+            $this->success("评论成功");
+        }else{
+            $this->error('评论失败');
+        }
+    }
+
+
+    /**
      * 收藏接口
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/found/collection)
@@ -212,6 +246,9 @@ class Found extends Api
 
         $this->success("收藏成功",[]);
     }
+
+
+
 
 
 
