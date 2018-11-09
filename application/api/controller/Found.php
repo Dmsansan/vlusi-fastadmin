@@ -63,6 +63,12 @@ class Found extends Api
         $list=db('article')->order('flag desc,views desc')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize)->select();
+
+        foreach($list as $key=>$val){
+            $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
+        }
+
+
         $this->success("返回成功",$list);
     }
 
@@ -100,6 +106,10 @@ class Found extends Api
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
         $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();
 
+        foreach($data as $key=>$val){
+            $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
+        }
+
         $this->success("返回成功",$data);
     }
 
@@ -133,7 +143,7 @@ class Found extends Api
             $data['detail'] =db('article')->where(['id'=>$article_id])->find();
 
             //同步新增到article浏览数+1
-            Db::table('article')->where('id',$article_id)->setInc('browse');
+            db('article')->where('id',$article_id)->setInc('browse');
 
             //TODO 获取用户信息 判断用户是否点赞
             $collection=db('article_collection')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
@@ -141,14 +151,18 @@ class Found extends Api
 
         }
 
+        //获取第一级评论内容
         $date['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
-                ->where(['article_id'=>$article_id])
+                ->where(['article_id'=>$article_id,'pid'=>0])
                 ->order('createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize)
                 ->select();
 
 
+        foreach($date['comment'] as $key=>$val){
+            $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+        }
 
 
 
@@ -184,7 +198,7 @@ class Found extends Api
         $res=db('article_comment')->insert($insert);
         if($res){
             //同步新增到article表 评论数加1
-            Db::table('article')->where('id', $article_id)->setInc('comments');
+            db('article')->where('id', $article_id)->setInc('comments');
 
             $this->success("评论成功");
         }else{
@@ -218,7 +232,7 @@ class Found extends Api
         $res=db('article_comment_zan')->insert($insert);
         if($res){
             //同步新增到article_comment表 赞+1
-            Db::table('article_comment')->where('id', $comment_id)->setInc('zan');
+            db('article_comment')->where('id', $comment_id)->setInc('zan');
 
             $this->success("评论成功");
         }else{
