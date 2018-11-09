@@ -8,7 +8,7 @@ use app\common\controller\Api;
 use think\Db;
 
 /**
- * 首页接口
+ * 发现
  */
 class Found extends Api
 {
@@ -21,8 +21,6 @@ class Found extends Api
      * 发现分类
      *
      * @ApiTitle    (发现的分类)
-     * @ApiSummary  (article)
-     * @ApiSector   (测试分组)
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/found/category)
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
@@ -45,10 +43,8 @@ class Found extends Api
      * 推荐文章
      *
      * @ApiTitle    (推荐文章)
-     * @ApiSummary  (article)
-     * @ApiSector   (测试分组)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/category)
+     * @ApiRoute    (/api/found/recommend)
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -72,11 +68,9 @@ class Found extends Api
     /**
      * 获取分类文章
      *
-     * @ApiTitle    (推荐文章)
-     * @ApiSummary  (article)
-     * @ApiSector   (测试分组)
+     * @ApiTitle    (获取某分类的文章)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/category)
+     * @ApiRoute    (/api/found/article)
      * @ApiParams   (name="type_id", type="integer", required=true, description="分类id")
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiParams   (name="title", type="integer", required=false, description="搜索的标题")
@@ -103,9 +97,9 @@ class Found extends Api
             $list->where(['title'=>['like','%'.$search.'%']]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        $list->limit($page*$this->pagesize,$this->pagesize)->select();
+        $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();
 
-        $this->success("返回成功",$list);
+        $this->success("返回成功",$data);
     }
 
 

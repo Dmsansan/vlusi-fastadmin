@@ -7,8 +7,9 @@ use app\common\library\Sms as Smslib;
 use app\common\model\User;
 
 /**
- * 手机短信接口
+ *
  */
+//手机短信接口
 class Sms extends Api
 {
 

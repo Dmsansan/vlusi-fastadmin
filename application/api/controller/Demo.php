@@ -5,8 +5,9 @@ namespace app\api\controller;
 use app\common\controller\Api;
 
 /**
- * 示例接口
+ *
  */
+//示例接口
 class Demo extends Api
 {
 

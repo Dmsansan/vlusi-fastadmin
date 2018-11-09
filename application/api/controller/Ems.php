@@ -7,8 +7,9 @@ use app\common\library\Ems as Emslib;
 use app\common\model\User;
 
 /**
- * 邮箱验证码接口
+ *
  */
+//邮箱验证码接口
 class Ems extends Api
 {
 
