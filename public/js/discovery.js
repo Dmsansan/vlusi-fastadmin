@@ -4,32 +4,13 @@ window.onload = function () {
         el: '#app',
         data: {
             //选中的选项卡
-            activeIndex: 0,
+
+            activeIndex: -1,
             //选项卡
-            tabList: [
-                {
-                    id: 0,
-                    name: '推荐'
-                },
-                {
-                    id: 1,
-                    name: '资讯'
-                },
-                {
-                    id: 2,
-                    name: '日常'
-                },
-                {
-                    id: 3,
-                    name: '兴趣'
-                },
-                {
-                    id: 4,
-                    name: '科技'
-                }
-            ],
+            tabList: [],
             //搜索返回的结果
-            searchList: [
+            searchList:[],
+           /* searchList: [
                 {
                     "id": 0,
                     "img": "/img/show.jpg",
@@ -60,7 +41,7 @@ window.onload = function () {
                     "times": 2000,
                     "comments": 100
                 }
-            ],
+            ],*/
             //tab页内容
             tabContent: new Map(),
             //手动改变值变化
@@ -74,22 +55,48 @@ window.onload = function () {
             //显示历史记录还是搜索内容
             isInput: true
         },
+      mounted(){
+          //获取 tab页内容和页面初始化数据
+          this.init();
+
+      },
         methods: {
+          //获取推荐数据
+            getRecommendList:function () {
+                let self = this;
+                self.activeIndex = -1,
+                $.post('/api/found/recommend', {
+                    page: self.currentPage
+                }, function (data) {
+                    self.searchList = data.data;
+                });
+            },
+            init: function () {
+                let self = this;
+                $.getJSON('/api/found/category',  function (data) {
+                    self.tabList =  data.data;
+                });
+            },
             loadTabContent: function (tabId, index) {
                 this.activeIndex = index;
                 this.getItemList(tabId);
             },
+            //列表数据
             getItemList: function (tabId) {
-                let vm = this;
-                if (vm.tabContent.get(tabId)) {
-                    return vm.tabContent.get(tabId);
-                }
-                else {
+                let self = this;
+                if (self.tabContent.get(tabId)) {
+                    return self.tabContent.get(tabId);
+                } else {
                     //请求获取数据
-                    $.getJSON('/data/tabContent.json', {id: tabId}, function (data) {
-                        vm.tabContent.set(tabId, data);
-                        vm.tabContentTracker += 1;
-                        return vm.tabContent.get(tabId);
+                    $.post('/api/found/article', {
+                        type_id: tabId,
+                        page: self.currentPage,
+                    }, function (data) {
+                        console.log('推荐文章内容',data)
+                        self.searchList = data.data;
+                        /*self.tabContent.set(tabId, data);
+                        self.tabContentTracker += 1;
+                        return self.tabContent.get(tabId);*/
                     });
                 }
             },
@@ -134,11 +141,14 @@ window.onload = function () {
             showHistory: function () {
                 //改变显示状态
                 this.isInput = true;
-            }
+            },
+
+
+
         },
         created: function () {
-            //获取第一个tab页内容
-            this.getItemList(this.tabList[0].id);
+            //获取推荐数据
+             this.getRecommendList();
         }
     });
     /**
