@@ -128,19 +128,26 @@ class Found extends Api
 
         $article_id  =  (int)$this->request->post("article_id");
 
+        //初次加载
         if($page==1){
             $data['detail'] =db('article')->where(['id'=>$article_id])->find();
+
+            //同步新增到article浏览数+1
+            Db::table('article')->where('id',$article_id)->setInc('browse');
+
+            //TODO 获取用户信息 判断用户是否点赞
+            $collection=db('article_collection')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
+            $data['is_collection']=$collection?1:0;
+
         }
 
         $date['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['article_id'=>$article_id])
+                ->order('createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize)
                 ->select();
 
-        //TODO 获取用户信息 判断用户是否点赞
-        $collection=db('article_collection')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
-        $data['is_collection']=$collection?1:0;
 
 
 
@@ -176,6 +183,9 @@ class Found extends Api
         $insert['createtime']=time();
         $res=db('article_comment')->insert($insert);
         if($res){
+            //同步新增到article表 评论数加1
+            Db::table('article')->where('id', $article_id)->setInc('comments');
+
             $this->success("评论成功");
         }else{
             $this->error('评论失败');
@@ -200,13 +210,16 @@ class Found extends Api
     public function comment_zan()
     {
         $userid=47;
-        $article_id  =  (int)$this->request->request("comment_id");
+        $comment_id  =  (int)$this->request->request("comment_id");
 
-        $insert['article_id']=$article_id;
+        $insert['comment_id']=$comment_id;
         $insert['user_id']=$userid;
         $insert['createtime']=time();
-        $res=db('article_comment')->insert($insert);
+        $res=db('article_comment_zan')->insert($insert);
         if($res){
+            //同步新增到article_comment表 赞+1
+            Db::table('article_comment')->where('id', $comment_id)->setInc('zan');
+
             $this->success("评论成功");
         }else{
             $this->error('评论失败');
