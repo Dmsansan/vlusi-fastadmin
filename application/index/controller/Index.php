@@ -37,4 +37,9 @@ class Index extends Frontend
     }
 
 
+    //课程详情
+    public function course_detail(){
+
+    }
+
 }
