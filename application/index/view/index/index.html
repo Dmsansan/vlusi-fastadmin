@@ -27,6 +27,8 @@
                 选项卡
             -->
             <div id="tab-container" class="tab-container">
+                <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item"
+                   :class="{active:-1 == activeIndex}">推荐</a>
                 <template v-for="(item,index) in tabList">
                     <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item" :class="{active:index == activeIndex}">{{item.name}}</a>
                 </template>
@@ -34,20 +36,45 @@
             <!--
                 选项卡内容
             -->
-            <div class="tab-content" :class="{active:index == activeIndex}" v-for="(tab,index) in tabList">
-                <div @click="goInner(item.id)" v-for="item in tabContent.get(tab.id)" class="tab-content-item">
+            <!--推荐课程-->
+            <div class="tab-content"
+                 :class="{active:-1 == activeIndex}"
+                 v-if="activeIndex == -1"
+            >
+                <div @click="goInner(item.id)"
+                     v-for="item in detailsList" class="tab-content-item">
                     <div class="img-container">
                         <div class="class-label">
                             <img src="img/home/label.png"/>
-                            <p class="class-label-name">{{item.label}}</p>
+                            <p class="class-label-name">{{item.name}}</p>
                         </div>
-                        <img :src="item.img"/>
-                        <p class="comments-and-times">{{item.times}}浏览 &#8226; {{item.comments}}评论</p>
+                        <img :src="item.coverimage"/>
+                        <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                     </div>
                     <div class="tab-content-desc">
                         <p class="tab-content-desc-title">{{item.title}}</p>
-                        <p class="tab-content-desc-content">{{item.content}}</p>
-                        <p class="tab-content-desc-date">{{item.date}}</p>
+                        <p class="tab-content-desc-content" v-html="item.content"></p>
+                        <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
+                    </div>
+                </div>
+            </div>
+            <!--选项卡切换课程-->
+            <div class="tab-content"    v-else
+                 :class="{active:index == activeIndex}"
+                 v-for="(tab,index) in tabList">
+                <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item">
+                    <div class="img-container">
+                        <div class="class-label">
+                            <img src="img/home/label.png"/>
+                            <p class="class-label-name">{{item.desc}}</p>
+                        </div>
+                        <img :src="item.coverimage"/>
+                        <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
+                    </div>
+                    <div class="tab-content-desc">
+                        <p class="tab-content-desc-title">{{item.name}}</p>
+                        <p class="tab-content-desc-content">{{item.desc}}</p>
+                        <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                     </div>
                 </div>
             </div>

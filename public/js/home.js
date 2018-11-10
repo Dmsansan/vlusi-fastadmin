@@ -4,9 +4,11 @@ window.onload = function () {
         el: '#app',
         data: {
             //选中的选项卡
-            activeIndex: 1,
+            activeIndex: -1,
             //选项卡
             tabList:[],
+            //推荐列表
+            detailsList:[],
             //搜索返回的结果
             searchList:[
                 {
@@ -59,7 +61,7 @@ window.onload = function () {
             //获取轮播图数据
             //this.sowingMap();
             //推荐内容
-            this.getRecommendList();
+            // this.getRecommendList();
         },
         methods: {
             //获取 tab页内容和页面初始化数据
@@ -67,15 +69,19 @@ window.onload = function () {
                 let self = this;
                 $.getJSON('/api/courses/category', function (data) {
                     self.tabList = data.data;
+                    self.$nextTick(function () {
+                        self.getRecommendList();
+                    })
                 });
             },
-            //推荐接口
+            //推荐课程接口
             getRecommendList:function () {
                 let self = this;
                 self.activeIndex = -1;
                 $.post('/api/found/recommend', {
                     page: self.currentPage
                 }, function (data) {
+                    console.log('推荐课程接口',data.data)
                     self.detailsList = data.data;
                 });
             },
@@ -83,58 +89,17 @@ window.onload = function () {
                 this.activeIndex = index;
                 this.getItemList(tabId);
             },
+            //获取某个分类课程
             getItemList: function (tabId) {
-                let vm = this;
-                if (vm.tabContent.get(tabId)) {
-                    return vm.tabContent.get(tabId);
-                }
-                else {
-                    //请求获取数据
-                    let list = [
-                        {
-                            "id": 0,
-                            "type":0,
-                            "img": "img/show.jpg",
-                            "label": "养生",
-                            "title": "这是标题",
-                            "content": "这是内容",
-                            "date": "2018-02-25",
-                            "times":2000,
-                            "comments":100
-                        },
-                        {
-                            "id": 1,
-                            "type":1,
-                            "img": "img/show.jpg",
-                            "label": "养生",
-                            "title": "这是标题",
-                            "content": "这是内容",
-                            "date": "2018-02-25",
-                            "times":2000,
-                            "comments":100
-                        },
-                        {
-                            "id": 2,
-                            "type":2,
-                            "img": "img/show.jpg",
-                            "label": "养生",
-                            "title": "这是标题",
-                            "content": "这是内容",
-                            "date": "2018-02-25",
-                            "times":2000,
-                            "comments":100
-                        }
-                    ];
-
-                    vm.tabContent.set(tabId, list);
-                    vm.tabContentTracker += 1;
-                    return vm.tabContent.get(tabId);
-                    // $.getJSON('data/tabContent.json', {id: tabId}, function (data) {
-                    //     vm.tabContent.set(tabId, data);
-                    //     vm.tabContentTracker += 1;
-                    //     return vm.tabContent.get(tabId);
-                    // });
-                }
+                console.log(tabId)
+                let self = this;
+                $.post('/api/courses/course', {
+                    type_id: tabId,
+                    page:self.currentPage
+                    }, function (data) {
+                    console.log('获取某个分类课程',data.data);
+                    self.detailsList = data.data;
+                });
             },
             showSearch:function () {
                 //显示搜索页面
@@ -150,8 +115,10 @@ window.onload = function () {
                 this.searchKeys = '';
             },
             goInner:function(id) {
+                sessionStorage.setItem('curriculumId',id)
+                console.log('00000',id);
               mui.openWindow({
-                  url:'course-detail.html'
+                  url:'/index/detail'
               })
             },
             //清除历史记录
