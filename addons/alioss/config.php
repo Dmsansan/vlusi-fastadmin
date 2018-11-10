@@ -39,7 +39,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'file',
+    'value' => 'leyanglao.oss-cn-hangzhou.aliyuncs.com',
     'rule' => 'required',
     'msg' => '',
     'tip' => '阿里云OSS的空间名',
@@ -69,7 +69,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => ' http://oss-cn-hangzhou.aliyuncs.com',
+    'value' => 'leyanglao.oss-cn-hangzhou.aliyuncs.com',
     'rule' => 'required',
     'msg' => '',
     'tip' => '如果你启用了CDN，请填写CDN地址',

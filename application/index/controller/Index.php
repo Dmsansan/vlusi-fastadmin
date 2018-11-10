@@ -23,11 +23,9 @@ class Index extends Frontend
     }
 
 
-    public function found()
-    {
-        return $this->view->fetch();
-    }
+    public function detail(){
 
+    }
 
 
 

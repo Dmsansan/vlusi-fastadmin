@@ -10,7 +10,7 @@ use think\Db;
 /**
  * 发现
  */
-class Course extends Api
+class Courses extends Api
 {
 
     protected $noNeedLogin = ['*'];
@@ -23,7 +23,7 @@ class Course extends Api
      *
      * @ApiTitle    (课程的分类)
      * @ApiMethod   (GET)
-     * @ApiRoute    (/api/course/category)
+     * @ApiRoute    (/api/courses/category)
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -45,7 +45,7 @@ class Course extends Api
      *
      * @ApiTitle    (推荐课程)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/recommend)
+     * @ApiRoute    (/api/courses/recommend)
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -80,7 +80,7 @@ class Course extends Api
      *
      * @ApiTitle    (获取某分类的课程)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/course)
+     * @ApiRoute    (/api/courses/course)
      * @ApiParams   (name="type_id", type="integer", required=true, description="分类id")
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiParams   (name="title", type="integer", required=false, description="搜索的标题")
@@ -123,7 +123,7 @@ class Course extends Api
      *
      * @ApiTitle    (对某课程进行点赞)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/course_zan)
+     * @ApiRoute    (/api/courses/course_zan)
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
