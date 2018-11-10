@@ -61,7 +61,9 @@ class Found extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $list=db('article')->order('flag desc,views desc')
+        $list=db('article')->alias('a')->order('flag desc,views desc')
+            ->join('article_category b','b.id=a.article_categroy_id')
+            ->field('a.*,b.name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize)->select();
 
@@ -138,7 +140,12 @@ class Found extends Api
         $article_id  =  (int)$this->request->request("article_id");
 
         $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
-        if($res){$this->success("点赞成功");}
+        if($res){
+             db('article_zan')->where(['id'=>$res])->delete();
+             db('article')->where('id', $article_id)->setDec('zan');
+
+            $this->success("取消成功");
+        }
 
         $insert['article_id']=$article_id;
         $insert['user_id']=$userid;
@@ -279,7 +286,14 @@ class Found extends Api
         $userid=$this->userid;
         $comment_id  =  (int)$this->request->request("comment_id");
         $res=db('article_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
-        if($res){$this->success("点赞成功");}
+        if($res){
+
+            db('article_comment_zan')->where(['id'=>$res['id']])->delete();
+            //同步新增到article_comment表 赞-1
+            db('article_comment')->where('id', $comment_id)->setDec('zan');
+
+            $this->success("取消成功");
+        }
 
 
         $insert['comment_id']=$comment_id;
@@ -317,16 +331,19 @@ class Found extends Api
 
         $article_id= (int)$this->request->request("article_id");
         $is_have=db('article_collection')->where(['article_id'=>$article_id,'user_id'=>$userid])->find();
-        if(!$is_have){
-            $insert['article_id']=$article_id;
-            $insert['user_id']=$userid;
-            $insert['createtime']=time();
-            $res=db('article_collection')->insert($insert);
-            if(!$res){
-                $this->error('收藏失败',[]);
-            }
+        if($is_have){
+
+            db('article_collection')->where(['id'=>$is_have['id']])->delete();
+            $this->success("取消成功",[]);
         }
 
+        $insert['article_id']=$article_id;
+        $insert['user_id']=$userid;
+        $insert['createtime']=time();
+        $res=db('article_collection')->insert($insert);
+        if(!$res){
+            $this->error('收藏失败',[]);
+        }
         $this->success("收藏成功",[]);
     }
 
