@@ -8,7 +8,7 @@ use app\common\controller\Api;
 use think\Db;
 
 /**
- * 发现
+ * 课程接口
  */
 class Courses extends Api
 {

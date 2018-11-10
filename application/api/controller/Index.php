@@ -5,7 +5,7 @@ namespace app\api\controller;
 use app\common\controller\Api;
 
 /**
- * 首页接口
+ * ke接口
  */
 class Index extends Api
 {
