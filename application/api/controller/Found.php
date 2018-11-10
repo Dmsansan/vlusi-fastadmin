@@ -161,12 +161,12 @@ class Found extends Api
 
 
         foreach($date['comment'] as $key=>$val){
-            $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $date['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
 
 
-        $this->success("返回成功",$data);
+        $this->success("返回成功",$date);
     }
 
 
