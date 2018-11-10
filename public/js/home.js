@@ -4,30 +4,9 @@ window.onload = function () {
         el: '#app',
         data: {
             //选中的选项卡
-            activeIndex: 0,
+            activeIndex: 1,
             //选项卡
-            tabList: [
-                {
-                    id: 0,
-                    name: '推荐'
-                },
-                {
-                    id: 1,
-                    name: '运动'
-                },
-                {
-                    id: 2,
-                    name: '心理'
-                },
-                {
-                    id: 3,
-                    name: '养生'
-                },
-                {
-                    id: 4,
-                    name: '活动'
-                }
-            ],
+            tabList:[],
             //搜索返回的结果
             searchList:[
                 {
@@ -74,7 +53,32 @@ window.onload = function () {
             //显示历史记录还是搜索内容
             isInput:true
         },
+        mounted() {
+            //获取 tab页内容和页面初始化数据
+            this.init();
+            //获取轮播图数据
+            //this.sowingMap();
+            //推荐内容
+            this.getRecommendList();
+        },
         methods: {
+            //获取 tab页内容和页面初始化数据
+            init: function () {
+                let self = this;
+                $.getJSON('/api/courses/category', function (data) {
+                    self.tabList = data.data;
+                });
+            },
+            //推荐接口
+            getRecommendList:function () {
+                let self = this;
+                self.activeIndex = -1;
+                $.post('/api/found/recommend', {
+                    page: self.currentPage
+                }, function (data) {
+                    self.detailsList = data.data;
+                });
+            },
             loadTabContent: function (tabId, index) {
                 this.activeIndex = index;
                 this.getItemList(tabId);
