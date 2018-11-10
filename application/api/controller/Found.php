@@ -101,7 +101,7 @@ class Found extends Api
         $search = $this->request->post('title');
 
         //分类数据
-        $list=db('article')->order('flag desc,views desc');
+        $list=db('article')->order('createtime desc');
         $list->where(['article_category_id'=>$typeid]);
         if($search){
             $list->where(['title'=>['like','%'.$search.'%']]);
