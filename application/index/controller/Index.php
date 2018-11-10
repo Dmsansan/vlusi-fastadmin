@@ -30,5 +30,11 @@ class Index extends Frontend
     }
 
 
+    //评论详情
+    public function comments()
+    {
+        return $this->view->fetch();
+    }
+
 
 }

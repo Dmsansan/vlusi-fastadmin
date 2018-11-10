@@ -28,6 +28,10 @@ class Found extends Frontend
         return $this->view->fetch();
     }
 
-
+    //评论详情
+    public function comments()
+    {
+        return $this->view->fetch();
+    }
 
 }
