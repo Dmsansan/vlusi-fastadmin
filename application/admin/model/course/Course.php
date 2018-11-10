@@ -18,16 +18,33 @@ class Course extends Model
     
     // 追加属性
     protected $append = [
-
+        'flag_text'
     ];
     
 
     
+    public function getFlagList()
+    {
+        return ['recommend' => __('Recommend')];
+    }     
 
 
+    public function getFlagTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['flag']) ? $data['flag'] : '');
+        $valueArr = explode(',', $value);
+        $list = $this->getFlagList();
+        return implode(',', array_intersect_key($list, array_flip($valueArr)));
+    }
+
+    protected function setFlagAttr($value)
+    {
+        return is_array($value) ? implode(',', $value) : $value;
+    }
 
 
-
-
-
+    public function category()
+    {
+        return $this->belongsTo('Category', 'course_category_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }

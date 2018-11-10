@@ -2,15 +2,15 @@
 
 namespace app\api\controller;
 
-use app\admin\model\article\Article;
-use app\admin\model\article\Category;
+use app\admin\model\course\course;
+use app\admin\model\course\Category;
 use app\common\controller\Api;
 use think\Db;
 
 /**
  * 发现
  */
-class Found extends Api
+class Course extends Api
 {
 
     protected $noNeedLogin = ['*'];
@@ -19,11 +19,11 @@ class Found extends Api
     protected $userid=47;
 
     /**
-     * 发现分类
+     * 课程分类
      *
-     * @ApiTitle    (发现的分类)
+     * @ApiTitle    (课程的分类)
      * @ApiMethod   (GET)
-     * @ApiRoute    (/api/found/category)
+     * @ApiRoute    (/api/course/category)
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -36,16 +36,16 @@ class Found extends Api
     public function category()
     {
         //分类数据
-        $cate=db('article_category')->select();
+        $cate=db('course_category')->select();
         $this->success("返回成功",$cate);
     }
 
     /**
-     * 推荐文章
+     * 推荐课程
      *
-     * @ApiTitle    (推荐文章)
+     * @ApiTitle    (推荐课程)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/recommend)
+     * @ApiRoute    (/api/course/recommend)
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -61,8 +61,8 @@ class Found extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $list=db('article')->alias('a')->order('flag desc,views desc')
-            ->join('article_category b','b.id=a.article_categroy_id')
+        $list=db('course')->alias('a')->order('flag desc,views desc')
+            ->join('course_category b','b.id=a.course_categroy_id')
             ->field('a.*,b.name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize)->select();
@@ -76,11 +76,11 @@ class Found extends Api
     }
 
     /**
-     * 获取分类文章
+     * 获取分类课程
      *
-     * @ApiTitle    (获取某分类的文章)
+     * @ApiTitle    (获取某分类的课程)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/article)
+     * @ApiRoute    (/api/course/course)
      * @ApiParams   (name="type_id", type="integer", required=true, description="分类id")
      * @ApiParams   (name="page", type="integer", required=true, description="页码")
      * @ApiParams   (name="title", type="integer", required=false, description="搜索的标题")
@@ -93,7 +93,7 @@ class Found extends Api
     'mesg':'返回成功'
      * })
      */
-    public function article()
+    public function course()
     {
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
@@ -101,8 +101,8 @@ class Found extends Api
         $search = $this->request->post('title');
 
         //分类数据
-        $list=db('article')->order('flag desc,views desc');
-        $list->where(['article_category_id'=>$typeid]);
+        $list=db('course')->order('flag desc,views desc');
+        $list->where(['course_category_id'=>$typeid]);
         if($search){
             $list->where(['title'=>['like','%'.$search.'%']]);
         };
@@ -119,12 +119,12 @@ class Found extends Api
 
 
     /**
-     * 文章点赞接口
+     * 课程点赞接口
      *
-     * @ApiTitle    (对某文章进行点赞)
+     * @ApiTitle    (对某课程进行点赞)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/article_zan)
-     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiRoute    (/api/course/course_zan)
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -134,26 +134,26 @@ class Found extends Api
     'mesg':'返回成功'
      * })
      */
-    public function article_zan()
+    public function course_zan()
     {
         $userid=$this->userid;
-        $article_id  =  (int)$this->request->request("article_id");
+        $course_id  =  (int)$this->request->request("course_id");
 
-        $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
+        $res=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
         if($res){
-             db('article_zan')->where(['id'=>$res['id']])->delete();
-             db('article')->where('id', $article_id)->setDec('zan');
+             db('course_zan')->where(['id'=>$res['id']])->delete();
+             db('course')->where('id', $course_id)->setDec('zan');
 
             $this->success("取消成功");
         }
 
-        $insert['article_id']=$article_id;
+        $insert['course_id']=$course_id;
         $insert['user_id']=$userid;
         $insert['createtime']=time();
-        $res=db('article_zan')->insert($insert);
+        $res=db('course_zan')->insert($insert);
         if($res){
-            //同步新增到article_comment表 赞+1
-            db('article')->where('id', $article_id)->setInc('zan');
+            //同步新增到course_comment表 赞+1
+            db('course')->where('id', $course_id)->setInc('zan');
 
             $this->success("点赞成功");
         }else{
@@ -163,11 +163,11 @@ class Found extends Api
 
 
     /**
-     * 获取文章详情及评论接口
+     * 获取课程详情及评论接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/detail)
+     * @ApiRoute    (/api/course/detail)
      * @ApiParams   (name="page", type="integer", required=true, description="评论页码")
-     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -184,21 +184,21 @@ class Found extends Api
         $page   =  (int)$this->request->post("page");
         $page = $page?$page-1:0;
 
-        $article_id  =  (int)$this->request->post("article_id");
+        $course_id  =  (int)$this->request->post("course_id");
 
         $data=[];
         //初次加载
         if($page===0){
-            $data['detail'] =db('article')->where(['id'=>$article_id])->find();
+            $data['detail'] =db('course')->where(['id'=>$course_id])->find();
 
-            //同步新增到article浏览数+1
-            db('article')->where('id',$article_id)->setInc('readnum');
+            //同步新增到course浏览数+1
+            db('course')->where('id',$course_id)->setInc('browse');
 
             //TODO 获取用户信息 判断用户是否点赞
-            $collection=db('article_collection')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
+            $collection=db('course_collection')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
             $data['is_collection']=$collection?1:0;
 
-            $zan=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
+            $zan=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
             $data['is_zan']=$zan?1:0;
 
 
@@ -206,9 +206,9 @@ class Found extends Api
         }
 
         //获取第一级评论内容
-        $data['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
+        $data['comment']=db('course_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
-                ->where(['article_id'=>$article_id,'pid'=>0])
+                ->where(['course_id'=>$course_id,'pid'=>0])
                 ->order('createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize)
                 ->select();
@@ -233,8 +233,8 @@ class Found extends Api
     /**
      * 提交评论接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/comment)
-     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiRoute    (/api/course/comment)
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -248,17 +248,17 @@ class Found extends Api
     public function comment()
     {
         $userid=$this->userid;
-        $article_id  =  (int)$this->request->request("article_id");
+        $course_id  =  (int)$this->request->request("course_id");
         $content=$this->request->request("content");
 
-        $insert['article_id']=$article_id;
+        $insert['course_id']=$course_id;
         $insert['content']=$content;
         $insert['user_id']=$userid;
         $insert['createtime']=time();
-        $res=db('article_comment')->insert($insert);
+        $res=db('course_comment')->insert($insert);
         if($res){
-            //同步新增到article表 评论数加1
-            db('article')->where('id', $article_id)->setInc('comments');
+            //同步新增到course表 评论数加1
+            db('course')->where('id', $course_id)->setInc('comments');
 
             $this->success("评论成功");
         }else{
@@ -270,7 +270,7 @@ class Found extends Api
     /**
      * 评论点赞接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/comment_zan)
+     * @ApiRoute    (/api/course/comment_zan)
      * @ApiParams   (name="comment_id", type="integer", required=true, description="评论id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -285,12 +285,12 @@ class Found extends Api
     {
         $userid=$this->userid;
         $comment_id  =  (int)$this->request->request("comment_id");
-        $res=db('article_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
+        $res=db('course_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
         if($res){
 
-            db('article_comment_zan')->where(['id'=>$res['id']])->delete();
-            //同步新增到article_comment表 赞-1
-            db('article_comment')->where('id', $comment_id)->setDec('zan');
+            db('course_comment_zan')->where(['id'=>$res['id']])->delete();
+            //同步新增到course_comment表 赞-1
+            db('course_comment')->where('id', $comment_id)->setDec('zan');
 
             $this->success("取消成功");
         }
@@ -299,10 +299,10 @@ class Found extends Api
         $insert['comment_id']=$comment_id;
         $insert['user_id']=$userid;
         $insert['createtime']=time();
-        $res=db('article_comment_zan')->insert($insert);
+        $res=db('course_comment_zan')->insert($insert);
         if($res){
-            //同步新增到article_comment表 赞+1
-            db('article_comment')->where('id', $comment_id)->setInc('zan');
+            //同步新增到course_comment表 赞+1
+            db('course_comment')->where('id', $comment_id)->setInc('zan');
 
             $this->success("点赞成功");
         }else{
@@ -314,8 +314,8 @@ class Found extends Api
     /**
      * 收藏接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/collection)
-     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiRoute    (/api/course/collection)
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -329,18 +329,18 @@ class Found extends Api
     {
         $userid=$this->userid;
 
-        $article_id= (int)$this->request->request("article_id");
-        $is_have=db('article_collection')->where(['article_id'=>$article_id,'user_id'=>$userid])->find();
+        $course_id= (int)$this->request->request("course_id");
+        $is_have=db('course_collection')->where(['course_id'=>$course_id,'user_id'=>$userid])->find();
         if($is_have){
 
-            db('article_collection')->where(['id'=>$is_have['id']])->delete();
+            db('course_collection')->where(['id'=>$is_have['id']])->delete();
             $this->success("取消成功",[]);
         }
 
-        $insert['article_id']=$article_id;
+        $insert['course_id']=$course_id;
         $insert['user_id']=$userid;
         $insert['createtime']=time();
-        $res=db('article_collection')->insert($insert);
+        $res=db('course_collection')->insert($insert);
         if(!$res){
             $this->error('收藏失败',[]);
         }
@@ -350,7 +350,7 @@ class Found extends Api
     /**
      * 获取某条评论详情
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/found/comment_detail)
+     * @ApiRoute    (/api/course/comment_detail)
      * @ApiParams   (name="comment_id", type="integer", required=true, description="该评论的id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -366,7 +366,7 @@ class Found extends Api
     {
         $comment_id= (int)$this->request->request("comment_id");
         //评论内容
-//        $detail['detail']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
+//        $detail['detail']=db('course_comment')->alias('a')->join('user','user.id=a.user_id')
 //                ->field('user.nickname,avatar,a.*')
 //                ->where(['id'=>$comment_id])
 //                ->find();
@@ -377,7 +377,7 @@ class Found extends Api
 //        }
 
 
-        $children=db('article_comment')->alias('a')->join('article_comment b','b.pid=a.id')
+        $children=db('course_comment')->alias('a')->join('course_comment b','b.pid=a.id')
 //                ->join('user','user.id=a.user_id')
                 ->field('*')
                 ->select();
@@ -394,7 +394,7 @@ class Found extends Api
     protected function commentTree($id)
     {
         static $subs = array(); //子孙数组
-        $children_data=db('article_comment')->alias('a')
+        $children_data=db('course_comment')->alias('a')
                     ->where(['pid'=>$id])
                     ->join('user u','u.id=a.user_id')
                     ->field('user.nickname,avatar,a.*')

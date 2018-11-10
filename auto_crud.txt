@@ -9,3 +9,5 @@ php think crud -t test --relation=category --relation=admin --relationforeignkey
 php think crud -t course_node -c course/node -m course/node  -r course  -e course/course --force=truec
 注意 修改nodes/add.html的关联的 datesource
 
+#course生成
+php think crud -t course  -c course/course  -m course/course -r course_category  -k course_category_id -p id -e course/category --force=true
