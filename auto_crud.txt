@@ -11,3 +11,7 @@ php think crud -t course_node -c course/node -m course/node  -r course  -e cours
 
 #course生成
 php think crud -t course  -c course/course  -m course/course -r course_category  -k course_category_id -p id -e course/category --force=true
+
+
+#article生成
+php think crud -t article  -c article/article  -m article/article -r article_category  -k article_category_id -p id -e article/category --force=true

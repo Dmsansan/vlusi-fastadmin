@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Course_category_id'  =>  '分类id',
+    'Course_category_id'  =>  '所属分类',
     'Name'  =>  '课程名称',
     'Coverimage'  =>  '封面图',
     'Flag'  =>  '标志[可选]',

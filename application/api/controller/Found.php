@@ -102,9 +102,10 @@ class Found extends Api
 
         //分类数据
         $list=db('article')->order('createtime desc');
-        $list->where(['article_category_id'=>$typeid]);
         if($search){
             $list->where(['title'=>['like','%'.$search.'%']]);
+        }else{
+            $list->where(['article_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
         $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();

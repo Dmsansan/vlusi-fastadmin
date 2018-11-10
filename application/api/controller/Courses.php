@@ -61,7 +61,7 @@ class Courses extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $list=db('course')->alias('a')->order('flag desc,browse desc')
+        $list=db('course')->alias('a')->order('flag desc,readnum desc')
             ->join('course_category b','b.id=a.course_category_id')
             ->field('a.*,b.name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
@@ -98,13 +98,14 @@ class Courses extends Api
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
         $page = $page?$page-1:0;
-        $search = $this->request->post('title');
+        $search = $this->request->request('title');
 
         //分类数据
-        $list=db('course')->order('flag desc,views desc');
-        $list->where(['course_category_id'=>$typeid]);
+        $list=db('course')->order('createtime desc');
         if($search){
-            $list->where(['title'=>['like','%'.$search.'%']]);
+            $list->where(['name'=>['like','%'.$search.'%']]);
+        }else{
+            $list->where(['course_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
         $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();
