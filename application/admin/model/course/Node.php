@@ -1,13 +1,13 @@
 <?php
 
-namespace app\admin\model;
+namespace app\admin\model\course;
 
 use think\Model;
 
-class Course extends Model
+class Node extends Model
 {
     // 表名
-    protected $name = 'course';
+    protected $name = 'course_node';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
@@ -30,4 +30,8 @@ class Course extends Model
 
 
 
+    public function course()
+    {
+        return $this->belongsTo('Course', 'course_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }

@@ -1,27 +1,27 @@
 <?php
 
-namespace app\admin\controller\course;
+namespace app\admin\command;
 
 use app\common\controller\Backend;
 
 /**
- * 课程目录管理
+ * 
  *
  * @icon fa fa-circle-o
  */
-class Course extends Backend
+class FastAdmin5be643d0932ee extends Backend
 {
     
     /**
-     * Course模型对象
-     * @var \app\admin\model\Course
+     * Class模型对象
+     * @var \app\admin\model\course\Class
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\Course;
+        $this->model = new \app\admin\model\course\Class;
 
     }
     

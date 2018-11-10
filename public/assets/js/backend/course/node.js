@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'course/course/index',
-                    add_url: 'course/course/add',
-                    edit_url: 'course/course/edit',
-                    del_url: 'course/course/del',
-                    multi_url: 'course/course/multi',
-                    table: 'course',
+                    index_url: 'course/node/index',
+                    add_url: 'course/node/add',
+                    edit_url: 'course/node/edit',
+                    del_url: 'course/node/del',
+                    multi_url: 'course/node/multi',
+                    table: 'course_node',
                 }
             });
 
@@ -25,14 +25,23 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'course_id', title: __('Course_id')},
+                        {field: 'sort', title: __('Sort')},
                         {field: 'title', title: __('Title')},
-                        {field: 'coverimage', title: __('Coverimage'), formatter: Table.api.formatter.image},
                         {field: 'desc', title: __('Desc')},
-                        {field: 'coursetimes', title: __('Coursetimes')},
-                        {field: 'zan', title: __('Zan')},
-                        {field: 'comments', title: __('Comments')},
-                        {field: 'browse', title: __('Browse')},
+                        {field: 'content', title: __('Content')},
+                        {field: 'coverimage', title: __('Coverimage'), formatter: Table.api.formatter.image},
+                        {field: 'videofile', title: __('Videofile')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'course.id', title: __('Course.id')},
+                        {field: 'course.title', title: __('Course.title')},
+                        {field: 'course.coverimage', title: __('Course.coverimage'), formatter: Table.api.formatter.image},
+                        {field: 'course.desc', title: __('Course.desc')},
+                        {field: 'course.coursetimes', title: __('Course.coursetimes')},
+                        {field: 'course.zan', title: __('Course.zan')},
+                        {field: 'course.comments', title: __('Course.comments')},
+                        {field: 'course.browse', title: __('Course.browse')},
+                        {field: 'course.createtime', title: __('Course.createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
