@@ -206,11 +206,17 @@ class Found extends Api
                 ->limit($page*$this->pagesize,$this->pagesize)
                 ->select();
 
-
-        foreach($data['comment'] as $key=>$val){
-            $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+        //查询该用户对评论点赞的数量
+        if($data['comment']){
+            foreach($data['comment'] as $key=>$val){
+                $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+                if($val['user_id']==$this->userid){
+                    $data['comment'][$key]['is_zan']=1;
+                }else{
+                    $data['comment'][$key]['is_zan']=0;
+                }
+            }
         }
-
 
 
         $this->success("返回成功",$data);
