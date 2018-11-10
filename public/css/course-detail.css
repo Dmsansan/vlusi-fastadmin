@@ -472,3 +472,69 @@ button.apply-course.active{
 p.course-like-num.border-grey {
     color: #8a8a8a;
 }
+.mui-popover.mui-popover-action .mui-table-view {
+    margin: 0;
+    border-radius: 0px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    height: 120px;
+}
+img.share-item-icon {
+    width: 40px;
+    border-radius: 100%;
+}
+.mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after{
+    height: 0;
+}
+p.share-item-desc {
+    font-size: 0.8rem;
+}
+.card-view-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 15px;
+    z-index: 9999;
+    display: none;
+}
+.card-view-preview.active{
+    display: flex;
+    display: -webkit-flex;
+}
+.card-view-preview img{
+    width: 100%;
+}
+button.card-view-save-btn {
+    width: 100%;
+    height: 10%;
+    border-radius: 0px;
+    background: #f5ab00;
+    border: none;
+    color: #FFFFFF;
+    max-height: 50px;
+}
+.card-view-preview-img-container {
+    height: 88%;
+    overflow: hidden;
+}
+img.close-preview-icon {
+    position: absolute;
+    width: 30px;
+    right: 5px;
+    top: 5px;
+}

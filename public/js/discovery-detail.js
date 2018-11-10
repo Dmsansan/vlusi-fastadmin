@@ -1,4 +1,4 @@
-window.onload = function () {
+$(function () {
     let app = new Vue({
             el: '#app',
             data: {
@@ -19,34 +19,36 @@ window.onload = function () {
                 isCollect:false,
                 //上传图片地址数组
                 imgList:[],
+                //是否展示卡片视图
+                isShowCard:false,
                 commentsList:[
                     {
                         id:0,
-                        logo:'/img/course-detail/logo.jpg',
+                        logo:'img/course-detail/logo.jpg',
                         commenter:'滑小稽',
                         isLiked:true,
                         comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="/img/show.jpg"/><img src="/img/show.jpg"/><img src="/img/show.jpg"/>',
+                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
                         time:'2018-02-22',
                         count:10
                     },
                     {
                         id:1,
-                        logo:'/img/course-detail/logo.jpg',
+                        logo:'img/course-detail/logo.jpg',
                         commenter:'悟净',
                         isLiked:false,
                         comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="/img/show.jpg"/><img src="/img/show.jpg"/><img src="/img/show.jpg"/>',
+                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
                         time:'2018-02-22',
                         count:10
                     },
                     {
                         id:2,
-                        logo:'/img/course-detail/logo.jpg',
+                        logo:'img/course-detail/logo.jpg',
                         commenter:'悟能',
                         isLiked:false,
                         comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="/img/show.jpg"/><img src="/img/show.jpg"/><img src="/img/show.jpg"/>',
+                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
                         time:'2018-02-22',
                         count:10
                     }
@@ -92,9 +94,7 @@ window.onload = function () {
                     $('.emoji-wysiwyg-editor').focus();
                 },
                 shareCourse:function() {
-                    mui.openWindow({
-                        url:'share-page.html'
-                    })
+                    mui('#share-sheet').popover('toggle');
                 },
                 //收藏，取消收藏
                 collect:function (flag) {
@@ -112,6 +112,21 @@ window.onload = function () {
                     mui.openWindow({
                         url:'comments-detail.html'
                     })
+                },
+                sendToFriend:function () {
+                    //发给好友
+                },
+                generateCard:function () {
+                    mui('#share-sheet').popover('toggle');
+                    //生成卡片
+                    this.isShowCard = true;
+                },
+                hidePreview:function () {
+                    //关闭图片预览
+                    this.isShowCard = false;
+                },
+                saveImg:function () {
+
                 }
             },
             watch: {
@@ -141,7 +156,7 @@ window.onload = function () {
     });
     window.emojiPicker = new EmojiPicker({
         emojiable_selector: '[data-emojiable=true]',
-        assetsPath: '/assets/emoji/img/',
+        assetsPath: 'assets/emoji/img/',
         popupButtonClasses: 'fa fa-smile-o'
     });
     // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
@@ -166,4 +181,4 @@ window.onload = function () {
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
         app.commentsContent = $(this).text();
     });
-};
+});
