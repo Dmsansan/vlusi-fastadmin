@@ -54,6 +54,8 @@ window.onload = function () {
             likeArtNums:0,
             //课程状态0:可以申请，1：审核中，2：开放
             courseStatus:0,
+            //是否展示卡片视图
+            isShowCard:false,
             commentsList:[
                 {
                     id:0,
@@ -142,9 +144,7 @@ window.onload = function () {
                 })
             },
             shareCourse:function() {
-              mui.openWindow({
-                  url:'share-page.html'
-              })
+                mui('#share-sheet').popover('toggle');
             },
             //收藏，取消收藏
             collect:function (flag) {
@@ -162,6 +162,21 @@ window.onload = function () {
                 mui.openWindow({
                     url:'comments-detail.html'
                 })
+            },
+            sendToFriend:function () {
+                //发给好友
+            },
+            generateCard:function () {
+                mui('#share-sheet').popover('toggle');
+                //生成卡片
+                this.isShowCard = true;
+            },
+            hidePreview:function () {
+                //关闭图片预览
+                this.isShowCard = false;
+            },
+            saveImg:function () {
+                
             }
         },
         watch: {

@@ -86,11 +86,50 @@ window.onload = function () {
                 }
                 else {
                     //请求获取数据
-                    $.getJSON('data/tabContent.json', {id: tabId}, function (data) {
-                        vm.tabContent.set(tabId, data);
-                        vm.tabContentTracker += 1;
-                        return vm.tabContent.get(tabId);
-                    });
+                    let list = [
+                        {
+                            "id": 0,
+                            "type":0,
+                            "img": "img/show.jpg",
+                            "label": "养生",
+                            "title": "这是标题",
+                            "content": "这是内容",
+                            "date": "2018-02-25",
+                            "times":2000,
+                            "comments":100
+                        },
+                        {
+                            "id": 1,
+                            "type":1,
+                            "img": "img/show.jpg",
+                            "label": "养生",
+                            "title": "这是标题",
+                            "content": "这是内容",
+                            "date": "2018-02-25",
+                            "times":2000,
+                            "comments":100
+                        },
+                        {
+                            "id": 2,
+                            "type":2,
+                            "img": "img/show.jpg",
+                            "label": "养生",
+                            "title": "这是标题",
+                            "content": "这是内容",
+                            "date": "2018-02-25",
+                            "times":2000,
+                            "comments":100
+                        }
+                    ];
+
+                    vm.tabContent.set(tabId, list);
+                    vm.tabContentTracker += 1;
+                    return vm.tabContent.get(tabId);
+                    // $.getJSON('data/tabContent.json', {id: tabId}, function (data) {
+                    //     vm.tabContent.set(tabId, data);
+                    //     vm.tabContentTracker += 1;
+                    //     return vm.tabContent.get(tabId);
+                    // });
                 }
             },
             showSearch:function () {
