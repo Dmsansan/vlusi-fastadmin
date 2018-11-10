@@ -23,7 +23,7 @@ class Found extends Frontend
     }
 
 
-    public function article_detail()
+    public function detail()
     {
         return $this->view->fetch();
     }
