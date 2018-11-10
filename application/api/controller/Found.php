@@ -141,7 +141,7 @@ class Found extends Api
 
         $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
         if($res){
-             db('article_zan')->where(['id'=>$res])->delete();
+             db('article_zan')->where(['id'=>$res['id']])->delete();
              db('article')->where('id', $article_id)->setDec('zan');
 
             $this->success("取消成功");
@@ -401,7 +401,10 @@ class Found extends Api
                     ->select();
 
         if($children_data){
+            //子类存在数据
+            foreach($children_data as $key=>$val){
 
+            }
         }
         return $subs;
     }
