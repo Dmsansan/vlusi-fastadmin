@@ -9,19 +9,19 @@ use app\common\controller\Backend;
  *
  * @icon fa fa-circle-o
  */
-class Node extends Backend
+class Nodes extends Backend
 {
     
     /**
-     * Node模型对象
-     * @var \app\admin\model\course\Node
+     * Nodes模型对象
+     * @var \app\admin\model\course\Nodes
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\course\Node;
+        $this->model = new \app\admin\model\course\Nodes;
 
     }
     

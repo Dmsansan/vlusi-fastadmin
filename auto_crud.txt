@@ -2,3 +2,10 @@
 php think crud -t test -r category -k category_id -p id -c information/Information
 #多表关联
 php think crud -t test --relation=category --relation=admin --relationforeignkey=category_id --relationforeignkey=admin_id
+
+
+#course_node 生成
+
+php think crud -t course_node -c course/node -m course/node  -r course  -e course/course --force=truec
+注意 修改nodes/add.html的关联的 datesource
+

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Title'  =>  '课程名称',
+    'Name'  =>  '课程名称',
     'Coverimage'  =>  '封面图',
     'Desc'  =>  '课程描述',
     'Coursetimes'  =>  '课程时间',

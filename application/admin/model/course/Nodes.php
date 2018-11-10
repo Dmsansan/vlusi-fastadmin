@@ -4,10 +4,10 @@ namespace app\admin\model\course;
 
 use think\Model;
 
-class Node extends Model
+class Nodes extends Model
 {
     // 表名
-    protected $name = 'course_node';
+    protected $name = 'course_nodes';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
