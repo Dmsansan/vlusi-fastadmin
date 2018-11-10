@@ -23,8 +23,10 @@ class Index extends Frontend
     }
 
 
-    public function detail(){
+    public function detail()
+    {
 
+        return $this->view->fetch();
     }
 
 
