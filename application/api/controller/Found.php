@@ -166,7 +166,7 @@ class Found extends Api
 
 
 
-        $this->success("返回成功",$date);
+        $this->success("返回成功",$data);
     }
 
 
