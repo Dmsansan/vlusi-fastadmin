@@ -2,7 +2,9 @@ $(function () {
     let app = new Vue({
             el: '#app',
             data: {
-                isLikeArt:false,
+                //分页
+                currentPage:1,
+               /* isLikeArt:false,*/
                 likeNum:20,
                 isPlay: false,
                 videoTotalTime: '00:00',
@@ -12,49 +14,39 @@ $(function () {
                 commentsContent:'',
                 //发送按钮禁用
                 isDisabled:true,
-                isVideo:true,
+                //是否有视频
+                isVideo:false,
                 //评论发表聚焦
                 isFocus: false,
-                //是否收藏
-                isCollect:false,
+               /* //是否收藏
+                isCollect:false,*/
                 //上传图片地址数组
                 imgList:[],
                 //是否展示卡片视图
                 isShowCard:false,
-                commentsList:[
-                    {
-                        id:0,
-                        logo:'img/course-detail/logo.jpg',
-                        commenter:'滑小稽',
-                        isLiked:true,
-                        comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                        time:'2018-02-22',
-                        count:10
-                    },
-                    {
-                        id:1,
-                        logo:'img/course-detail/logo.jpg',
-                        commenter:'悟净',
-                        isLiked:false,
-                        comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                        time:'2018-02-22',
-                        count:10
-                    },
-                    {
-                        id:2,
-                        logo:'img/course-detail/logo.jpg',
-                        commenter:'悟能',
-                        isLiked:false,
-                        comments:'这是评论吧啦啦啦',
-                        imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                        time:'2018-02-22',
-                        count:10
-                    }
-                ]
+
+                //详情数据
+                detailsList:[],
+
+            },
+            mounted(){
+                //初始化数据
+                this.init();
             },
             methods: {
+                init:function () {
+                    let self = this;
+                    id = sessionStorage.getItem('detailId');
+                    console.log(sessionStorage.getItem('detailId'))
+                    $.post(' /api/found/detail', {
+                        article_id: 10,
+                        page: self.currentPage,
+                    }, function (data) {
+                        console.log(data)
+                        self.detailsList = data.data;
+                    });
+
+                },
                 //上传图片
                 uploadImg:function () {
                     document.getElementById('upload-img').click();
@@ -75,18 +67,29 @@ $(function () {
                 goBack: function () {
                     history.go(-1);
                 },
-                //点赞
-                likeComment:function (flag) {
-
+                //评论内容点赞
+                likeComment:function (flag,id) {
+                    let self = this;
+                    $.post('/api/found/article_zan', {
+                        article_id: id,
+                    }, function (data) {
+                        console.log(data);
+                        self.init();
+                    });
                 },
                 //文章点赞
                 likeArticle:function(flag) {
-                    this.isLikeArt = flag;
+                    let self = this;
+                    $.post('/api/found/article_zan', {
+                        article_id: sessionStorage.getItem('detailId'),
+                    }, function (data) {
+                        console.log(data);
+                        self.init();
+                    });
                     if(flag) {
-                        this.likeNum = ++this.likeNum;
-                    }
-                    else {
-                        this.likeNum = --this.likeNum;
+                        self.detailsList.is_zan = true;
+                    } else {
+                        self.detailsList.is_zan = false;
                     }
                 },
                 //回复
@@ -98,12 +101,18 @@ $(function () {
                 },
                 //收藏，取消收藏
                 collect:function (flag) {
+                    let self = this;
+                    $.post('/api/found/collection', {
+                        article_id: sessionStorage.getItem('detailId'),
+                    }, function (data) {
+                        console.log(data)
+                    });
                     if(flag) {
-                        this.isCollect = true;
+                        self.detailsList.is_collection = true;
                         mui.toast('已收藏');
                     }
                     else {
-                        this.isCollect = false;
+                        self.detailsList.is_collection = false;
                         mui.toast('已取消收藏');
                     }
                 },
@@ -127,17 +136,35 @@ $(function () {
                 },
                 saveImg:function () {
 
+                },
+                sendInformation:function () {
+                    let self = this;
+                    $.post('/api/found/comment', {
+                        article_id: sessionStorage.getItem('detailId'),
+                        content:self.commentsContent
+                    }, function (data) {
+                        console.log(data);
+                        if (data.code == 1){
+                            self.isDisabled = false;
+                            self.init();
+                        }
+                    });
                 }
             },
             watch: {
                 commentsContent: function (newVal, oldVal) {
                     if (newVal.trim() != '') {
+                        console.log(11111)
                         this.isDisabled = false;
                     }
                     else {
+                        console.log(222)
                         this.isDisabled = true;
                     }
                 }
+            },
+            creat:{
+
             }
         }
     );
@@ -182,3 +209,5 @@ $(function () {
         app.commentsContent = $(this).text();
     });
 });
+
+

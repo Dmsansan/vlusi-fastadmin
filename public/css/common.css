@@ -67,3 +67,4 @@ a.mui-tab-item img {
 a.mui-tab-item{
     touch-action: none;
 }
+[v-cloak]{ display:none}
