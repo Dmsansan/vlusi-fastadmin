@@ -12,38 +12,7 @@ window.onload = function () {
             //详情列表
             detailsList:[],
             //搜索返回的结果
-            searchList: [
-                {
-                    "id": 0,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times": 2000,
-                    "comments": 100
-                },
-                {
-                    "id": 1,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times": 2000,
-                    "comments": 100
-                },
-                {
-                    "id": 2,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times": 2000,
-                    "comments": 100
-                }
-            ],
+            searchList: [],
             //tab页内容
             tabContent: new Map(),
             //手动改变值变化
@@ -135,15 +104,25 @@ window.onload = function () {
             },
             //立即搜索
             searchContent: function (content) {
+                let self = this;
                 if (content) {
-                    this.searchKeys = content;
+                    self.searchKeys = content;
                 }
                 //改变显示状态
-                this.isInput = false;
-                if (this.searchKeys.trim() != '') {
-                    set.add(this.searchKeys);
+                self.isInput = false;
+                if (self.searchKeys.trim() != '') {
+                    set.add(self.searchKeys);
                     localStorage.setItem('history-discovery', JSON.stringify(Array.from(set)));
                     app.historyList = Array.from(set);
+                    //请求搜索接口获取数据
+                    $.post('/api/found/article', {
+                        type_id: self.searchKeys,
+                        page: self.currentPage,
+                    }, function (data) {
+                        console.log(data)
+                        self.detailsList = data.data;
+                    });
+
                 }
             },
             //查看详情

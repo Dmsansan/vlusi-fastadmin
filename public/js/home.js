@@ -10,38 +10,7 @@ window.onload = function () {
             //推荐列表
             detailsList:[],
             //搜索返回的结果
-            searchList:[
-                {
-                    "id": 0,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times":2000,
-                    "comments":100
-                },
-                {
-                    "id": 1,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times":2000,
-                    "comments":100
-                },
-                {
-                    "id": 2,
-                    "img": "img/show.jpg",
-                    "label": "养生",
-                    "title": "这是标题",
-                    "content": "这是内容",
-                    "date": "2018-02-25",
-                    "times":2000,
-                    "comments":100
-                }
-            ],
+            searchList:[],
             //tab页内容
             tabContent: new Map(),
             //手动改变值变化
@@ -129,15 +98,26 @@ window.onload = function () {
             },
             //立即搜索
             searchContent:function (content) {
+                let self = this;
                 if(content) {
                     this.searchKeys = content;
                 }
                 //改变显示状态
-                this.isInput = false;
-                if(this.searchKeys.trim() != '') {
+                self.isInput = false;
+                if(self.searchKeys.trim() != '') {
                     set.add(this.searchKeys);
                     localStorage.setItem('history-home',JSON.stringify(Array.from(set)));
                     app.historyList = Array.from(set);
+
+                    $.post('/api/courses/course', {
+                        title: self.searchKeys,
+                        page:self.currentPage
+                    }, function (data) {
+                        console.log('立即搜索',data.data);
+                        self.searchList = data.data;
+                    });
+
+
                 }
             },
             //显示历史记录
@@ -148,7 +128,7 @@ window.onload = function () {
         },
         created: function () {
             //获取第一个tab页内容
-            this.getItemList(this.tabList[0].id);
+            // this.getItemList(this.tabList[0].id);
         }
     });
     /**
