@@ -138,8 +138,9 @@ class Found extends Api
 
         $article_id  =  (int)$this->request->post("article_id");
 
+        $data=[];
         //初次加载
-        if($page==1){
+        if($page===0){
             $data['detail'] =db('article')->where(['id'=>$article_id])->find();
 
             //同步新增到article浏览数+1
@@ -152,7 +153,7 @@ class Found extends Api
         }
 
         //获取第一级评论内容
-        $date['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
+        $data['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['article_id'=>$article_id,'pid'=>0])
                 ->order('createtime desc')
@@ -160,13 +161,13 @@ class Found extends Api
                 ->select();
 
 
-        foreach($date['comment'] as $key=>$val){
-            $date['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+        foreach($data['comment'] as $key=>$val){
+            $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
 
 
-        $this->success("返回成功",$date);
+        $this->success("返回成功",$data);
     }
 
 
@@ -274,6 +275,10 @@ class Found extends Api
         $this->success("收藏成功",[]);
     }
 
+    public function comment_detail()
+    {
+        
+    }
 
 
 
