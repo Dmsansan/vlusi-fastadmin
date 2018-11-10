@@ -8,9 +8,42 @@ window.onload = function () {
             //轮播图
             bannerList:[],
             //选项卡
-            tabList: [],
+            tabList:[],
+            //详情列表
+            detailsList:[],
             //搜索返回的结果
-            searchList: [],
+            searchList: [
+                {
+                    "id": 0,
+                    "img": "img/show.jpg",
+                    "label": "养生",
+                    "title": "这是标题",
+                    "content": "这是内容",
+                    "date": "2018-02-25",
+                    "times": 2000,
+                    "comments": 100
+                },
+                {
+                    "id": 1,
+                    "img": "img/show.jpg",
+                    "label": "养生",
+                    "title": "这是标题",
+                    "content": "这是内容",
+                    "date": "2018-02-25",
+                    "times": 2000,
+                    "comments": 100
+                },
+                {
+                    "id": 2,
+                    "img": "img/show.jpg",
+                    "label": "养生",
+                    "title": "这是标题",
+                    "content": "这是内容",
+                    "date": "2018-02-25",
+                    "times": 2000,
+                    "comments": 100
+                }
+            ],
             //tab页内容
             tabContent: new Map(),
             //手动改变值变化
@@ -24,33 +57,23 @@ window.onload = function () {
             //显示历史记录还是搜索内容
             isInput: true
         },
-        updated: function() {
-            var sliderMuiObj = mui(".mui-slider");//滑动科目
-            sliderMuiObj.slider({
-                interval: 2000  //如果你想自动3000ms滑动一下就写上这个。
-            });
-        },
         mounted() {
             //获取 tab页内容和页面初始化数据
             this.init();
-            //可多次调用
-            mui("#pullRefresh").pullRefresh({
-                up: {
-                    contentrefresh: '正在加载...',
-                    callback: this.loadMore
-                },
-            });
-           //获取轮播图数据
+            //获取轮播图数据
             this.sowingMap();
-            var gallery = mui('.mui-slider');
-            gallery.slider({
-                interval:1000//自动轮播周期，若为0则不自动播放，默认为0；
-            });
-
-
+            //推荐内容
+            this.getRecommendList();
         },
 
         methods: {
+            //获取 tab页内容和页面初始化数据
+            init: function () {
+                let self = this;
+                $.getJSON('/api/found/category', function (data) {
+                    self.tabList = data.data;
+                });
+            },
             //获取推荐数据
             getRecommendList: function () {
                 let self = this;
@@ -58,49 +81,38 @@ window.onload = function () {
                 $.post('/api/found/recommend', {
                     page: self.currentPage
                 }, function (data) {
-                    self.searchList = data.data;
+                    self.detailsList = data.data;
                 });
             },
             //获取轮播图数据
-           sowingMap:function () {
-               let self = this;
-               $.getJSON('/api/banner/lists', function (data) {
-                  console.log('获取轮播图数据',data.data)
-                   self.bannerList = data.data;
-                 /* self.$nextTick(function () {
-                      console.log(1111)
-                      mui("#slider").slider({interval: 30});
-                  })*/
-
-               });
-           },
-            init: function () {
+            sowingMap:function () {
                 let self = this;
-                $.getJSON('/api/found/category', function (data) {
-                    self.tabList = data.data;
+                $.getJSON('/api/banner/lists', function (data) {
+                    console.log('获取轮播图数据',data.data)
+                    self.bannerList = data.data;
+                    /* self.$nextTick(function () {
+                         console.log(1111)
+                         mui("#slider").slider({interval: 30});
+                     })*/
+
                 });
             },
             loadTabContent: function (tabId, index) {
                 this.activeIndex = index;
-                this.getItemList(tabId);
+                //获取列表数据
+                this.getDetailsList(tabId);
             },
-            //列表数据
-            getItemList: function (tabId) {
+            //获取详情数据
+            getDetailsList: function (tabId) {
                 let self = this;
-                if (self.tabContent.get(tabId)) {
-                    return self.tabContent.get(tabId);
-                } else {
-                    //请求获取数据
-                    $.post('/api/found/article', {
-                        type_id: tabId,
-                        page: self.currentPage,
-                    }, function (data) {
-                        self.searchList = data.data;
-                        /*self.tabContent.set(tabId, data);
-                        self.tabContentTracker += 1;
-                        return self.tabContent.get(tabId);*/
-                    });
-                }
+                //请求获取数据
+                $.post('/api/found/article', {
+                    type_id: tabId,
+                    page: self.currentPage,
+                }, function (data) {
+                    console.log(data)
+                    self.detailsList = data.data;
+                });
             },
             showSearch: function () {
                 //显示搜索页面
@@ -134,39 +146,23 @@ window.onload = function () {
                     app.historyList = Array.from(set);
                 }
             },
+            //查看详情
             goInner: function (id) {
+                console.log('查看详情',id);
+                sessionStorage.setItem('detailId',id)
                 mui.openWindow({
-                    url: 'discovery-detail.html'
+                    url: '/index/found/detail',
                 })
             },
             //显示历史记录
             showHistory: function () {
                 //改变显示状态
                 this.isInput = true;
-            },
-
-            loadMore: function () {
-                console.log(1111)
-                // 加载更多的内容到列表中
-                this.currentPage++;
-                $.post('/api/found/recommend', {
-                    page: 2
-                }, function (data) {
-                    console.log("加载更多的内容到列表中", data.data)
-                    self.searchList = data.data;
-                });
-
-                /* // 如果没有更多数据了，则关闭上拉加载
-                 pullRefresh.endPullupToRefresh(true);
-                 // 如果有更多数据，则继续
-                 pullRefresh.endPullupToRefresh(false);*/
-            },
-
-
+            }
         },
         created: function () {
-            //获取推荐数据
-            this.getRecommendList();
+            //获取第一个tab页内容
+            // this.getItemList(this.tabList[0].id);
         }
     });
     /**
