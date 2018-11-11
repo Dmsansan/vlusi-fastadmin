@@ -221,6 +221,23 @@ class Courses extends Api
             $node=db('course_nodes')->where(['course_id'=>$course_id])->field('sort,title,desc,isviewlist')->select();
             $data['detail']['node']=$node;
 
+            //获取是否申请课程
+            $audit=db('course_audit')->where(['course_id'=>$course_id,'user_id'=>$userid])->find();
+            if(!$audit){
+                $data['detail']['is_audit']=0;
+            }else{
+                switch($audit['checklist']) {
+                    case '拒绝':
+                        $data['detail']['is_audit'] = 0;
+                        break;
+                    case '待审核':
+                        $data['detail']['is_audit'] = -1;
+                        break;
+                    case '通过':
+                        $data['detail']['is_audit'] = 1;
+                        break;
+                }
+            }
 
         }
 
