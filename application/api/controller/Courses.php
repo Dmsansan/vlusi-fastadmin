@@ -254,7 +254,7 @@ class Courses extends Api
 
         $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
         if(!$is_course){
-
+            $this->success("评论成功");
         }
 
         $insert['course_id']=$course_id;
@@ -341,6 +341,12 @@ class Courses extends Api
         $userid=$this->userid;
 
         $course_id= (int)$this->request->request("course_id");
+
+        $is_course=db('course')->where(['id'=>$course_id])->find();
+        if(!$is_course){
+            $this->success("收藏成功");
+        }
+
         $is_have=db('course_collection')->where(['course_id'=>$course_id,'user_id'=>$userid])->find();
         if($is_have){
 
