@@ -20,8 +20,34 @@
             <!--
                 图片
             -->
-            <div class="img-container">
+          <!--  <div class="img-container">
                 <img src="img/show.jpg"/>
+            </div>-->
+
+             
+            <div id="slider" class="mui-slider" >
+                <div class="mui-slider-group mui-slider-loop" id="stul">
+                    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                    <div class="mui-slider-item mui-slider-item-duplicate"
+                         v-if="bannerList.length>0">
+                        <a :href="bannerList[bannerList.length-1].link_url">
+                            <img :src="bannerList[bannerList.length-1].img_url">
+                        </a>
+
+                    </div>
+                    <!-- v-for循环 -->
+                    <div class="mui-slider-item" v-for="(pic,index) in bannerList">
+                        <a :href="pic.link_url"> <img :src="pic.img_url"></a>
+
+                    </div>
+                    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                    <div class="mui-slider-item mui-slider-item-duplicate" v-if="bannerList.length>0">
+                        <a :href="bannerList[0].link_url">
+                            <img :src="bannerList[0].img_url">
+                        </a>
+
+                    </div>
+                </div>
             </div>
             <!--
                 选项卡
@@ -30,7 +56,8 @@
                 <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item"
                    :class="{active:-1 == activeIndex}">推荐</a>
                 <template v-for="(item,index) in tabList">
-                    <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item" :class="{active:index == activeIndex}">{{item.name}}</a>
+                    <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item"
+                       :class="{active:index == activeIndex}">{{item.name}}</a>
                 </template>
             </div>
             <!--
@@ -59,7 +86,7 @@
                 </div>
             </div>
             <!--选项卡切换课程-->
-            <div class="tab-content"    v-else
+            <div class="tab-content" v-else
                  :class="{active:index == activeIndex}"
                  v-for="(tab,index) in tabList">
                 <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item">
@@ -87,7 +114,7 @@
                 <img src="img/course-active.png"/>
                 <span class="mui-tab-label">课程</span>
             </a>
-            <a class="mui-tab-item"  href="discovery.html">
+            <a class="mui-tab-item" href="discovery.html">
                 <img src="img/discovery.png"/>
                 <span class="mui-tab-label">发现</span>
             </a>
@@ -103,7 +130,8 @@
             <div class="mui-search-container">
                 <img @click="goBack" src="img/home/icon_backblack@3x.png" class="back-icon"/>
                 <img src="img/home/icon-search.png" class="icon-search">
-                <input @focus="showHistory()" id="search-keys" type="text" v-model="searchKeys" placeholder="请输入您搜索的关键词"/>
+                <input @focus="showHistory()" id="search-keys" type="text" v-model="searchKeys"
+                       placeholder="请输入您搜索的关键词"/>
                 <button type="button" @click="searchContent()">搜索</button>
             </div>
         </header>
@@ -131,13 +159,13 @@
                         <img src="img/home/label.png"/>
                         <p class="class-label-name">{{item.label}}</p>
                     </div>
-                    <img :src="item.img"/>
-                    <p class="comments-and-times">{{item.times}}浏览 &#8226; {{item.comments}}评论</p>
+                    <img :src="item.coverimage"/>
+                    <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                 </div>
                 <div class="tab-content-desc">
-                    <p class="tab-content-desc-title">{{item.title}}</p>
-                    <p class="tab-content-desc-content">{{item.content}}</p>
-                    <p class="tab-content-desc-date">{{item.date}}</p>
+                    <p class="tab-content-desc-title">{{item.name}}</p>
+                    <p class="tab-content-desc-content">{{item.desc}}</p>
+                    <p class="tab-content-desc-date">{{item.auth}}   {{item.createtime}}</p>
                 </div>
             </div>
         </div>

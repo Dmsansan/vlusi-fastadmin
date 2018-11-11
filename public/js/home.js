@@ -5,6 +5,8 @@ window.onload = function () {
         data: {
             //选中的选项卡
             activeIndex: -1,
+            //轮播图
+            bannerList:[],
             //选项卡
             tabList:[],
             //推荐列表
@@ -19,16 +21,18 @@ window.onload = function () {
             historyList:Array.from(set),
             //搜索的关键字
             searchKeys:'',
+            //第几页
+            pageNumber:1,
             //显示的页面标记
             currentPage:1,
             //显示历史记录还是搜索内容
             isInput:true
         },
         mounted() {
-            //获取 tab页内容和页面初始化数据
+          /*  //获取 tab页内容和页面初始化数据
             this.init();
             //获取轮播图数据
-            //this.sowingMap();
+            this.sowingMap();*/
             //推荐内容
             // this.getRecommendList();
         },
@@ -43,12 +47,25 @@ window.onload = function () {
                     })
                 });
             },
+            //获取轮播图内容和页面初始化数据
+            sowingMap:function () {
+                let self = this;
+                $.getJSON(' /api/banner/lists', function (data) {
+                    console.log('获取轮播图内容和页面初始化数据',data.data)
+                    self.bannerList = data.data;
+                    self.$nextTick(function () {
+                        mui("#slider").slider({
+                            interval: 200
+                        });
+                    })
+                });
+            },
             //推荐课程接口
             getRecommendList:function () {
                 let self = this;
                 self.activeIndex = -1;
                 $.post('/api/found/recommend', {
-                    page: self.currentPage
+                    page: self.pageNumber
                 }, function (data) {
                     console.log('推荐课程接口',data.data)
                     self.detailsList = data.data;
@@ -64,7 +81,7 @@ window.onload = function () {
                 let self = this;
                 $.post('/api/courses/course', {
                     type_id: tabId,
-                    page:self.currentPage
+                    page:self.pageNumber
                     }, function (data) {
                     console.log('获取某个分类课程',data.data);
                     self.detailsList = data.data;
@@ -99,6 +116,7 @@ window.onload = function () {
             //立即搜索
             searchContent:function (content) {
                 let self = this;
+                self.pageNumber = 1;
                 if(content) {
                     this.searchKeys = content;
                 }
@@ -111,13 +129,11 @@ window.onload = function () {
 
                     $.post('/api/courses/course', {
                         title: self.searchKeys,
-                        page:self.currentPage
+                        page:self.pageNumber
                     }, function (data) {
                         console.log('立即搜索',data.data);
                         self.searchList = data.data;
                     });
-
-
                 }
             },
             //显示历史记录
@@ -127,8 +143,11 @@ window.onload = function () {
             }
         },
         created: function () {
-            //获取第一个tab页内容
-            // this.getItemList(this.tabList[0].id);
+            //获取轮播图数据
+            this.sowingMap();
+            //获取 tab页内容和页面初始化数据
+            this.init();
+
         }
     });
     /**
