@@ -61,17 +61,21 @@ class Courses extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $query=db('course')->alias('a')->order('flag desc,readnum desc')
+        $data=db('course')->alias('a')
             ->join('course_category b','b.id=a.course_category_id')
-            ->field('a.*,b.name as type_name');
+            ->order('flag desc,readnum desc')
+            ->field('a.*,b.name as type_name')
+            ->page($page,$this->pagesize)
+            ->select();
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
 
-        $allpage=$query->count();
+        $allpage=db('course')->alias('a')
+                ->join('course_category b','b.id=a.course_category_id')
+                ->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
-         $query ->limit($page*$this->pagesize,$this->pagesize);
-        $data=   $query->select();
+
 
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
@@ -103,24 +107,23 @@ class Courses extends Api
     {
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
-        $page = $page?$page-1:0;
         $search = $this->request->request('title');
 
-        //分类数据
-        $query=db('course')->order('createtime desc');
+
         if($search){
-            $query->where(['name'=>['like','%'.$search.'%']]);
+            $where=['name'=>['like','%'.$search.'%']];
         }else{
-            $query->where(['course_category_id'=>$typeid]);
+            $where=['course_category_id'=>$typeid];
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
 
-        $allpage=$query->count();
+        //分类数据
+        $data=db('course')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
+
+        $allpage=db('course')->where($where)->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
-        $query->limit($page*$this->pagesize,$this->pagesize);
-        $data=$query->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
@@ -221,20 +224,20 @@ class Courses extends Api
 
         }
 
+        $where=['course_id'=>$course_id,'pid'=>0];
         //获取第一级评论内容
-        $query= db('course_comment')->alias('a')->join('user','user.id=a.user_id')
-                ->field('user.nickname,avatar,a.*')
-                ->where(['course_id'=>$course_id,'pid'=>0])
-                ->order('a.createtime desc');
-
+        $data['comment']= db('course_comment')->alias('a')->join('user','user.id=a.user_id')
+                        ->field('user.nickname,avatar,a.*')
+                        ->where($where)
+                        ->order('a.createtime desc')
+                        ->page($page,$this->pagesize)
+                        ->select();
 
         //分页
-        $allpage=$query->count();
+        $allpage=db('course_comment')->alias('a')->join('user','user.id=a.user_id')->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
-        $query  ->limit($page*$this->pagesize,$this->pagesize);
-        $data['comment']=$query->select();
 
         //查询该用户对评论点赞的数量
         if($data['comment']){
@@ -485,6 +488,46 @@ class Courses extends Api
         }
 
     }
+
+
+    /**
+     * 获取课程的课时详情接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/courses/nodes)
+     * @ApiParams   (name="nodes_id", type="integer", required=true, description="课时的id")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
+     */
+
+    public function nodes_detail()
+    {
+        $nodes_id= (int)$this->request->request("nodes_id");
+
+        $userid=$this->userid;
+        //查看该课时是否为可体验
+        $is_views=db('course_nodes')->where(['id'=>$nodes_id])->find();
+        if(!$is_views){
+            $this->success("获取成功",[]);
+        }
+
+        if($is_views['isviewlist']!=='可体验'){
+
+            //不是体验课程判断是否申请了并且通过了申请
+            $is_check=db('course_audit')->where(['user_id'=>$userid,'checklist'=>'通过'])->find();
+        }
+
+
+    }
+
+
+
+
 
 
 }

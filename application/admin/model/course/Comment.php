@@ -36,8 +36,8 @@ class Comment extends Model
     }
 
 
-    public function admin()
+    public function user()
     {
-        return $this->belongsTo('Admin', 'user_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\User', 'user_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }
