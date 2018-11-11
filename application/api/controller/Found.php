@@ -74,7 +74,7 @@ class Found extends Api
             $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
 
@@ -231,11 +231,11 @@ class Found extends Api
         $query  =db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['article_id'=>$article_id,'pid'=>0])
-                ->order('createtime desc')
+                ->order('a.createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize);
         //分页
         $allpage = $query->count('*');
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
         $data['comment']=$query ->select();
 

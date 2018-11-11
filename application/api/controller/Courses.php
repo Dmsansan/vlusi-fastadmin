@@ -227,7 +227,7 @@ class Courses extends Api
         $query= db('course_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['course_id'=>$course_id,'pid'=>0])
-                ->order('createtime desc')
+                ->order('a.createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize);
 
         //分页
