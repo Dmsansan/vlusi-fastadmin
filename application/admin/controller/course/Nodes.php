@@ -22,7 +22,7 @@ class Nodes extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\course\Nodes;
-
+        $this->view->assign("isviewlistList", $this->model->getIsviewlistList());
     }
     
     /**

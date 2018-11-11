@@ -18,14 +18,23 @@ class Nodes extends Model
     
     // 追加属性
     protected $append = [
-
+        'isviewlist_text'
     ];
     
 
     
+    public function getIsviewlistList()
+    {
+        return ['不可体验' => __('不可体验'),'可体验' => __('可体验')];
+    }     
 
 
-
+    public function getIsviewlistTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['isviewlist']) ? $data['isviewlist'] : '');
+        $list = $this->getIsviewlistList();
+        return isset($list[$value]) ? $list[$value] : '';
+    }
 
 
 
