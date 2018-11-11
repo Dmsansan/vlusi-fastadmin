@@ -68,7 +68,7 @@ class Courses extends Api
             ->limit($page*$this->pagesize,$this->pagesize);
 
         $allpage=$query->count();
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
 
@@ -118,7 +118,7 @@ class Courses extends Api
         $query=$list->limit($page*$this->pagesize,$this->pagesize);
 
         $allpage=$query->count();
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
 
@@ -232,7 +232,7 @@ class Courses extends Api
 
         //分页
         $allpage=$query->count();
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
         $data['comment']=$query->select();
 

@@ -118,7 +118,7 @@ class Found extends Api
 
         //分页
         $allpage = $list->count('*');
-        $pages['page_count']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
         $data=  $list ->select();
