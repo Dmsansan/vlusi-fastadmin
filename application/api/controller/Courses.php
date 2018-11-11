@@ -68,6 +68,8 @@ class Courses extends Api
             ->limit($page*$this->pagesize,$this->pagesize);
 
         $allpage=$query->count();
+        $pages['page_count']=ceil($allpage/$this->pagesize);
+
 
 
         $data=   $query->select();
@@ -77,7 +79,7 @@ class Courses extends Api
         }
 
 
-        $this->success("返回成功",$data);
+        $this->success("返回成功",$data,$pages);
     }
 
     /**
