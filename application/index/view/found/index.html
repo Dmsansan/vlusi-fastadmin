@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/discovery.js"></script>
 
     <style>
-       .mui-slider-loop{
+        .mui-slider-loop{
             height: 193px;
         }
     </style>
@@ -35,26 +35,25 @@
             <div id="slider" class="mui-slider" >
                 <div class="mui-slider-group mui-slider-loop" id="stul">
                     <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-                    <!--<div class="mui-slider-item mui-slider-item-duplicate"-->
-                         <!--v-if="bannerList.length>0">-->
-                        <!--<a :href="bannerList[bannerList.length-1].link_url">-->
-                            <!--<img :src="bannerList[bannerList.length-1].img_url">-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!-- v-for循环 -->
-                    {volist name="banner" id="vo"}
-                    <div class="mui-slider-item" >
-                        <a :href="{$vo.link_url}"> <img :src="{$vo.img_url}"></a>
+                    <div class="mui-slider-item mui-slider-item-duplicate"
+                         v-if="bannerList.length>0">
+                        <a :href="bannerList[bannerList.length-1].link_url">
+                            <img :src="bannerList[bannerList.length-1].img_url">
+                        </a>
 
                     </div>
-                    {/volist}
-                    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-                    <!--<div class="mui-slider-item mui-slider-item-duplicate" v-if="bannerList.length>0">-->
-                        <!--<a :href="bannerList[0].link_url">-->
-                            <!--<img :src="bannerList[0].img_url">-->
-                        <!--</a>-->
+                    <!-- v-for循环 -->
+                    <div class="mui-slider-item" v-for="(pic,index) in bannerList">
+                        <a :href="pic.link_url"> <img :src="pic.img_url"></a>
 
-                    <!--</div>-->
+                    </div>
+                    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                    <div class="mui-slider-item mui-slider-item-duplicate" v-if="bannerList.length>0">
+                        <a :href="bannerList[0].link_url">
+                            <img :src="bannerList[0].img_url">
+                        </a>
+
+                    </div>
                 </div>
             </div>
             <!--
@@ -75,8 +74,9 @@
             -->
             <!--推荐内容-->
             <div class="tab-content" :class="{active:-1 == activeIndex}"
-                v-if="activeIndex == -1">
-                <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item">
+                 v-if="activeIndex == -1">
+                <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item" id="aaa"
+                     @touchstart="touchStart($event)" @touchmove="touchMove($event)">
                     <template v-if="item.coverimage || item.videofile">
                         <!--非纯文字-->
                         <div class="img-container">
@@ -114,7 +114,7 @@
                         <!--非纯文字-->
                         <div class="img-container">
                             <div class="class-label">
-                              <!--  <img src="/img/home/label.png"/>-->
+                                <!--  <img src="/img/home/label.png"/>-->
                                 <p class="class-label-name">{{item.label}}</p>
                             </div>
                             <template v-if="item.videofile">
@@ -204,8 +204,23 @@
 </div>
 
 
-
 <script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
+<script>
+    /*
+        mui.init({
+            swipeBack:true //启用右滑关闭功能
+        });
+        mui("#slider2").slider({interval: 30});*/
+    /* Vue.component('名字', {
+         data: function () {
+             return {
+                 count: 0
+             }
+         },
+         template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+     })*/
+
+</script>
 
 
 </body>
