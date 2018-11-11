@@ -233,8 +233,9 @@ class Found extends Api
                 ->where(['article_id'=>$article_id,'pid'=>0])
                 ->order('createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize);
-
-        $allpage['page_count']=$query->count();
+        //分页
+        $allpage = $query->count('*');
+        $pages['page_count']=ceil($allpage/$this->pagesize);
 
         $data['comment']=$query ->select();
 
@@ -251,7 +252,7 @@ class Found extends Api
         }
 
 
-        $this->success("返回成功",$data,$allpage);
+        $this->success("返回成功",$data,$pages);
     }
 
 

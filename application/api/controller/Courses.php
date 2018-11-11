@@ -67,6 +67,7 @@ class Courses extends Api
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize);
 
+        $allpage=$query->count();
 
 
         $data=   $query->select();
@@ -114,7 +115,8 @@ class Courses extends Api
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
         $query=$list->limit($page*$this->pagesize,$this->pagesize);
 
-        $allpage['page_count']=$query->count();
+        $allpage=$query->count();
+        $pages['page_count']=ceil($allpage/$this->pagesize);
 
 
 
@@ -123,7 +125,7 @@ class Courses extends Api
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
-        $this->success("返回成功",$data,$allpage);
+        $this->success("返回成功",$data,$pages);
     }
 
 
@@ -216,12 +218,15 @@ class Courses extends Api
         }
 
         //获取第一级评论内容
-        $data['comment']=db('course_comment')->alias('a')->join('user','user.id=a.user_id')
+        $query= db('course_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['course_id'=>$course_id,'pid'=>0])
                 ->order('createtime desc')
-                ->limit($page*$this->pagesize,$this->pagesize)
-                ->select();
+                ->limit($page*$this->pagesize,$this->pagesize);
+        $allpage=$query->count();
+        $pages['page_count']=ceil($allpage/$this->pagesize);
+
+        $data['comment']=$query->select();
 
         //查询该用户对评论点赞的数量
         if($data['comment']){
@@ -236,7 +241,7 @@ class Courses extends Api
         }
 
 
-        $this->success("返回成功",$data);
+        $this->success("返回成功",$data,$pages);
     }
 
 
