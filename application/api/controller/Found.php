@@ -148,6 +148,12 @@ class Found extends Api
             $this->success("取消成功");
         }
 
+        //无文章，返回成功
+        $is_article=db('article')->field('id')->where(['id'=>$article_id])->find();
+        if(!$is_article){
+            $this->success("点赞成功");
+        }
+
         $insert['article_id']=$article_id;
         $insert['user_id']=$userid;
         $insert['createtime']=time();

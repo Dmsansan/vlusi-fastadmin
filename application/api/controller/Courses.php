@@ -166,7 +166,7 @@ class Courses extends Api
     /**
      * 获取课程详情及评论接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/detail)
+     * @ApiRoute    (/api/courses/detail)
      * @ApiParams   (name="page", type="integer", required=true, description="评论页码")
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
@@ -193,7 +193,7 @@ class Courses extends Api
             $data['detail'] =db('course')->where(['id'=>$course_id])->find();
 
             //同步新增到course浏览数+1
-            db('course')->where('id',$course_id)->setInc('browse');
+            db('course')->where('id',$course_id)->setInc('readnum');
 
             //TODO 获取用户信息 判断用户是否点赞
             $collection=db('course_collection')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
@@ -234,7 +234,7 @@ class Courses extends Api
     /**
      * 提交评论接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/comment)
+     * @ApiRoute    (/api/courses/comment)
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
@@ -251,6 +251,11 @@ class Courses extends Api
         $userid=$this->userid;
         $course_id  =  (int)$this->request->request("course_id");
         $content=$this->request->request("content");
+
+        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
+        if(!$is_course){
+
+        }
 
         $insert['course_id']=$course_id;
         $insert['content']=$content;
@@ -271,7 +276,7 @@ class Courses extends Api
     /**
      * 评论点赞接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/comment_zan)
+     * @ApiRoute    (/api/courses/comment_zan)
      * @ApiParams   (name="comment_id", type="integer", required=true, description="评论id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -296,6 +301,11 @@ class Courses extends Api
             $this->success("取消成功");
         }
 
+        //无评论，返回成功
+        $is_comment=db('course_comment')->where(['id'=>$comment_id])->find();
+        if(!$is_comment){
+            $this->success("点赞成功");
+        }
 
         $insert['comment_id']=$comment_id;
         $insert['user_id']=$userid;
@@ -315,7 +325,7 @@ class Courses extends Api
     /**
      * 收藏接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/collection)
+     * @ApiRoute    (/api/courses/collection)
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -351,7 +361,7 @@ class Courses extends Api
     /**
      * 获取某条评论详情
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/course/comment_detail)
+     * @ApiRoute    (/api/courses/comment_detail)
      * @ApiParams   (name="comment_id", type="integer", required=true, description="该评论的id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
