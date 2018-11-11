@@ -7,38 +7,8 @@ window.onload = function () {
             openTitle: '展开全部',
             //获取课程数据
             detailList:[],
-            courseList: [
-                {
-                    id: 0,
-                    title: '广场舞16步',
-                    desc: '适合初学者，一般由4个4步组成',
-                    isOpen: true
-                },
-                {
-                    id: 1,
-                    title: '广场舞16步',
-                    desc: '适合初学者，一般由4个4步组成',
-                    isOpen: true
-                },
-                {
-                    id: 2,
-                    title: '广场舞16步',
-                    desc: '适合初学者，一般由4个4步组成',
-                    isOpen: false
-                },
-                {
-                    id: 3,
-                    title: '广场舞16步',
-                    desc: '适合初学者，一般由4个4步组成',
-                    isOpen: true
-                },
-                {
-                    id: 4,
-                    title: '广场舞16步',
-                    desc: '适合初学者，一般由4个4步组成',
-                    isOpen: false
-                }
-            ],
+            //课时列表
+            courseList:[],
             //评论输入的内容
             commentsContent: '',
             //评论发表聚焦
@@ -53,6 +23,8 @@ window.onload = function () {
             isCollect:false,
             //页面页码
             pageNumber:1,
+            //页面总页数
+            pageCount:null,
             //文章点赞
             isLikeArt:false,
             likeArtNums:0,
@@ -60,38 +32,9 @@ window.onload = function () {
             courseStatus:0,
             //是否展示卡片视图
             isShowCard:false,
-            commentsList:[
-                {
-                    id:0,
-                    logo:'img/course-detail/logo.jpg',
-                    commenter:'滑小稽',
-                    isLiked:true,
-                    comments:'这是评论吧啦啦啦',
-                    imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                    time:'2018-02-22',
-                    count:10
-                },
-                {
-                    id:1,
-                    logo:'img/course-detail/logo.jpg',
-                    commenter:'悟净',
-                    isLiked:false,
-                    comments:'这是评论吧啦啦啦',
-                    imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                    time:'2018-02-22',
-                    count:10
-                },
-                {
-                    id:2,
-                    logo:'img/course-detail/logo.jpg',
-                    commenter:'悟能',
-                    isLiked:false,
-                    comments:'这是评论吧啦啦啦',
-                    imgs:'<img src="img/show.jpg"/><img src="img/show.jpg"/><img src="img/show.jpg"/>',
-                    time:'2018-02-22',
-                    count:10
-                }
-            ]
+            //课程评论
+            commentsList:[],
+
         },
         mounted() {
             /*  //获取 tab页内容和页面初始化数据
@@ -112,6 +55,9 @@ window.onload = function () {
                 }, function (data) {
                     console.log('获取某个分类课程',data.data);
                     self.detailList = data.data;
+                    self.courseList = data.data.detail.node;
+                    self.commentsList = data.data.comment;
+                    self.pageCount = data.data.page.pageCount;
                 });
 
             },
