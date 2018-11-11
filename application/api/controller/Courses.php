@@ -204,6 +204,7 @@ class Courses extends Api
         //初次加载
         if($page===0){
             $data['detail'] =db('course')->where(['id'=>$course_id])->find();
+            $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
 
             //同步新增到course浏览数+1
             db('course')->where('id',$course_id)->setInc('readnum');
@@ -215,6 +216,9 @@ class Courses extends Api
             $zan=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
             $data['is_zan']=$zan?1:0;
 
+            //获取该课程的视频列表
+            $node=db('course_nodes')->where(['course_id'=>$course_id])->field('sort,title,desc,isviewlist')->select();
+            $data['detail']['node']=$node;
 
 
         }
@@ -225,6 +229,8 @@ class Courses extends Api
                 ->where(['course_id'=>$course_id,'pid'=>0])
                 ->order('createtime desc')
                 ->limit($page*$this->pagesize,$this->pagesize);
+
+        //分页
         $allpage=$query->count();
         $pages['page_count']=ceil($allpage/$this->pagesize);
 
@@ -234,11 +240,11 @@ class Courses extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
-                if($val['user_id']==$this->userid){
-                    $data['comment'][$key]['is_zan']=1;
-                }else{
-                    $data['comment'][$key]['is_zan']=0;
-                }
+//                if($val['user_id']==$this->userid){
+//                    $data['comment'][$key]['is_zan']=1;
+//                }else{
+//                    $data['comment'][$key]['is_zan']=0;
+//                }
             }
         }
 
