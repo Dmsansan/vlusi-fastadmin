@@ -228,12 +228,15 @@ class Found extends Api
         }
 
         //获取第一级评论内容
-        $data['comment']=db('article_comment')->alias('a')->join('user','user.id=a.user_id')
+        $query  =db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['article_id'=>$article_id,'pid'=>0])
                 ->order('createtime desc')
-                ->limit($page*$this->pagesize,$this->pagesize)
-                ->select();
+                ->limit($page*$this->pagesize,$this->pagesize);
+
+        $allpage['page_count']=$query->count();
+
+        $data['comment']=$query ->select();
 
         //查询该用户对评论点赞的数量
         if($data['comment']){
@@ -248,7 +251,7 @@ class Found extends Api
         }
 
 
-        $this->success("返回成功",$data);
+        $this->success("返回成功",$data,$allpage);
     }
 
 

@@ -61,18 +61,22 @@ class Courses extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $list=db('course')->alias('a')->order('flag desc,readnum desc')
+        $query=db('course')->alias('a')->order('flag desc,readnum desc')
             ->join('course_category b','b.id=a.course_category_id')
             ->field('a.*,b.name as type_name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-            ->limit($page*$this->pagesize,$this->pagesize)->select();
+            ->limit($page*$this->pagesize,$this->pagesize);
 
-        foreach($list as $key=>$val){
-            $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
+
+
+        $data=   $query->select();
+
+        foreach($data as $key=>$val){
+            $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
 
-        $this->success("返回成功",$list);
+        $this->success("返回成功",$data);
     }
 
     /**
@@ -108,13 +112,18 @@ class Courses extends Api
             $list->where(['course_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();
+        $query=$list->limit($page*$this->pagesize,$this->pagesize);
 
+        $allpage['page_count']=$query->count();
+
+
+
+        $data=$query->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
-        $this->success("返回成功",$data);
+        $this->success("返回成功",$data,$allpage);
     }
 
 
