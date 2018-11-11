@@ -3,6 +3,15 @@ window.onload = function () {
     let app = new Vue({
         el: '#app',
         data: {
+            top: 0,
+            startY: 0,
+            pullUpState: 0, // 1:上拉加载更多, 2:加载中……, 3:我是有底线的
+            isLoading: false, // 是否正在加载
+            pullUpStateText: {
+                moreDataTxt: '上拉加载更多',
+                loadingMoreDataTxt: '加载中...',
+                noMoreDataTxt: '我是有底线的'
+            },
             //选中的选项卡
             activeIndex: -1,
             //轮播图
@@ -31,10 +40,56 @@ window.onload = function () {
         mounted() {
             //获取 tab页内容和页面初始化数据
             this.init();
-
         },
 
         methods: {
+            touchStart (e) {
+                this.startY = e.targetTouches[0].pageY
+            },
+            touchMove (e) {
+                if (e.targetTouches[0].pageY < this.startY) { // 上拉
+                    this.judgeScrollBarToTheEnd()
+                }
+            },
+
+            // 判断滚动条是否到底
+            judgeScrollBarToTheEnd () {
+                let innerHeight = document.querySelector('.active').clientHeight
+                // 变量scrollTop是滚动条滚动时，距离顶部的距离
+                let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                // 变量scrollHeight是滚动条的总高度
+                let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+                // 滚动条到底部的条件
+                if (scrollTop + scrollHeight >= innerHeight) {
+                    this.infiniteLoad()
+                }
+            },
+
+            infiniteLoad () {
+                this.isLoading = true
+                setTimeout(() => {
+                   this.infiniteLoadDone();
+                }, 800)
+            },
+            infiniteLoadDone () {
+            let self = this;
+                self.pageNumber +=1;
+
+                $.post('/api/found/recommend', {
+                    page: self.pageNumber
+                }, function (data) {
+                    if(data.data.length){
+                        self.detailsList.push(data.data);
+                        self.$nextTick(function () {
+                            // this.listenScroll();
+                        })
+                    }else {
+                        return
+                    }
+
+                });
+
+            },
             //获取 tab页内容和页面初始化数据
             init: function () {
                 let self = this;
@@ -54,6 +109,9 @@ window.onload = function () {
                     page: self.pageNumber
                 }, function (data) {
                     self.detailsList = data.data;
+                    self.$nextTick(function () {
+                        // this.listenScroll();
+                    })
                 });
             },
             //获取轮播图数据
@@ -149,13 +207,18 @@ window.onload = function () {
         created: function () {
             //获取轮播图数据
             this.sowingMap();
-        }
+
+
+        },
+        beforeDestroy(){
+            $(window).unbind('scroll');
+        },
     });
     /**
      * 固定tab
      */
         //获取 id="course_container" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
-    let offset_top = document.getElementById("tab-container").offsetTop;
+   /* let offset_top = document.getElementById("tab-container").offsetTop;
     let isSetHeight = false;
     $(window).scroll(function () {
         //获取垂直滚动的距离（scrollTop()是从顶部开始滚动产生的距离）
@@ -169,6 +232,6 @@ window.onload = function () {
             // 同理，把之前添加的元素移除即可
             document.getElementById("tab-container").classList.remove("fixed");
         }
-    });
+    });*/
 
 }
