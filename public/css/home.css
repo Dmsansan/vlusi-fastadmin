@@ -238,3 +238,11 @@ div#page2 header {
     width: 100%;
     z-index: 999;
 }
+.no-more-comments {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 1rem;
+}

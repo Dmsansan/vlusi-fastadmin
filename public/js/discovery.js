@@ -3,15 +3,6 @@ window.onload = function () {
     let app = new Vue({
         el: '#app',
         data: {
-            top: 0,
-            startY: 0,
-            pullUpState: 0, // 1:上拉加载更多, 2:加载中……, 3:我是有底线的
-            isLoading: false, // 是否正在加载
-            pullUpStateText: {
-                moreDataTxt: '上拉加载更多',
-                loadingMoreDataTxt: '加载中...',
-                noMoreDataTxt: '我是有底线的'
-            },
             //选中的选项卡
             activeIndex: -1,
             //轮播图
@@ -22,6 +13,8 @@ window.onload = function () {
             detailsList:[],
             //搜索返回的结果
             searchList: [],
+            //加载更多
+            loadMore:false,
             //tab页内容
             tabContent: new Map(),
             //手动改变值变化
@@ -32,6 +25,8 @@ window.onload = function () {
             searchKeys: '',
             //页面页码
             pageNumber:1,
+            //页面总页数
+            pageCount:null,
             //显示的页面标记
             currentPage: 1,
             //显示历史记录还是搜索内容
@@ -48,7 +43,9 @@ window.onload = function () {
             },
             touchMove (e) {
                 if (e.targetTouches[0].pageY < this.startY) { // 上拉
-                    this.judgeScrollBarToTheEnd()
+                    if(this.loadMore){
+                        this.judgeScrollBarToTheEnd()
+                    }
                 }
             },
 
@@ -60,34 +57,46 @@ window.onload = function () {
                 // 变量scrollHeight是滚动条的总高度
                 let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
                 // 滚动条到底部的条件
-                if (scrollTop + scrollHeight >= innerHeight) {
+                if (scrollTop + scrollHeight >= innerHeight-1000) {
                     this.infiniteLoad()
                 }
             },
 
             infiniteLoad () {
-                this.isLoading = true
-                setTimeout(() => {
-                   this.infiniteLoadDone();
-                }, 800)
+                this.infiniteLoadDone();
             },
             infiniteLoadDone () {
-            let self = this;
-                self.pageNumber +=1;
-
-                $.post('/api/found/recommend', {
-                    page: self.pageNumber
-                }, function (data) {
-                    if(data.data.length){
-                        self.detailsList.push(data.data);
-                        self.$nextTick(function () {
-                            // this.listenScroll();
-                        })
+                let self = this;
+                //总页数
+                if(self.pageCount >self.pageNumber){
+                    self.pageNumber +=1;
+                    if (self.activeIndex == -1){
+                        $.post('/api/found/recommend', {
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
+                        });
                     }else {
-                        return
+                        //获取列表数据
+                        let self = this;
+                        //请求获取数据
+                        $.post('/api/found/article', {
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
+                        });
                     }
 
-                });
+                }else {
+                    return
+                }
+
+
+
 
             },
             //获取 tab页内容和页面初始化数据
@@ -95,6 +104,7 @@ window.onload = function () {
                 let self = this;
                 $.getJSON('/api/found/category', function (data) {
                     self.tabList = data.data;
+
                     self.$nextTick(function () {
                         //推荐内容
                         self.getRecommendList();
@@ -103,6 +113,9 @@ window.onload = function () {
             },
             //获取推荐数据
             getRecommendList: function () {
+                if(document.documentElement.scrollTop>0){
+                    document.documentElement.scrollTop=0;
+                }
                 let self = this;
                 self.activeIndex = -1;
                 $.post('/api/found/recommend', {
@@ -110,7 +123,8 @@ window.onload = function () {
                 }, function (data) {
                     self.detailsList = data.data;
                     self.$nextTick(function () {
-                        // this.listenScroll();
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
                     })
                 });
             },
@@ -121,18 +135,19 @@ window.onload = function () {
                     console.log('获取轮播图数据',data.data)
                     self.bannerList = data.data;
                      self.$nextTick(function () {
-                         console.log(1111)
-                         mui.init({
-                             swipeBack:true //启用右滑关闭功能
-                         });
-                         mui("#slider2").slider({interval: 30});
-                         mui("#slider3").slider({interval: 30});
                      })
 
                 });
             },
             loadTabContent: function (tabId, index) {
                 this.activeIndex = index;
+                //切换的时候情况上一个选项卡的数据
+                this.pageNumber = 1;
+                this.pageCount = null;
+                self.detailsList = [];
+                if(document.documentElement.scrollTop>0){
+                    document.documentElement.scrollTop=0;
+                }
                 //获取列表数据
                 this.getDetailsList(tabId);
             },
@@ -144,8 +159,12 @@ window.onload = function () {
                     type_id: tabId,
                     page: self.pageNumber,
                 }, function (data) {
-                    console.log(data)
                     self.detailsList = data.data;
+                    self.$nextTick(function () {
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
+                    })
+
                 });
             },
             showSearch: function () {
@@ -184,7 +203,6 @@ window.onload = function () {
                         title: self.searchKeys,
                         page: self.pageNumber,
                     }, function (data) {
-                        console.log(data)
                         self.searchList = data.data;
                     });
 
@@ -218,7 +236,7 @@ window.onload = function () {
      * 固定tab
      */
         //获取 id="course_container" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
-   /* let offset_top = document.getElementById("tab-container").offsetTop;
+    let offset_top = document.getElementById("tab-container").offsetTop;
     let isSetHeight = false;
     $(window).scroll(function () {
         //获取垂直滚动的距离（scrollTop()是从顶部开始滚动产生的距离）
@@ -232,6 +250,6 @@ window.onload = function () {
             // 同理，把之前添加的元素移除即可
             document.getElementById("tab-container").classList.remove("fixed");
         }
-    });*/
+    });
 
 }
