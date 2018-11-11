@@ -63,7 +63,7 @@ class Found extends Api
         //分类数据
         $list=db('article')->alias('a')->order('flag desc,zan desc')
             ->join('article_category b','b.id=a.article_category_id')
-            ->field('a.*,b.name')
+            ->field('a.*,b.name as type_name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize)->select();
 

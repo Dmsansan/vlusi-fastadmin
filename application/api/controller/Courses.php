@@ -63,7 +63,7 @@ class Courses extends Api
         //分类数据
         $list=db('course')->alias('a')->order('flag desc,readnum desc')
             ->join('course_category b','b.id=a.course_category_id')
-            ->field('a.*,b.name')
+            ->field('a.*,b.name as type_name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
             ->limit($page*$this->pagesize,$this->pagesize)->select();
 
