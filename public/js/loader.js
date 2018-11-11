@@ -11,7 +11,7 @@ metaNode.content = 'width=device-width,initial-scale=1.0,user-scalable=no,maximu
 document.querySelector('head').appendChild(metaNode);
 let jsList = [
     '/assets/jquery/jquery-3.3.1.min.js',
-    '/assets/mui/js/mui.min.js?version=1.0',
+    // '/assets/mui/js/mui.min.js?version=1.0',
     '/assets/vue/vue.min.js'
 ];
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/home.css"/>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <div id="page1" class="page" :class="{active:currentPage == 1}">
         <header>
             <div class="mui-search-container">
@@ -73,7 +73,7 @@
                     <div class="img-container">
                         <div class="class-label">
                             <img src="img/home/label.png"/>
-                            <p class="class-label-name">{{item.name}}</p>
+                            <p class="class-label-name">{{item.type_name}}</p>
                         </div>
                         <img :src="item.coverimage"/>
                         <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
@@ -171,6 +171,7 @@
         </div>
     </div>
 </div>
+<script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
 <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>

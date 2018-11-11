@@ -5,6 +5,8 @@ window.onload = function () {
         data: {
             isHidden: true,
             openTitle: '展开全部',
+            //获取课程数据
+            detailList:[],
             courseList: [
                 {
                     id: 0,
@@ -49,6 +51,8 @@ window.onload = function () {
             imgList:[],
             //是否收藏
             isCollect:false,
+            //页面页码
+            pageNumber:1,
             //文章点赞
             isLikeArt:false,
             likeArtNums:0,
@@ -89,7 +93,28 @@ window.onload = function () {
                 }
             ]
         },
+        mounted() {
+            /*  //获取 tab页内容和页面初始化数据
+              this.init();
+              //获取轮播图数据
+              this.sowingMap();*/
+            //推荐内容
+            // this.getRecommendList();
+        },
         methods: {
+            //课程详情
+            courseDetails:function () {
+                let self = this;
+                let detailId = sessionStorage.getItem('curriculumId');
+                $.post('/api/courses/detail', {
+                    course_id: 1,
+                    page:self.pageNumber
+                }, function (data) {
+                    console.log('获取某个分类课程',data.data);
+                    self.detailList = data.data;
+                });
+
+            },
             //展开列表
             openAllCourse: function () {
                 if (this.isHidden) {
@@ -121,7 +146,7 @@ window.onload = function () {
                 
             },
             //文章点赞
-            likeArticle:function(flag) {
+            likeArticle:function(id,flag) {
                 this.isLikeArt = flag;
                 if(flag) {
                     this.likeArtNums = ++this.likeArtNums;
@@ -129,6 +154,16 @@ window.onload = function () {
                 else {
                     this.likeArtNums = --this.likeArtNums;
                 }
+                let self = this;
+                let detailId = sessionStorage.getItem('curriculumId');
+                $.post('/api/courses/comment_zan', {
+                    comment_id: id
+                }, function (data) {
+                    console.log('文章点赞',data.data);
+                    self.$nextTick(function () {
+                        self.courseDetails();
+                    })
+                });
             },
             //回复
             replay:function () {
@@ -193,6 +228,13 @@ window.onload = function () {
             isUploadImage:function (newVal,oldVal) {
 
             }
+        },
+        created: function () {
+            console.log(sessionStorage.getItem('curriculumId'))
+            //获取课程详情
+            this.courseDetails();
+
+
         }
     });
     /**
