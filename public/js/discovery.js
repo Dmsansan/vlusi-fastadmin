@@ -21,6 +21,8 @@ window.onload = function () {
             historyList: Array.from(set),
             //搜索的关键字
             searchKeys: '',
+            //页面页码
+            pageNumber:1,
             //显示的页面标记
             currentPage: 1,
             //显示历史记录还是搜索内容
@@ -29,10 +31,7 @@ window.onload = function () {
         mounted() {
             //获取 tab页内容和页面初始化数据
             this.init();
-            //获取轮播图数据
-            this.sowingMap();
-            //推荐内容
-            this.getRecommendList();
+
         },
 
         methods: {
@@ -41,6 +40,10 @@ window.onload = function () {
                 let self = this;
                 $.getJSON('/api/found/category', function (data) {
                     self.tabList = data.data;
+                    self.$nextTick(function () {
+                        //推荐内容
+                        self.getRecommendList();
+                    })
                 });
             },
             //获取推荐数据
@@ -48,7 +51,7 @@ window.onload = function () {
                 let self = this;
                 self.activeIndex = -1;
                 $.post('/api/found/recommend', {
-                    page: self.currentPage
+                    page: self.pageNumber
                 }, function (data) {
                     self.detailsList = data.data;
                 });
@@ -59,10 +62,14 @@ window.onload = function () {
                 $.getJSON('/api/banner/lists', function (data) {
                     console.log('获取轮播图数据',data.data)
                     self.bannerList = data.data;
-                    /* self.$nextTick(function () {
+                     self.$nextTick(function () {
                          console.log(1111)
-                         mui("#slider").slider({interval: 30});
-                     })*/
+                         mui.init({
+                             swipeBack:true //启用右滑关闭功能
+                         });
+                         mui("#slider2").slider({interval: 30});
+                         mui("#slider3").slider({interval: 30});
+                     })
 
                 });
             },
@@ -77,7 +84,7 @@ window.onload = function () {
                 //请求获取数据
                 $.post('/api/found/article', {
                     type_id: tabId,
-                    page: self.currentPage,
+                    page: self.pageNumber,
                 }, function (data) {
                     console.log(data)
                     self.detailsList = data.data;
@@ -116,11 +123,11 @@ window.onload = function () {
                     app.historyList = Array.from(set);
                     //请求搜索接口获取数据
                     $.post('/api/found/article', {
-                        type_id: self.searchKeys,
-                        page: self.currentPage,
+                        title: self.searchKeys,
+                        page: self.pageNumber,
                     }, function (data) {
                         console.log(data)
-                        self.detailsList = data.data;
+                        self.searchList = data.data;
                     });
 
                 }
@@ -140,8 +147,8 @@ window.onload = function () {
             }
         },
         created: function () {
-            //获取第一个tab页内容
-            // this.getItemList(this.tabList[0].id);
+            //获取轮播图数据
+            this.sowingMap();
         }
     });
     /**

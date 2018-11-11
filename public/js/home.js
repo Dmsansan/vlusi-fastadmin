@@ -104,7 +104,7 @@ window.onload = function () {
                 sessionStorage.setItem('curriculumId',id)
                 console.log('00000',id);
               mui.openWindow({
-                  url:'/index/detail'
+                  url:'/index/index/course_detail'
               })
             },
             //清除历史记录
