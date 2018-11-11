@@ -427,4 +427,42 @@ class Courses extends Api
     }
 
 
+    /**
+     * 申请课程接口
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/courses/audit)
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课程的id")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
+     */
+
+    public function audit()
+    {
+        $course_id= (int)$this->request->request("course_id");
+
+        $userid=$this->userid;
+
+        $is_have=db('course_audit')->where(['course_id'=>$course_id,'user_id'=>$userid])->find();
+        if($is_have){
+            $this->success("已提交申请",[]);
+        }
+
+        $insert['user_id']=$userid;
+        $insert['course_id']=$course_id;
+        $res=db('course_audit')->insert($insert);
+        if($res){
+            $this->success("提交成功",[]);
+        }else{
+            $this->error("提交失败",[]);
+        }
+
+    }
+
+
 }

@@ -19,6 +19,8 @@ class Index extends Frontend
 
     public function index()
     {
+        $list=db('banner')->select();
+        $this->assign('banner',$list);
         return $this->view->fetch();
     }
 

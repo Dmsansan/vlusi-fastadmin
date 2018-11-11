@@ -35,25 +35,26 @@
             <div id="slider" class="mui-slider" >
                 <div class="mui-slider-group mui-slider-loop" id="stul">
                     <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-                    <div class="mui-slider-item mui-slider-item-duplicate"
-                         v-if="bannerList.length>0">
-                        <a :href="bannerList[bannerList.length-1].link_url">
-                            <img :src="bannerList[bannerList.length-1].img_url">
-                        </a>
-
-                    </div>
+                    <!--<div class="mui-slider-item mui-slider-item-duplicate"-->
+                         <!--v-if="bannerList.length>0">-->
+                        <!--<a :href="bannerList[bannerList.length-1].link_url">-->
+                            <!--<img :src="bannerList[bannerList.length-1].img_url">-->
+                        <!--</a>-->
+                    <!--</div>-->
                     <!-- v-for循环 -->
-                    <div class="mui-slider-item" v-for="(pic,index) in bannerList">
-                        <a :href="pic.link_url"> <img :src="pic.img_url"></a>
+                    {volist name="banner" id="vo"}
+                    <div class="mui-slider-item" >
+                        <a :href="{$vo.link_url}"> <img :src="{$vo.img_url}"></a>
 
                     </div>
+                    {/volist}
                     <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-                    <div class="mui-slider-item mui-slider-item-duplicate" v-if="bannerList.length>0">
-                        <a :href="bannerList[0].link_url">
-                            <img :src="bannerList[0].img_url">
-                        </a>
+                    <!--<div class="mui-slider-item mui-slider-item-duplicate" v-if="bannerList.length>0">-->
+                        <!--<a :href="bannerList[0].link_url">-->
+                            <!--<img :src="bannerList[0].img_url">-->
+                        <!--</a>-->
 
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
             <!--

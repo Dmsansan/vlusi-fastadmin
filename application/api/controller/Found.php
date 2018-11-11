@@ -61,18 +61,24 @@ class Found extends Api
         $page =   (int)$this->request->post("page");
         $page = $page?$page-1:0;
         //分类数据
-        $list=db('article')->alias('a')->order('flag desc,zan desc')
-            ->join('article_category b','b.id=a.article_category_id')
-            ->field('a.*,b.name as type_name')
+        $query=db('article')->alias('a')->order('flag desc,zan desc')
+                ->join('article_category b','b.id=a.article_category_id')
+                ->field('a.*,b.name as type_name')
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-            ->limit($page*$this->pagesize,$this->pagesize)->select();
+                ->limit($page*$this->pagesize,$this->pagesize);
+         $allpage = $query->count('*');
+
+        $list=    $query->select();
 
         foreach($list as $key=>$val){
             $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
+        $pages['page_count']=ceil($allpage/$this->pagesize);
 
-        $this->success("返回成功",$list);
+
+
+        $this->success("返回成功",$list,$pages);
     }
 
     /**
@@ -108,13 +114,22 @@ class Found extends Api
             $list->where(['article_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        $data=$list->limit($page*$this->pagesize,$this->pagesize)->select();
+        $list->limit($page*$this->pagesize,$this->pagesize);
 
+        //分页
+        $allpage = $list->count('*');
+        $pages['page_count']=ceil($allpage/$this->pagesize);
+
+
+        $data=  $list ->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
-        $this->success("返回成功",$data);
+
+
+
+        $this->success("返回成功",$data,$pages);
     }
 
 

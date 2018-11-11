@@ -164,9 +164,9 @@ class Api
      * @param string $type  输出类型
      * @param array $header 发送的 Header 信息
      */
-    protected function success($msg = '', $data = null, $code = 1, $type = null, array $header = [])
+    protected function success($msg = '', $data = null,$page=[], $code = 1, $type = null, array $header = [])
     {
-        $this->result($msg, $data, $code, $type, $header);
+        $this->result($msg, $data,$page, $code, $type, $header);
     }
 
     /**
@@ -193,13 +193,14 @@ class Api
      * @return void
      * @throws HttpResponseException
      */
-    protected function result($msg, $data = null, $code = 0, $type = null, array $header = [])
+    protected function result($msg, $data = null,$page=[], $code = 0, $type = null, array $header = [])
     {
         $result = [
             'code' => $code,
             'msg'  => $msg,
             'time' => Request::instance()->server('REQUEST_TIME'),
             'data' => $data,
+            'page' => $page,
         ];
         // 如果未设置类型则自动判断
         $type = $type ? $type : ($this->request->param(config('var_jsonp_handler')) ? 'jsonp' : $this->responseType);
