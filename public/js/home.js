@@ -23,6 +23,10 @@ window.onload = function () {
             searchKeys:'',
             //第几页
             pageNumber:1,
+            //页面总页数
+            pageCount:null,
+            //加载更多
+            loadMore:false,
             //显示的页面标记
             currentPage:1,
             //显示历史记录还是搜索内容
@@ -37,6 +41,61 @@ window.onload = function () {
             // this.getRecommendList();
         },
         methods: {
+            touchStart (e) {
+                this.startY = e.targetTouches[0].pageY
+            },
+            touchMove (e) {
+                if (e.targetTouches[0].pageY < this.startY) { // 上拉
+                    if(this.loadMore){
+                        this.judgeScrollBarToTheEnd()
+                    }
+                }
+            },
+            // 判断滚动条是否到底
+            judgeScrollBarToTheEnd () {
+                let innerHeight = document.querySelector('.active').clientHeight
+                // 变量scrollTop是滚动条滚动时，距离顶部的距离
+                let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                // 变量scrollHeight是滚动条的总高度
+                let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+                // 滚动条到底部的条件
+                if (scrollTop + scrollHeight >= innerHeight-1000) {
+                    this.infiniteLoadDone()
+                }
+            },
+            infiniteLoadDone () {
+                let self = this;
+
+                //总页数
+                if(self.pageCount >self.pageNumber){
+                    self.pageNumber +=1;
+                    if (self.activeIndex == -1){
+                        $.post('/api/found/recommend', {
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
+                        });
+                    }else {
+                        //获取列表数据
+                        let self = this;
+                        //请求获取数据
+                        $.post('/api/courses/course', {
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
+                        });
+                    }
+
+                }else {
+                    return
+                }
+
+
+            },
             //获取 tab页内容和页面初始化数据
             init: function () {
                 let self = this;
@@ -62,6 +121,9 @@ window.onload = function () {
             },
             //推荐课程接口
             getRecommendList:function () {
+                if(document.documentElement.scrollTop>0){
+                    document.documentElement.scrollTop=0;
+                }
                 let self = this;
                 self.activeIndex = -1;
                 $.post('/api/found/recommend', {
@@ -69,10 +131,22 @@ window.onload = function () {
                 }, function (data) {
                     console.log('推荐课程接口',data.data)
                     self.detailsList = data.data;
+                    self.$nextTick(function () {
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
+                        console.log('推荐课程总页数',self.pageCount)
+                    })
                 });
             },
             loadTabContent: function (tabId, index) {
                 this.activeIndex = index;
+                //切换的时候情况上一个选项卡的数据
+                this.pageNumber = 1;
+                this.pageCount = null;
+                self.detailsList = [];
+                if(document.documentElement.scrollTop>0){
+                    document.documentElement.scrollTop=0;
+                }
                 this.getItemList(tabId);
             },
             //获取某个分类课程
@@ -85,6 +159,11 @@ window.onload = function () {
                     }, function (data) {
                     console.log('获取某个分类课程',data.data);
                     self.detailsList = data.data;
+                    self.$nextTick(function () {
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
+                        console.log(1111111111111111111,self.pageCount)
+                    })
                 });
             },
             showSearch:function () {
@@ -148,7 +227,10 @@ window.onload = function () {
             //获取 tab页内容和页面初始化数据
             this.init();
 
-        }
+        },
+        beforeDestroy(){
+            $(window).unbind('scroll');
+        },
     });
     /**
      * 固定tab

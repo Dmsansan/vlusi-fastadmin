@@ -53,7 +53,8 @@
                 选项卡
             -->
             <div id="tab-container" class="tab-container">
-                <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item"
+                <a @click="getRecommendList()"
+                   href="javascript:;" class="tab-item"
                    :class="{active:-1 == activeIndex}">推荐</a>
                 <template v-for="(item,index) in tabList">
                     <a @click="loadTabContent(item.id,index)" href="javascript:;" class="tab-item"
@@ -69,7 +70,8 @@
                  v-if="activeIndex == -1"
             >
                 <div @click="goInner(item.id)"
-                     v-for="item in detailsList" class="tab-content-item">
+                     v-for="item in detailsList" class="tab-content-item"
+                     @touchstart="touchStart($event)" @touchmove="touchMove($event)">
                     <div class="img-container">
                         <div class="class-label">
                             <img src="img/home/label.png"/>
@@ -84,10 +86,14 @@
                         <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                     </div>
                 </div>
+                <div class="no-more-comments" v-if="pageCount">
+                    {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
+                </div>
             </div>
             <!--选项卡切换课程-->
             <div class="tab-content" v-else
                  :class="{active:index == activeIndex}"
+                 @touchstart="touchStart($event)" @touchmove="touchMove($event)"
                  v-for="(tab,index) in tabList">
                 <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item">
                     <div class="img-container">
@@ -103,6 +109,9 @@
                         <p class="tab-content-desc-content">{{item.desc}}</p>
                         <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                     </div>
+                </div>
+                <div class="no-more-comments" v-if="pageCount">
+                    {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
                 </div>
             </div>
         </div>
