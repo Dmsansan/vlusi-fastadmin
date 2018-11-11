@@ -63,11 +63,11 @@ class Found extends Api
         //分类数据
         $query=db('article')->alias('a')->order('flag desc,zan desc')
                 ->join('article_category b','b.id=a.article_category_id')
-                ->field('a.*,b.name as type_name')
+                ->field('a.*,b.name as type_name');
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-                ->limit($page*$this->pagesize,$this->pagesize);
          $allpage = $query->count('*');
 
+        $query ->limit($page*$this->pagesize,$this->pagesize);
         $list=    $query->select();
 
         foreach($list as $key=>$val){
@@ -114,13 +114,13 @@ class Found extends Api
             $list->where(['article_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        $list->limit($page*$this->pagesize,$this->pagesize);
 
         //分页
         $allpage = $list->count('*');
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
-
+        
+        $list->limit($page*$this->pagesize,$this->pagesize);
         $data=  $list ->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
@@ -231,12 +231,13 @@ class Found extends Api
         $query  =db('article_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['article_id'=>$article_id,'pid'=>0])
-                ->order('a.createtime desc')
-                ->limit($page*$this->pagesize,$this->pagesize);
+                ->order('a.createtime desc');
+
         //分页
         $allpage = $query->count('*');
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
+        $query ->limit($page*$this->pagesize,$this->pagesize);
         $data['comment']=$query ->select();
 
         //查询该用户对评论点赞的数量

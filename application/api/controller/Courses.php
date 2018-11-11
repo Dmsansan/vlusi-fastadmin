@@ -63,15 +63,14 @@ class Courses extends Api
         //分类数据
         $query=db('course')->alias('a')->order('flag desc,readnum desc')
             ->join('course_category b','b.id=a.course_category_id')
-            ->field('a.*,b.name as type_name')
+            ->field('a.*,b.name as type_name');
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-            ->limit($page*$this->pagesize,$this->pagesize);
 
         $allpage=$query->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
-
+         $query ->limit($page*$this->pagesize,$this->pagesize);
         $data=   $query->select();
 
         foreach($data as $key=>$val){
@@ -108,20 +107,19 @@ class Courses extends Api
         $search = $this->request->request('title');
 
         //分类数据
-        $list=db('course')->order('createtime desc');
+        $query=db('course')->order('createtime desc');
         if($search){
-            $list->where(['name'=>['like','%'.$search.'%']]);
+            $query->where(['name'=>['like','%'.$search.'%']]);
         }else{
-            $list->where(['course_category_id'=>$typeid]);
+            $query->where(['course_category_id'=>$typeid]);
         };
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        $query=$list->limit($page*$this->pagesize,$this->pagesize);
 
         $allpage=$query->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
-
+        $query->limit($page*$this->pagesize,$this->pagesize);
         $data=$query->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
@@ -227,13 +225,15 @@ class Courses extends Api
         $query= db('course_comment')->alias('a')->join('user','user.id=a.user_id')
                 ->field('user.nickname,avatar,a.*')
                 ->where(['course_id'=>$course_id,'pid'=>0])
-                ->order('a.createtime desc')
-                ->limit($page*$this->pagesize,$this->pagesize);
+                ->order('a.createtime desc');
+
 
         //分页
         $allpage=$query->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
+
+        $query  ->limit($page*$this->pagesize,$this->pagesize);
         $data['comment']=$query->select();
 
         //查询该用户对评论点赞的数量
