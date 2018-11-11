@@ -260,11 +260,11 @@ class Courses extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
-//                if($val['user_id']==$this->userid){
-//                    $data['comment'][$key]['is_zan']=1;
-//                }else{
-//                    $data['comment'][$key]['is_zan']=0;
-//                }
+                if($val['user_id']==$this->userid){
+                    $data['comment'][$key]['is_zan']=1;
+                }else{
+                    $data['comment'][$key]['is_zan']=0;
+                }
             }
         }
 
