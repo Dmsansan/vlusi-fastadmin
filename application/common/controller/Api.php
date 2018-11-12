@@ -179,7 +179,7 @@ class Api
      */
     protected function error($msg = '', $data = null,$page=[], $code = 0, $type = null, array $header = [])
     {
-        $this->result($msg, $data,$page ,$code, $type, $header);
+        $this->result($msg, $data,$page, $code, $type, $header);
     }
 
     /**

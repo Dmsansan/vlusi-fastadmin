@@ -13,11 +13,17 @@ use think\Db;
 class Courses extends Api
 {
 
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     protected $pagesize= 10;
-    protected $userid=47;
+    protected $userid;
 
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->userid = $this->auth->getUser()->id;
+    }
     /**
      * 课程分类
      *
@@ -30,7 +36,8 @@ class Courses extends Api
      * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
      * @ApiReturn   ({
     'code':'1',
-    'mesg':'返回成功'
+    'mesg':'返回成功',
+     'token':'2b65b125f90b12e8daec0b016f271aadbb403c91'
      * })
      */
     public function category()
@@ -547,6 +554,8 @@ class Courses extends Api
         $this->error('请先申请课程');
 
     }
+
+
 
 
 
