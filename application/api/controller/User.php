@@ -323,9 +323,31 @@ class User extends Api
         }else{
             $this->error('取消失败');
         }
-
-
     }
+
+
+    /**
+     * 获取用户信息
+     * @ApiTitle    (获取用户信息)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/userinfo)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+
+    public function userinfo()
+    {
+        $userid = $this->auth->getUser()->id;
+
+        $userinfo=db('user')->where(['id'=>$userid])->field('nickname,address,avatar,mobile')->find();
+
+        $mobile=$userinfo['mobile'];
+        $userinfo['mobile']=substr($mobile,0,3)."****".substr($mobile,7,4);
+
+        $this->success('获取成功',$userinfo);
+    }
+
+
 
 
 
