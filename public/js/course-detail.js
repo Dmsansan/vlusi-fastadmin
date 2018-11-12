@@ -38,8 +38,6 @@ window.onload = function () {
             commentsList:[],
             //页面跳转时传递的id
             passID:null,
-            //回复内容
-            reviewContent:null,
 
         },
         mounted() {
@@ -138,9 +136,18 @@ window.onload = function () {
             goBack: function () {
                 history.go(-1);
             },
-            //点赞
-            likeComment:function (flag) {
-                
+            //评论点赞
+            likeComment:function (flag,id) {
+                let self = this;
+                $.post(' /api/courses/comment_zan', {
+                    token:localStorage.getItem('token'),
+                    comment_id: id
+                }, function (data) {
+                    console.log('评论点赞',data.data);
+                    self.$nextTick(function () {
+                        self.courseDetails();
+                    })
+                });
             },
             //文章点赞
             likeArticle:function(id,flag) {
@@ -152,7 +159,7 @@ window.onload = function () {
                     this.likeArtNums = --this.likeArtNums;
                 }
                 let self = this;
-                $.post('/api/courses/comment_zan', {
+                $.post('/api/courses/course_zan', {
                     token:localStorage.getItem('token'),
                     comment_id: id
                 }, function (data) {
@@ -168,9 +175,10 @@ window.onload = function () {
             },
             //进入课时
             goToCourseHour:function (id) {
+                console.log('进入课时',id)
                 mui.openWindow({
                     //视频版
-                    url:'course-hour-detail-video.html?id=' + id
+                    url:'/index/index/course_detail?id='+id
                     // 图文版
                     // url:'course-hour-detail-pictures.html?id=' + id
                 })
@@ -185,7 +193,6 @@ window.onload = function () {
                     token:localStorage.getItem('token'),
                     course_id: self.passID
                 }, function (data) {
-                    console.log('文章点赞',data.data);
                     self.$nextTick(function () {
                         self.courseDetails();
 
@@ -206,20 +213,20 @@ window.onload = function () {
                 $.post('/api/courses/comment', {
                     token:localStorage.getItem('token'),
                     course_id: self.passID,
-                    content:self.reviewContent
+                    content:self.commentsContent
                 }, function (data) {
                     self.$nextTick(function () {
                         self.courseDetails();
-                        self.reviewContent = null;
-                        self.commentsContent = null;
+                        self.commentsContent = '';
                     })
                 });
             },
-            goCommentsDetail:function () {
+            goCommentsDetail:function (id) {
                 //查看评论详情
                 mui.openWindow({
-                    url:'comments-detail.html'
+                    url:'/index/index/comments?id='+id
                 })
+
             },
             sendToFriend:function () {
                 //发给好友
@@ -242,8 +249,6 @@ window.onload = function () {
                 let self = this;
                 if (newVal.trim() != '') {
                     self.isDisabled = false;
-                    self.reviewContent = newVal.trim();
-
                 } else {
                     console.log(2222)
                     self.isDisabled = true;
