@@ -26,59 +26,12 @@ class User extends Api
 
 
 
-    /**
-     * 手机验证码登录
-     *
-     * @param string $mobile 手机号
-     * @param string $captcha 验证码
-     */
-    public function mobilelogin()
-    {
-        $mobile = $this->request->request('mobile');
-        $captcha = $this->request->request('captcha');
-        if (!$mobile || !$captcha)
-        {
-            $this->error(__('Invalid parameters'));
-        }
-        if (!Validate::regex($mobile, "^1\d{10}$"))
-        {
-            $this->error(__('Mobile is incorrect'));
-        }
-        if (!Sms::check($mobile, $captcha, 'mobilelogin'))
-        {
-            $this->error(__('Captcha is incorrect'));
-        }
-        $user = \app\common\model\User::getByMobile($mobile);
-        if ($user)
-        {
-            //如果已经有账号则直接登录
-            $ret = $this->auth->direct($user->id);
-        }
-        else
-        {
-            $ret = $this->auth->register($mobile, Random::alnum(), '', $mobile, []);
-        }
-        if ($ret)
-        {
-            Sms::flush($mobile, 'mobilelogin');
-            $data = ['userinfo' => $this->auth->getUserinfo()];
-            $this->success(__('Logged in successful'), $data);
-        }
-        else
-        {
-            $this->error($this->auth->getError());
-        }
-    }
-
-
-
 
     /**
-     * @ApiTitle    (修改会员个人信息)
+     * @ApiTitle    (修改个人信息)
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/user/profile)
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
-     * @ApiParams   (name="user_id", type="integer", required=true, description="用户id")
      * @ApiParams   (name="nickname", type="string", required=false, description="用户名")
      * @ApiParams   (name="avatar", type="string", required=false, description="用户头像")
      * @ApiParams   (name="address", type="integer", required=false, description="区域管理")
@@ -121,7 +74,6 @@ class User extends Api
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/user/changemobile)
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
-     * @ApiParams   (name="user_id", type="integer", required=true, description="用户id")
      * @ApiParams   (name="mobile", type="string", required=true, description="手机号")
      * @ApiParams   (name="captcha", type="string", required=true, description="验证码")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
