@@ -552,19 +552,25 @@ class Courses extends Api
         $nodes_id= (int)$this->request->request("nodes_id");
 
         $userid=$this->userid;
-        //查看该课时是否为可体验
+
         $is_views=db('course_nodes')->where(['id'=>$nodes_id])->find();
         if(!$is_views){
             $this->success("获取成功",[]);
         }
-
+        //查看该课时是否为可体验
         if($is_views['isviewlist']!=='可体验'){
 
             //不是体验课程判断是否申请了并且通过了申请
             $is_check=db('course_audit')->where(['user_id'=>$userid,'checklist'=>'通过'])->find();
 
-            //通过了就返回成功
+            //通过了就返回课程内容
             if($is_check){
+
+                $detail=db('course_nodes')->where(['nodes_id'=>$nodes_id])->find();
+
+                //获取下个课程的的内容
+                $next=db('course_nodes')->where(['course_id'=>$detail['id'],['sort',['>',$detail['sort']]]])->find();
+
                 $this->success('获取成功');
             }
         }
