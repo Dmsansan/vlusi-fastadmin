@@ -122,7 +122,7 @@ window.onload = function () {
             goDiscovery:function (id) {
                 //进入文章
                 mui.openWindow({
-                    url:'index/found/detail?id='+id
+                    url:'/index/found/detail?id='+id
                 })
             }
         },

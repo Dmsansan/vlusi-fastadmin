@@ -52,8 +52,9 @@ window.onload = function () {
             },
         },
         created: function () {
-            let code = window.location.href.split('?')[1];
-            this.phoneNumber = code.split('=')[1];
+            console.log(localStorage.getItem('phoneNumber'))
+          /*  let code = window.location.href.split('?')[1];
+            this.phoneNumber = code.split('=')[1];*/
            /* this.$nextTick(function () {
                 //获取评论详情
                 this.replyDetails();

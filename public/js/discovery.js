@@ -236,7 +236,9 @@ let app = new Vue({
                     url:'/index'
                 })
             }else if(id == 3){//我的
-
+                mui.openWindow({
+                    url:'/index/user/index?token='+localStorage.getItem('token')
+                })
             }
         }
     },

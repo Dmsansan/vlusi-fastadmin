@@ -45,7 +45,8 @@ let app = new Vue({
         },
         //修改手机号
         modifyPhone:function (phone) {
-            localStorage.setItem('phoneNumber','phone');
+            console.log(phone)
+            localStorage.setItem('phoneNumber',phone);
             mui.openWindow({
                 url: '/index/user/set_phone?token='+a460f6f0b010dccb4560afeaaadfd5d161db044d
             })
