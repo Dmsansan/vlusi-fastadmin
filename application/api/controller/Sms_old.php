@@ -7,9 +7,9 @@ use app\common\library\Sms as Smslib;
 use app\common\model\User;
 
 /**
- *  手机短信接口
+ *
  */
-
+//手机短信接口
 class Sms extends Api
 {
 
@@ -22,19 +22,17 @@ class Sms extends Api
     }
 
     /**
-     * 发送短信
-     * @ApiTitle    (发送验证码)
-     * @ApiMethod   (POST)
-     * @ApiRoute    (/api/Sms/send)default
-     * @ApiParams   (name="mobile", type="string", required=true, description="手机号")
-     * @ApiParams   (name="event", type="string", required=true, description="事件 此处传changemobile")
-     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * 发送验证码
+     *
+     * @param string $mobile 手机号
+     * @param string $event 事件名称
      */
     public function send()
     {
-        $mobile = $this->request->post("mobile");
-        $event =$this->request->post("event");
+        $mobile = $this->request->request("mobile");
+        $event = $this->request->request("event");
         $event = $event ? $event : 'register';
+
         if (!$mobile || !\think\Validate::regex($mobile, "^1\d{10}$")) {
             $this->error(__('手机号不正确'));
         }
@@ -68,14 +66,11 @@ class Sms extends Api
     }
 
     /**
+     * 检测验证码
      *
-     * @ApiTitle    (检测验证码)
-     * @ApiMethod   (POST)
-     * @ApiRoute    (/api/Sms/check)
-     * @ApiParams   (name="mobile", type="string", required=true, description="手机号")
-     * @ApiParams   (name="event", type="string", required=true, description="事件名称")
-     * @ApiParams   (name="captcha", type="string", required=true, description="验证码")
-     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @param string $mobile 手机号
+     * @param string $event 事件名称
+     * @param string $captcha 验证码
      */
     public function check()
     {
@@ -83,6 +78,7 @@ class Sms extends Api
         $event = $this->request->request("event");
         $event = $event ? $event : 'register';
         $captcha = $this->request->request("captcha");
+
         if (!$mobile || !\think\Validate::regex($mobile, "^1\d{10}$")) {
             $this->error(__('手机号不正确'));
         }
@@ -106,6 +102,5 @@ class Sms extends Api
             $this->error(__('验证码不正确'));
         }
     }
-
 
 }
