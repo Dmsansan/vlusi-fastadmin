@@ -27,7 +27,7 @@ class User extends Api
 
     /**
      * 手机验证码登录
-     * 
+     *
      * @param string $mobile 手机号
      * @param string $captcha 验证码
      */
@@ -74,7 +74,7 @@ class User extends Api
 
     /**
      * 修改会员个人信息
-     * 
+     *
      * @param string $avatar 头像地址
      * @param string $username 用户名
      * @param string $nickname 昵称
@@ -103,7 +103,7 @@ class User extends Api
 
     /**
      * 修改手机号
-     * 
+     *
      * @param string $email 手机号
      * @param string $captcha 验证码
      */
@@ -141,7 +141,7 @@ class User extends Api
 
     /**
      * 第三方登录
-     * 
+     *
      * @param string $platform 平台名称
      * @param string $code Code码
      */
@@ -173,7 +173,18 @@ class User extends Api
         $this->error(__('Operation failed'), $url);
     }
 
+    /**
+     * 课程分类
+     * @ApiTitle    (课程的分类)
+     * @ApiMethod   (GET)
+     * @ApiRoute    (/api/courses/category)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function my_collection()
+    {
 
+    }
 
 
 }

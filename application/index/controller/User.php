@@ -44,6 +44,7 @@ class User extends Frontend
         return $this->view->fetch();
     }
 
+
     public function my_course()
     {
         return $this->view->fetch();

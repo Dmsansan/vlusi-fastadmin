@@ -223,7 +223,7 @@ class Found extends Api
         $data=[];
         //初次加载
         if($page===0){
-            $data['detail']=db('article')->ailas('a')
+            $data['detail']=db('article')->alias('a')
                             ->where(['a.id'=>$article_id])
                             ->join('admin b','a.admin_id=b.id')
                             ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
