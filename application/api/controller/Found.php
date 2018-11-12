@@ -123,7 +123,11 @@ class Found extends Api
         if($search){
             $where['title']=['like','%'.$search.'%'];
 
-            db('article_search')->insert(['user_id'=>$userid,'word'=>$search,'createtime'=>time()]);
+//            $is_history=db('article_search')->where(['user_id'=>$this->userid,'word'=>$search])->find();
+//            if(!$is_history){
+                //添加搜索历史
+                db('article_search')->insert(['user_id'=>$this->userid,'word'=>$search,'createtime'=>time()]);
+//            }
         }else{
             $where['article_category_id']=$typeid;
         };
@@ -418,10 +422,23 @@ class Found extends Api
             ->where(['pid'=>$comment_id])
             ->count();
 
-        $pages['page_count']=ceil($allPage/$this->pagesize);
-        $tree=$this->commentTree($comment_id,true,$page);
+        //获取当前数据的详情
+        $detail=db('article_comment')->alias('a')
+            ->join('user u','u.id=a.user_id')
+            ->where(['a.id'=>$comment_id])
+            ->field('u.nickname,avatar,a.*')
+            ->find();
 
-        $this->success('获取成功',$tree,$pages);
+        //获取用户是否点赞
+        $zan=db('article_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$comment_id])->find();
+        $detail['is_zan']=($zan?1:0);
+
+
+
+        $pages['page_count']=ceil($allPage/$this->pagesize);
+        $detail['children']=$this->commentTree($comment_id,true,$page);
+
+        $this->success('获取成功',$detail,$pages);
     }
 
 
@@ -443,6 +460,9 @@ class Found extends Api
         if($data){
             //子类存在数据
             foreach($data as $key=>$val){
+                $zan=db('article_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
+                $val['is_zan']=($zan?1:0);
+
                 $val['children']=$this->commentTree($val['id']);
                 $tree[]=$val;
             }
@@ -469,7 +489,7 @@ class Found extends Api
     public function search_keywords()
     {
         $userid=$this->userid;
-        $list=db('article_search')->where(['user_id'=>$userid])->order('id desc')->limit(0,10)->field('word')->select();
+        $list=db('article_search')->where(['user_id'=>$userid])->group('word')->limit(0,10)->field('word')->select();
         $this->success('获取成功',$list);
     }
 

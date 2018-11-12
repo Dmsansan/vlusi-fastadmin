@@ -119,11 +119,15 @@ class Courses extends Api
             $search=mb_substr($search,0,20);
         }
 
-        if($search){
-            $where=['name'=>['like','%'.$search.'%']];
+        if($search) {
+            $where = ['name' => ['like', '%' . $search . '%']];
 
+//            $is_history=db('course_search')->where(['user_id'=>$this->userid,'word'=>$search])->find();
+//            if(!$is_history){
             //添加搜索历史
-            db('course_search')->insert(['user_id'=>$this->userid,'word'=>$search,'createtime'=>time()]);
+            db('course_search')->insert(['user_id' => $this->userid, 'word' => $search, 'createtime' => time()]);
+//            }
+
         }else{
             $where=['course_category_id'=>$typeid];
         };
@@ -443,14 +447,24 @@ class Courses extends Api
                 ->join('user u','u.id=a.user_id')
                 ->where(['pid'=>$comment_id])
                 ->count();
+        //获取当前数据的详情
+        $detail=db('course_comment')->alias('a')
+            ->join('user u','u.id=a.user_id')
+            ->where(['a.id'=>$comment_id])
+            ->field('u.nickname,avatar,a.*')
+            ->find();
+
+        //获取用户是否点赞
+        $zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$comment_id])->find();
+        $detail['is_zan']=($zan?1:0);
+
+
 
         $pages['page_count']=ceil($allPage/$this->pagesize);
-        $tree=$this->commentTree($comment_id,true,$page);
+        $detail['children']=$this->commentTree($comment_id,true,$page);
 
-        $this->success('获取成功',$tree,$pages);
+        $this->success('获取成功',$detail,$pages);
     }
-
-
 
 
     protected function commentTree($id,$is_first=false,$page=1)
@@ -469,6 +483,9 @@ class Courses extends Api
         if($data){
             //子类存在数据
             foreach($data as $key=>$val){
+                $zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
+                $val['is_zan']=($zan?1:0);
+
                 $val['children']=$this->commentTree($val['id']);
                 $tree[]=$val;
             }
@@ -573,7 +590,7 @@ class Courses extends Api
     public function search_keywords()
     {
         $userid=$this->userid;
-        $list=db('course_search')->where(['user_id'=>$userid])->order('id desc')->limit(0,10)->field('word')->select();
+        $list=db('course_search')->where(['user_id'=>$userid])->group('word')->limit(0,10)->field('word')->select();
         $this->success('获取成功',$list);
     }
 
