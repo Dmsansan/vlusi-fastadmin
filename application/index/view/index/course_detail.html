@@ -13,157 +13,161 @@
 </head>
 <body>
 <div id="app" class="mui-content" v-cloak>
-    <!--
-        顶部图片
-    -->
-    <header>
-        <img @click="goBack" src="/img/course-detail/icon_backwhite@3x.png" class="back-icon-white"/>
-        <img :src="detailList.detail.coverimage" class="course-show-img"/>
-        <div class="img-mask"></div>
-        <div class="course-img-desc">
-            <div class="left-part">
-                <p class="course-img-desc-title">{{detailList.detail.name}}</p>
-                <p class="course-img-desc-info">{{detailList.detail.readnum}}阅读 &#8226; {{detailList.detail.zan}}点赞 &#8226; {{detailList.detail.comments}}评论 {{detailList.detail.createtime}}</p>
+
+    <div class="active"  @touchstart="touchStart($event)" @touchmove="touchMove($event)">
+        <!--
+       顶部图片
+   -->
+        <header>
+            <img @click="goBack" src="/img/course-detail/icon_backwhite@3x.png" class="back-icon-white"/>
+            <img :src="detailList.detail.coverimage" class="course-show-img"/>
+            <div class="img-mask"></div>
+            <div class="course-img-desc">
+                <div class="left-part">
+                    <p class="course-img-desc-title">{{detailList.detail.name}}</p>
+                    <p class="course-img-desc-info">{{detailList.detail.readnum}}阅读 &#8226; {{detailList.detail.zan}}点赞 &#8226; {{detailList.detail.comments}}评论 {{detailList.detail.createtime}}</p>
+                </div>
+                <div class="right-part">
+                    <button type="button" class="apply-course apply" :class="{active:detailList.detail.is_audit == 0}">申请课程</button>
+                    <button type="button" class="apply-course checking" :class="{active:detailList.detail.is_audit == -1}">正在审核</button>
+                </div>
             </div>
-            <div class="right-part">
-                <button type="button" class="apply-course apply" :class="{active:detailList.detail.is_audit == 0}">申请课程</button>
-                <button type="button" class="apply-course checking" :class="{active:detailList.detail.is_audit == -1}">正在审核</button>
+        </header>
+        <!--
+            课程介绍
+        -->
+        <div class="course-introduction-container">
+            <div class="logo-container">
+                <img src="/img/course-detail/logo.jpg" class="logo-img"/>
+                <div class="logo-content">
+                    <p class="logo-title">{{detailList.detail.auth}}</p>
+                    <p class="logo-desc">为老年人提供生活服务</p>
+                </div>
+            </div>
+            <!--
+                课程好处
+            -->
+            <div class="course-benefit">
+                {{detailList.detail.desc}}
+            </div>
+            <!--
+                课程时间
+            -->
+            <div class="course-time">
+                <p class="course-time-title">课程时间</p>
+                <p class="course-time-content">{{detailList.detail.coursetimes}}</p>
+            </div>
+            <!--
+                课程原则
+            -->
+            <div class="course-principle">
+                <p class="course-principle-title">课程原则</p>
+                <ul class="course-principle-list">
+                    <!-- <li class="course-principle-item" v-for="n in 3">-->
+                    <li class="course-principle-item" >
+                        {{detailList.detail.attention}}
+                    </li>
+                </ul>
+            </div>
+            <!--
+                注意事项
+            -->
+            <div id="careful" class="course-principle">
+                <p class="course-principle-title">注意事项</p>
+                <ul class="course-principle-list">
+                    <li class="course-principle-item">
+                        {{detailList.detail.notice}}
+                    </li>
+                </ul>
+            </div>
+            <!--
+                点赞数
+            -->
+            <div class="course-like-container">
+                <div class="border-container" :class="{'border-grey':!detailList.is_zan}">
+                    <img @click="likeArticle(false)" src="/img/course-detail/article-like.png" class="course-like-img" :class="{active:detailList.is_zan}">
+                    <img @click="likeArticle(true)" src="/img/course-detail/article-like-no.png" class="course-like-img" :class="{active:!detailList.is_zan}">
+                    <p class="course-like-num" :class="{'border-grey':!detailList.is_zan}">{{detailList.detail.zan}}</p>
+                </div>
             </div>
         </div>
-    </header>
-    <!--
-        课程介绍
-    -->
-    <div class="course-introduction-container">
-        <div class="logo-container">
-            <img src="/img/course-detail/logo.jpg" class="logo-img"/>
-            <div class="logo-content">
-                <p class="logo-title">{{detailList.detail.auth}}</p>
-                <p class="logo-desc">为老年人提供生活服务</p>
+        <!--
+            课时列表
+        -->
+        <div class="course-list-container">
+            <div class="course-list-label">
+                <img src="/img/course-detail/course-list-title.png" class="course-list-title">
+                <p class="course-list-title">课时列表</p>
             </div>
-        </div>
-        <!--
-            课程好处
-        -->
-        <div class="course-benefit">
-            {{detailList.detail.desc}}
-        </div>
-        <!--
-            课程时间
-        -->
-        <div class="course-time">
-            <p class="course-time-title">课程时间</p>
-            <p class="course-time-content">{{detailList.detail.coursetimes}}</p>
-        </div>
-        <!--
-            课程原则
-        -->
-        <div class="course-principle">
-            <p class="course-principle-title">课程原则</p>
-            <ul class="course-principle-list">
-               <!-- <li class="course-principle-item" v-for="n in 3">-->
-                <li class="course-principle-item" >
-                    {{detailList.detail.attention}}
-                </li>
-            </ul>
-        </div>
-        <!--
-            注意事项
-        -->
-        <div id="careful" class="course-principle">
-            <p class="course-principle-title">注意事项</p>
-            <ul class="course-principle-list">
-                <li class="course-principle-item">
-                    {{detailList.detail.notice}}
-                </li>
-            </ul>
-        </div>
-        <!--
-            点赞数
-        -->
-        <div class="course-like-container">
-            <div class="border-container" :class="{'border-grey':!detailList.is_zan}">
-                <img @click="likeArticle(false)" src="/img/course-detail/article-like.png" class="course-like-img" :class="{active:detailList.is_zan}">
-                <img @click="likeArticle(true)" src="/img/course-detail/article-like-no.png" class="course-like-img" :class="{active:!detailList.is_zan}">
-                <p class="course-like-num" :class="{'border-grey':!detailList.is_zan}">{{detailList.detail.zan}}</p>
-            </div>
-        </div>
-    </div>
-    <!--
-        课时列表
-    -->
-    <div class="course-list-container">
-        <div class="course-list-label">
-            <img src="/img/course-detail/course-list-title.png" class="course-list-title">
-            <p class="course-list-title">课时列表</p>
-        </div>
-        <ul class="course-list" :class="{hidden:isHidden}">
-            <li @click="goToCourseHour(course.id)" v-for="(course,index) in courseList" class="course-list-item">
-                <p class="course-list-item-content">
+            <ul class="course-list" :class="{hidden:isHidden}">
+                <li @click="goToCourseHour(course.id)" v-for="(course,index) in courseList" class="course-list-item">
+                    <p class="course-list-item-content">
                     <span class="course-list-item-title">
                         {{index < 9 ? `0`+(++index) : index}} {{course.title}}
                     </span>
-                    <span class="course-list-item-desc">
+                        <span class="course-list-item-desc">
                        {{course.desc}}
                     </span>
-                </p>
-                <p class="course-list-item-learn">
-                    <template v-if="course.sort">
-                        <span class="exp-icon">体验</span>
-                        <span class="item-learn">学习</span>
-                    </template>
-                    <template v-else>
-                        <span class="item-learn">去申请</span>
-                    </template>
-                    <img src="/img/course-detail/arrow-right.png" class="arrow-right"/>
-                </p>
-            </li>
-        </ul>
+                    </p>
+                    <p class="course-list-item-learn">
+                        <template v-if="course.isviewlist">
+                            <span class="exp-icon">体验</span>
+                            <span class="item-learn">学习</span>
+                        </template>
+                        <template v-else>
+                            <span class="item-learn">去申请</span>
+                        </template>
+                        <img src="/img/course-detail/arrow-right.png" class="arrow-right"/>
+                    </p>
+                </li>
+            </ul>
+            <!--
+                展开列表
+            -->
+            <div v-if="courseList.length > 4" @click="openAllCourse" class="open-list">
+                <i v-if="isHidden" class="mui-icon mui-icon-arrowdown"></i>
+                <i v-else class="mui-icon mui-icon-arrowup"></i>
+                <p class="open-all-title">{{openTitle}}</p>
+            </div>
+        </div>
+
         <!--
-            展开列表
+            课程评论
         -->
-        <div v-if="courseList.length > 4" @click="openAllCourse" class="open-list">
-            <i v-if="isHidden" class="mui-icon mui-icon-arrowdown"></i>
-            <i v-else class="mui-icon mui-icon-arrowup"></i>
-            <p class="open-all-title">{{openTitle}}</p>
+        <div class="course-comments-container">
+            <div class="course-comments-label">
+                <img src="/img/course-detail/course-list-comment-title.png" class="course-comments-img">
+                <p class="course-comments-title">课程评论</p>
+            </div>
+            <ul class="course-comments-list">
+                <li v-for="item in commentsList" class="course-comments-item">
+                    <div class="user-info">
+                        <p class="user-info-logo-nickname">
+                            <img :src="item.avatar" class="user-logo"/>
+                            <span class="user-nickname">{{item.nickname}}</span>
+                        </p>
+                        <p class="user-like-container">
+                            <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
+                            <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
+                            <span>{{item.zan}}</span>
+                        </p>
+                    </div>
+                    <p @click="goCommentsDetail()"  class="comments-content">
+                        {{item.content}}
+                    </p>
+                    <p class="comments-img" v-html="item.imgs"></p>
+                    <div class="comments-operation">
+                        <p class="comments-time">{{item.createtime}}</p>
+                        <button @click="replay()" type="button" class="reply-comments">回复</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="no-more-comments" v-if="pageCount">
+            {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
         </div>
     </div>
 
-    <!--
-        课程评论
-    -->
-    <div class="course-comments-container">
-        <div class="course-comments-label">
-            <img src="/img/course-detail/course-list-comment-title.png" class="course-comments-img">
-            <p class="course-comments-title">课程评论</p>
-        </div>
-        <ul class="course-comments-list">
-            <li v-for="item in commentsList" class="course-comments-item">
-                <div class="user-info">
-                    <p class="user-info-logo-nickname">
-                        <img :src="item.avatar" class="user-logo"/>
-                        <span class="user-nickname">{{item.nickname}}</span>
-                    </p>
-                    <p class="user-like-container">
-                        <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.isLiked}">
-                        <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.isLiked}">
-                        <span>{{item.zan}}</span>
-                    </p>
-                </div>
-                <p @click="goCommentsDetail()"  class="comments-content">
-                    {{item.content}}
-                </p>
-                <p class="comments-img" v-html="item.imgs"></p>
-                <div class="comments-operation">
-                    <p class="comments-time">{{item.createtime}}</p>
-                    <button @click="replay()" type="button" class="reply-comments">回复</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="no-more-comments">
-        - 没有更多了 -
-    </div>
     <!--
         底部评论栏
     -->
@@ -177,15 +181,24 @@
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">
             <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
-            <img @click="collect(true)" src="/img/course-detail/like.png" :class="{active:!isCollect}" class="icon-like bottom-icon-comment"/>
-            <img @click="collect(false)" src="/img/course-detail/like-active.png" :class="{active:isCollect}" class="icon-like bottom-icon-comment">
-            <img @click="shareCourse()" src="/img/course-detail/share.png" class="icon-share bottom-icon-comment"/>
+            <img @click="collect(true)" src="/img/course-detail/like.png"
+                 :class="{active:detailList.detail.is_collection}"
+                 class="icon-like bottom-icon-comment"/>
+            <img @click="collect(false)" src="/img/course-detail/like-active.png"
+                 :class="{active:!detailList.detail.is_collection}"
+                 class="icon-like bottom-icon-comment">
+            <img @click="shareCourse()"
+                 src="/img/course-detail/share.png"
+                 class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
             <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
             <img src="/img/course-detail/upload-img.png" id="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
-            <button type="button" class="comments-send-btn" :disabled="isDisabled">发布</button>
+            <button type="button"
+                    class="comments-send-btn"
+                    @click="reviewBtn()"
+                    :disabled="isDisabled">发布</button>
         </div>
     </footer>
     <div id="share-sheet" class="mui-popover mui-popover-bottom mui-popover-action ">

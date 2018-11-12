@@ -19,12 +19,14 @@ window.onload = function () {
             isUploadImage:true,
             //上传图片地址数组
             imgList:[],
-            //是否收藏
-            isCollect:false,
+           /* //是否收藏
+            isCollect:false,*/
             //页面页码
             pageNumber:1,
             //页面总页数
             pageCount:null,
+            //加载更多
+            loadMore:false,
             //文章点赞
             isLikeArt:false,
             likeArtNums:0,
@@ -34,6 +36,10 @@ window.onload = function () {
             isShowCard:false,
             //课程评论
             commentsList:[],
+            //页面跳转时传递的id
+            passID:null,
+            //回复内容
+            reviewContent:null,
 
         },
         mounted() {
@@ -45,19 +51,64 @@ window.onload = function () {
             // this.getRecommendList();
         },
         methods: {
+            touchStart (e) {
+                this.startY = e.targetTouches[0].pageY
+            },
+            touchMove (e) {
+                if (e.targetTouches[0].pageY < this.startY) { // 上拉
+                    if(this.loadMore){
+                        this.judgeScrollBarToTheEnd()
+                    }
+                }
+            },
+            // 判断滚动条是否到底
+            judgeScrollBarToTheEnd () {
+                let innerHeight = document.querySelector('.active').clientHeight
+                // 变量scrollTop是滚动条滚动时，距离顶部的距离
+                let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                // 变量scrollHeight是滚动条的总高度
+                let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+                // 滚动条到底部的条件
+                if (scrollTop + scrollHeight >= innerHeight-6000) {
+                    this.infiniteLoadDone()
+                }
+            },
+            infiniteLoadDone () {
+                let self = this;
+                //总页数
+                if(self.pageCount >self.pageNumber){
+                    self.pageNumber +=1;
+                    $.post('/api/courses/course', {
+                        title: self.searchKeys,
+                        token:localStorage.getItem('token'),
+                        page:self.pageNumber
+                    }, function (data) {
+                        data.data.forEach(function (item,index) {
+                            self.searchList.push(item)
+                        });
+                    });
+                }else {
+                    return
+                }
+
+
+            },
+
             //课程详情
             courseDetails:function () {
                 let self = this;
-                let detailId = sessionStorage.getItem('curriculumId');
+                console.log(11111111111111111,self.passID)
                 $.post('/api/courses/detail', {
+                    token:localStorage.getItem('token'),
                     course_id: 1,
                     page:self.pageNumber
                 }, function (data) {
-                    console.log('获取某个分类课程',data.data);
+                    console.log('获取某个分类课程',data.data.comment);
                     self.detailList = data.data;
                     self.courseList = data.data.detail.node;
                     self.commentsList = data.data.comment;
-                    self.pageCount = data.data.page.pageCount;
+                    self.pageCount = data.page.pageCount;
+                    self.loadMore = true;
                 });
 
             },
@@ -101,8 +152,8 @@ window.onload = function () {
                     this.likeArtNums = --this.likeArtNums;
                 }
                 let self = this;
-                let detailId = sessionStorage.getItem('curriculumId');
                 $.post('/api/courses/comment_zan', {
+                    token:localStorage.getItem('token'),
                     comment_id: id
                 }, function (data) {
                     console.log('文章点赞',data.data);
@@ -129,14 +180,40 @@ window.onload = function () {
             },
             //收藏，取消收藏
             collect:function (flag) {
+                let self = this;
+                $.post('/api/courses/collection', {
+                    token:localStorage.getItem('token'),
+                    course_id: self.passID
+                }, function (data) {
+                    console.log('文章点赞',data.data);
+                    self.$nextTick(function () {
+                        self.courseDetails();
+
+                    })
+                });
                 if(flag) {
-                    this.isCollect = true;
+                    self.detailList.detail.is_collection = true;
                     mui.toast('已收藏');
                 }
                 else {
-                    this.isCollect = false;
+                    self.detailList.detail.is_collection = false;
                     mui.toast('已取消收藏');
                 }
+            },
+            //点击发送按钮
+            reviewBtn:function () {
+                let self = this;
+                $.post('/api/courses/comment', {
+                    token:localStorage.getItem('token'),
+                    course_id: self.passID,
+                    content:self.reviewContent
+                }, function (data) {
+                    self.$nextTick(function () {
+                        self.courseDetails();
+                        self.reviewContent = null;
+                        self.commentsContent = null;
+                    })
+                });
             },
             goCommentsDetail:function () {
                 //查看评论详情
@@ -162,26 +239,32 @@ window.onload = function () {
         },
         watch: {
             commentsContent: function (newVal, oldVal) {
-                console.log(newVal);
-                console.log(newVal.trim() == '');
+                let self = this;
                 if (newVal.trim() != '') {
-                    this.isDisabled = false;
+                    self.isDisabled = false;
+                    self.reviewContent = newVal.trim();
+
+                } else {
+                    console.log(2222)
+                    self.isDisabled = true;
                 }
-                else {
-                    this.isDisabled = true;
-                }
+
             },
             isUploadImage:function (newVal,oldVal) {
 
             }
         },
         created: function () {
-            console.log(sessionStorage.getItem('curriculumId'))
-            //获取课程详情
-            this.courseDetails();
-
-
-        }
+            let code = window.location.href.split('?')[1];
+            this.passID = code.split('=')[1];
+            this.$nextTick(function () {
+                //获取课程详情
+                this.courseDetails();
+            })
+        },
+        beforeDestroy(){
+            $(window).unbind('scroll');
+        },
     });
     /**
      * 监听文件上传框变化

@@ -5,6 +5,12 @@ let app = new Vue({
     data: {
         //选中的选项卡
         activeIndex: -1,
+        //底部导航
+        navigationList:[
+            {"id":"1","title":"课程"},
+            {"id":"2","title":"发现"},
+            {"id":"3","title":"我的"}
+        ],
         //轮播图
         bannerList:[],
         //选项卡
@@ -72,6 +78,7 @@ let app = new Vue({
                 self.pageNumber +=1;
                 if (self.activeIndex == -1){
                     $.post('/api/found/recommend', {
+                        token:localStorage.getItem('token'),
                         page: self.pageNumber
                     }, function (data) {
                         data.data.forEach(function (item,index) {
@@ -83,6 +90,7 @@ let app = new Vue({
                     let self = this;
                     //请求获取数据
                     $.post('/api/found/article', {
+                        token:localStorage.getItem('token'),
                         page: self.pageNumber
                     }, function (data) {
                         data.data.forEach(function (item,index) {
@@ -94,15 +102,11 @@ let app = new Vue({
             }else {
                 return
             }
-
-
-
-
         },
         //获取 tab页内容和页面初始化数据
         init: function () {
             let self = this;
-            $.getJSON('/api/found/category', function (data) {
+            $.getJSON('/api/found/category',{  token:localStorage.getItem('token'),}, function (data) {
                 self.tabList = data.data;
 
                 self.$nextTick(function () {
@@ -119,6 +123,7 @@ let app = new Vue({
             let self = this;
             self.activeIndex = -1;
             $.post('/api/found/recommend', {
+                token:localStorage.getItem('token'),
                 page: self.pageNumber
             }, function (data) {
                 self.detailsList = data.data;
@@ -160,6 +165,7 @@ let app = new Vue({
             //请求获取数据
             $.post('/api/found/article', {
                 type_id: tabId,
+                token:localStorage.getItem('token'),
                 page: self.pageNumber,
             }, function (data) {
                 self.detailsList = data.data;
@@ -204,6 +210,7 @@ let app = new Vue({
                 //请求搜索接口获取数据
                 $.post('/api/found/article', {
                     title: self.searchKeys,
+                    token:localStorage.getItem('token'),
                     page: self.pageNumber,
                 }, function (data) {
                     self.searchList = data.data;
@@ -216,20 +223,28 @@ let app = new Vue({
             console.log('查看详情',id);
             sessionStorage.setItem('detailId',id)
             mui.openWindow({
-                url: '/index/found/detail',
+                url: '/index/found/detail?id'+id,
             })
         },
         //显示历史记录
         showHistory: function () {
             //改变显示状态
             this.isInput = true;
+        },
+        //底部导航栏
+        switchPage:function (id) {
+            if(id == 1){//课程
+                mui.openWindow({
+                    url:'/index'
+                })
+            }else if(id == 3){//我的
+
+            }
         }
     },
     created: function () {
         //获取轮播图数据
         this.sowingMap();
-
-
     },
     beforeDestroy(){
         $(window).unbind('scroll');

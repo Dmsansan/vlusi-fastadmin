@@ -1,9 +1,17 @@
 let set = new Set(JSON.parse(localStorage.getItem('history-home')));
+//设置token
+localStorage.setItem('token','a460f6f0b010dccb4560afeaaadfd5d161db044d');
 let app = new Vue({
     el: '#app',
     data: {
         //选中的选项卡
         activeIndex: -1,
+        //底部导航
+        navigationList:[
+            {"id":"1","title":"课程"},
+            {"id":"2","title":"发现"},
+            {"id":"3","title":"我的"}
+        ],
         //轮播图
         bannerList:[],
         //选项卡
@@ -38,6 +46,7 @@ let app = new Vue({
           this.sowingMap();*/
         //推荐内容
         // this.getRecommendList();
+
     },
     methods: {
         touchStart (e) {
@@ -58,37 +67,49 @@ let app = new Vue({
             // 变量scrollHeight是滚动条的总高度
             let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
             // 滚动条到底部的条件
-            if (scrollTop + scrollHeight >= innerHeight-1000) {
+            if (scrollTop + scrollHeight >= innerHeight-6000) {
                 this.infiniteLoadDone()
             }
         },
         infiniteLoadDone () {
             let self = this;
-
             //总页数
             if(self.pageCount >self.pageNumber){
                 self.pageNumber +=1;
-                if (self.activeIndex == -1){
-                    $.post('/api/found/recommend', {
-                        page: self.pageNumber
-                    }, function (data) {
-                        data.data.forEach(function (item,index) {
-                            self.detailsList.push(item)
+                if(self.currentPage == 1){
+                    if (self.activeIndex == -1){
+                        $.post('/api/found/recommend', {
+                            token: localStorage.getItem('token'),
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
                         });
-                    });
-                }else {
-                    //获取列表数据
-                    let self = this;
-                    //请求获取数据
+                    }else {
+                        //获取列表数据
+                        let self = this;
+                        //请求获取数据
+                        $.post('/api/courses/course', {
+                            token: localStorage.getItem('token'),
+                            page: self.pageNumber
+                        }, function (data) {
+                            data.data.forEach(function (item,index) {
+                                self.detailsList.push(item)
+                            });
+                        });
+                    }
+                }else if(self.currentPage ==  2 ){
                     $.post('/api/courses/course', {
-                        page: self.pageNumber
+                        title: self.searchKeys,
+                        token:localStorage.getItem('token'),
+                        page:self.pageNumber
                     }, function (data) {
                         data.data.forEach(function (item,index) {
-                            self.detailsList.push(item)
+                            self.searchList.push(item)
                         });
                     });
                 }
-
             }else {
                 return
             }
@@ -98,7 +119,9 @@ let app = new Vue({
         //获取 tab页内容和页面初始化数据
         init: function () {
             let self = this;
-            $.getJSON('/api/courses/category', function (data) {
+            $.getJSON('/api/courses/category',{
+                token: localStorage.getItem('token'),
+            }, function (data) {
                 self.tabList = data.data;
                 self.$nextTick(function () {
                     self.getRecommendList();
@@ -126,9 +149,9 @@ let app = new Vue({
             let self = this;
             self.activeIndex = -1;
             $.post('/api/found/recommend', {
+                token: localStorage.getItem('token'),
                 page: self.pageNumber
             }, function (data) {
-                console.log('推荐课程接口',data.data)
                 self.detailsList = data.data;
                 self.$nextTick(function () {
                     self.pageCount = data.page.pageCount;
@@ -150,26 +173,26 @@ let app = new Vue({
         },
         //获取某个分类课程
         getItemList: function (tabId) {
-            console.log(tabId)
             let self = this;
             $.post('/api/courses/course', {
                 type_id: tabId,
+                token: localStorage.getItem('token'),
                 page:self.pageNumber
             }, function (data) {
-                console.log('获取某个分类课程',data.data);
                 self.detailsList = data.data;
                 self.$nextTick(function () {
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
-                    console.log(1111111111111111111,self.pageCount)
                 })
             });
         },
         showSearch:function () {
+            let self = this;
             //显示搜索页面
-            this.currentPage = 2;
+            self.currentPage = 2;
             setTimeout(function () {
                 document.getElementById('search-keys').focus();
+                self.searchKeys = '';
             },100);
         },
         //返回首页
@@ -177,12 +200,16 @@ let app = new Vue({
             this.isInput = false;
             this.currentPage = 1;
             this.searchKeys = '';
+            if(document.documentElement.scrollTop>0){
+                document.documentElement.scrollTop=0;
+            }
         },
         goInner:function(id) {
             sessionStorage.setItem('curriculumId',id)
             console.log('00000',id);
             mui.openWindow({
-                url:'/index/index/course_detail'
+                url:'/index/index/course_detail?id='+id
+
             })
         },
         //清除历史记录
@@ -195,6 +222,7 @@ let app = new Vue({
         searchContent:function (content) {
             let self = this;
             self.pageNumber = 1;
+            this.pageCount = null;
             if(content) {
                 this.searchKeys = content;
             }
@@ -207,10 +235,15 @@ let app = new Vue({
 
                 $.post('/api/courses/course', {
                     title: self.searchKeys,
+                    token:localStorage.getItem('token'),
                     page:self.pageNumber
                 }, function (data) {
                     console.log('立即搜索',data.data);
                     self.searchList = data.data;
+                    self.$nextTick(function () {
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
+                    })
                 });
             }
         },
@@ -218,6 +251,16 @@ let app = new Vue({
         showHistory:function () {
             //改变显示状态
             this.isInput = true;
+        },
+        //底部导航栏
+        switchPage:function (id) {
+            if(id == 2){//发现
+                mui.openWindow({
+                    url:'/index/found'
+                })
+            }else if(id == 3){//我的
+
+            }
         }
     },
     created: function () {
