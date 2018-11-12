@@ -102,12 +102,6 @@ class Found extends Api
      * @ApiParams   (name="title", type="integer", required=false, description="搜索的标题")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
-     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
-     * @ApiReturn   ({
-    'code':'1',
-    'mesg':'返回成功'
-     * })
      */
     public function article()
     {
@@ -133,8 +127,7 @@ class Found extends Api
         };
 
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-
-
+        
         $allpage=db('article')->where($where)->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
