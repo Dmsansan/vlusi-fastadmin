@@ -251,18 +251,109 @@ class User extends Api
 
     /**
      * 课程分类
-     * @ApiTitle    (我的收藏文章)
+     * @ApiTitle    (我的已审核课程)
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/user/my_article)
+     * @ApiRoute    (/api/user/my_succ_course)
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
      * @ApiParams  (name=page, type=string, required=true, description="分页数")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      */
-    public function my_course()
+    public function my_succ_course()
     {
+        $userid = $this->auth->getUser()->id;
+        $page =(int)$this->request->post("page");
+        $mycourse=db('course_audit')->alias('a')
+            ->join('course b','a.course_id=b.id')
+            ->where(['user_id'=>$userid,'checklist'=>'通过'])
+            ->field('a.id,a.course_id,b.name,b.coverimage,a.createtime')
+            ->page($page,$this->pagesize)
+            ->select();
+
+
+
+        $allpage=db('course_audit')->alias('a')
+            ->join('course b','a.course_id=b.id')
+            ->where(['user_id'=>$userid,'checklist'=>'通过'])
+            ->count('*');
+
+        $pages['page_count']=ceil($allpage/$this->pagesize);
+
+        foreach($mycourse as $key=>$val){
+            $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
+            $mycourse[$key]['course_nodes']=$nodes;
+        }
+
+
+        $this->success('获取成功',$mycourse,$pages);
+
 
     }
 
+
+    /**
+     * 课程分类
+     * @ApiTitle    (我的待审核课程)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/my_wait_course)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=page, type=string, required=true, description="分页数")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function my_wait_course()
+    {
+        $userid = $this->auth->getUser()->id;
+        $page =(int)$this->request->post("page");
+        $mycourse=db('course_audit')->alias('a')
+            ->join('course b','a.course_id=b.id')
+            ->where(['user_id'=>$userid,'checklist'=>'未审核'])
+            ->field('a.id,a.course_id,b.name,b.coverimage,a.createtime')
+            ->page($page,$this->pagesize)
+            ->select();
+
+
+
+        $allpage=db('course_audit')->alias('a')
+            ->join('course b','a.course_id=b.id')
+            ->where(['user_id'=>$userid,'checklist'=>'未审核'])
+            ->count('*');
+
+        $pages['page_count']=ceil($allpage/$this->pagesize);
+
+        foreach($mycourse as $key=>$val){
+            $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
+            $mycourse[$key]['course_nodes']=$nodes;
+        }
+
+
+        $this->success('获取成功',$mycourse,$pages);
+    }
+
+
+
+    /**
+     * 取消课程
+     * @ApiTitle    (我的课程-取消课程)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/cancle_course)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=course_id, type=string, required=true, description="课程id")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+
+    public function cancle_course()
+    {
+        $userid = $this->auth->getUser()->id;
+        $course_id =(int)$this->request->post("course_id");
+
+        $res=db('course_audit')->where(['user_id'=>$userid,'course_id'=>$course_id])->delete();
+        if($res){
+            $this->success('取消成功');
+        }else{
+            $this->error('取消失败');
+        }
+
+
+    }
 
 
 
