@@ -2,13 +2,27 @@ window.onload = function () {
     let app = new Vue({
         el: "#app",
         data: {
-            nickname:'默认名称',
+            nickNames:'默认名称',
             isDisabled: false,
             isHidden:false
         },
         methods: {
             clearNickname:function () {
-                this.nickname = '';
+                this.nickNames = '';
+            },
+            modifyNickname:function () {
+                let self = this;
+                console.log(self.nickNames);
+                $.post('/api/user/profile', {
+                    nickname:self.nickNames,
+                    token:localStorage.getItem('token')
+                },function (data) {
+                    self.$nextTick(function () {
+                        mui.openWindow({
+                            url: '/index/user/setting?token='+localStorage.getItem('token'),
+                        })
+                    })
+                })
             }
         },
         watch:{
@@ -16,11 +30,12 @@ window.onload = function () {
                 if(newVal.trim() != '') {
                     this.isDisabled = false;
                     this.isHidden = false;
-                }
-                else {
+                    this.nickNames = newVal.trim();
+                } else {
                     this.isDisabled = true;
                     this.isHidden = true;
                 }
+
             }
         }
     })

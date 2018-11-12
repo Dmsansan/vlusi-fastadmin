@@ -8,7 +8,10 @@ window.onload = function () {
             isBindPhone:false,
             code:'',
             waitSeconds:30,
-            isSend:false
+            isSend:false,
+            phoneNumber:null,
+        },
+        mounted() {
         },
         methods: {
             //验证手机号为11位
@@ -47,6 +50,15 @@ window.onload = function () {
                     mui.toast('手机号不合法');
                 }
             },
+        },
+        created: function () {
+            let code = window.location.href.split('?')[1];
+            this.phoneNumber = code.split('=')[1];
+           /* this.$nextTick(function () {
+                //获取评论详情
+                this.replyDetails();
+            })*/
+
         },
         watch:{
             phone:function (newVal,oldVal) {

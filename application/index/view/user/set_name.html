@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/js/loader.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/edit-nickname.css"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">修改昵称</h1>
+</header>
+<div id="app" class="mui-content">
+    <div class="edit-nickname-input">
+        <input placeholder="输入新昵称" v-model="nickNames" type="text" class="nickname"/>
+        <img @click="clearNickname" :class="{'invisible':isHidden}" src="/img/icon-delete.png" class="icon-delete"/>
+    </div>
+    <button :disabled="isDisabled"
+            @click="modifyNickname()"
+            class="confirm-edit-btn" type="button">确认修改</button>
+</div>
+<script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/assets/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
+<script type="text/javascript" src="/js/edit-nickname.js"></script>
+</body>
+</html>

@@ -39,6 +39,11 @@ window.onload = function () {
             //页面跳转时传递的id
             passID:null,
 
+            imgs: [],
+            imgData: {
+                accept: 'image/gif, image/jpeg, image/png, image/jpg',
+            }
+
         },
         mounted() {
             /*  //获取 tab页内容和页面初始化数据
@@ -95,10 +100,9 @@ window.onload = function () {
             //课程详情
             courseDetails:function () {
                 let self = this;
-                console.log(11111111111111111,self.passID)
                 $.post('/api/courses/detail', {
                     token:localStorage.getItem('token'),
-                    course_id: 1,
+                    course_id: self.passID,
                     page:self.pageNumber
                 }, function (data) {
                     console.log('获取某个分类课程',data.data.comment);
@@ -178,7 +182,7 @@ window.onload = function () {
                 console.log('进入课时',id)
                 mui.openWindow({
                     //视频版
-                    url:'/index/index/course_detail?id='+id
+
                     // 图文版
                     // url:'course-hour-detail-pictures.html?id=' + id
                 })
@@ -242,7 +246,41 @@ window.onload = function () {
             },
             saveImg:function () {
                 
+            },
+
+
+            add_img:function (event) {
+                let reader =new FileReader();
+                let img1=event.target.files[0];
+                let type=img1.type;//文件的类型，判断是否是图片  
+                let size=img1.size;//文件的大小，判断图片的大小  
+                if(this.imgData.accept.indexOf(type) == -1){
+                    alert('请选择我们支持的图片格式！');
+                    return false;
+                }
+                if(size>3145728){
+                    alert('请选择3M以内的图片！');
+                    return false;
+                }
+                var uri = ''
+                let form = new FormData();
+                form.append('file',img1,img1.name);
+                this.$http.post('/api/common/upload',form,{
+                    headers:{'Content-Type':'multipart/form-data'}
+                }).then(response => {
+                    console.log(response.data)
+                    uri = response.data.url
+                    reader.readAsDataURL(img1);
+                    var that=this;
+                    reader.onloadend=function(){
+                        that.imgs.push(uri);
+                    }
+                }).catch(error => {
+                    alert('上传图片出错！');
+                })
+
             }
+
         },
         watch: {
             commentsContent: function (newVal, oldVal) {
@@ -267,9 +305,7 @@ window.onload = function () {
                 this.courseDetails();
             })
         },
-        beforeDestroy(){
-            $(window).unbind('scroll');
-        },
+
     });
     /**
      * 监听文件上传框变化
