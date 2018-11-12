@@ -122,6 +122,7 @@ span.go-album-title {
     color: #999999;
 }
 p.album-desc{
+    width: 60%;
     padding-left: 10px;
     overflow: hidden;
 }

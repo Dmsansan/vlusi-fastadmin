@@ -205,11 +205,8 @@ let app = new Vue({
             }
         },
         goInner:function(id) {
-            sessionStorage.setItem('curriculumId',id)
-            console.log('00000',id);
             mui.openWindow({
-                url:'/index/index/course_detail?id='+id
-
+                url:'/index/index/detail?id='+id
             })
         },
         //清除历史记录
