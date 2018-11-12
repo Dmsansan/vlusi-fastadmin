@@ -249,6 +249,19 @@ class User extends Api
 
     }
 
+    /**
+     * 课程分类
+     * @ApiTitle    (我的收藏文章)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/my_article)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=page, type=string, required=true, description="分页数")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function my_course()
+    {
+
+    }
 
 
 
