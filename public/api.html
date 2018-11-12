@@ -6341,7 +6341,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-46">
                         <h4 class="panel-title">
-                            <span class="label label-success">GET</span>
+                            <span class="label label-primary">POST</span>
                             <a data-toggle="collapse" data-parent="#accordion46" href="#collapseOne46"> 修改会员个人信息 <span class="text-muted">/api/user/profile</span></a>
                         </h4>
                     </div>
@@ -6360,7 +6360,7 @@
 
                                 <div class="tab-pane active" id="info46">
                                     <div class="well">
-                                        修改会员个人信息                                    </div>
+                                        @ApiTitle    (修改会员个人信息)                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>Headers</strong></div>
                                         <div class="panel-body">
@@ -6381,28 +6381,34 @@
                                                 </thead>
                                                 <tbody>
                                                                                                         <tr>
-                                                        <td>avatar</td>
+                                                        <td>token</td>
                                                         <td>string</td>
                                                         <td>是</td>
-                                                        <td>头像地址</td>
+                                                        <td>请求的Token</td>
                                                     </tr>
                                                                                                         <tr>
-                                                        <td>username</td>
-                                                        <td>string</td>
+                                                        <td>user_id</td>
+                                                        <td>integer</td>
                                                         <td>是</td>
-                                                        <td>用户名</td>
+                                                        <td>用户id</td>
                                                     </tr>
                                                                                                         <tr>
                                                         <td>nickname</td>
                                                         <td>string</td>
-                                                        <td>是</td>
-                                                        <td>昵称</td>
+                                                        <td>否</td>
+                                                        <td>用户名</td>
                                                     </tr>
                                                                                                         <tr>
-                                                        <td>bio</td>
+                                                        <td>avatar</td>
                                                         <td>string</td>
-                                                        <td>是</td>
-                                                        <td>个人简介</td>
+                                                        <td>否</td>
+                                                        <td>用户头像</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>address</td>
+                                                        <td>integer</td>
+                                                        <td>否</td>
+                                                        <td>区域管理</td>
                                                     </tr>
                                                                                                     </tbody>
                                             </table>
@@ -6421,22 +6427,26 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/user/profile" method="get" name="form46" id="form46">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/user/profile" method="POST" name="form46" id="form46">
                                                                                                                 <div class="form-group">
-                                                            <label class="control-label" for="avatar">avatar</label>
-                                                            <input type="string" class="form-control input-sm" id="avatar" required placeholder="头像地址" name="avatar">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token" name="token">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <label class="control-label" for="username">username</label>
-                                                            <input type="string" class="form-control input-sm" id="username" required placeholder="用户名" name="username">
+                                                            <label class="control-label" for="user_id">user_id</label>
+                                                            <input type="integer" class="form-control input-sm" id="user_id" required placeholder="用户id" name="user_id">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="nickname">nickname</label>
-                                                            <input type="string" class="form-control input-sm" id="nickname" required placeholder="昵称" name="nickname">
+                                                            <input type="string" class="form-control input-sm" id="nickname"  placeholder="用户名" name="nickname">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <label class="control-label" for="bio">bio</label>
-                                                            <input type="string" class="form-control input-sm" id="bio" required placeholder="个人简介" name="bio">
+                                                            <label class="control-label" for="avatar">avatar</label>
+                                                            <input type="string" class="form-control input-sm" id="avatar"  placeholder="用户头像" name="avatar">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="address">address</label>
+                                                            <input type="integer" class="form-control input-sm" id="address"  placeholder="区域管理" name="address">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <button type="submit" class="btn btn-success send" rel="46">提交</button>
@@ -6459,7 +6469,22 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>返回参数</strong></div>
                                                 <div class="panel-body">
-                                                                                                        无
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
                                                                                                     </div>
                                             </div>
                                         </div>
@@ -6481,7 +6506,7 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-47">
                         <h4 class="panel-title">
-                            <span class="label label-success">GET</span>
+                            <span class="label label-primary">POST</span>
                             <a data-toggle="collapse" data-parent="#accordion47" href="#collapseOne47"> 修改手机号 <span class="text-muted">/api/user/changemobile</span></a>
                         </h4>
                     </div>
@@ -6500,7 +6525,7 @@
 
                                 <div class="tab-pane active" id="info47">
                                     <div class="well">
-                                        修改手机号                                    </div>
+                                             * @ApiTitle    (修改手机号)                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><strong>Headers</strong></div>
                                         <div class="panel-body">
@@ -6521,7 +6546,19 @@
                                                 </thead>
                                                 <tbody>
                                                                                                         <tr>
-                                                        <td>email</td>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>user_id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>用户id</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>mobile</td>
                                                         <td>string</td>
                                                         <td>是</td>
                                                         <td>手机号</td>
@@ -6549,10 +6586,18 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/user/changemobile" method="get" name="form47" id="form47">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="/api/user/changemobile" method="POST" name="form47" id="form47">
                                                                                                                 <div class="form-group">
-                                                            <label class="control-label" for="email">email</label>
-                                                            <input type="string" class="form-control input-sm" id="email" required placeholder="手机号" name="email">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token" name="token">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="user_id">user_id</label>
+                                                            <input type="integer" class="form-control input-sm" id="user_id" required placeholder="用户id" name="user_id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="mobile">mobile</label>
+                                                            <input type="string" class="form-control input-sm" id="mobile" required placeholder="手机号" name="mobile">
                                                         </div>
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="captcha">captcha</label>
@@ -6579,7 +6624,22 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>返回参数</strong></div>
                                                 <div class="panel-body">
-                                                                                                        无
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
                                                                                                     </div>
                                             </div>
                                         </div>
@@ -8241,7 +8301,7 @@
 
             <div class="row mt0 footer">
                 <div class="col-md-6" align="left">
-                    Generated on 2018-11-12 23:21:12                </div>
+                    Generated on 2018-11-12 23:50:04                </div>
                 <div class="col-md-6" align="right">
                     <a href="https://www.fastadmin.net" target="_blank">FastAdmin</a>
                 </div>
