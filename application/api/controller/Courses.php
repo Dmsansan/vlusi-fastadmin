@@ -300,6 +300,7 @@ class Courses extends Api
      * @ApiRoute    (/api/courses/comment)
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
+     * @ApiParams   (name="image", type="file", required=falst, description="图片")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -315,10 +316,18 @@ class Courses extends Api
         $course_id  =  (int)$this->request->post("course_id");
         $content=$this->request->post("content");
 
-        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
-        if(!$is_course){
-            $this->success("评论成功");
+//        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
+//        if(!$is_course){
+//            $this->success("评论成功");
+//        }
+
+        $insert=[];
+
+        if($_FILES){
+            $common=new Common();
+            $insert['img']= $common->upload();
         }
+
 
         $insert['course_id']=$course_id;
         $insert['content']=$content;
@@ -613,7 +622,13 @@ class Courses extends Api
 
 
 
+    public function test()
+    {
+        $common=new Common();
+       $file= $common->upload();
 
+
+    }
 
 
 

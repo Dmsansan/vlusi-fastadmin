@@ -14,7 +14,7 @@ use think\Config;
 class Common extends Api
 {
 
-    protected $noNeedLogin = ['init'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = '*';
 
     public function _initialize()
@@ -53,7 +53,7 @@ class Common extends Api
      */
     public function upload()
     {
-        $file = $this->request->file('file');
+        $file = $this->request->file('image');
         if (empty($file)) {
             $this->error(__('No file upload or server upload limit exceeded'));
         }
@@ -129,9 +129,10 @@ class Common extends Api
             $attachment->data(array_filter($params));
             $attachment->save();
             \think\Hook::listen("upload_after", $attachment);
-            $this->success(__('Upload successful'), [
-                'url' => $uploadDir . $splInfo->getSaveName()
-            ]);
+//            $this->success(__('Upload successful'), [
+//                'url' => $uploadDir . $splInfo->getSaveName()
+//            ]);
+            return $uploadDir . $splInfo->getSaveName();
         } else {
             // 上传失败获取错误信息
             $this->error($file->getError());

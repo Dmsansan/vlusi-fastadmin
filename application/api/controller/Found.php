@@ -127,7 +127,7 @@ class Found extends Api
         };
 
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
-        
+
         $allpage=db('article')->where($where)->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
@@ -282,6 +282,7 @@ class Found extends Api
      * @ApiRoute    (/api/found/comment)
      * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
+     * @ApiParams   (name="image", type="file", required=falst, description="图片")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -296,6 +297,14 @@ class Found extends Api
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
         $content=$this->request->request("content");
+
+
+        $insert=[];
+
+        if($_FILES){
+            $common=new Common();
+            $insert['img']= $common->upload();
+        }
 
         $insert['article_id']=$article_id;
         $insert['content']=$content;
