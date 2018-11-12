@@ -325,7 +325,7 @@ class User extends Api
         $page =(int)$this->request->post("page");
         $mycourse=db('course_audit')->alias('a')
             ->join('course b','a.course_id=b.id')
-            ->where(['user_id'=>$userid,'checklist'=>'未审核'])
+            ->where(['user_id'=>$userid,'checklist'=>'待审核'])
             ->field('a.id,a.course_id,b.name,b.coverimage,a.createtime')
             ->page($page,$this->pagesize)
             ->select();
@@ -334,7 +334,7 @@ class User extends Api
 
         $allpage=db('course_audit')->alias('a')
             ->join('course b','a.course_id=b.id')
-            ->where(['user_id'=>$userid,'checklist'=>'未审核'])
+            ->where(['user_id'=>$userid,'checklist'=>'待审核'])
             ->count('*');
 
         $pages['page_count']=ceil($allpage/$this->pagesize);
