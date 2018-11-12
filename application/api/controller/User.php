@@ -191,7 +191,7 @@ class User extends Api
         $myCollection=db('course_collection')->alias('a')
                     ->join('course b','a.course_id=b.id')
                     ->where(['user_id'=>$userid])
-                    ->field('a.id,a.course_id,b.name,b.coverimage')
+                    ->field('a.id,a.course_id,b.name,b.coverimage,a.createtime')
                     ->page($page,$this->pagesize)
                     ->select();
 
@@ -204,7 +204,7 @@ class User extends Api
         $pages['page_count']=ceil($allpage/$this->pagesize);
 
         foreach($myCollection as $key=>$val){
-            $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->select();
+            $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
             $myCollection[$key]['course_nodes']=$nodes;
         }
 
@@ -230,7 +230,7 @@ class User extends Api
         $myCollection=db('article_collection')->alias('a')
             ->join('article b','a.article_id=b.id')
             ->where(['user_id'=>$userid])
-            ->field('a.id,a.article_id,b.title,b.coverimage,b.content')
+            ->field('a.id,a.article_id,b.title,b.coverimage,b.content,a.createtime')
             ->page($page,$this->pagesize)
             ->select();
 
