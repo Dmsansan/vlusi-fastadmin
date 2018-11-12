@@ -49,4 +49,9 @@ class User extends Frontend
         return $this->view->fetch();
     }
 
+    public function setting()
+    {
+        return $this->view->fetch();
+    }
+
 }
