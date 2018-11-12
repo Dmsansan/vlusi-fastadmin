@@ -20,12 +20,7 @@ class Course extends Model
     protected $append = [
         'flag_text'
     ];
-    protected static function init()
-    {
-        Course::event('before_insert', function ($data) {
-            $data->admin_id=session('admin')['id'];
-        });
-    }
+    
 
     
     public function getFlagList()
@@ -51,5 +46,11 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo('Category', 'course_category_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+
+    public function o()
+    {
+        return $this->belongsTo('app\admin\model\Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }

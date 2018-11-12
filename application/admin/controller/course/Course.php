@@ -50,13 +50,13 @@ class Course extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['category'])
+                    ->with(['category','o'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['category'])
+                    ->with(['category','o'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)

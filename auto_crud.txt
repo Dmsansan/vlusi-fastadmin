@@ -12,7 +12,7 @@ php think crud -t course_nodes -c course/nodes -m course/nodes  -r course  -e co
 
 
 #course生成
-php think crud -t course  -c course/course  -m course/course -r course_category  -k course_category_id -p id -e course/category --force=true
+php think crud -t course  -c course/course  -m course/course -r course_category  -k course_category_id -p id -e course/category  --relation=admin --relationforeignkey=admin_id --force=true
 
 
 #article生成
