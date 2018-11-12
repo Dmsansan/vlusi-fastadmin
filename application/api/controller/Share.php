@@ -25,7 +25,7 @@ class Share extends Api
      */
     public function getimage()
     {
-        $article_id =   (int)$this->request->post("article_id");
+        $article_id =   (int)$this->request->request("article_id");
         if (!$article_id)
         {
             $this->error(__('文章id为空'));
@@ -74,7 +74,7 @@ class Share extends Api
         $imageName = time().'22'.rand('100000','999999').".jpg";
         $this->createSharePng($detail,'','uploads/'.$folderName.'/'.$imageName);
         $data = array(
-            'url' => "uploads/".$folderName.'/'.$imageName,
+            'url' => "/uploads/".$folderName.'/'.$imageName,
         );
         $this->success("返回成功",$data);
     }
