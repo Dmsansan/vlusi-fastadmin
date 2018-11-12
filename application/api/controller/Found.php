@@ -230,7 +230,11 @@ class Found extends Api
         $data=[];
         //初次加载
         if($page===0){
-            $data['detail'] =db('article')->where(['id'=>$article_id])->find();
+            $data['detail']=db('article')->ailas('a')
+                            ->where(['a.id'=>$article_id])
+                            ->join('admin b','a.admin_id=b.id')
+                            ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
+                            ->find();
 
             //同步新增到article浏览数+1
             db('article')->where('id',$article_id)->setInc('readnum');

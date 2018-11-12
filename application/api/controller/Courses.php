@@ -220,7 +220,12 @@ class Courses extends Api
         $data=[];
         //初次加载
         if($page===0){
-            $data['detail'] =db('course')->where(['id'=>$course_id])->find();
+            $data['detail'] =db('course')->alias('a')
+                            ->where(['a.id'=>$course_id])
+                            ->join('admin b','a.admin_id=b.id')
+                            ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
+                            ->find();
+
             $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
 
             //同步新增到course浏览数+1
