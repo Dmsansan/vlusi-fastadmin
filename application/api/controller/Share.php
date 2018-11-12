@@ -3,7 +3,6 @@
 namespace app\api\controller;
 
 use app\common\controller\Api;
-use app\common\library\Image;
 use think\Db;
 
 /**
