@@ -2,3 +2,4 @@
 runtime/*
 *.idea
 .idea/*
+/nbproject/private/
