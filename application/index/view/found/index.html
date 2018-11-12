@@ -56,10 +56,8 @@
                     </div>
                 </div>
                 <div class="mui-slider-indicator">
-                    <div class="mui-indicator mui-active"></div>
-                    <div class="mui-indicator"></div>
-                    <div class="mui-indicator"></div>
-                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator "
+                         v-for="index in bannerList"></div>
                 </div>
             </div>
             <!--
@@ -151,17 +149,15 @@
            描述：底部导航栏
         -->
         <nav class="mui-bar mui-bar-tab">
-            <a class="mui-tab-item" href="home.html">
-                <img src="/img/course.png"/>
-                <span class="mui-tab-label">课程</span>
-            </a>
-            <a class="mui-tab-item active" href="javascript:;">
-                <img src="/img/discovery-active.png"/>
-                <span class="mui-tab-label">发现</span>
-            </a>
-            <a class="mui-tab-item" href="person-home.html">
-                <img src="/img/my.png"/>
-                <span class="mui-tab-label">我的</span>
+            <a class="mui-tab-item"
+               v-for="(item,index) in navigationList"
+               :class="{active:index == 1}"
+               @click="switchPage(item.id)"
+            >
+                <img v-if="index == 0" src="/img/course.png"/>
+                <img v-else-if="index == 1" src="/img/discovery-active.png"/>
+                <img v-else src="/img/my.png"/>
+                <span class="mui-tab-label">{{item.title}}</span>
             </a>
         </nav>
         <span style="display: none;">{{tabContentTracker}}</span>
@@ -214,7 +210,6 @@
 
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
 <script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
-
 <script type="text/javascript" src="/assets/vue/vue.min.js"></script>
 <script type="text/javascript" src="/js/discovery.js"></script>
 </body>
