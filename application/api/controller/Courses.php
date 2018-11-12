@@ -119,6 +119,9 @@ class Courses extends Api
 
         if($search){
             $where=['name'=>['like','%'.$search.'%']];
+
+            //添加搜索历史
+            db('course_search')->insert(['user_id'=>$this->userid,'word'=>$search]);
         }else{
             $where=['course_category_id'=>$typeid];
         };
@@ -556,7 +559,25 @@ class Courses extends Api
     }
 
 
-
+    /**
+     * 获取用户课程搜索历史[10条]
+     * @ApiMethod   (GET)
+     * @ApiRoute    (/api/courses/search_keywords)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+      })
+     */
+    public function search_keywords()
+    {
+        $userid=$this->userid;
+        $list=db('course_search')->where(['user_id'=>$userid])->order('id desc')->limit(0,10)->field('word')->select();
+        $this->success('获取成功',$list);
+    }
 
 
 

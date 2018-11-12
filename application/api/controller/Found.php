@@ -111,6 +111,7 @@ class Found extends Api
      */
     public function article()
     {
+        $userid=$this->userid;
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
         $search = $this->request->post('title');
@@ -118,6 +119,8 @@ class Found extends Api
         //分类数据
         if($search){
             $where['title']=['like','%'.$search.'%'];
+
+            db('article_search')->insert(['user_id'=>$userid,'word'=>$search]);
         }else{
             $where['article_category_id']=$typeid;
         };
@@ -448,5 +451,25 @@ class Found extends Api
         return $subs;
     }
 
+
+    /**
+     * 获取用户发现搜索历史[10条]
+     * @ApiMethod   (GET)
+     * @ApiRoute    (/api/found/search_keywords)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+    })
+     */
+    public function search_keywords()
+    {
+        $userid=$this->userid;
+        $list=db('article_search')->where(['user_id'=>$userid])->order('id desc')->limit(0,10)->field('word')->select();
+        $this->success('获取成功',$list);
+    }
 
 }
