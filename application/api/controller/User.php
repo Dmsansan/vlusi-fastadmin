@@ -9,7 +9,7 @@ use fast\Random;
 use think\Validate;
 
 /**
- * 会员接口
+ * 用户中心接口
  */
 class User extends Api
 {
@@ -22,39 +22,8 @@ class User extends Api
         parent::_initialize();
     }
 
-    /**
-     * 会员中心
-     */
-    public function index()
-    {
-        $this->success('', ['welcome' => $this->auth->nickname]);
-    }
 
-    /**
-     * 会员登录
-     * 
-     * @param string $account 账号
-     * @param string $password 密码
-     */
-    public function login()
-    {
-        $account = $this->request->request('account');
-        $password = $this->request->request('password');
-        if (!$account || !$password)
-        {
-            $this->error(__('Invalid parameters'));
-        }
-        $ret = $this->auth->login($account, $password);
-        if ($ret)
-        {
-            $data = ['userinfo' => $this->auth->getUserinfo()];
-            $this->success(__('Logged in successful'), $data);
-        }
-        else
-        {
-            $this->error($this->auth->getError());
-        }
-    }
+
 
     /**
      * 手机验证码登录
@@ -100,52 +69,8 @@ class User extends Api
         }
     }
 
-    /**
-     * 注册会员
-     * 
-     * @param string $username 用户名
-     * @param string $password 密码
-     * @param string $email 邮箱
-     * @param string $mobile 手机号
-     */
-    public function register()
-    {
-        $username = $this->request->request('username');
-        $password = $this->request->request('password');
-        $email = $this->request->request('email');
-        $mobile = $this->request->request('mobile');
-        if (!$username || !$password)
-        {
-            $this->error(__('Invalid parameters'));
-        }
-        if ($email && !Validate::is($email, "email"))
-        {
-            $this->error(__('Email is incorrect'));
-        }
-        if ($mobile && !Validate::regex($mobile, "^1\d{10}$"))
-        {
-            $this->error(__('Mobile is incorrect'));
-        }
-        $ret = $this->auth->register($username, $password, $email, $mobile, []);
-        if ($ret)
-        {
-            $data = ['userinfo' => $this->auth->getUserinfo()];
-            $this->success(__('Sign up successful'), $data);
-        }
-        else
-        {
-            $this->error($this->auth->getError());
-        }
-    }
 
-    /**
-     * 注销登录
-     */
-    public function logout()
-    {
-        $this->auth->logout();
-        $this->success(__('Logout successful'));
-    }
+
 
     /**
      * 修改会员个人信息
@@ -175,43 +100,6 @@ class User extends Api
         $this->success();
     }
 
-    /**
-     * 修改邮箱
-     * 
-     * @param string $email 邮箱
-     * @param string $captcha 验证码
-     */
-    public function changeemail()
-    {
-        $user = $this->auth->getUser();
-        $email = $this->request->post('email');
-        $captcha = $this->request->request('captcha');
-        if (!$email || !$captcha)
-        {
-            $this->error(__('Invalid parameters'));
-        }
-        if (!Validate::is($email, "email"))
-        {
-            $this->error(__('Email is incorrect'));
-        }
-        if (\app\common\model\User::where('email', $email)->where('id', '<>', $user->id)->find())
-        {
-            $this->error(__('Email already exists'));
-        }
-        $result = Ems::check($email, $captcha, 'changeemail');
-        if (!$result)
-        {
-            $this->error(__('Captcha is incorrect'));
-        }
-        $verification = $user->verification;
-        $verification->email = 1;
-        $user->verification = $verification;
-        $user->email = $email;
-        $user->save();
-
-        Ems::flush($email, 'changeemail');
-        $this->success();
-    }
 
     /**
      * 修改手机号
@@ -285,71 +173,7 @@ class User extends Api
         $this->error(__('Operation failed'), $url);
     }
 
-    /**
-     * 重置密码
-     * 
-     * @param string $mobile 手机号
-     * @param string $newpassword 新密码
-     * @param string $captcha 验证码
-     */
-    public function resetpwd()
-    {
-        $type = $this->request->request("type");
-        $mobile = $this->request->request("mobile");
-        $email = $this->request->request("email");
-        $newpassword = $this->request->request("newpassword");
-        $captcha = $this->request->request("captcha");
-        if (!$newpassword || !$captcha)
-        {
-            $this->error(__('Invalid parameters'));
-        }
-        if ($type == 'mobile')
-        {
-            if (!Validate::regex($mobile, "^1\d{10}$"))
-            {
-                $this->error(__('Mobile is incorrect'));
-            }
-            $user = \app\common\model\User::getByMobile($mobile);
-            if (!$user)
-            {
-                $this->error(__('User not found'));
-            }
-            $ret = Sms::check($mobile, $captcha, 'resetpwd');
-            if (!$ret)
-            {
-                $this->error(__('Captcha is incorrect'));
-            }
-            Sms::flush($mobile, 'resetpwd');
-        }
-        else
-        {
-            if (!Validate::is($email, "email"))
-            {
-                $this->error(__('Email is incorrect'));
-            }
-            $user = \app\common\model\User::getByEmail($email);
-            if (!$user)
-            {
-                $this->error(__('User not found'));
-            }
-            $ret = Ems::check($email, $captcha, 'resetpwd');
-            if (!$ret)
-            {
-                $this->error(__('Captcha is incorrect'));
-            }
-            Ems::flush($email, 'resetpwd');
-        }
-        //模拟一次登录
-        $this->auth->direct($user->id);
-        $ret = $this->auth->changepwd($newpassword, '', true);
-        if ($ret)
-        {
-            $this->success(__('Reset password successful'));
-        }
-        else
-        {
-            $this->error($this->auth->getError());
-        }
-    }
+
+
 
 }
