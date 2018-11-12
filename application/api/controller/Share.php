@@ -20,14 +20,8 @@ class Share extends Api
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/share/getimage)
      * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
-     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
-     * @ApiReturnParams   (name="data", type="object", sample="{'url':'string'}", description="扩展数据返回")
-     * @ApiReturn   ({
-    'code':'1',
-    'mesg':'返回成功'
-     * })
      */
     public function getimage()
     {
