@@ -510,7 +510,7 @@ class Courses extends Api
     /**
      * 获取课程的课时详情接口
      * @ApiMethod   (POST)
-     * @ApiRoute    (/api/courses/nodes)
+     * @ApiRoute    (/api/courses/nodes_detail)
      * @ApiParams   (name="nodes_id", type="integer", required=true, description="课时的id")
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
@@ -537,10 +537,20 @@ class Courses extends Api
 
             //不是体验课程判断是否申请了并且通过了申请
             $is_check=db('course_audit')->where(['user_id'=>$userid,'checklist'=>'通过'])->find();
+
+            //通过了就返回成功
+            if($is_check){
+                $this->success('获取成功');
+            }
         }
 
+        $this->error('请先申请课程');
 
     }
+
+
+
+
 
 
 
