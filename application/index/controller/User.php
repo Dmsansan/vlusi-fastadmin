@@ -55,4 +55,6 @@ class User extends Frontend
         return $this->view->fetch();
     }
 
+
+
 }

@@ -16,6 +16,7 @@ class User extends Api
 
     protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third'];
     protected $noNeedRight = '*';
+    protected $pagesize;
 
     public function _initialize()
     {
@@ -175,14 +176,31 @@ class User extends Api
 
     /**
      * 课程分类
-     * @ApiTitle    (课程的分类)
-     * @ApiMethod   (GET)
-     * @ApiRoute    (/api/courses/category)
+     * @ApiTitle    (我的收藏)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/my_collection)
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=page, type=string, required=true, description="分页数")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      */
     public function my_collection()
     {
+        $userid = $this->auth->getUser()->id;
+        $page =(int)$this->request->post("page");
+
+        $myCollection=db('course_comment')->alias('a')
+                    ->join('course b','a.course_id=b.id')
+                    ->where(['user_id'=>$userid])
+                    ->field('a.id,a.course_id,b.name,b.coverimage')
+                    ->page($page,$this->pagesize)
+                    ->select();
+
+        foreach($myCollection as $key=>$val){
+            $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->select();
+            $myCollection[$key]['course_nodes']=$nodes;
+        }
+
+        $this->success('获取成功',$myCollection);
 
     }
 
