@@ -16,8 +16,14 @@ class Found extends Api
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $pagesize= 10;
-    protected $userid=47;
+    protected $userid;
 
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->userid = $this->auth->getUser()->id;
+    }
     /**
      * 发现分类
      *
