@@ -14,7 +14,7 @@ use think\Validate;
 class User extends Api
 {
 
-    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third'];
+    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'third'];
     protected $noNeedRight = '*';
     protected $pagesize=10;
 
@@ -74,45 +74,66 @@ class User extends Api
 
 
     /**
-     * 修改会员个人信息
-     *
-     * @param string $avatar 头像地址
-     * @param string $username 用户名
-     * @param string $nickname 昵称
-     * @param string $bio 个人简介
+     * @ApiTitle    (修改会员个人信息)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/profile)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="user_id", type="integer", required=true, description="用户id")
+     * @ApiParams   (name="nickname", type="string", required=false, description="用户名")
+     * @ApiParams   (name="avatar", type="string", required=false, description="用户头像")
+     * @ApiParams   (name="address", type="integer", required=false, description="区域管理")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      */
     public function profile()
     {
-        $user = $this->auth->getUser();
-        $username = $this->request->request('username');
-        $nickname = $this->request->request('nickname');
-        $bio = $this->request->request('bio');
-        $avatar = $this->request->request('avatar');
-        $exists = \app\common\model\User::where('username', $username)->where('id', '<>', $this->auth->id)->find();
-        if ($exists)
+        $user_id = $this->auth->getUser()->id;
+        if (!$user_id)
         {
-            $this->error(__('Username already exists'));
+            $this->error(__('用户id为空'));
         }
-        $user->username = $username;
-        $user->nickname = $nickname;
-        $user->bio = $bio;
-        $user->avatar = $avatar;
-        $user->save();
-        $this->success();
+        $nickname = $this->request->post("nickname");
+        $address = $this->request->post('address');
+        $avatar = $this->request->post('avatar');
+        $data = array();
+        if($nickname){
+            $data['nickname'] = $nickname;
+        }
+        if($address){
+            $data['address'] = $address;
+        }
+        if($avatar){
+            $data['avatar'] = $avatar;
+        }
+        if($data == array()){
+            $this->error(__('修改数据为空'));
+        }
+        $result = db('user')->where(array('id'=>$user_id))->update($data);
+        if($result){
+            $this->success("返回成功",$data);
+        }else{
+            $this->success("无变化",$data);
+        }
     }
 
-
     /**
-     * 修改手机号
      *
-     * @param string $email 手机号
-     * @param string $captcha 验证码
+     * @ApiTitle    (修改手机号)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/changemobile)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="user_id", type="integer", required=true, description="用户id")
+     * @ApiParams   (name="mobile", type="string", required=true, description="手机号")
+     * @ApiParams   (name="captcha", type="string", required=true, description="验证码")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      */
     public function changemobile()
     {
-        $user = $this->auth->getUser();
-        $mobile = $this->request->request('mobile');
-        $captcha = $this->request->request('captcha');
+        $user_id = $this->auth->getUser()->id;
+
+
+        $mobile = $this->request->post("mobile");
+        $captcha = $this->request->post('captcha');
+
         if (!$mobile || !$captcha)
         {
             $this->error(__('Invalid parameters'));
@@ -121,7 +142,7 @@ class User extends Api
         {
             $this->error(__('Mobile is incorrect'));
         }
-        if (\app\common\model\User::where('mobile', $mobile)->where('id', '<>', $user->id)->find())
+        if (\app\common\model\User::where('mobile', $mobile)->where('id', '<>', $user_id)->find())
         {
             $this->error(__('Mobile already exists'));
         }
@@ -130,14 +151,13 @@ class User extends Api
         {
             $this->error(__('Captcha is incorrect'));
         }
-        $verification = $user->verification;
-        $verification->mobile = 1;
-        $user->verification = $verification;
-        $user->mobile = $mobile;
-        $user->save();
+        $data = array(
+            'mobile' => $mobile,
+        );
+        $result = db('user')->where(array('id'=>$user_id))->update($data);
 
         Sms::flush($mobile, 'changemobile');
-        $this->success();
+        $this->success("返回成功");
     }
 
     /**
