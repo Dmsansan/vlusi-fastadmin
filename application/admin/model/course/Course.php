@@ -20,7 +20,12 @@ class Course extends Model
     protected $append = [
         'flag_text'
     ];
-    
+    protected static function init()
+    {
+        Course::event('before_insert', function ($data) {
+            $data->admin_id=session('admin')['id'];
+        });
+    }
 
     
     public function getFlagList()

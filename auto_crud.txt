@@ -18,4 +18,9 @@ php think crud -t course  -c course/course  -m course/course -r course_category 
 #article生成
 php think crud -t article  -c article/article  -m article/article -r article_category  -k article_category_id -p id -e article/category --force=true
 
+php think crud -t article  -c article/article  -m article/article  --relation=article_category  -k article_category_id -p id -e article/category  --relation=admin  --relationforeignkey=admin_id --force=true
+
+需修改
+php think crud -t article  -c article/article  -m article/article  --relation=article_category  -k article_category_id -p id -e article/category  --relation=admin  --relationforeignkey=admin_id --force=true
+
 #

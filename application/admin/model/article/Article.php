@@ -20,7 +20,14 @@ class Article extends Model
     protected $append = [
         'flag_text'
     ];
-    
+
+    protected static function init()
+    {
+        Article::event('before_insert', function ($article) {
+          $article->admin_id=session('admin')['id'];
+        });
+    }
+
 
     
     public function getFlagList()
@@ -46,5 +53,11 @@ class Article extends Model
     public function category()
     {
         return $this->belongsTo('Category', 'article_category_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+
+    public function r()
+    {
+        return $this->belongsTo('app\admin\model\Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }

@@ -13,7 +13,22 @@ return [
     'Zan'  =>  '点赞数',
     'Comments'  =>  '评论数',
     'Auth'  =>  '发布人',
+    'Admin_id'  =>  '发布者[管理员]',
     'Createtime'  =>  '创建时间',
     'Category.id'  =>  '分类id',
-    'Category.name'  =>  '分类名'
+    'Category.name'  =>  '分类名',
+    'R.id'  =>  'ID',
+    'R.username'  =>  '用户名',
+    'R.nickname'  =>  '昵称',
+    'R.signtext'  =>  '用户签名',
+    'R.password'  =>  '密码',
+    'R.salt'  =>  '密码盐',
+    'R.avatar'  =>  '头像',
+    'R.email'  =>  '电子邮箱',
+    'R.loginfailure'  =>  '失败次数',
+    'R.logintime'  =>  '登录时间',
+    'R.createtime'  =>  '创建时间',
+    'R.updatetime'  =>  '更新时间',
+    'R.token'  =>  'Session标识',
+    'R.status'  =>  '状态'
 ];
