@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,8 +26,8 @@
                 <p class="course-img-desc-info">{{detailList.detail.readnum}}阅读 &#8226; {{detailList.detail.zan}}点赞 &#8226; {{detailList.detail.comments}}评论 {{detailList.detail.createtime}}</p>
             </div>
             <div class="right-part">
-                <button type="button" class="apply-course apply" :class="{active:courseStatus == 0}">申请课程</button>
-                <button type="button" class="apply-course checking" :class="{active:courseStatus == 1}">正在审核</button>
+                <button type="button" class="apply-course apply" :class="{active:detailList.detail.is_audit == 0}">申请课程</button>
+                <button type="button" class="apply-course checking" :class="{active:detailList.detail.is_audit == -1}">正在审核</button>
             </div>
         </div>
     </header>
@@ -74,7 +74,7 @@
             <p class="course-principle-title">注意事项</p>
             <ul class="course-principle-list">
                 <li class="course-principle-item">
-                    适当运动，增多减少。
+                    {{detailList.detail.notice}}
                 </li>
             </ul>
         </div>
@@ -108,7 +108,7 @@
                     </span>
                 </p>
                 <p class="course-list-item-learn">
-                    <template v-if="course.isOpen">
+                    <template v-if="course.sort">
                         <span class="exp-icon">体验</span>
                         <span class="item-learn">学习</span>
                     </template>
@@ -141,21 +141,21 @@
             <li v-for="item in commentsList" class="course-comments-item">
                 <div class="user-info">
                     <p class="user-info-logo-nickname">
-                        <img :src="item.logo" class="user-logo"/>
-                        <span class="user-nickname">{{item.commenter}}</span>
+                        <img :src="item.avatar" class="user-logo"/>
+                        <span class="user-nickname">{{item.nickname}}</span>
                     </p>
                     <p class="user-like-container">
                         <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.isLiked}">
                         <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.isLiked}">
-                        <span>{{item.count}}</span>
+                        <span>{{item.zan}}</span>
                     </p>
                 </div>
                 <p @click="goCommentsDetail()"  class="comments-content">
-                    {{item.comments}}
+                    {{item.content}}
                 </p>
                 <p class="comments-img" v-html="item.imgs"></p>
                 <div class="comments-operation">
-                    <p class="comments-time">{{item.time}}</p>
+                    <p class="comments-time">{{item.createtime}}</p>
                     <button @click="replay()" type="button" class="reply-comments">回复</button>
                 </div>
             </li>

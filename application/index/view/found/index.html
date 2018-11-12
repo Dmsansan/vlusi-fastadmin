@@ -6,13 +6,13 @@
     <script type="text/javascript" src="/js/loader.js"></script>
     <link rel="stylesheet" href="/css/home.css"/>
     <link rel="stylesheet" href="/css/discovery.css"/>
-    <script type="text/javascript" src="/js/discovery.js"></script>
 
+<!--
     <style>
         .mui-slider-loop{
             height: 193px;
         }
-    </style>
+    </style>-->
 </head>
 <body>
 <div id="app" v-cloak>
@@ -26,7 +26,7 @@
         </header>
         <div class="mui-content">
             <!--
-                图片
+                轮播图
             -->
             <!-- <div class="img-container">
                  <img src="img/show.jpg"/>
@@ -54,6 +54,12 @@
                         </a>
 
                     </div>
+                </div>
+                <div class="mui-slider-indicator">
+                    <div class="mui-indicator mui-active"></div>
+                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator"></div>
                 </div>
             </div>
             <!--
@@ -206,26 +212,11 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
 <script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
-<script>
-    /*
-        mui.init({
-            swipeBack:true //启用右滑关闭功能
-        });
-        mui("#slider2").slider({interval: 30});*/
-    /* Vue.component('名字', {
-         data: function () {
-             return {
-                 count: 0
-             }
-         },
-         template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-     })*/
 
-</script>
-
-
+<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
+<script type="text/javascript" src="/js/discovery.js"></script>
 </body>
 
 </html>
