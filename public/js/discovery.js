@@ -220,10 +220,8 @@ let app = new Vue({
         },
         //查看详情
         goInner: function (id) {
-            console.log('查看详情',id);
-            sessionStorage.setItem('detailId',id)
             mui.openWindow({
-                url: '/index/found/detail?id'+id,
+                url: '/index/found/detail?id='+id,
             })
         },
         //显示历史记录

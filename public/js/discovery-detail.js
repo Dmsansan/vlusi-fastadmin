@@ -2,8 +2,16 @@ $(function () {
     let app = new Vue({
             el: '#app',
             data: {
-                //分页
-                currentPage:1,
+                //第几页
+                pageNumber:1,
+                //页面总页数
+                pageCount:null,
+                //加载更多
+                loadMore:false,
+                //详情ID
+                passID:null,
+                //评论列表
+                reviewList:[],
                /* isLikeArt:false,*/
                 likeNum:20,
                 isPlay: false,
@@ -30,20 +38,67 @@ $(function () {
 
             },
             mounted(){
-                //初始化数据
-                this.init();
+               /* //初始化数据
+                this.init();*/
             },
             methods: {
+                touchStart (e) {
+                    this.startY = e.targetTouches[0].pageY
+                },
+                touchMove (e) {
+                    if (e.targetTouches[0].pageY < this.startY) { // 上拉
+                        if(this.loadMore){
+                            this.judgeScrollBarToTheEnd()
+                        }
+                    }
+                },
+                // 判断滚动条是否到底
+                judgeScrollBarToTheEnd () {
+                    console.log('是男是女试试')
+                    let innerHeight = document.querySelector('.active').clientHeight
+                    // 变量scrollTop是滚动条滚动时，距离顶部的距离
+                    let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                    // 变量scrollHeight是滚动条的总高度
+                    let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+                    // 滚动条到底部的条件
+                    if (scrollTop + scrollHeight >= innerHeight-10000) {
+                        this.infiniteLoadDone()
+                    }
+                },
+                infiniteLoadDone () {
+
+                    let self = this;
+                    //总页数
+                    if(self.pageCount >self.pageNumber){
+                        self.pageNumber +=1;
+                        $.post('/api/found/detail', {
+                            token:localStorage.getItem('token'),
+                            article_id: 10,
+                            page: self.pageNumber,
+                        }, function (data) {
+                            data.data.comment.forEach(function (item,index) {
+                                self.reviewList.push(item)
+                            });
+                        });
+                    }else {
+                        return
+                    }
+
+
+                },
+                //初始化数据
                 init:function () {
                     let self = this;
-                    id = sessionStorage.getItem('detailId');
-                    console.log(sessionStorage.getItem('detailId'))
                     $.post(' /api/found/detail', {
                         article_id: 10,
-                        page: self.currentPage,
+                        token:localStorage.getItem('token'),
+                        page: self.pageNumber,
                     }, function (data) {
-                        console.log(data)
                         self.detailsList = data.data;
+                        self.reviewList = data.data.comment;
+                        self.pageCount = data.page.pageCount;
+                        self.loadMore = true;
+                        self.isVideo = data.data.detail.videofile?true:false;
                     });
 
                 },
@@ -71,7 +126,8 @@ $(function () {
                 likeComment:function (flag,id) {
                     let self = this;
                     $.post('/api/found/article_zan', {
-                        article_id: id,
+                        token:localStorage.getItem('token'),
+                        article_id: self.passID,
                     }, function (data) {
                         console.log(data);
                         self.init();
@@ -81,7 +137,8 @@ $(function () {
                 likeArticle:function(flag) {
                     let self = this;
                     $.post('/api/found/article_zan', {
-                        article_id: sessionStorage.getItem('detailId'),
+                        article_id: self.passID,
+                        token:localStorage.getItem('token')
                     }, function (data) {
                         console.log(data);
                         self.init();
@@ -103,7 +160,8 @@ $(function () {
                 collect:function (flag) {
                     let self = this;
                     $.post('/api/found/collection', {
-                        article_id: sessionStorage.getItem('detailId'),
+                        article_id: self.passID,
+                        token:localStorage.getItem('token')
                     }, function (data) {
                         console.log(data)
                     });
@@ -137,15 +195,18 @@ $(function () {
                 saveImg:function () {
 
                 },
+                //发布评论
                 sendInformation:function () {
                     let self = this;
                     $.post('/api/found/comment', {
-                        article_id: sessionStorage.getItem('detailId'),
+                        token:localStorage.getItem('token'),
+                        article_id: 10,
                         content:self.commentsContent
                     }, function (data) {
                         console.log(data);
                         if (data.code == 1){
                             self.isDisabled = false;
+                            self.commentsContent = '';
                             self.init();
                         }
                     });
@@ -163,9 +224,18 @@ $(function () {
                     }
                 }
             },
-            creat:{
-
-            }
+            created: function () {
+                let self = this;
+                let code = window.location.href.split('?')[1];
+                self.passID = code.split('=')[1];
+                self.$nextTick(function () {
+                    //初始化数据
+                    self.init();
+                })
+            },
+            beforeDestroy(){
+                $(window).unbind('scroll');
+            },
         }
     );
     /**
