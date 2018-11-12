@@ -116,11 +116,14 @@ class Found extends Api
         $typeid =  (int)$this->request->post("type_id");
         $search = $this->request->post('title');
 
+        if(strlen($search)>100){
+            $search=mb_substr($search,0,20);
+        }
         //分类数据
         if($search){
             $where['title']=['like','%'.$search.'%'];
 
-            db('article_search')->insert(['user_id'=>$userid,'word'=>$search]);
+            db('article_search')->insert(['user_id'=>$userid,'word'=>$search,'createtime'=>time()]);
         }else{
             $where['article_category_id']=$typeid;
         };

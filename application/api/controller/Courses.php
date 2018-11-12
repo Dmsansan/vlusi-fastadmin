@@ -115,13 +115,15 @@ class Courses extends Api
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
         $search = $this->request->request('title');
-
+        if(strlen($search)>100){
+            $search=mb_substr($search,0,20);
+        }
 
         if($search){
             $where=['name'=>['like','%'.$search.'%']];
 
             //添加搜索历史
-            db('course_search')->insert(['user_id'=>$this->userid,'word'=>$search]);
+            db('course_search')->insert(['user_id'=>$this->userid,'word'=>$search,'createtime'=>time()]);
         }else{
             $where=['course_category_id'=>$typeid];
         };
