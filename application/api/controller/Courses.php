@@ -13,7 +13,7 @@ use think\Db;
 class Courses extends Api
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $pagesize= 10;
     protected $userid;
