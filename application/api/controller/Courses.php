@@ -13,7 +13,7 @@ use think\Db;
 class Courses extends Api
 {
 
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     protected $pagesize= 10;
     protected $userid;
@@ -37,7 +37,7 @@ class Courses extends Api
      * @ApiReturn   ({
     'code':'1',
     'mesg':'返回成功',
-     'token':'2b65b125f90b12e8daec0b016f271aadbb403c91'
+     'token':'a460f6f0b010dccb4560afeaaadfd5d161db044d'
      * })
      */
     public function category()
