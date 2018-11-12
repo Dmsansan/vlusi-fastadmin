@@ -301,8 +301,8 @@ class Courses extends Api
     public function comment()
     {
         $userid=$this->userid;
-        $course_id  =  (int)$this->request->request("course_id");
-        $content=$this->request->request("content");
+        $course_id  =  (int)$this->request->post("course_id");
+        $content=$this->request->post("content");
 
         $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
         if(!$is_course){
@@ -342,7 +342,7 @@ class Courses extends Api
     public function comment_zan()
     {
         $userid=$this->userid;
-        $comment_id  =  (int)$this->request->request("comment_id");
+        $comment_id  =  (int)$this->request->post("comment_id");
         $res=db('course_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
         if($res){
 
@@ -392,7 +392,7 @@ class Courses extends Api
     {
         $userid=$this->userid;
 
-        $course_id= (int)$this->request->request("course_id");
+        $course_id= (int)$this->request->post("course_id");
 
         $is_course=db('course')->where(['id'=>$course_id])->find();
         if(!$is_course){
@@ -421,6 +421,7 @@ class Courses extends Api
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/courses/comment_detail)
      * @ApiParams   (name="comment_id", type="integer", required=true, description="该评论的id")
+     * @ApiParams   (name="page", type="integer", required=true, description="分页数")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
@@ -434,48 +435,43 @@ class Courses extends Api
     public function comment_detail()
     {
         $comment_id= (int)$this->request->request("comment_id");
-        //评论内容
-//        $detail['detail']=db('course_comment')->alias('a')->join('user','user.id=a.user_id')
-//                ->field('user.nickname,avatar,a.*')
-//                ->where(['id'=>$comment_id])
-//                ->find();
-//        if($detail['detail']){
-//            $detail['detail']['createtime']=date('Y-m-d H:i:s',$detail['detail']['createtime']);
-//        }else{
-//            $this->success("获取成功",[]);
-//        }
+        $page= (int)$this->request->request("page");
 
+        $allPage=db('course_comment')->alias('a')
+                ->join('user u','u.id=a.user_id')
+                ->where(['pid'=>$comment_id])
+                ->count();
 
-        $children=db('course_comment')->alias('a')->join('course_comment b','b.pid=a.id')
-//                ->join('user','user.id=a.user_id')
-                ->field('*')
-                ->select();
+        $pages['page_count']=ceil($allPage/$this->pagesize);
+        $tree=$this->commentTree($comment_id,true,$page);
 
-        dump($children);die;
-
-
-
+        $this->success('获取成功',$tree,$pages);
     }
 
 
 
 
-    protected function commentTree($id)
+    protected function commentTree($id,$is_first=false,$page=1)
     {
-        static $subs = array(); //子孙数组
-        $children_data=db('course_comment')->alias('a')
-                    ->where(['pid'=>$id])
-                    ->join('user u','u.id=a.user_id')
-                    ->field('user.nickname,avatar,a.*')
-                    ->select();
+        $tree=[];
+        $query=db('course_comment')->alias('a')
+                ->join('user u','u.id=a.user_id')
+                ->where(['pid'=>$id]);
+        if($is_first) {
+            $query->page($page,$this->pagesize);
+        }
 
-        if($children_data){
+        $data= $query->field('u.nickname,avatar,a.*')->select();
+
+
+        if($data){
             //子类存在数据
-            foreach($children_data as $key=>$val){
-
+            foreach($data as $key=>$val){
+                $val['children']=$this->commentTree($val['id']);
+                $tree[]=$val;
             }
         }
-        return $subs;
+        return $tree;
     }
 
 
