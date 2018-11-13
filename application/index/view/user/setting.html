@@ -24,21 +24,18 @@
             <label>头像</label>
             <img id="view" :src="imgUrl" class="user-info-logo"/>
         </div>
-        <div @click="editUserInfo('edit-nickname.html')" class="mui-input-row">
+        <div @click="editUserInfo(userInformation.nickname)" class="mui-input-row">
             <label>用户名</label>
             <input :value="userInformation.nickname" readonly type="text">
         </div>
-        <div @click="editUserInfo('edit-bind-phone.html')" class="mui-input-row">
+        <div  @click="modifyPhone(userInformation.mobile)"class="mui-input-row">
             <label>修改手机号</label>
             <input :value="userInformation.mobile"
-                   @click="modifyPhone(userInformation.mobile)"
                    readonly type="text">
         </div>
         <div id="city" class="mui-input-row region">
             <label>区域管理</label>
-
-            <input v-model="city" readonly type="text"
-                     >
+            <input v-model="city" readonly type="text">
         </div>
     </form>
 

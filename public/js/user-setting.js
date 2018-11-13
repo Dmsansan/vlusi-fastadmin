@@ -18,7 +18,6 @@ let app = new Vue({
             $.post('/api/user/userinfo', {
                 token:localStorage.getItem('token')
             },function (data) {
-                console.log('获取用户信息',data.data)
                 self.userInformation = data.data;
                 self.city =  data.data.address;
             })
@@ -31,7 +30,6 @@ let app = new Vue({
         },
         //
         submitBtn:function () {
-            console.log(1111)
             let self = this;
             $.post('/api/user/profile', {
                 token:localStorage.getItem('token'),
@@ -45,18 +43,18 @@ let app = new Vue({
         },
         //修改手机号
         modifyPhone:function (phone) {
-            console.log(phone)
             localStorage.setItem('phoneNumber',phone);
             mui.openWindow({
-                url: '/index/user/set_phone?token='+a460f6f0b010dccb4560afeaaadfd5d161db044d
+                url: '/index/user/set_phone?token='+localStorage.getItem('token')
             })
         },
-
-        editUserInfo: function (url) {
+        //修改用户名
+        editUserInfo:function (name) {
+            localStorage.setItem('userName',name);
             mui.openWindow({
-                url: url
+                url: '/index/user/set_name?token='+localStorage.getItem('token')
             })
-        }
+        },
     },
     created: function () {
         //获取用户信息
@@ -64,11 +62,9 @@ let app = new Vue({
     watch:{
         city:function (newVal,oldVal) {
             if(newVal.trim() != oldVal) {
-                console.log(111)
                 this.$nextTick(function () {
                     this.submitBtn();
                 })
-
             } else {
                 console.log(222)
             }

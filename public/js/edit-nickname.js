@@ -2,9 +2,11 @@ window.onload = function () {
     let app = new Vue({
         el: "#app",
         data: {
-            nickNames:'默认名称',
+            nickNames:'',
             isDisabled: false,
             isHidden:false
+        },
+        mounted() {
         },
         methods: {
             clearNickname:function () {
@@ -24,6 +26,17 @@ window.onload = function () {
                     })
                 })
             }
+        },
+        created: function () {
+            console.log(localStorage.getItem('userName'))
+            this.nickNames = localStorage.getItem('userName');
+            /*  let code = window.location.href.split('?')[1];
+              this.phoneNumber = code.split('=')[1];*/
+            /* this.$nextTick(function () {
+                 //获取评论详情
+                 this.replyDetails();
+             })*/
+
         },
         watch:{
             nickname:function (newVal,oldVal) {

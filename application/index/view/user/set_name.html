@@ -11,7 +11,7 @@
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title">修改昵称</h1>
 </header>
-<div id="app" class="mui-content">
+<div id="app" class="mui-content" v-cloak>
     <div class="edit-nickname-input">
         <input placeholder="输入新昵称" v-model="nickNames" type="text" class="nickname"/>
         <img @click="clearNickname" :class="{'invisible':isHidden}" src="/img/icon-delete.png" class="icon-delete"/>

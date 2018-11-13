@@ -105,7 +105,6 @@ window.onload = function () {
                     course_id: self.passID,
                     page:self.pageNumber
                 }, function (data) {
-                    console.log('获取某个分类课程',data.data.comment);
                     self.detailList = data.data;
                     self.courseList = data.data.detail.node;
                     self.commentsList = data.data.comment;
@@ -147,7 +146,6 @@ window.onload = function () {
                     token:localStorage.getItem('token'),
                     comment_id: id
                 }, function (data) {
-                    console.log('评论点赞',data.data);
                     self.$nextTick(function () {
                         self.courseDetails();
                     })
@@ -288,7 +286,6 @@ window.onload = function () {
                 if (newVal.trim() != '') {
                     self.isDisabled = false;
                 } else {
-                    console.log(2222)
                     self.isDisabled = true;
                 }
 

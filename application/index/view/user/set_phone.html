@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/edit-bind-phone.css"/>
 </head>
 <body>
-<div  id="app">
+<div  id="app" v-cloak>
     <header class="mui-bar mui-bar-nav">
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
         <h1 class="mui-title">
@@ -19,7 +19,7 @@
         <div class="mui-input-group">
             <div v-if="!isBindPhone" class="mui-input-row phone">
                 <label>原手机号</label>
-                <input type="text" value="138****2011" readonly/>
+                <input type="text" :value="phoneNumber" readonly/>
             </div>
             <div class="mui-input-row phone">
                 <label>

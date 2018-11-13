@@ -54,7 +54,6 @@ $(function () {
                 },
                 // 判断滚动条是否到底
                 judgeScrollBarToTheEnd () {
-                    console.log('是男是女试试')
                     let innerHeight = document.querySelector('.active').clientHeight
                     // 变量scrollTop是滚动条滚动时，距离顶部的距离
                     let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
@@ -66,14 +65,13 @@ $(function () {
                     }
                 },
                 infiniteLoadDone () {
-
                     let self = this;
                     //总页数
                     if(self.pageCount >self.pageNumber){
                         self.pageNumber +=1;
                         $.post('/api/found/detail', {
                             token:localStorage.getItem('token'),
-                            article_id: 10,
+                            article_id: self.passID,
                             page: self.pageNumber,
                         }, function (data) {
                             data.data.comment.forEach(function (item,index) {
@@ -90,7 +88,7 @@ $(function () {
                 init:function () {
                     let self = this;
                     $.post(' /api/found/detail', {
-                        article_id: 10,
+                        article_id: self.passID,
                         token:localStorage.getItem('token'),
                         page: self.pageNumber,
                     }, function (data) {
@@ -200,7 +198,7 @@ $(function () {
                     let self = this;
                     $.post('/api/found/comment', {
                         token:localStorage.getItem('token'),
-                        article_id: 10,
+                        article_id: self.passID,
                         content:self.commentsContent
                     }, function (data) {
                         console.log(data);
@@ -215,11 +213,9 @@ $(function () {
             watch: {
                 commentsContent: function (newVal, oldVal) {
                     if (newVal.trim() != '') {
-                        console.log(11111)
                         this.isDisabled = false;
                     }
                     else {
-                        console.log(222)
                         this.isDisabled = true;
                     }
                 }

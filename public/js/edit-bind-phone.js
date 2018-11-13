@@ -20,7 +20,22 @@ window.onload = function () {
             },
             //确认绑定（修改）手机号
             confirmBind:function () {
-                
+                let self = this;
+                $.getJSON('/api/sms/check', {
+                    token:localStorage.getItem('token'),
+                    event:'changemobile',
+                    mobile:self.phone,
+                    captcha:self.code
+                },function (data) {
+                    mui.toast(data.msg);
+                    if(data.msg == '成功'){
+                        self.$nextTick(function () {
+                            mui.openWindow({
+                                url: '/index/user/setting?token='+localStorage.getItem('token')
+                            })
+                        })
+                    }
+                });
             },
             //验证验证码为6位
             validateCOde: function () {
@@ -28,19 +43,27 @@ window.onload = function () {
             },
             //发送验证码
             sendPhoneCode: function () {
-                this.isSend = true;
+                let self = this;
+                self.isSend = true;
                 let phoneReg = /^1(3|4|5|7|8)\d{9}$/;
-                if (phoneReg.test(this.phone)) {
-                    if (this.waitSeconds == 30) {
+                if (phoneReg.test(self.phone)) {
+                    if (self.waitSeconds == 30) {
                         app.sendCodeContent = `${app.waitSeconds}s重新获取`;
+                         $.post('/api/Sms/send', {
+                             token:localStorage.getItem('token'),
+                             event:'changemobile',
+                             mobile:self.phone
+                         },function (data) {
+                             console.log(data.msg)
+                         });
                         let interval = setInterval(function () {
                             if (app.waitSeconds == 1) {
                                 clearInterval(interval);
                                 app.waitSeconds = 30;
                                 app.sendCodeContent = '获取验证码';
-                                this.isSend = false;
-                            }
-                            else {
+                                self.isSend = false;
+
+                            } else {
                                 app.sendCodeContent = `${--app.waitSeconds}s重新获取`;
                             }
                         }, 1000);
@@ -53,6 +76,7 @@ window.onload = function () {
         },
         created: function () {
             console.log(localStorage.getItem('phoneNumber'))
+            this.phoneNumber = localStorage.getItem('phoneNumber');
           /*  let code = window.location.href.split('?')[1];
             this.phoneNumber = code.split('=')[1];*/
            /* this.$nextTick(function () {
@@ -63,15 +87,14 @@ window.onload = function () {
         },
         watch:{
             phone:function (newVal,oldVal) {
-                if(newVal.trim().length == 11 && this.code.trim().length== 6) {
+                if(newVal.trim().length == 11 && this.code.trim().length== 4) {
                     this.isDisabled = false;
-                }
-                else {
+                } else {
                     this.isDisabled = true;
                 }
             },
             code:function (newVal,oldVal) {
-                if(newVal.trim().length == 6 && this.phone.trim().length == 11) {
+                if(newVal.trim().length == 4 && this.phone.trim().length == 11) {
                     this.isDisabled = false;
                 }
                 else {

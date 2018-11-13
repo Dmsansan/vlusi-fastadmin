@@ -68,10 +68,9 @@ window.onload = function () {
                     let self = this;
                     $.post('/api/courses/comment_detail', {
                         token:localStorage.getItem('token'),
-                        comment_id: 8,
+                        comment_id: self.replyID,
                         page:self.pageNumber
                     }, function (data) {
-                       console.log('获取评论详情',data)
                         self.commentsList = data.data;
                         self.pageCount = data.page.page_count;
                     });
