@@ -70,5 +70,9 @@ class User extends Frontend
       {
          return $this->view->fetch();
       }
+      public function set_data()
+            {
+               return $this->view->fetch();
+            }
 
 }
