@@ -83,6 +83,10 @@ window.onload = function () {
                 uploadImg: function () {
                     document.getElementById('upload-img').click();
                 },
+                //返回上一步
+                goBack: function () {
+                    history.go(-1);
+                },
                 //回复
                 replay:function () {
                     $('.emoji-wysiwyg-editor').focus();

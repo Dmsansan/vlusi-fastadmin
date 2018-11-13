@@ -82,7 +82,7 @@
                             <span>{{item.zan}}</span>
                         </p>
                     </div>
-                    <p @click="goCommentsDetail()"  class="comments-content">
+                    <p @click="goCommentsDetail(item.id)"  class="comments-content">
                         {{item.content}}
                     </p>
                     <p class="comments-img" v-html="item.imgs"></p>
@@ -124,6 +124,7 @@
     </footer>
 </div>
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
+<script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
 <script src="/assets/emoji/js/config.js"></script>
 <script src="/assets/emoji/js/util.js"></script>
 <script src="/assets/emoji/js/jquery.emojiarea.js"></script>

@@ -172,11 +172,13 @@ $(function () {
                         mui.toast('已取消收藏');
                     }
                 },
-                goCommentsDetail:function () {
+                goCommentsDetail:function (id) {
                     //查看评论详情
                     mui.openWindow({
-                        url:'comments-detail.html'
+                        url:'/index/found/comments?id='+id
+
                     })
+
                 },
                 sendToFriend:function () {
                     //发给好友
