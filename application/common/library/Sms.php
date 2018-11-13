@@ -14,7 +14,7 @@ class Sms
      * 验证码有效时长
      * @var int
      */
-    protected static $expire = 120000;
+    protected static $expire = 120;
 
     /**
      * 最大允许检测的次数
