@@ -21,9 +21,8 @@ window.onload = function () {
             //确认绑定（修改）手机号
             confirmBind:function () {
                 let self = this;
-                $.getJSON('/api/sms/check', {
+                $.post('/api/user/changemobile', {
                     token:localStorage.getItem('token'),
-                    event:'changemobile',
                     mobile:self.phone,
                     captcha:self.code
                 },function (data) {
@@ -62,7 +61,6 @@ window.onload = function () {
                                 app.waitSeconds = 30;
                                 app.sendCodeContent = '获取验证码';
                                 self.isSend = false;
-
                             } else {
                                 app.sendCodeContent = `${--app.waitSeconds}s重新获取`;
                             }
