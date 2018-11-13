@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="history-record-show">
-                <p @click="searchContent(item)" v-for="item in historyList" class="history-record-item">{{item}}</p>
+                <p @click="searchContent(item.word)" v-for="item in historyList" class="history-record-item">{{item.word}}</p>
             </div>
         </div>
         <!--搜索内容展示-->

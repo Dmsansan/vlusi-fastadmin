@@ -25,7 +25,8 @@ let app = new Vue({
         //手动改变值变化
         tabContentTracker: 0,
         //历史记录
-        historyList:Array.from(set),
+        // historyList:Array.from(set),
+        historyList:[],
         //搜索的关键字
         searchKeys:'',
         //第几页
@@ -228,7 +229,7 @@ let app = new Vue({
             if(self.searchKeys.trim() != '') {
                 set.add(this.searchKeys);
                 localStorage.setItem('history-home',JSON.stringify(Array.from(set)));
-                app.historyList = Array.from(set);
+                /*app.historyList = Array.from(set);*/
 
                 $.post('/api/courses/course', {
                     title: self.searchKeys,
@@ -236,13 +237,21 @@ let app = new Vue({
                     page:self.pageNumber
                 }, function (data) {
                     console.log('立即搜索',data.data);
-                    self.searchList = data.data;
+                    self.historyList = data.data;
                     self.$nextTick(function () {
                         self.pageCount = data.page.pageCount;
                         self.loadMore = true;
                     })
                 });
             }
+            // 获取用户课程搜索历史[10条]
+            $.getJSON('/api/courses/search_keywords', {
+                token:localStorage.getItem('token'),
+            }, function (data) {
+                self.historyList = data.data;
+            });
+
+
         },
         //显示历史记录
         showHistory:function () {

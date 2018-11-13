@@ -26,7 +26,7 @@ let app = new Vue({
         //手动改变值变化
         tabContentTracker: 0,
         //历史记录
-        historyList: Array.from(set),
+        historyList: [],
         //搜索的关键字
         searchKeys: '',
         //页面页码
@@ -206,7 +206,7 @@ let app = new Vue({
             if (self.searchKeys.trim() != '') {
                 set.add(self.searchKeys);
                 localStorage.setItem('history-discovery', JSON.stringify(Array.from(set)));
-                app.historyList = Array.from(set);
+
                 //请求搜索接口获取数据
                 $.post('/api/found/article', {
                     title: self.searchKeys,
@@ -217,6 +217,12 @@ let app = new Vue({
                 });
 
             }
+            // 获取用户课程搜索历史[10条]
+            $.getJSON('/api/found/search_keywords', {
+                token:localStorage.getItem('token'),
+            }, function (data) {
+                self.historyList = data.data;
+            });
         },
         //查看详情
         goInner: function (id) {
