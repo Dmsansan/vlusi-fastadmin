@@ -31,7 +31,11 @@ class Share extends Api
             $this->error(__('文章id为空'));
         }
         $detail =db('article')->where(['id'=>$article_id])->find();
+        $detail_user =db('admin')->where(['id'=>$detail['id']])->find();
         
+        $detail['nickname'] = $detail_user['nickname'];
+        $detail['signtext'] = $detail_user['signtext'];
+        $detail['avatar'] = $detail_user['avatar'];
         $folderName = date('Y',time()).date('m',time()).date('d',time());
         if(!is_dir("uploads/".$folderName)){
             mkdir("uploads/".$folderName);
@@ -166,14 +170,14 @@ function createSharePng($gData,$codeName,$fileName = ''){
 	
     //头像
 
-    list($a_w,$a_h) = getimagesize($url."/img/code_png/logo.jpg");
+    list($a_w,$a_h) = getimagesize($url.$gData['avatar']);
 
-    $avatarImg = $this->createImageFromFile($url."/img/code_png/logo.jpg");
+    $avatarImg = $this->createImageFromFile($url.$gData['avatar']);
 	
     imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
 	//作者
-	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['auth']);
-	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, '作者认证信息');
+	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
+	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, $gData['signtext']);
 	
 	//广告
 
