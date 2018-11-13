@@ -63,7 +63,11 @@
             isFilled:function () {
                 return this.nickName != '';
             }
-        }
+        },
+        created: function () {
+            let token = $('input[name="token"]').val();
+            localStorage.setItem('token',token);
+        },
     });
     /**
      * 选择日期

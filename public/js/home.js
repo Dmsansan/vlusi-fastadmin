@@ -1,6 +1,6 @@
 let set = new Set(JSON.parse(localStorage.getItem('history-home')));
 //设置token
-localStorage.setItem('token','a460f6f0b010dccb4560afeaaadfd5d161db044d');
+/*localStorage.setItem('token','a460f6f0b010dccb4560afeaaadfd5d161db044d');*/
 let app = new Vue({
     el: '#app',
     data: {
@@ -267,9 +267,8 @@ let app = new Vue({
         this.sowingMap();
         //获取 tab页内容和页面初始化数据
         this.init();
-       /* var token = <?php echo $token;?>;
-        console.log(token)*/
-
+        let token = $('input[name="token"]').val();
+        localStorage.setItem('token',token);
     },
     beforeDestroy(){
         $(window).unbind('scroll');
