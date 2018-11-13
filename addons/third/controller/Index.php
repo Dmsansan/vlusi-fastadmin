@@ -63,7 +63,6 @@ class Index extends Controller
      */
     public function callback()
     {
-        dump(222);die;
         $auth = $this->auth;
 
         //监听注册登录注销的事件
