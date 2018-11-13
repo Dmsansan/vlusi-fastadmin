@@ -66,6 +66,7 @@ class Wechat
     public function getUserInfo($params = [])
     {
         $params = $params ? $params : $_GET;
+        dump($params);die;
         if (isset($params['access_token']) || (isset($params['state']) && $params['state'] == Session::get('state') && isset($params['code'])))
         {
             //获取access_token
