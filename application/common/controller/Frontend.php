@@ -64,7 +64,8 @@ class Frontend extends Controller
             $this->auth->init($token);
             //检测是否登录
             if (!$this->auth->isLogin()) {
-                $this->redirect('user/third');
+//                $this->redirect('user/third');
+                $this->redirect('third/connect/wechat');
             }
             // 判断是否需要验证权限
             if (!$this->auth->match($this->noNeedRight)) {
