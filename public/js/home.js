@@ -267,6 +267,8 @@ let app = new Vue({
         this.sowingMap();
         //获取 tab页内容和页面初始化数据
         this.init();
+       /* var token = <?php echo $token;?>;
+        console.log(token)*/
 
     },
     beforeDestroy(){

@@ -116,7 +116,8 @@
                 <li @click="goToCourseHour(course.id)" v-for="(course,index) in courseList" class="course-list-item">
                     <p class="course-list-item-content">
                     <span class="course-list-item-title">
-                       {{course.id}} {{index < 9 ? `0`+(++index) : index}} {{course.title}}
+                       <!--{{course.id}}-->
+                        {{index < 9 ? `0`+(++index) : index}} {{course.title}}
                     </span>
                         <span class="course-list-item-desc">
                        {{course.desc}}
