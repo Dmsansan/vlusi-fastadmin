@@ -21,6 +21,9 @@ class Index extends Frontend
     {
 //        $list=db('banner')
 //        $this->assign('banner',$list);
+
+        $token=$this->auth->getToken();
+        dump($token);die;
         return $this->view->fetch();
     }
 
