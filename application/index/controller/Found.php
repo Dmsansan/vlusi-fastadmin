@@ -9,7 +9,7 @@ class Found extends Frontend
 {
 
     protected $noNeedLogin = '*';
-    protected $noNeedRight = '*';
+    protected $noNeedRight = ['*'];
     protected $layout = '';
 
     public function _initialize()
