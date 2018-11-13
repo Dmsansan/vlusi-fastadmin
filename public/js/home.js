@@ -1,7 +1,6 @@
 let set = new Set(JSON.parse(localStorage.getItem('history-home')));
 //设置token
 localStorage.setItem('token','a460f6f0b010dccb4560afeaaadfd5d161db044d');
-// localStorage.setItem('token',);
 let app = new Vue({
     el: '#app',
     data: {
