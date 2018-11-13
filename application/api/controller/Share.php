@@ -26,7 +26,6 @@ class Share extends Api
     public function getimage()
     {
         $article_id =   (int)$this->request->request("article_id");
-        $article_id = 4;
         if (!$article_id)
         {
             $this->error(__('文章id为空'));
