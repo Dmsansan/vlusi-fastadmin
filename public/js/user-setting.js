@@ -95,20 +95,23 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
         var img = $("#view").css("background-image");
         img = img.substring(5, img.length - 1);
         //上传图片
-        // $.ajax({
-        //     type: "post",
-        //     url: "",
-        //     cache: false,
-        //     processData: false,
-        //     contentType: false,
-        //     async: true,
-        //     data: {
-        //         file: img
-        //     },
-        //     success:function(data) {
-        //         data.data.file;
-        //     }
-        // });
+       /* $.ajax({
+            type: "post",
+            url: "/api/user/profile",
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            async: true,
+            data: {
+                'avatar': img,
+                'token':localStorage.getItem('token'),
+            },
+            success:function(data) {
+                console.log(11111)
+                // data.data.file;
+            }
+        });*/
     }
 });
 //关闭actionsheet
