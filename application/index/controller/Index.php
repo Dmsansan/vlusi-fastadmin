@@ -19,19 +19,14 @@ class Index extends Frontend
 
     public function index()
     {
-//        $list=db('banner')
-//        $this->assign('banner',$list);
 
-//        $userinfo=$this->auth->getUser();
-//        if(!$userinfo->mobile){
-//            $this->redirect('/user/');
-//        }
-//        dump($userinfo);
-//        $token=$this->auth->getToken();
-//        dump($token);die;
-//
-//        $this->assign('token',$token);
+        $userinfo=$this->auth->getUser();
 
+        if($userinfo->jointime==time()){
+            $this->redirect('user/bind_phone');
+        }
+        $token=$this->auth->getToken();
+        $this->assign('token',$token);
         return $this->view->fetch();
     }
 
