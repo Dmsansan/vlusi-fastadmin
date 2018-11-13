@@ -24,28 +24,9 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                <li>
-                    <a href="__PUBLIC__" target="_blank"><i class="fa fa-home" style="font-size:14px;"></i></a>
-                </li>
 
-                <li class="dropdown notifications-menu hidden-xs">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">{:__('Latest news')}</li>
-                        <li>
-                            <!-- FastAdmin最新更新信息,你可以替换成你自己站点的信息,请注意修改public/assets/js/backend/index.js文件 -->
-                            <ul class="menu">
 
-                            </ul>
-                        </li>
-                        <li class="footer"><a href="#" target="_blank">{:__('View more')}</a></li>
-                    </ul>
-                </li>
-
-                <!-- 账号信息下拉框 -->
+                <!-- 账号信息下拉框 22-->
                 <li class="hidden-xs">
                     <a href="javascript:;" data-toggle="checkupdate" title="{:__('Check for updates')}">
                         <i class="fa fa-refresh"></i>
@@ -58,7 +39,7 @@
                         <i class="fa fa-trash"></i>
                     </a>
                     <ul class="dropdown-menu wipecache">
-                        <li><a href="javascript:;" data-type="all"><i class="fa fa-trash"></i> {:__('Wipe all cache')}</a></li>
+                        <li><a href="javascript:;" data-type="all"><i class="fa fa-trash"></i>{:__('Wipe all cache')}</a></li>
                         <li class="divider"></li>
                         <li><a href="javascript:;" data-type="content"><i class="fa fa-file-text"></i> {:__('Wipe content cache')}</a></li>
                         <li><a href="javascript:;" data-type="template"><i class="fa fa-file-image-o"></i> {:__('Wipe template cache')}</a></li>
@@ -66,20 +47,7 @@
                     </ul>
                 </li>
 
-                <!-- 多语言列表 -->
-                {if $Think.config.lang_switch_on}
-                <li class="hidden-xs">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language"></i></a>
-                    <ul class="dropdown-menu">
-                        <li class="{$config['language']=='zh-cn'?'active':''}">
-                            <a href="?ref=addtabs&lang=zh-cn">简体中文</a>
-                        </li>
-                        <li class="{$config['language']=='en'?'active':''}">
-                            <a href="?ref=addtabs&lang=en">English</a>
-                        </li>
-                    </ul>
-                </li>
-                {/if}
+
 
                 <!-- 全屏按钮 -->
                 <li class="hidden-xs">
@@ -129,10 +97,7 @@
                         </li>
                     </ul>
                 </li>
-                <!-- 控制栏切换按钮 -->
-                <li class="hidden-xs">
-                    <a href="javascript:;" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+
             </ul>
         </div>
     </div>
