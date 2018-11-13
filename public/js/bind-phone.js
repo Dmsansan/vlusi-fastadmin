@@ -2,7 +2,7 @@ window.onload = function () {
     let app = new Vue({
         el: '#app',
         data: {
-            hasCode: false,
+            hasCode: true,
             sendCodeContent: '获取验证码',
             phone: '',
             code: '',
@@ -10,6 +10,8 @@ window.onload = function () {
             waitSeconds: 60,
             clearCode:false,
             clearPhone:false
+        },
+        mounted() {
         },
         methods: {
             test:function() {
@@ -21,13 +23,21 @@ window.onload = function () {
             },
             //验证验证码为6位
             validateCOde: function () {
-                this.code = this.code.slice(0, 6);
+                this.code = this.code.slice(0, 4);
             },
             //发送验证码
             sendPhoneCode: function () {
+                let self = this;
                 let phoneReg = /^1(3|4|5|7|8)\d{9}$/;
                 if (phoneReg.test(this.phone)) {
                     if (this.waitSeconds == 60) {
+                        $.post('/api/Sms/send', {
+                            token:localStorage.getItem('token'),
+                            mobile:self.phone,
+                            event:'changemobile'
+                        },function (data) {
+
+                        });
                         app.sendCodeContent = `${app.waitSeconds}s重新获取`;
                         let interval = setInterval(function () {
                             if (app.waitSeconds == 1) {
@@ -47,6 +57,16 @@ window.onload = function () {
             },
             //确认绑定
             goBindPhone:function () {
+                let self = this;
+                console.log(self.code)
+                $.post('/api/user/changemobile', {
+                    token:localStorage.getItem('token'),
+                    mobile:self.phone,
+                    event:'changemobile',
+                    captcha:self.code
+                },function (data) {
+
+                });
                 if(app.hasCode) {
                     mui.toast('绑定了');
                 }
@@ -77,7 +97,7 @@ window.onload = function () {
                     //隐藏清空按钮
                     app.clearPhone = false;
                 }
-                if(newPhone.length == 11 && app.code.length == 6) {
+                if(newPhone.length == 11 && app.code.length == 4) {
                     app.hasCode = true;
                 }
                 else {
@@ -93,7 +113,7 @@ window.onload = function () {
                     //隐藏清空按钮
                     app.clearCode = false;
                 }
-                if(newCode.length == 6 && app.phone.length == 11) {
+                if(newCode.length == 4 && app.phone.length == 11) {
                     app.hasCode = true;
                 }
                 else {

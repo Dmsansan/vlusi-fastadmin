@@ -55,13 +55,17 @@ class User extends Frontend
         return $this->view->fetch();
     }
      public function set_name()
-         {
-                return $this->view->fetch();
-         }
+     {
+        return $this->view->fetch();
+     }
 
- public function set_phone()
-         {
-                return $this->view->fetch();
-         }
+     public function set_phone()
+     {
+        return $this->view->fetch();
+     }
+      public function bind_phone()
+      {
+         return $this->view->fetch();
+      }
 
 }

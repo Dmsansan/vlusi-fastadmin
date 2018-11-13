@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/js/loader.js"></script>
+    <link rel="stylesheet" href="/css/bind-phone.css"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title"></h1>
+</header>
+<div id="app" class="mui-content" v-cloak>
+    <h3>绑定手机号</h3>
+    <section>
+        <div class="mui-input-group">
+            <div class="mui-input-row">
+                <input v-model="phone" @paste="validatePhone" @input="validatePhone" type="number" maxlength="11" placeholder="请输入手机号"/>
+                <img v-if="clearPhone" @click="clearPhoneFun" src="/img/icon-delete.png" class="icon-delete">
+            </div>
+            <div class="mui-input-row">
+                <input v-model="code" @paste="validateCOde" @input="validateCOde" type="number" maxlength="6" placeholder="请输入短信验证码"/>
+                <img v-if="clearCode" @click="clearCodeFun" src="/img/icon-delete.png" class="icon-delete-code">
+                <button type="button" @click="sendPhoneCode" class="send-code-btn">{{sendCodeContent}}</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <button @click="goBindPhone" class="mui-btn mui-btn-block mui-confirm" :class="{'disabled':!hasCode}">确认绑定</button>
+        <button @click="skipBindPhone" class="mui-btn mui-btn-block mui-skip">跳过绑定，下一步</button>
+    </footer>
+</div>
+<script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/assets/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
+<script type="text/javascript" src="/js/bind-phone.js"></script>
+</body>
+</html>
