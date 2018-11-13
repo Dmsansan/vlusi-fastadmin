@@ -40,7 +40,7 @@ return array (
     array (
       'app_id' => 'wx1fab8067cbc162c7',
       'app_secret' => 'd638ba9b21a7ca01277fa6a8e3f0fc9e',
-      'scope' => 'snsapi_base',
+      'scope' => 'snsapi_userinfo',
     ),
     'rule' => 'required',
     'msg' => '',
