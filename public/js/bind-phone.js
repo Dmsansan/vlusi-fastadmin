@@ -127,6 +127,10 @@ window.onload = function () {
                     app.hasCode = false;
                 }
             }
-        }
+        },
+        created: function () {
+            let token = $('input[name="token"]').val();
+            localStorage.setItem('token',token);
+        },
     });
 }
