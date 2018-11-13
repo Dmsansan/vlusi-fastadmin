@@ -355,6 +355,57 @@ class User extends Api
     }
 
 
+    /**
+     * 首次进入绑定用户信息
+     * @ApiTitle    (首次进入绑定用户信息)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/user/binduserinfo)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=nickname, type=string, required=false, description="昵称")
+     * @ApiParams  (name=gender, type=string, required=true, description="性别 1男 2女")
+     * @ApiParams  (name=birthday, type=string, required=false, description="生日 示例: 1998-01-02")
+     * @ApiParams  (name=address, type=string, required=false, description="地址")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+
+    public function binduserinfo()
+    {
+        $userid = $this->auth->getUser()->id;
+        $nickname =$this->request->post("nickname");
+        $gender =(int)$this->request->post("gender");
+        $birthday =$this->request->post("birthday");
+        $address =$this->request->post("address");
+
+        $update=[];
+        if($nickname){
+            $update['nickname']=$nickname;
+        }
+
+        if($gender){
+            $update['gender']=$gender;
+        }
+
+        if($birthday){
+            $update['birthday']=$birthday;
+        }
+
+        if($address){
+            $update['address']=$address;
+        }
+
+        if($update){
+           $res= db('user')->where(['id'=>$userid])->update($update);
+
+           if($res){
+               $this->success('更新成功');
+           }else{
+               $this->error('更新失败');
+           }
+        }
+
+    }
+
+
 
 
 
