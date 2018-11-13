@@ -110,6 +110,7 @@ window.onload = function () {
                         page:self.pageNumber
                     }, function (data) {
                         self.commentsList =data.data;
+                        console.log(data.data)
                         self.pageCount = data.page.page_count;
                         self.loadMore = true;
                     });

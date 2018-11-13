@@ -119,7 +119,6 @@ $(function () {
                 goBack: function () {
                     history.go(-1);
                 },
-                //评论内容点赞
                 likeComment:function (flag,id) {
                     let self = this;
                     $.post(' /api/found/comment_zan', {

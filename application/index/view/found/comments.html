@@ -31,7 +31,7 @@
                         <div class="user-info">
                             <p class="user-info-logo-nickname">
                                 <img :src="commentsList.avatar"class="user-logo"/>
-                                <span class="user-nickname">{commentsList.nickname}}</span>
+                                <span class="user-nickname">{{commentsList.nickname}}</span>
                             </p>
                             <p class="user-like-container">
                                 <img @click="likeComment(commentsList.id,false)" :class="{active:commentsList.is_zan}"
@@ -45,7 +45,7 @@
                         <p class="comments-content">
                             {{commentsList.content}}
                         </p>
-                        <p class="comments-img" v-if="commentsList.img">
+                        <p class="comments-img" v-if="commentsList.img  ">
                             <img v-for="n in 5" src="/img/show.jpg"/>
                         </p>
                         <div class="comments-operation">
@@ -79,7 +79,7 @@
                                 <p class="comments-content">
                                     {{item.content}}
                                 </p>
-                                <p class="comments-img">
+                                <p class="comments-img" v-if="item.img">
                                     <img v-for="n in 5" src="/img/show.jpg"/>
                                 </p>
                                 <div class="comments-operation">
