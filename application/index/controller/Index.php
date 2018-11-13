@@ -23,6 +23,9 @@ class Index extends Frontend
 //        $this->assign('banner',$list);
 
         $userinfo=$this->auth->getUser();
+        if(!$userinfo->mobile){
+            $this->redirect('/user/');
+        }
         dump($userinfo);
         $token=$this->auth->getToken();
         dump($token);die;
