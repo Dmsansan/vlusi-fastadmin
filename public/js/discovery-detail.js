@@ -81,8 +81,6 @@ $(function () {
                     }else {
                         return
                     }
-
-
                 },
                 //初始化数据
                 init:function () {
@@ -117,6 +115,7 @@ $(function () {
                 uploadImg: function () {
                     document.getElementById('upload-img').click();
                 },
+                //返回上一步
                 goBack: function () {
                     history.go(-1);
                 },
@@ -131,6 +130,7 @@ $(function () {
                         self.init();
                     });
                 },
+
                 //文章点赞
                 likeArticle:function(flag) {
                     let self = this;

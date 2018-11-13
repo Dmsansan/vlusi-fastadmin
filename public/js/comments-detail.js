@@ -21,6 +21,10 @@ window.onload = function () {
 
             },
             methods: {
+                //返回上一步
+                goBack: function () {
+                    history.go(-1);
+                },
                 touchStart (e) {
                     this.startY = e.targetTouches[0].pageY
                 },
