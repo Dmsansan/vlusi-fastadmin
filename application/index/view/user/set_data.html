@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/loader.js"></script>
+    <link rel="stylesheet" href="assets/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" href="css/complete-data.css"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title"></h1>
+</header>
+<div id="app" class="mui-content">
+    <h3>完善资料</h3>
+    <section>
+        <div class="mui-input-group">
+            <div class="mui-input-row">
+                <label>昵称</label>
+                <input v-model="nickName"/>
+            </div>
+            <div class="mui-input-row">
+                <label>性别</label>
+                <div class="sex-group">
+                    <span @click="selectSex('male')" class="sex-group-item male" :class="{active:isMale}">男</span>
+                    <span @click="selectSex('female')"  class="sex-group-item female" :class="{active:!isMale}">女</span>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label>生日</label>
+                <input  :value="birthDate" id="show-date" placeholder="请选择日期（选填）" readonly/>
+                <i class="mui-icon mui-icon-arrowright mui-icon-right"></i>
+            </div>
+            <div class="mui-input-row">
+                <label>区域</label>
+                <input id="city" placeholder="请选择区域（选填）" readonly/>
+                <i class="mui-icon mui-icon-arrowright mui-icon-right"></i>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <button @click="confirmChange" class="mui-btn mui-btn-block mui-confirm" :class="{'disabled':!isFilled}">确认修改</button>
+        <button @click="skipChange" class="mui-btn mui-btn-block mui-skip">跳过，下一步</button>
+    </footer>
+</div>
+<script type="text/javascript" src="assets/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+<script type="text/javascript" src="assets/vue/vue.min.js"></script>
+<script type="text/javascript" src="js/city.data.js"></script>
+<script type="text/javascript" src="js/complete-data.js"></script>
+</body>
+</html>
