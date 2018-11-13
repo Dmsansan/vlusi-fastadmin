@@ -96,7 +96,7 @@ class Index extends Controller
                     $uc = new \addons\ucenter\library\client\Client();
                     $synchtml = $uc->uc_user_synlogin($this->auth->id);
                 }
-                $this->success(__('Logged in successful') . $synchtml, $url);
+                $this->redirect($url);
             }
         }
         $this->error(__('Operation failed'), $url);
