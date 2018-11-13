@@ -67,16 +67,11 @@ class Sms extends Api
         }
     }
 
-    /**
-     *
-     * @ApiTitle    (检测验证码)
-     * @ApiMethod   (POST)
-     * @ApiRoute    (/api/Sms/check)
-     * @ApiParams   (name="mobile", type="string", required=true, description="手机号")
-     * @ApiParams   (name="event", type="string", required=true, description="事件名称")
-     * @ApiParams   (name="captcha", type="string", required=true, description="验证码")
-     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     */
+
+
+
+    //    (检测是否正确)
+
     public function check()
     {
         $mobile = $this->request->request("mobile");

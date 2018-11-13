@@ -6,8 +6,9 @@ use app\common\controller\Api;
 use app\common\model\User;
 
 /**
- * 验证接口
+ *
  */
+//验证接口
 class Validate extends Api
 {
 
