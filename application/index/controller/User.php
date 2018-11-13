@@ -77,4 +77,9 @@ class User extends Frontend
         return $this->view->fetch();
     }
 
+    public function share_page()
+        {
+            return $this->view->fetch();
+        }
+
 }

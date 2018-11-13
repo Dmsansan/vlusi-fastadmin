@@ -1,12 +1,12 @@
-window.onload = function () {
+
     /**
      * 引入picker组件
      * @type {HTMLElement}
      */
-    let jsNode = document.createElement('script');
+  /*  let jsNode = document.createElement('script');
     jsNode.src = 'assets/mui/js/mui.picker.min.js';
     jsNode.type = 'text/javascript';
-    document.querySelector('head').appendChild(jsNode);
+    document.querySelector('head').appendChild(jsNode);*/
     /**
      * Vue实例化
      */
@@ -24,15 +24,39 @@ window.onload = function () {
                 this.selectedSex = sex;
                 this.isMale = (sex == 'male' ? true : false);
             },
+            //确认修改
             confirmChange:function () {
+
+                let self = this;
+                console.log(self.code)
+               /* $.post('/api/user/changemobile', {
+                    token:localStorage.getItem('token'),
+                    mobile:self.phone,
+                    event:'changemobile',
+                    captcha:self.code
+                },function (data) {
+                    self.$nextTick(function () {
+                        mui.openWindow({
+                            url:'/index/user/set_data?token='+localStorage.getItem('token')
+                        })
+                    })
+                });*/
                 if(app.isFilled) {
                     //提交
                     mui.toast('修改');
                 }
 
+
+            },
+            //返回上一步
+            goBack: function () {
+                history.go(-1);
             },
             skipChange:function () {
-                mui.toast('跳过')
+                // mui.toast('跳过')
+                mui.openWindow({
+                    url:'/index'
+                })
             }
         },
         computed:{
@@ -109,4 +133,3 @@ window.onload = function () {
             }, false);
         };
     })(mui);
-};

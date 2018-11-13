@@ -65,7 +65,11 @@ window.onload = function () {
                     event:'changemobile',
                     captcha:self.code
                 },function (data) {
-
+                    self.$nextTick(function () {
+                        mui.openWindow({
+                            url:'/index/user/set_data?token='+localStorage.getItem('token')
+                        })
+                    })
                 });
                 if(app.hasCode) {
                     mui.toast('绑定了');
@@ -76,7 +80,10 @@ window.onload = function () {
             },
             //跳过绑定
             skipBindPhone:function () {
-                mui.toast('跳过')
+                mui.openWindow({
+                    url:'/index/user/set_data?token='+localStorage.getItem('token')
+                })
+               /* mui.toast('跳过')*/
             },
             clearCodeFun: function () {
                 app.code = '';

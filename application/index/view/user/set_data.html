@@ -9,10 +9,10 @@
 </head>
 <body>
 <header class="mui-bar mui-bar-nav">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack"></a>
     <h1 class="mui-title"></h1>
 </header>
-<div id="app" class="mui-content">
+<div id="app" class="mui-content" v-cloak>
     <h3>完善资料</h3>
     <section>
         <div class="mui-input-group">
@@ -45,9 +45,11 @@
     </footer>
 </div>
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="/assets/mui/js/mui.min.js"></script>
-<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
+<script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
+<script type="text/javascript" src="/assets/mui/js/mui.picker.min.js"></script>
 <script type="text/javascript" src="/js/city.data.js"></script>
+<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
+
 <script type="text/javascript" src="/js/complete-data.js"></script>
 </body>
 </html>
