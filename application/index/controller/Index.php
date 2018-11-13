@@ -23,7 +23,7 @@ class Index extends Frontend
         $userinfo=$this->auth->getUser();
 
         if($userinfo->jointime==time()){
-            $this->redirect('user/bind_phone');
+            $this->redirect('index/user/bind_phone');
         }
         $token=$this->auth->getToken();
         $this->assign('token',$token);
