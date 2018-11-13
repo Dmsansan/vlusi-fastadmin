@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
@@ -19,14 +19,16 @@ class Index extends Frontend
 
     public function index()
     {
+        $token=$this->request->get('token');
 
-        $userinfo=$this->auth->getUser();
+//        $userinfo=$this->auth->getUser();
+//        if($userinfo->jointime==time()){
+//            $this->redirect('index/user/bind_phone');
+//        }
+//        $token=$this->auth->getToken();
 
-        if($userinfo->jointime==time()){
-            $this->redirect('index/user/bind_phone');
-        }
-        $token=$this->auth->getToken();
         $this->assign('token',$token);
+
         return $this->view->fetch();
     }
 
