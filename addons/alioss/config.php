@@ -86,7 +86,7 @@ return array (
       'client' => '客户端直传(速度快,无备份)',
       'server' => '服务器中转(占用服务器带宽,有备份)',
     ),
-    'value' => 'server',
+    'value' => 'client',
     'rule' => '',
     'msg' => '',
     'tip' => '',

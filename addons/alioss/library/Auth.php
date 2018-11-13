@@ -50,7 +50,7 @@ class Auth
 
         $response = array();
         $response['id'] = $config['app_id'];
-        $response['key'] = $key;
+        $response['key'] = 'http://' . $config['bucket'] . '.' . $config['endpoint'].DS.$key;
         $response['policy'] = $policy;
         $response['signature'] = $signature;
         $response['expire'] = $end;
