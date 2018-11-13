@@ -54,8 +54,8 @@ class Service
             $username = Random::alnum(20);
             $password = Random::alnum(6);
 
-            Db::startTrans();
-            try {
+//            Db::startTrans();
+//            try {
                 // 默认注册一个会员
                 $result = $auth->register($username, $password, $username . '@fastadmin.net', '', $extend, $keeptime);
                 if (!$result) {
@@ -75,14 +75,14 @@ class Service
                 // 保存第三方信息
                 $values['user_id'] = $user->id;
                 Third::create($values);
-                Db::commit();
-            } catch (PDOException $e) {
-
-                dump($e);die;
-                Db::rollback();
-                $auth->logout();
-                return FALSE;
-            }
+//                Db::commit();
+//            } catch (PDOException $e) {
+//
+//                dump($e);die;
+//                Db::rollback();
+//                $auth->logout();
+//                return FALSE;
+//            }
 
             // 写入登录Cookies和Token
             return $auth->direct($user->id);
