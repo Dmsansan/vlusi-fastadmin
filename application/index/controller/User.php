@@ -73,11 +73,15 @@ class User extends Frontend
 
     public function bind_phone()
     {
+        $token=$this->auth->getToken();
+        $this->assign('token',$token);
         return $this->view->fetch();
     }
 
     public function set_data()
     {
+        $token=$this->auth->getToken();
+        $this->assign('token',$token);
         return $this->view->fetch();
     }
 
