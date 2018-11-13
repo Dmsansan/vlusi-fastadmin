@@ -86,8 +86,8 @@ class Index extends Controller
 
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();
-        dump($result);die;
         if ($result) {
+            dump($platform);
             $loginret = Service::connect($platform, $result);
 
             if ($loginret) {

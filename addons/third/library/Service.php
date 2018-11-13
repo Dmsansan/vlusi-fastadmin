@@ -41,6 +41,8 @@ class Service
 
         $auth->keeptime($keeptime);
         $third = Third::get(['platform' => $platform, 'openid' => $params['openid']]);
+
+        dump($third);die;
         if ($third) {
             $user = User::get($third['user_id']);
             if (!$user) {
