@@ -82,12 +82,11 @@ class Index extends Controller
         $platform = $this->request->param('platform');
 
         // 成功后返回会员中心
-        $url = url('index/user/index');
+        $url = url('index/index/index');
 
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();
         if ($result) {
-            dump($platform);
             $loginret = Service::connect($platform, $result);
 
             if ($loginret) {
