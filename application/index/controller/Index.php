@@ -8,8 +8,8 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = '*';
-    protected $noNeedRight = '*';
+    protected $noNeedLogin = [];
+    protected $noNeedRight = [];
     protected $layout = '';
 
     public function _initialize()
