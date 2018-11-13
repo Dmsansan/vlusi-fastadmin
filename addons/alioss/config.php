@@ -39,7 +39,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'leyanglao.oss-cn-hangzhou.aliyuncs.com',
+    'value' => 'leyanglao',
     'rule' => 'required',
     'msg' => '',
     'tip' => '阿里云OSS的空间名',
@@ -54,7 +54,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'oss-cn-nanjing.aliyuncs.com',
+    'value' => 'oss-cn-hangzhou.aliyuncs.com',
     'rule' => 'required',
     'msg' => '',
     'tip' => '如果是服务器中转模式，可填写内网域名',
@@ -69,7 +69,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'leyanglao.oss-cn-hangzhou.aliyuncs.com',
+    'value' => 'oss-cn-hangzhou.aliyuncs.com',
     'rule' => 'required',
     'msg' => '',
     'tip' => '如果你启用了CDN，请填写CDN地址',
@@ -86,7 +86,7 @@ return array (
       'client' => '客户端直传(速度快,无备份)',
       'server' => '服务器中转(占用服务器带宽,有备份)',
     ),
-    'value' => 'client',
+    'value' => 'server',
     'rule' => '',
     'msg' => '',
     'tip' => '',
@@ -101,7 +101,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => '/uploads/{year}{mon}{day}/{filemd5}{.suffix}',
+    'value' => '/yanglao/{year}{mon}{day}/{filemd5}{.suffix}',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
