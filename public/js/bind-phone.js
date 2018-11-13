@@ -15,7 +15,7 @@ window.onload = function () {
         },
         methods: {
             test:function() {
-              alert(666);
+              /*alert(666);*/
             },
             //验证手机号为11位
             validatePhone: function () {

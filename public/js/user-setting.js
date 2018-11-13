@@ -20,6 +20,7 @@ let app = new Vue({
             },function (data) {
                 self.userInformation = data.data;
                 self.city =  data.data.address;
+                self.imgUrl = data.data.avatar;
             })
 
         },
@@ -55,13 +56,48 @@ let app = new Vue({
                 url: '/index/user/set_name?token='+localStorage.getItem('token')
             })
         },
+        //修改头像
+        reviseImage:function () {
+            let self = this;
+            mui('body').on('tap', '#editLogo', function() {
+                $("#file").click();
+            });
+            var clipArea = new bjj.PhotoClip("#clipArea", {
+                size: [260, 260],
+                outputSize: [640, 640],
+                file: "#file",
+                view: "#view",
+                ok: "#confirm-btn",
+                loadStart: function() {
+                    $("#wait-loading").css("display", "flex");
+                },
+                loadComplete: function() {
+                    $("#wait-loading").css("display", "none");
+                    mui('#sheet').popover('toggle');
+                },
+                clipFinish: function(dataURL) {
+                    mui('#sheet').popover('toggle');
+                    let img = $("#view").css("background-image");
+                    img = img.substring(5, img.length - 1);
+                    //上传图片
+                    console.log('上传图片',self.imgUrl);
+
+                    $.post('/api/user/profile', {
+                        token:localStorage.getItem('token'),
+                        avatar:self.imgUrl
+                    },function (data) {
+                        mui.toast('头像修改成功！')
+                    })
+                }
+            });
+        }
     },
     created: function () {
         //获取用户信息
     },
     watch:{
         city:function (newVal,oldVal) {
-            if(newVal.trim() != oldVal) {
+            if(newVal != oldVal) {
                 this.$nextTick(function () {
                     this.submitBtn();
                 })
@@ -74,7 +110,7 @@ let app = new Vue({
 
 });
 
-mui('body').on('tap', '#editLogo', function() {
+/*mui('body').on('tap', '#editLogo', function() {
     $("#file").click();
 });
 var clipArea = new bjj.PhotoClip("#clipArea", {
@@ -95,7 +131,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
         var img = $("#view").css("background-image");
         img = img.substring(5, img.length - 1);
         //上传图片
-       /* var qq = {
+       /!* var qq = {
             avatar: img,
             token:localStorage.getItem('token'),
         };
@@ -113,13 +149,13 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
                 console.log(11111)
                 // data.data.file;
             }
-        });*/
+        });*!/
     }
 });
 //关闭actionsheet
 function closeSheet() {
     mui('#sheet').popover('toggle');
-}
+}*/
 //保存头像
 function saveImg() {
     console.log('111');
