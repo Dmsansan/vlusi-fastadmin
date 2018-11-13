@@ -84,6 +84,7 @@ class Index extends Controller
         // 成功后返回会员中心
         $url = url('index/user/index');
 
+        dump($platform);
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();
         dump($result);die;
