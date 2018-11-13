@@ -20,9 +20,9 @@ return [
     // 数据库名
     'database'        => Env::get('database.database', 'yanglao'),
     // 用户名
-    'username'        => Env::get('database.username', 'yanglao'),
+    'username'        => Env::get('database.username', 'root'),
     // 密码
-    'password'        => Env::get('database.password', 'yanglao'),
+    'password'        => Env::get('database.password', '94c3c062abb18a0e'),
     // 端口
     'hostport'        => Env::get('database.hostport', ''),
     // 连接dsn
