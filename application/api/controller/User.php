@@ -108,10 +108,11 @@ class User extends Api
         );
         $result = db('user')->where(array('id'=>$user_id))->update($data);
 
+
         if($result){
 
             Sms::flush($mobile, 'changemobile');
-            $this->success("返回成功");
+            $this->success("更新成功");
         }else{
             $this->error('保存失败');
         }
