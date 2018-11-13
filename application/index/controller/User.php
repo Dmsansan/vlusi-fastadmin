@@ -17,7 +17,7 @@ class User extends Frontend
 
 //    protected $layout = 'default';
     protected $noNeedLogin = ['login', 'register', 'third'];
-    protected $noNeedRight = ['*'];
+    protected $noNeedRight = '*';
 
 //    protected $userid;
 
