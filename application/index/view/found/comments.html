@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script type="text/javascript" src="js/loader.js"></script>
-    <link rel="stylesheet" href="css/course-detail.css"/>
+    <script type="text/javascript" src="/js/loader.js"></script>
+    <link rel="stylesheet" href="/css/course-detail.css"/>
     <!-- Begin emoji-picker Stylesheets -->
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
-    <link href="assets/emoji/css/emoji.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/course-detail.css"/>
-    <link href="css/comments-detail.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+    <link href="/assets/emoji/css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/course-detail.css"/>
+    <link href="/css/comments-detail.css" rel="stylesheet"/>
 </head>
 
 <body>
 <header class="mui-bar mui-bar-nav">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack"></a>
     <h1 class="mui-title">评论详情</h1>
 </header>
 <div id="app" class="mui-content">
@@ -28,11 +28,11 @@
                 <div class="commenter-comments">
                     <div class="user-info">
                         <p class="user-info-logo-nickname">
-                            <img src="img/course-detail/logo.jpg" class="user-logo"/>
+                            <img src="/img/course-detail/logo.jpg" class="user-logo"/>
                             <span class="user-nickname">评论者</span>
                         </p>
                         <p class="user-like-container">
-                            <img @click="likeComment()" src="img/course-detail/like-comment.png" class="like-comment">
+                            <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
                             <span>0</span>
                         </p>
                     </div>
@@ -40,7 +40,7 @@
                         肯德基疯狂夺金对方考虑到积分开了多久发看了电视剧看了房对方考虑决定离开房间打开撒酒疯的开发进度了快速减肥
                     </p>
                     <p class="comments-img">
-                        <img v-for="n in 5" src="img/show.jpg"/>
+                        <img v-for="n in 5" src="/img/show.jpg"/>
                     </p>
                     <div class="comments-operation">
                         <p class="comments-time">刚刚</p>
@@ -58,11 +58,11 @@
                         <div class="replyer-item-content">
                             <div class="user-info">
                                 <p class="user-info-logo-nickname">
-                                    <img src="img/course-detail/logo.jpg" class="user-logo"/>
+                                    <img src="/img/course-detail/logo.jpg" class="user-logo"/>
                                     <span class="user-nickname">回复层主的人</span>
                                 </p>
                                 <p class="user-like-container">
-                                    <img @click="likeComment()" src="img/course-detail/like-comment.png" class="like-comment">
+                                    <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
                                     <span>0</span>
                                 </p>
                             </div>
@@ -70,7 +70,7 @@
                                 肯德基疯狂夺金对方考虑到积分开了多久发看了电视剧看了房对方考虑决定离开房间打开撒酒疯的开发进度了快速减肥
                             </p>
                             <p class="comments-img">
-                                <img v-for="n in 5" src="img/show.jpg"/>
+                                <img v-for="n in 5" src="/img/show.jpg"/>
                             </p>
                             <div class="comments-operation">
                                 <p class="comments-time">刚刚</p>
@@ -91,7 +91,7 @@
                                     </template>
                                     <p class="user-info">
                                         <span class="user-nickname">回复回复层主的人</span>
-                                        <img @click="likeComment()" src="img/course-detail/like-comment.png" class="like-comment">
+                                        <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
                                     </p>
                                 </div>
                                 <p class="user-comments-comment">
@@ -118,18 +118,19 @@
                    type="text" placeholder="写下你的评论..."/>
         </div>
         <div class="comment-icon-container">
-            <img src="img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
+            <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button" class="comments-send-btn" :disabled="isDisabled">发布</button>
         </div>
     </footer>
 </div>
-<script type="text/javascript" src="assets/jquery/jquery-3.3.1.min.js"></script>
-<script src="assets/emoji/js/config.js"></script>
-<script src="assets/emoji/js/util.js"></script>
-<script src="assets/emoji/js/jquery.emojiarea.js"></script>
-<script src="assets/emoji/js/emoji-picker.js"></script>
-<script type="text/javascript" src="js/comments-detail.js"></script>
+<script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
+<script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
+<script src="/assets/emoji/js/config.js"></script>
+<script src="/assets/emoji/js/util.js"></script>
+<script src="/assets/emoji/js/jquery.emojiarea.js"></script>
+<script src="/assets/emoji/js/emoji-picker.js"></script>
+<script type="text/javascript" src="/js/comments-detail.js"></script>
 </body>
 
 </html>
