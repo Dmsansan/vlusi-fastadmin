@@ -42,7 +42,9 @@ class Service
         $auth->keeptime($keeptime);
         $third = Third::get(['platform' => $platform, 'openid' => $params['openid']]);
 
+        dump($third);
         if ($third) {
+            dump(111);
             $user = User::get($third['user_id']);
             if (!$user) {
                 return FALSE;
@@ -50,6 +52,7 @@ class Service
             $third->save($values);
             return $auth->direct($user->id);
         } else {
+            dump(222);
             // 先随机一个用户名,随后再变更为u+数字id
             $username = Random::alnum(20);
             $password = Random::alnum(6);
