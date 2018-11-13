@@ -122,12 +122,13 @@ $(function () {
                 //评论内容点赞
                 likeComment:function (flag,id) {
                     let self = this;
-                    $.post('/api/found/article_zan', {
+                    $.post(' /api/found/comment_zan', {
                         token:localStorage.getItem('token'),
-                        article_id: self.passID,
+                        comment_id: self.passID,
                     }, function (data) {
-                        console.log(data);
-                        self.init();
+                        self.$nextTick(function () {
+                            self.init();
+                        })
                     });
                 },
 
@@ -138,13 +139,17 @@ $(function () {
                         article_id: self.passID,
                         token:localStorage.getItem('token')
                     }, function (data) {
-                        console.log(data);
-                        self.init();
+                        self.$nextTick(function () {
+                            self.init();
+                        })
+
                     });
                     if(flag) {
                         self.detailsList.is_zan = true;
+                        mui.toast('点赞成功！');
                     } else {
                         self.detailsList.is_zan = false;
+                        mui.toast('取消点赞！');
                     }
                 },
                 //回复

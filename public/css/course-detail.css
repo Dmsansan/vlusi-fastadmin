@@ -316,9 +316,10 @@ p.open-all-title {
 }
 
 .course-comments-container {
+    padding-top: 15px;
     margin-top: 20px;
     background: #ffffff;
-    padding: 15px 0;
+    padding: 30px15px 0;
     position: relative;
 }
 img.course-comments-img {
@@ -340,7 +341,7 @@ img.user-logo {
 }
 ul.course-comments-list {
     list-style: none;
-    padding: 0 15px;
+    padding:0 15px ;
 }
 div.user-info {
     display: flex;

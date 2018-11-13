@@ -18,95 +18,108 @@
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack"></a>
     <h1 class="mui-title">评论详情</h1>
 </header>
-<div id="app" class="mui-content">
-    <!--
+<div id="app" class="mui-content" v-cloak>
+    <div class="active"
+         @touchstart="touchStart($event)" @touchmove="touchMove($event)">
+        <!--
         课程评论
     -->
-    <div class="course-comments-container">
-        <ul class="course-comments-list">
-            <li v-for="n in 3" class="course-comments-item">
-                <div class="commenter-comments">
-                    <div class="user-info">
-                        <p class="user-info-logo-nickname">
-                            <img src="/img/course-detail/logo.jpg" class="user-logo"/>
-                            <span class="user-nickname">评论者</span>
-                        </p>
-                        <p class="user-like-container">
-                            <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
-                            <span>0</span>
-                        </p>
-                    </div>
-                    <p class="comments-content">
-                        肯德基疯狂夺金对方考虑到积分开了多久发看了电视剧看了房对方考虑决定离开房间打开撒酒疯的开发进度了快速减肥
-                    </p>
-                    <p class="comments-img">
-                        <img v-for="n in 5" src="/img/show.jpg"/>
-                    </p>
-                    <div class="comments-operation">
-                        <p class="comments-time">刚刚</p>
-                        <button @click="replay()" type="button" class="reply-comments">回复</button>
-                    </div>
-                </div>
-                <!--
-                    回复层主的人
-                -->
-                <ul class="replyer-comments">
-                    <li class="replyer-item">
-                        <!--
-                            回复内容
-                        -->
-                        <div class="replyer-item-content">
-                            <div class="user-info">
-                                <p class="user-info-logo-nickname">
-                                    <img src="/img/course-detail/logo.jpg" class="user-logo"/>
-                                    <span class="user-nickname">回复层主的人</span>
-                                </p>
-                                <p class="user-like-container">
-                                    <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
-                                    <span>0</span>
-                                </p>
-                            </div>
-                            <p class="comments-content">
-                                肯德基疯狂夺金对方考虑到积分开了多久发看了电视剧看了房对方考虑决定离开房间打开撒酒疯的开发进度了快速减肥
+        <div class="course-comments-container">
+            <ul class="course-comments-list">
+                <li class="course-comments-item">
+                    <div class="commenter-comments">
+                        <div class="user-info">
+                            <p class="user-info-logo-nickname">
+                                <img :src="commentsList.avatar"class="user-logo"/>
+                                <span class="user-nickname">{commentsList.nickname}}</span>
                             </p>
-                            <p class="comments-img">
-                                <img v-for="n in 5" src="/img/show.jpg"/>
+                            <p class="user-like-container">
+                                <img @click="likeComment(commentsList.id,false)" :class="{active:commentsList.is_zan}"
+                                     src="/img/course-detail/like-comment-active.png" class="like-comment" >
+                                <img @click="likeComment(commentsList.id,true)"  :class="{active:!commentsList.is_zan}"
+                                     src="/img/course-detail/like-comment.png"
+                                     class="like-comment" >
+                                <span>{{commentsList.zan}}</span>
                             </p>
-                            <div class="comments-operation">
-                                <p class="comments-time">刚刚</p>
-                                <button @click="replay()" type="button" class="reply-comments">回复</button>
-                            </div>
                         </div>
-                        <!--
-                            回复回复层主的人
-                        -->
-                        <ul class="replyer-replyer-comments">
-                            <li v-for="n in 4" class="replyer-replyer-item">
-                                <div class="replyer-container">
-                                    <template v-if="n == 2">
-                                        <p class="user-info">
-                                            <span class="user-nickname">奥特曼</span>
-                                        </p>
-                                        <span class="reply-title">回复</span>
-                                    </template>
-                                    <p class="user-info">
-                                        <span class="user-nickname">回复回复层主的人</span>
-                                        <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
+                        <p class="comments-content">
+                            {{commentsList.content}}
+                        </p>
+                        <p class="comments-img" v-if="commentsList.img">
+                            <img v-for="n in 5" src="/img/show.jpg"/>
+                        </p>
+                        <div class="comments-operation">
+                            <p class="comments-time">{{commentsList.createtime}}</p>
+                            <button @click="replay(commentsList.id)" type="button" class="reply-comments">回复</button>
+                        </div>
+                    </div>
+                    <!--
+                        回复层主的人
+                    -->
+                    <ul class="replyer-comments" v-if="commentsList.children">
+                        <li class="replyer-item" v-for="(item,iindex) in commentsList.children">
+                            <!--
+                                回复内容
+                            -->
+                            <div class="replyer-item-content">
+                                <div class="user-info">
+                                    <p class="user-info-logo-nickname">
+                                        <img :src="item.avatar"  class="user-logo"/>
+                                        <span class="user-nickname">{{item.nickname}}</span>
+                                    </p>
+                                    <p class="user-like-container">
+                                        <img @click="likeComment(item.id,false)" :class="{active:item.is_zan}"
+                                             src="/img/course-detail/like-comment-active.png" class="like-comment" >
+                                        <img @click="likeComment(item.id,true)"  :class="{active:!item.is_zan}"
+                                             src="/img/course-detail/like-comment.png"
+                                             class="like-comment" >
+                                        <span>{{item.zan}}</span>
                                     </p>
                                 </div>
-                                <p class="user-comments-comment">
-                                    点击放大看风景dfjkldjflkdsaj地方大师傅简单快乐flkdjs
+                                <p class="comments-content">
+                                    {{item.content}}
                                 </p>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                                <p class="comments-img">
+                                    <img v-for="n in 5" src="/img/show.jpg"/>
+                                </p>
+                                <div class="comments-operation">
+                                    <p class="comments-time">刚刚</p>
+                                    <button @click="replay(item.id)" type="button" class="reply-comments">回复</button>
+                                </div>
+                            </div>
+                            <!--
+                                回复回复层主的人
+                            -->
+                            <ul class="replyer-replyer-comments" v-if="item.children">
+                                <li v-for="(item,index) in item.children" class="replyer-replyer-item">
+                                    <div class="replyer-container">
+                                        <template >
+                                            <p class="user-info">
+                                                <span class="user-nickname">{{item.nickname}}</span>
+                                            </p>
+                                            <span @click="replay(item.id)" class="reply-title">回复</span>
+                                        </template>
+                                        <p class="user-info">
+                                            <span class="user-nickname">{{commentsList.children.nickname}}</span>
+                                            <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
+                                        </p>
+                                    </div>
+                                    <p class="user-comments-comment">
+                                        {{item.content}}
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="no-more-comments" v-if="pageCount">
+            {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
+        </div>
+
     </div>
-    <div class="no-more-comments">
-        - 没有更多了 -
-    </div>
+
     <!--
         底部评论栏
     -->
@@ -120,7 +133,8 @@
         <div class="comment-icon-container">
             <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
-            <button type="button" class="comments-send-btn" :disabled="isDisabled">发布</button>
+            <button type="button" class="comments-send-btn"
+                    @click="reviewBtn()":disabled="isDisabled">发布</button>
         </div>
     </footer>
 </div>
@@ -130,7 +144,7 @@
 <script src="/assets/emoji/js/util.js"></script>
 <script src="/assets/emoji/js/jquery.emojiarea.js"></script>
 <script src="/assets/emoji/js/emoji-picker.js"></script>
-<script type="text/javascript" src="/js/comments-detail.js"></script>
+<script type="text/javascript" src="/js/comments-details.js"></script>
 </body>
 
 </html>

@@ -37,7 +37,7 @@ window.onload = function () {
                         mui.toast('取消点赞成功！');
                     }
                     let self = this;
-                    $.post('/api/courses/comment_zan', {
+                    $.post(' /api/found/comment_zan', {
                         token:localStorage.getItem('token'),
                         comment_id: id
                     }, function (data) {
@@ -49,10 +49,9 @@ window.onload = function () {
                 //点击发送按钮
                 reviewBtn:function () {
                     let self = this;
-
-                    $.post('/api/courses/comment', {
+                    $.post('/api/found/comment', {
                         token:localStorage.getItem('token'),
-                        course_id:localStorage.getItem('zsfId'),
+                        article_id: localStorage.getItem('ReplyId'),
                         content:self.commentsContent
                     }, function (data) {
                         self.$nextTick(function () {
@@ -88,13 +87,12 @@ window.onload = function () {
                     //总页数
                     if(self.pageCount >self.pageNumber){
                         self.pageNumber +=1;
-                        $.post('/api/courses/course', {
-                            title: self.searchKeys,
+                        $.post('/api/found/comment_detail', {
                             token:localStorage.getItem('token'),
                             page:self.pageNumber
                         }, function (data) {
-                            data.data.forEach(function (item,index) {
-                                self.searchList.push(item)
+                            data.data.children.forEach(function (item,index) {
+                                self.commentsList.push(item)
                             });
                         });
                     }else {
@@ -106,12 +104,12 @@ window.onload = function () {
                 //获取评论详情
                 replyDetails:function () {
                     let self = this;
-                    $.post('/api/courses/comment_detail', {
+                    $.post('/api/found/comment_detail', {
                         token:localStorage.getItem('token'),
                         comment_id: self.replyID,
                         page:self.pageNumber
                     }, function (data) {
-                        self.commentsList = data.data;
+                        self.commentsList =data.data;
                         self.pageCount = data.page.page_count;
                         self.loadMore = true;
                     });
@@ -126,7 +124,7 @@ window.onload = function () {
                 },
                 //回复
                 replay:function (id) {
-                    localStorage.setItem('zsfId',id)
+                    localStorage.setItem('ReplyId',id)
                     $('.emoji-wysiwyg-editor').focus();
                 },
 

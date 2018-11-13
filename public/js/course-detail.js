@@ -93,8 +93,6 @@ window.onload = function () {
                 }else {
                     return
                 }
-
-
             },
 
             //课程详情
@@ -150,37 +148,41 @@ window.onload = function () {
                         self.courseDetails();
                     })
                 });
+                if(flag){
+                    mui.toast('点赞成功！');
+                }else {
+                    mui.toast('取消点赞成功！');
+                }
             },
             //文章点赞
             likeArticle:function(id,flag) {
                 this.isLikeArt = flag;
                 if(flag) {
                     this.likeArtNums = ++this.likeArtNums;
-                }
-                else {
+                    mui.toast('点赞成功！');
+                } else {
                     this.likeArtNums = --this.likeArtNums;
+                    mui.toast('取消点赞成功！');
                 }
                 let self = this;
                 $.post('/api/courses/course_zan', {
                     token:localStorage.getItem('token'),
-                    comment_id: id
+                    course_id: id
                 }, function (data) {
-                    console.log('文章点赞',data.data);
                     self.$nextTick(function () {
                         self.courseDetails();
                     })
                 });
             },
             //回复
-            replay:function () {
+            replay:function (id) {
                 $('.emoji-wysiwyg-editor').focus();
             },
             //进入课时
             goToCourseHour:function (id) {
-                console.log('进入课时',id)
                 mui.openWindow({
                     //视频版
-
+                    url:'/index/index/course_detail?id=' + id
                     // 图文版
                     // url:'course-hour-detail-pictures.html?id=' + id
                 })
