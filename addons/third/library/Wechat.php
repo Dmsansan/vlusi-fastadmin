@@ -70,11 +70,12 @@ class Wechat
         {
             //获取access_token
             $data = isset($params['code']) ? $this->getAccessToken($params['code']) : $params;
+         dump($data);
             $access_token = isset($data['access_token']) ? $data['access_token'] : '';
             $refresh_token = isset($data['refresh_token']) ? $data['refresh_token'] : '';
             $expires_in = isset($data['expires_in']) ? $data['expires_in'] : 0;
 
-
+            dump($access_token);die;
             if ($access_token)
             {
                 $openid = isset($data['openid']) ? $data['openid'] : '';
