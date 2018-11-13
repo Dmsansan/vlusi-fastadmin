@@ -66,10 +66,12 @@ class Wechat
     public function getUserInfo($params = [])
     {
         $params = $params ? $params : $_GET;
+        dump(111);
         if (isset($params['access_token']) || (isset($params['state']) && $params['state'] == Session::get('state') && isset($params['code'])))
         {
             //获取access_token
             $data = isset($params['code']) ? $this->getAccessToken($params['code']) : $params;
+            dump($data);die;
             $access_token = isset($data['access_token']) ? $data['access_token'] : '';
             $refresh_token = isset($data['refresh_token']) ? $data['refresh_token'] : '';
             $expires_in = isset($data['expires_in']) ? $data['expires_in'] : 0;
