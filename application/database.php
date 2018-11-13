@@ -16,13 +16,13 @@ return [
     // 数据库类型
     'type'            => Env::get('database.type', 'mysql'),
     // 服务器地址
-    'hostname'        => Env::get('database.hostname', '47.96.179.77'),
+    'hostname'        => Env::get('database.hostname', '193.112.64.248'),
     // 数据库名
-    'database'        => Env::get('database.database', 'vlusi_fastadmin'),
+    'database'        => Env::get('database.database', 'yanglao'),
     // 用户名
-    'username'        => Env::get('database.username', 'root'),
+    'username'        => Env::get('database.username', 'yanglao'),
     // 密码
-    'password'        => Env::get('database.password', 'sansan`123'),
+    'password'        => Env::get('database.password', 'yanglao'),
     // 端口
     'hostport'        => Env::get('database.hostport', ''),
     // 连接dsn

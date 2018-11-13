@@ -18,6 +18,7 @@ class User extends Frontend
 //    protected $layout = 'default';
     protected $noNeedLogin = ['login', 'register', 'third'];
     protected $noNeedRight = ['*'];
+
 //    protected $userid;
 
     public function _initialize()
@@ -54,14 +55,15 @@ class User extends Frontend
     {
         return $this->view->fetch();
     }
-     public function set_name()
-         {
-                return $this->view->fetch();
-         }
 
- public function set_phone()
-         {
-                return $this->view->fetch();
-         }
+    public function set_name()
+    {
+        return $this->view->fetch();
+    }
+
+    public function set_phone()
+    {
+        return $this->view->fetch();
+    }
 
 }
