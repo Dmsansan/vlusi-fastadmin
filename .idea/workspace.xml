@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.env.sample" afterPath="$PROJECT_DIR$/.env" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/database.php" afterPath="$PROJECT_DIR$/application/database.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,31 +60,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="24" column="72" lean-forward="false" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+            <state relative-caret-position="126">
+              <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/api/controller/Index.php">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-84">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="54">
+              <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -228,6 +228,8 @@
         <option value="$PROJECT_DIR$/application/index/controller/Index.php" />
         <option value="$PROJECT_DIR$/application/index/controller/User.php" />
         <option value="$PROJECT_DIR$/application/database.php" />
+        <option value="$PROJECT_DIR$/.env.sample" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -472,12 +474,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541654813209</updated>
-      <workItem from="1541654814921" duration="116072000" />
+      <workItem from="1541654814921" duration="116300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116072000" />
+    <option name="totallyTimeSpent" value="116300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="0" />
@@ -513,14 +515,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/course.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/course/course/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -541,14 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="60" column="13" lean-forward="false" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -927,8 +913,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="24" column="72" lean-forward="false" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+        <state relative-caret-position="126">
+          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
