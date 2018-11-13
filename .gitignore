@@ -2,4 +2,6 @@
 runtime/*
 *.idea
 .idea/*
+.env
 /nbproject/private/
+

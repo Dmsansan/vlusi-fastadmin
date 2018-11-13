@@ -30,7 +30,9 @@ class Index extends Controller
             $options[$k] = $v;
         }
         unset($v);
+
         $this->app = new Application($options);
+
     }
 
     /**
@@ -57,9 +59,11 @@ class Index extends Controller
 
     /**
      * 通知回调
+     * http://wxyanglao.cc/third/callback/wechat?code=0117B1zp0QqMUp15SKBp0gf0zp07B1zT&state=762bb96514ed144fb60d65c045d26073
      */
     public function callback()
     {
+        dump(222);die;
         $auth = $this->auth;
 
         //监听注册登录注销的事件
@@ -83,6 +87,7 @@ class Index extends Controller
 
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();
+        dump($result);die;
         if ($result) {
             $loginret = Service::connect($platform, $result);
             if ($loginret) {
