@@ -14,7 +14,7 @@ class Sms
      * 验证码有效时长
      * @var int
      */
-    protected static $expire = 120;
+    protected static $expire = 120000;
 
     /**
      * 最大允许检测的次数
@@ -126,7 +126,8 @@ class Sms
         {
             if ($sms['createtime'] > $time && $sms['times'] <= self::$maxCheckNums)
             {
-                $correct = $code == $sms['code'];
+                $correct = $code == $sms->code;
+
                 if (!$correct)
                 {
                     $sms->times = $sms->times + 1;
@@ -135,12 +136,11 @@ class Sms
                 }
                 else
                 {
-                    $result = Hook::listen('sms_check', $sms, null, true);
-                    return $result;
+//                    $result = Hook::listen('sms_check', $sms, null, true);
+
+                    return true;
                 }
-            }
-            else
-            {
+            } else {
                 // 过期则清空该手机验证码
                 self::flush($mobile, $event);
                 return FALSE;
@@ -161,8 +161,7 @@ class Sms
      */
     public static function flush($mobile, $event = 'default')
     {
-        \app\common\model\Sms::
-        where(['mobile' => $mobile, 'event' => $event])
+        \app\common\model\Sms::where(['mobile' => $mobile, 'event' => $event])
             ->delete();
         Hook::listen('sms_flush');
         return TRUE;
