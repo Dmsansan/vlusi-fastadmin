@@ -269,6 +269,7 @@ let app = new Vue({
         this.init();
         let token = $('input[name="token"]').val();
         localStorage.setItem('token',token);
+
     },
     beforeDestroy(){
         $(window).unbind('scroll');

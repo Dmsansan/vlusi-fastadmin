@@ -20,7 +20,10 @@
         </div>
     </div>
     <form class="mui-input-group">
-        <div id="editLogo" class="mui-input-row user-info-logo-container">
+        <div id="editLogo"
+             @click="reviseImage"
+             class="mui-input-row user-info-logo-container"
+        >
             <label>头像</label>
             <img id="view" :src="imgUrl" class="user-info-logo"/>
         </div>

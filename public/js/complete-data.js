@@ -16,36 +16,46 @@
             birthDate: '',
             isMale:true,
             selectedSex:'male',
-            nickName:'微信名称',
+            nickName:'',
             address:''
         },
+        mounted() {
+            //完善个人信息
+            this.init();
+        },
         methods: {
+            //获取个人信息
+            init:function () {
+                let self = this;
+                //请求获取数据
+                $.post(' /api/user/userinfo', {
+                    token: localStorage.getItem('token'),
+                }, function (data) {
+                    self.address = data.data.address;
+                    self.nickName = data.data.nickname;
+                });
+            },
             selectSex:function (sex) {
                 this.selectedSex = sex;
                 this.isMale = (sex == 'male' ? true : false);
             },
             //确认修改
             confirmChange:function () {
-
                 let self = this;
                 console.log(self.code)
-               /* $.post('/api/user/changemobile', {
+                $.post('/api/user/binduserinfo', {
                     token:localStorage.getItem('token'),
-                    mobile:self.phone,
-                    event:'changemobile',
-                    captcha:self.code
+                    nickname:self.nickName,
+                    gender:self.selectedSex == 'male'? 1:2,
+                    birthday:self.birthDate,
+                    address:self.address,
                 },function (data) {
                     self.$nextTick(function () {
                         mui.openWindow({
-                            url:'/index/user/set_data?token='+localStorage.getItem('token')
+                            url:'/index'
                         })
                     })
-                });*/
-                if(app.isFilled) {
-                    //提交
-                    mui.toast('修改');
-                }
-
+                });
 
             },
             //返回上一步
@@ -118,7 +128,7 @@
         /**
          * 选择城市
          */
-        jsNode.onload = function () {
+
             let _getParam = function (obj, param) {
                 return obj[param] || '';
             };
@@ -135,5 +145,5 @@
                     //return false;
                 });
             }, false);
-        };
+
     })(mui);
