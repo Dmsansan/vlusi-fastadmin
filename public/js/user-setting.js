@@ -95,18 +95,20 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
         var img = $("#view").css("background-image");
         img = img.substring(5, img.length - 1);
         //上传图片
-       /* $.ajax({
+       /* var qq = {
+            avatar: img,
+            token:localStorage.getItem('token'),
+        };
+        $.ajax({
             type: "post",
             url: "/api/user/profile",
-            cache: false,
+         /!*   cache: false,
             processData: false,
-            contentType: false,
-            dataType: "json",
-            async: true,
-            data: {
-                'avatar': img,
-                'token':localStorage.getItem('token'),
-            },
+            dataType:"json",
+
+            async: true,*!/
+            contentType:'application/json;charset=UTF-8',//关键是要加上这行
+            data: JSON.stringify(qq),
             success:function(data) {
                 console.log(11111)
                 // data.data.file;
