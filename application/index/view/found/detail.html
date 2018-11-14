@@ -86,7 +86,7 @@
                         {{item.content}}
                     </p>
                     <p class="comments-img" v-html="item.imgs"></p>
-                    <div class="comments-operation">
+                    <div class="comments-operation" @click="goCommentsDetail(item.id)">
                         <p class="comments-time">{{item.createtime}}</p>
                         <button @click="replay()" type="button" class="reply-comments">回复</button>
                     </div>
