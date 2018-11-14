@@ -26,7 +26,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'title', title: __('Title')},
-                        {field: 'img_url', title: __('Img_url'), formatter: Table.api.formatter.url},
                         {field: 'image', title: __('Image'), formatter: Table.api.formatter.image},
                         {field: 'link_url', title: __('Link_url'), formatter: Table.api.formatter.url},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},

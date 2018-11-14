@@ -69,7 +69,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'oss-cn-hangzhou.aliyuncs.com',
+    'value' => 'http://leyanglao.oss-cn-hangzhou.aliyuncs.com/',
     'rule' => 'required',
     'msg' => '',
     'tip' => '如果你启用了CDN，请填写CDN地址',
