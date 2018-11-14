@@ -122,6 +122,30 @@
             <button type="button" class="comments-send-btn" :disabled="isDisabled" @click="sendInformation()">发布</button>
         </div>
     </footer>
+    <div id="share-sheet" class="mui-popover mui-popover-bottom mui-popover-action ">
+        <!-- 可选择菜单 -->
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a @click="sendToFriend()" href="#">
+                    <img src="/img/course-detail/share-fri.jpg" class="share-item-icon">
+                    <p class="share-item-desc">发给好友</p>
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a @click="generateCard()" href="#">
+                    <img src="/img/course-detail/share-pic.jpg" class="share-item-icon">
+                    <p class="share-item-desc">生成卡片</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-view-preview" :class="{active:isShowCard}">
+        <img @click="hidePreview()" src="/img/course-detail/icon-close-preview.png" class="close-preview-icon"/>
+        <div class="card-view-preview-img-container">
+            <img :src="sharePictures" class="card-view-preview-img">
+        </div>
+        <button class="card-view-save-btn">长按图片保存</button>
+    </div>
 </div>
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
 <script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
