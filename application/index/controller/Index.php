@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
@@ -21,9 +21,9 @@ class Index extends Frontend
     {
 //        $token=$this->request->get('token');
 
-        $token=$this->auth->getToken();
-
-        $this->assign('token',$token);
+//        $token=$this->auth->getToken();
+//
+//        $this->assign('token',$token);
 
         return $this->view->fetch();
     }
