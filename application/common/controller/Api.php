@@ -19,6 +19,7 @@ use think\Response;
 class Api
 {
 
+    protected $cdn='http://leyanglao.oss-cn-hangzhou.aliyuncs.com/';
     /**
      * @var Request Request 实例
      */
@@ -196,6 +197,8 @@ class Api
      */
     protected function result($msg, $data = null,$page=[], $code = 0, $type = null, array $header = [])
     {
+        $data= $this->cdnimg($data);
+
         $result = [
             'code' => $code,
             'msg'  => $msg,
@@ -324,6 +327,32 @@ class Api
         }
 
         return true;
+    }
+
+
+    /**
+     * 递归修改图片路径
+     * @param $data
+     */
+    public function cdnimg($data)
+    {
+        static $match='/^yanglao\/.*?\.[1-9a-zA-Z]+/';
+
+        $newarr=[];
+        foreach($data as $k=>$v){
+            if(!is_array($v)){
+                preg_match($match,$v,$vv1);
+                if($vv1){
+                    $newarr[$k]=$this->cdn.$vv1[0];
+                }else{
+                    $newarr[$k]=$v;
+                }
+            }else{
+                $newarr[$k]=$this->cdnimg($v);
+            }
+        }
+        return $newarr;
+
     }
 
 }
