@@ -57,7 +57,7 @@ class Share extends Api
         $errorCorrectionLevel = 'L';  //容错级别
         $matrixPointSize = 5;      //生成图片大小
         //生成二维码图片
-        $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg"
+        $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg";
             dump($filename);
         $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
 
