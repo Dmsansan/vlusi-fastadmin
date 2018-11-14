@@ -31,10 +31,10 @@ class Index extends Frontend
 
     public function detail()
     {
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo->mobile){
-            $this->redirect('index/user/bind_phone');
-        }
+//        $userinfo=$this->auth->getUser();
+//        if(!$userinfo->mobile){
+//            $this->redirect('index/user/bind_phone');
+//        }
         return $this->view->fetch();
     }
 
