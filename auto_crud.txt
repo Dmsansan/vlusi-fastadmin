@@ -24,3 +24,14 @@ php think crud -t article  -c article/article  -m article/article  --relation=ar
 php think crud -t article  -c article/article  -m article/article  --relation=article_category  -k article_category_id -p id -e article/category  --relation=admin  --relationforeignkey=admin_id --force=true
 
 #
+
+/发布时需修改的地方
+
+index/index/index.html  TOKEN
+
+index/index/indexConttroller  TOKEN 及无需登录的方法
+
+
+
+user/bind_phone/bind_phone.html  TOKEN
+index/set_data/set_data.html  TOKEN
