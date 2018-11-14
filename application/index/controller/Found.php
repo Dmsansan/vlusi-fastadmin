@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Found extends Frontend
 {
 
-    protected $noNeedLogin = '*';
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
