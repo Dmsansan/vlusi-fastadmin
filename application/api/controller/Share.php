@@ -35,7 +35,7 @@ class Share extends Api
 		if(!$detail){
 			$this->error(__('文章不存在'));
 		}
-        $detail_user =db('admin')->where(['id'=>$detail['id']])->find();
+        $detail_user =db('admin')->where(['id'=>$detail['admin_id']])->find();
         if(!$detail_user){
 			$this->error(__('作者不存在'));
 		}
@@ -50,8 +50,12 @@ class Share extends Api
         //生成二维码
         vendor ('phpqrcode.phpqrcode');
 
+        dump(222);
         $QRcode = new \QRcode();
-        $value = "http://".$_SERVER['HTTP_HOST'].'/index/index/course_detail?id='.$article_id;         //二维码内容
+        $value = "http://".$_SERVER['HTTP_HOST'].'/index/index/course_detail?id='.$article_id;
+
+        dump($value);die;
+        //二维码内容
         $errorCorrectionLevel = 'L';  //容错级别
         $matrixPointSize = 5;      //生成图片大小
         //生成二维码图片
