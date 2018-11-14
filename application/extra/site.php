@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '后台管理',
+  'name' => '乐养老',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
@@ -12,7 +12,7 @@ return array (
     'backend' => 'zh-cn',
     'frontend' => 'zh-cn',
   ),
-  'fixedpage' => 'dashboard',
+  'fixedpage' => 'user/user',
   'categorytype' => 
   array (
     'default' => 'Default',
