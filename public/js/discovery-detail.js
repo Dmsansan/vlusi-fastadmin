@@ -36,7 +36,9 @@ $(function () {
                 sharePictures:'',
                 //详情数据
                 detailsList:[],
-
+                //上传图片
+                imgUrl:null,
+                formdata:new FormData(),
             },
             mounted(){
                /* //初始化数据
@@ -105,16 +107,15 @@ $(function () {
                 },
                 //显示上传图片图标等
                 hideSmile: function () {
-                    this.isFocus = true;
+                    let self = this;
+                    self.isFocus = true;
+                    self.$nextTick(function () {
+                        self.saveImg();
+                    })
                 },
                 //隐藏上传图标
                 showSmile: function () {
-                    console.log('show');
                     this.isFocus = false;
-                },
-                //上传图片
-                uploadImg: function () {
-                    document.getElementById('upload-img').click();
                 },
                 //返回上一步
                 goBack: function () {
@@ -134,7 +135,6 @@ $(function () {
 
                 //文章点赞
                 likeArticle:function(id,flag) {
-
                     let self = this;
                     $.post('/api/found/article_zan', {
                         article_id: id,
@@ -213,15 +213,62 @@ $(function () {
                     this.isShowCard = false;
                 },
                 saveImg:function () {
+                    let self = this;
+                    /**
+                     * 监听文件上传框变化
+                     */
+                    $("#upload-img").change(function () {
+                        // self.isDisabled = false;
+                        app.hideSmile();
+                        let reads = new FileReader();
+                        let f = document.getElementById('upload-img')[0].files[0];
+                        console.log(f)
+                        reads.readAsDataURL(f);
+                       self.imgUrl = $('#upload-img')[0].files[0];
 
+                        reads.onload = function (e) {
+                            self.imgUrl  = $('#upload-img')[0].files[0];
+                            app.imgList.push( 111111111111111, self.imgUrl );
+                            console.log( app.imgList);
+                            /*mui.toast('文件读取成功!');*/
+                        };
+                    });
+                    window.emojiPicker = new EmojiPicker({
+                        emojiable_selector: '[data-emojiable=true]',
+                        assetsPath: 'assets/emoji/img/',
+                        popupButtonClasses: 'fa fa-smile-o'
+                    });
+                    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+                    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+                    // It can be called as many times as necessary; previously converted input fields will not be converted again
+                    window.emojiPicker.discover();
+                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('focus', function () {
+                        app.hideSmile();
+                    });
+                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
+                        let elem = $(this);
+                        setTimeout(function () {
+                            if(app.commentsContent.length == 0 && app.imgList.length == 0) {
+                                app.showSmile();
+                            }
+                        },500);
+                        document.querySelector('#uploadImg').addEventListener('click', function () {
+                            app.isUploadImage = true;
+                            app.uploadImg();
+                        });
+                    });
+                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
+                        app.commentsContent = $(this).text();
+                    });
                 },
                 //发布评论
                 sendInformation:function () {
-                    let self = this;
+
                     $.post('/api/found/comment', {
                         token:localStorage.getItem('token'),
                         article_id: self.passID,
-                        content:self.commentsContent
+                        content:self.commentsContent,
+                        /*image:self.imgUrl*/
                     }, function (data) {
                         console.log(data);
                         if (data.code == 1){
@@ -230,7 +277,8 @@ $(function () {
                             self.init();
                         }
                     });
-                }
+                },
+
             },
             watch: {
                 commentsContent: function (newVal, oldVal) {
@@ -256,46 +304,7 @@ $(function () {
             },
         }
     );
-    /**
-     * 监听文件上传框变化
-     */
-    $("#upload-img").change(function () {
-        app.hideSmile();
-        let reads = new FileReader();
-        let f = document.getElementById('upload-img').files[0];
-        reads.readAsDataURL(f);
-        reads.onload = function (e) {
-            app.imgList.push(this.result);
-            mui.toast('文件读取成功!');
-        };
-    });
-    window.emojiPicker = new EmojiPicker({
-        emojiable_selector: '[data-emojiable=true]',
-        assetsPath: 'assets/emoji/img/',
-        popupButtonClasses: 'fa fa-smile-o'
-    });
-    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-    // It can be called as many times as necessary; previously converted input fields will not be converted again
-    window.emojiPicker.discover();
-    document.querySelector('.emoji-wysiwyg-editor').addEventListener('focus', function () {
-        app.hideSmile();
-    });
-    document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
-        let elem = $(this);
-        setTimeout(function () {
-            if(app.commentsContent.length == 0 && app.imgList.length == 0) {
-                app.showSmile();
-            }
-        },500);
-        document.querySelector('#uploadImg').addEventListener('click', function () {
-            app.isUploadImage = true;
-            app.uploadImg();
-        });
-    });
-    document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
-        app.commentsContent = $(this).text();
-    });
+
 });
 
 

@@ -95,19 +95,6 @@
         <!--
             课时列表
         -->
-       <!-- <ul class="clearfix">  
-            <li v-if="imgs.length>0" v-for='(item ,index ) in imgs'> 
-                <img :src="item">
-            </li>
-            <li style="position:relative" v-if="imgs.length>=6 ? false : true">
-
-                <input class="upload" @change='add_img'  type="file">  
-            </li>  
-        </ul>  -->
-
-
-
-
         <div class="course-list-container">
             <div class="course-list-label">
                 <img src="/img/course-detail/course-list-title.png" class="course-list-title">
@@ -179,7 +166,7 @@
             </ul>
         </div>
         <div class="no-more-comments" v-if="pageCount">
-            {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
+            {{pageNumber < pageCount?'数据加载中！':'没有更多了！'}}
         </div>
     </div>
 

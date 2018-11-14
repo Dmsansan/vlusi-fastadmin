@@ -2,7 +2,7 @@ let app = new Vue({
     el: '#app',
     data: {
         city:'',
-        imgUrl:'/img/course-detail/logo.jpg',
+        imgUrl:'',
         //用户信息
         userInformation:[],
         showAddress:false,

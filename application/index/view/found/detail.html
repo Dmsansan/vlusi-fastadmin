@@ -38,6 +38,7 @@
             </template>
         </header>
         <article>
+
             <p class="discovery-detail-title">
                 {{detailsList.detail.title}}
             </p>
@@ -94,9 +95,10 @@
             </ul>
         </div>
         <div class="no-more-comments" v-if="pageCount">
-            {{pageNumber < pageCount?'数据加载中！':'没用更多了！'}}
+            {{pageNumber < pageCount?'数据加载中！':'没有更多了！'}}
         </div>
     </div>
+
 
     <!--
         底部评论栏
@@ -110,14 +112,14 @@
                    placeholder="写下你的评论...">
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">
-            <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
+            <!--<img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
             <img @click="collect(true)" src="/img/course-detail/like.png" :class="{active:!detailsList.is_collection}" class="icon-like bottom-icon-comment"/>
             <img @click="collect(false)" src="/img/course-detail/like-active.png" :class="{active:detailsList.is_collection}" class="icon-like bottom-icon-comment">
             <img @click="shareCourse()" src="/img/course-detail/share.png" class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
-            <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
-            <img src="/img/course-detail/upload-img.png" id="uploadImg" class="bottom-icon-comment"/>
+           <!-- <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
+            <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button" class="comments-send-btn" :disabled="isDisabled" @click="sendInformation()">发布</button>
         </div>

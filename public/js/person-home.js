@@ -8,11 +8,23 @@ window.onload = function () {
                 {"id":"2","title":"发现"},
                 {"id":"3","title":"我的"}
             ],
+            //用户信息
+            userInformation:[],
         },
         mounted() {
 
         },
         methods: {
+            init:function () {
+                //获取用户信息数据
+                let self = this;
+                //请求获取数据
+                $.post('/api/user/userinfo', {
+                    token: localStorage.getItem('token'),
+                }, function (data) {
+                    self.userInformation = data.data;
+                });
+            },
             //底部导航栏
             switchPage:function (id) {
                 if(id == 1){//课程
@@ -41,6 +53,10 @@ window.onload = function () {
                     url:'/index/user/my_course?token='+localStorage.getItem('token')
                 })
             }
-        }
+        },
+        created: function () {
+            //获取用户信息
+            this.init();
+        },
     });
 };

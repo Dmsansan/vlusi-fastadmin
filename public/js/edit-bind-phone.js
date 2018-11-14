@@ -27,12 +27,14 @@ window.onload = function () {
                     captcha:self.code
                 },function (data) {
                     mui.toast(data.msg);
-                    if(data.msg == '成功'){
+                    if(data.code == 1){
                         self.$nextTick(function () {
                             mui.openWindow({
                                 url: '/index/user/setting?token='+localStorage.getItem('token')
                             })
                         })
+                    }else {
+                        mui.toast('手机号已被绑定');
                     }
                 });
             },
@@ -53,7 +55,9 @@ window.onload = function () {
                              event:'changemobile',
                              mobile:self.phone
                          },function (data) {
-                             console.log(data.msg)
+                            if(data.code == 0){
+                                mui.toast(data.msg);
+                            }
                          });
                         let interval = setInterval(function () {
                             if (app.waitSeconds == 1) {

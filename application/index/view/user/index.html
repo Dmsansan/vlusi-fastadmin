@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/person-home.css"/>
 </head>
 <body>
-<div id="app" class="mui-content">
+<div id="app" class="mui-content" v-cloak>
     <section>
         <div class="user-info">
             <div class="top-part">
@@ -15,8 +15,8 @@
             </div>
             <div class="bottom-part">
                 <div class="img-container">
-                    <img src="/img/course-detail/logo.jpg" class="user-info-logo"/>
-                    <p class="user-info-nickname">昵称</p>
+                    <img :src="userInformation.avatar" class="user-info-logo"/>
+                    <p class="user-info-nickname">{{userInformation.nickname}}</p>
                     <div class="user-info-authentication">
                         企业用户认证
                         <img src="/img/person-home/author.png" class="auth-img">
