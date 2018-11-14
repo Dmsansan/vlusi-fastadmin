@@ -133,7 +133,7 @@ class Found extends Api
 
 
 
-        $data=db('article')->where($where)->page($page,$this->pagesize)->select();
+        $data=db('article')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
