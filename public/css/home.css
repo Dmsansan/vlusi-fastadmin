@@ -51,9 +51,10 @@ a.tab-item{
     -webkit-flex-direction: column;
     align-items: center;
     -webkit-align-items: center;
-    padding: 8px 30px;
+    padding: 6px 30px;
     color: rgba(187,187,187,1);
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 a.tab-item.active{
     color: #f5ab00;
@@ -87,11 +88,17 @@ header {
 .tab-content-item img{
     border-radius: 8px 8px 0 0;
 }
+.show-img{
+    display: inline-block;
+    width: 100%;
+    height: 9.3rem;
+    background-size: cover;
+}
 .tab-content-desc {
     padding: 5px 15px;
 }
 p.tab-content-desc-title,p.tab-content-desc-content,p.tab-content-desc-date{
-    padding: 5px 0;
+    padding: 2px 0;
     white-space: nowrap;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
@@ -155,7 +162,7 @@ img.icon-search {
 }
 p.comments-and-times {
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     right: 0;
     background: rgba(0,0,0,0.5);
     color: #FFFFFF;
@@ -248,11 +255,12 @@ div#page2 header {
 }
 .mui-slider-item a{
     width: 100%;
-    height: 220px;
+    height: 11rem;
 
 }
 .mui-slider-item a img{
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
 }

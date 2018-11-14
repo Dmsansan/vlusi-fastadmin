@@ -92,9 +92,9 @@
                             </div>
                             <template v-if="item.videofile">
                                 <!--视频图标-->
-                                <img :src="item.videofile" class="icon-video-play">
+                                <img class="show-img":src="item.videofile" class="icon-video-play">
                             </template>
-                            <img :src="item.coverimage"/>
+                            <img class="show-img" :src="item.coverimage"/>
                             <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
 
                         </div>
@@ -128,7 +128,7 @@
                                 <!--视频图标-->
                                 <img :src="item.videofile" class="icon-video-play">
                             </template>
-                            <img :src="item.coverimage"/>
+                            <img class="show-img" :src="item.coverimage"/>
                             <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
 
                         </div>
@@ -195,7 +195,7 @@
                         <img src="/img/home/label.png"/>
                         <p class="class-label-name">{{item.label}}</p>
                     </div>
-                    <img :src="item.coverimage"/>
+                    <img class="show-img" :src="item.coverimage"/>
                     <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                 </div>
                 <div class="tab-content-desc">

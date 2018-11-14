@@ -5,6 +5,12 @@
     <title></title>
     <script type="text/javascript" src="js/loader.js"></script>
     <link rel="stylesheet" href="css/home.css"/>
+    <style>
+        .tvp_poster_img{
+            margin-left: -35% !important;
+        }
+        .tvp_overlay_play, .tvp_overlay_play_try, .tvp_overlay_replay{left: -20% !important;}
+    </style>
 </head>
 <body>
 <div id="app" v-cloak>
@@ -79,12 +85,12 @@
                             <img src="img/home/label.png"/>
                             <p class="class-label-name">{{item.type_name}}</p>
                         </div>
-                        <img :src="item.coverimage"/>
+                        <img  class="show-img" :src="item.coverimage"/>
                         <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                     </div>
                     <div class="tab-content-desc">
                         <p class="tab-content-desc-title">{{item.title}}</p>
-                        <p class="tab-content-desc-content" v-html="item.content"></p>
+                        <p class="tab-content-desc-content" style="text-align: center" v-html="item.content"></p>
                         <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                     </div>
                 </div>
@@ -103,7 +109,7 @@
                             <img src="img/home/label.png"/>
                             <p class="class-label-name">{{item.desc}}</p>
                         </div>
-                        <img :src="item.coverimage"/>
+                        <img :src="item.coverimage" class="show-img"/>
                         <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                     </div>
                     <div class="tab-content-desc">
@@ -170,7 +176,7 @@
                         <img src="img/home/label.png"/>
                         <p class="class-label-name">{{item.label}}</p>
                     </div>
-                    <img :src="item.coverimage"/>
+                    <img  class="show-img" :src="item.coverimage"/>
                     <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                 </div>
                 <div class="tab-content-desc">

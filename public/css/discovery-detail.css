@@ -3,7 +3,7 @@
     display: -webkit-flex;
     align-items: center;
     -webkit-align-items: center;
-    padding: 15px;
+    padding: 10px 15px;
     position: relative;
 }
 img.logo-img {
@@ -18,7 +18,7 @@ p.logo-title {
     padding: 6px 0;
 }
 p.discovery-detail-title {
-    padding: 15px;
+    padding: 10px 15px;
     font-size: 1.2rem;
     color: #333333;
     line-height: 1.5;
@@ -40,20 +40,20 @@ p.discovery-detail-title {
     -webkit-align-items: center;
     justify-content: space-around;
     -webkit-justify-content: space-around;
-    padding: 15px 0;
+    padding: 5px 0;
     position: relative;
 }
 .read-and-like-item {
     border: 1px solid #999999;
     border-radius: 30px;
-    width: 40%;
+    width: 25%;
     display: flex;
     display: -webkit-flex;
     align-items: center;
     -webkit-align-items: center;
     justify-content: center;
     -webkit-justify-content: center;
-    height: 50px;
+    height: 40px;
     color: #999999;
 }
 img.like-article {
