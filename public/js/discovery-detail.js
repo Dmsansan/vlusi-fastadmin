@@ -165,16 +165,19 @@ $(function () {
                         article_id: self.passID,
                         token:localStorage.getItem('token')
                     }, function (data) {
-                        console.log(data)
+                        self.$nextTick(function () {
+                            //初始化数据
+                            self.init();
+                        })
                     });
-                    if(flag) {
+                   /* if(flag) {
                         self.detailsList.is_collection = true;
                         mui.toast('已收藏');
                     }
                     else {
                         self.detailsList.is_collection = false;
                         mui.toast('已取消收藏');
-                    }
+                    }*/
                 },
                 goCommentsDetail:function (id) {
                     //查看评论详情
