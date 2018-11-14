@@ -59,8 +59,8 @@
                     阅读 &#8226; {{detailsList.detail.readnum}}
                 </div>
                 <div class="read-and-like-item like" :class="{active:detailsList.is_zan}">
-                    <img @click="likeArticle(false)" class="like-article" src="/img/course-detail/article-like.png" :class="{active:detailsList.is_zan}"/>
-                    <img @click="likeArticle(true)" class="like-article" src="/img/course-detail/article-like-no.png" :class="{active:!detailsList.is_zan}"/>
+                    <img @click="likeArticle(detailsList.detail.id,false)" class="like-article" src="/img/course-detail/article-like.png" :class="{active:detailsList.is_zan}"/>
+                    <img @click="likeArticle(detailsList.detail.id,true)" class="like-article" src="/img/course-detail/article-like-no.png" :class="{active:!detailsList.is_zan}"/>
                     <p class="like-num" :class="{active:detailsList.is_zan}">{{detailsList.detail.zan}}</p>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                             <span class="user-nickname">{{item.nickname}}</span>
                         </p>
                         <p class="user-like-container">
-                            <img @click="likeComment(true,item.article_id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
-                            <img @click="likeComment(false,item.article_id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
+                            <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
+                            <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
                             <span>{{item.zan}}</span>
                         </p>
                     </div>
