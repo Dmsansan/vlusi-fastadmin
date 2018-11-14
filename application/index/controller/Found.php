@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Found extends Frontend
 {
 
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
@@ -27,6 +27,11 @@ class Found extends Frontend
 
     public function detail()
     {
+
+        $userinfo=$this->auth->getUser();
+        if(!$userinfo->mobile){
+            $this->redirect('index/user/bind_phone');
+        }
         return $this->view->fetch();
     }
 

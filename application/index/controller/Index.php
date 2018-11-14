@@ -21,10 +21,6 @@ class Index extends Frontend
     {
 //        $token=$this->request->get('token');
 
-        $userinfo=$this->auth->getUser();
-        if($userinfo->jointime==time()){
-            $this->redirect('index/user/bind_phone');
-        }
         $token=$this->auth->getToken();
 
         $this->assign('token',$token);
@@ -35,7 +31,10 @@ class Index extends Frontend
 
     public function detail()
     {
-
+        $userinfo=$this->auth->getUser();
+        if(!$userinfo->mobile){
+            $this->redirect('index/user/bind_phone');
+        }
         return $this->view->fetch();
     }
 
