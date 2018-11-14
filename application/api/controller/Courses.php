@@ -536,6 +536,7 @@ class Courses extends Api
 
         $insert['user_id']=$userid;
         $insert['course_id']=$course_id;
+        $insert['createtime']=time();
         $res=db('course_audit')->insert($insert);
         if($res){
             $this->success("提交成功",[]);
