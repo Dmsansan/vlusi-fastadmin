@@ -173,6 +173,7 @@ img.icon-like.active.bottom-icon-comment {
 }
 input.comment-input {
     padding-right: 50px;
+    width: 98%;
     margin: 0;
     border-radius: 20px;
     height: 30px;
@@ -186,7 +187,7 @@ input.comment-input {
 }
 .comment-input-container{
     position: relative;
-    width: 60%;
+    width: 80%;
 }
 img.icon-expression.bottom-icon-comment {
     position: absolute;
@@ -197,7 +198,7 @@ img.icon-expression.bottom-icon-comment.invisible{
     display: none;
 }
 .comment-icon-container {
-    width: 40%;
+    width: 20%;
     display: inline-flex;
     align-items: center;
     justify-content: space-around;

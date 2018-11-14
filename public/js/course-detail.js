@@ -267,7 +267,7 @@ window.onload = function () {
                 this.isShowCard = false;
             },
             saveImg:function () {
-                
+
             },
 
 
