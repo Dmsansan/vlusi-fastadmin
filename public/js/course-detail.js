@@ -96,7 +96,7 @@ window.onload = function () {
             },
 
             //课程详情
-            courseDetails:function () {
+            courseDetails:function (id) {
                 let self = this;
                 $.post('/api/courses/detail', {
                     token:localStorage.getItem('token'),
