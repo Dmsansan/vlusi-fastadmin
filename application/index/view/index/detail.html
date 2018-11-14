@@ -239,7 +239,7 @@
     <div class="card-view-preview" :class="{active:isShowCard}">
         <img @click="hidePreview()" src="/img/course-detail/icon-close-preview.png" class="close-preview-icon"/>
         <div class="card-view-preview-img-container">
-            <img src="/img/course-detail/preview.jpg" class="card-view-preview-img">
+            <img :src="sharePictures" class="card-view-preview-img">
         </div>
         <button class="card-view-save-btn">长按图片保存</button>
     </div>

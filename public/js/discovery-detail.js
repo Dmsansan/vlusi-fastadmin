@@ -32,7 +32,8 @@ $(function () {
                 imgList:[],
                 //是否展示卡片视图
                 isShowCard:false,
-
+                //分享图片
+                sharePictures:'',
                 //详情数据
                 detailsList:[],
 
@@ -191,9 +192,18 @@ $(function () {
                     //发给好友
                 },
                 generateCard:function () {
+                    let self = this;
                     mui('#share-sheet').popover('toggle');
                     //生成卡片
-                    this.isShowCard = true;
+                    self.isShowCard = true;
+
+                    $.post('/api/share/getimage', {
+                        article_id: self.passID,
+                        token:localStorage.getItem('token')
+                    }, function (data) {
+                        self.sharePictures = data.data.url;
+                    });
+
                 },
                 hidePreview:function () {
                     //关闭图片预览
