@@ -272,12 +272,18 @@ let app = new Vue({
         }
     },
     created: function () {
+        let self = this;
         //获取轮播图数据
-        this.sowingMap();
-        //获取 tab页内容和页面初始化数据
-        this.init();
+        self.sowingMap();
         let token = $('input[name="token"]').val();
         localStorage.setItem('token',token);
+        if (localStorage.getItem('token')){
+            self.$nextTick(function () {
+                //获取 tab页内容和页面初始化数据
+                self.init();
+            })
+        }
+
 
     },
     beforeDestroy(){
