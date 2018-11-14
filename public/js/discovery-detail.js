@@ -124,7 +124,7 @@ $(function () {
                     let self = this;
                     $.post(' /api/found/comment_zan', {
                         token:localStorage.getItem('token'),
-                        comment_id: self.passID,
+                        comment_id: id,
                     }, function (data) {
                         self.$nextTick(function () {
                             self.init();
@@ -133,23 +133,26 @@ $(function () {
                 },
 
                 //文章点赞
-                likeArticle:function(flag) {
+                likeArticle:function(id,flag) {
+
                     let self = this;
                     $.post('/api/found/article_zan', {
-                        article_id: self.passID,
+                        article_id: id,
                         token:localStorage.getItem('token')
                     }, function (data) {
-                        self.$nextTick(function () {
+                       /* self.$nextTick(function () {
                             self.init();
-                        })
+                        })*/
 
                     });
                     if(flag) {
                         self.detailsList.is_zan = true;
-                        mui.toast('点赞成功！');
+                        self.detailsList.detail.zan =++self.detailsList.detail.zan;
+                        /*mui.toast('点赞成功！');*/
                     } else {
                         self.detailsList.is_zan = false;
-                        mui.toast('取消点赞！');
+                        self.detailsList.detail.zan = --self.detailsList.detail.zan;
+                       /* mui.toast('取消点赞！');*/
                     }
                 },
                 //回复
