@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/img/code_png/MSYH.TTF" afterPath="$PROJECT_DIR$/public/img/code_png/MSYH.ttf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Share.php" afterPath="$PROJECT_DIR$/application/api/controller/Share.php" />
     </list>
@@ -22,8 +21,8 @@
       <file leaf-file-name="Share.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/api/controller/Share.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="534" column="29" lean-forward="false" selection-start-line="534" selection-start-column="29" selection-end-line="534" selection-end-column="29" />
+            <state relative-caret-position="266">
+              <caret line="100" column="23" lean-forward="false" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -33,7 +32,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>img/</find>
       <find>found</find>
       <find>article</find>
       <find>文章</find>
@@ -63,6 +61,7 @@
       <find>occurred</find>
       <find>textalign</find>
       <find>$font_file</find>
+      <find>dump</find>
     </findStrings>
     <replaceStrings>
       <replace>./img/</replace>
@@ -335,12 +334,12 @@
       <updated>1541654813209</updated>
       <workItem from="1541654814921" duration="133601000" />
       <workItem from="1542111754645" duration="502000" />
-      <workItem from="1542115679462" duration="17106000" />
+      <workItem from="1542115679462" duration="17194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151209000" />
+    <option name="totallyTimeSpent" value="151297000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="6" />
@@ -780,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/api/controller/Share.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="534" column="29" lean-forward="false" selection-start-line="534" selection-start-column="29" selection-end-line="534" selection-end-column="29" />
+        <state relative-caret-position="266">
+          <caret line="100" column="23" lean-forward="false" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
           <folding />
         </state>
       </provider>

@@ -211,7 +211,6 @@ function createSharePng($gData,$codeName,$fileName = ''){
     imagecopyresized($im, $logoImg, 210, 503, 0, 0, 70, 70, $l_w, $l_h);
  
     //输出图片
-    dump($fileName);
 
     if($fileName){
 
@@ -225,8 +224,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     }
 
-    dump($fileName.'over'); die;
- 
+
 
     //释放空间
 
@@ -532,7 +530,6 @@ function mg_cn_substr($str,$len,$start = 0){
         $tp = 0;
         $font_color = imagecolorallocate($card, $pos["color"][0], $pos["color"][1], $pos["color"][2]);
         for ($i = 0; $i < mb_strlen($str,'utf8'); $i++) {
-            dump($font_file);
             $box = imagettfbbox($fontsize, 0, $font_file, $temp_string);
             $_string_length = $box[2] - $box[0];
             $temptext = mb_substr($str, $i, 1,'utf-8');//拆分字符串
