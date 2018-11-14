@@ -50,17 +50,17 @@ class Share extends Api
         //生成二维码
         vendor ('phpqrcode.phpqrcode');
 
-        dump(222);
         $QRcode = new \QRcode();
         $value = "http://".$_SERVER['HTTP_HOST'].'/index/index/course_detail?id='.$article_id;
 
-        dump($value);die;
         //二维码内容
         $errorCorrectionLevel = 'L';  //容错级别
         $matrixPointSize = 5;      //生成图片大小
         //生成二维码图片
-        $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg";
+        $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg"
+            dump($filename);
         $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
+
         $logo = 'img/code_png/code.jpg'; //准备好的logo图片
         $QR = $filename;      //已经生成的原始二维码图
         if (file_exists($logo)) {
@@ -79,11 +79,13 @@ class Share extends Api
      * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
      */
         imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
-  }
+    }
+
         imagepng($QR, $filename);
   
         $detail['QRcode'] = $filename;
-   
+           dump($filename);die;
+
         //输出到图片
         $imageName = time().'22'.rand('100000','999999').".jpg";
         $this->createSharePng($detail,'','uploads/'.$folderName.'/'.$imageName);
