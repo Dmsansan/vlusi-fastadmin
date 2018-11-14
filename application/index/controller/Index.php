@@ -19,11 +19,11 @@ class Index extends Frontend
 
     public function index()
     {
-//        $token=$this->request->get('token');
+        $token=$this->request->get('token');
 
 //        $token=$this->auth->getToken();
 //
-//        $this->assign('token',$token);
+        $this->assign('token',$token);
 
         return $this->view->fetch();
     }
