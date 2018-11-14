@@ -197,6 +197,59 @@ class Found extends Api
 
 
     /**
+     * 获取用户对评论是否点赞接口
+     *
+     * @ApiTitle    (对某文章进行点赞)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/found/user_is_zan)
+     * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+    'code':'1',
+    'mesg':'返回成功'
+     * })
+     */
+    public function user_is_zan()
+    {
+        $userid=$this->userid;
+        $article_id  =  (int)$this->request->request("article_id");
+
+        $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
+        if($res){
+            db('article_zan')->where(['id'=>$res['id']])->delete();
+            db('article')->where('id', $article_id)->setDec('zan');
+
+            $this->success("取消成功");
+        }
+
+        //无文章，返回成功
+        $is_article=db('article')->field('id')->where(['id'=>$article_id])->find();
+        if(!$is_article){
+            $this->success("点赞成功");
+        }
+
+        $insert['article_id']=$article_id;
+        $insert['user_id']=$userid;
+        $insert['createtime']=time();
+        $res=db('article_zan')->insert($insert);
+        if($res){
+            //同步新增到article_comment表 赞+1
+            db('article')->where('id', $article_id)->setInc('zan');
+
+            $this->success("点赞成功");
+        }else{
+            $this->error('点赞失败');
+        }
+    }
+
+
+
+
+
+    /**
      * 获取文章详情及评论接口
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/found/detail)
@@ -263,7 +316,9 @@ class Found extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
-                if($val['user_id']==$this->userid){
+                $is_zan=db('article_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$val['id']])->find();
+
+                if($is_zan){
                     $data['comment'][$key]['is_zan']=1;
                 }else{
                     $data['comment'][$key]['is_zan']=0;

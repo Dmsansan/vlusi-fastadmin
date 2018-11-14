@@ -281,7 +281,8 @@ class Courses extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
-                if($val['user_id']==$this->userid){
+                $is_zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
+                if($is_zan){
                     $data['comment'][$key]['is_zan']=1;
                 }else{
                     $data['comment'][$key]['is_zan']=0;
