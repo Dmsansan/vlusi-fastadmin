@@ -122,9 +122,9 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     //字体文件
 
-    $font_file = __DIR__."/img/code_png/msyh.ttf";
+    $font_file = "img/code_png/MSYH.ttf";
 
-    $font_file_bold =__DIR__."/img/code_png/msyh.ttf";
+    $font_file_bold = "img/code_png/MSYH.ttf";
     //设定字体的颜色
 
     $font_color_1 = ImageColorAllocate ($im, 140, 140, 140);
