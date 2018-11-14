@@ -182,7 +182,7 @@
                    placeholder="写下你的评论...">
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">
-            <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
+           <!-- <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
             <img @click="collect(true)" src="/img/course-detail/like.png"
                  :class="{active:!detailList.is_collection}"
                  class="icon-like bottom-icon-comment"/>
@@ -194,7 +194,7 @@
                  class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
-            <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
+            <!--<img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
             <img src="/img/course-detail/upload-img.png" id="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button"

@@ -263,7 +263,6 @@ $(function () {
                 },
                 //发布评论
                 sendInformation:function () {
-
                     $.post('/api/found/comment', {
                         token:localStorage.getItem('token'),
                         article_id: self.passID,
@@ -284,6 +283,7 @@ $(function () {
                 commentsContent: function (newVal, oldVal) {
                     if (newVal.trim() != '') {
                         this.isDisabled = false;
+                        self.commentsContent = newVal;
                     }
                     else {
                         this.isDisabled = true;
