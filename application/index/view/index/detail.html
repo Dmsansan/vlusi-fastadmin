@@ -28,7 +28,8 @@
                     <p class="course-img-desc-info">{{detailList.detail.readnum}}阅读 &#8226; {{detailList.detail.zan}}点赞 &#8226; {{detailList.detail.comments}}评论 {{detailList.detail.createtime}}</p>
                 </div>
                 <div class="right-part">
-                    <button type="button" class="apply-course apply" :class="{active:detailList.detail.is_audit == 0}">申请课程</button>
+                    <button type="button"  @click="applicationClass(detailList.detail.id)"
+                            class="apply-course apply" :class="{active:detailList.detail.is_audit == 0}">申请课程</button>
                     <button type="button" class="apply-course checking" :class="{active:detailList.detail.is_audit == -1}">正在审核</button>
                 </div>
             </div>
@@ -161,8 +162,8 @@
                             <span class="user-nickname">{{item.nickname}}</span>
                         </p>
                         <p class="user-like-container">
-                            <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
-                            <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
+                            <img @click="likeComment(true,item.course_id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
+                            <img @click="likeComment(false,item.course_id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
                             <span>{{item.zan}}</span>
                         </p>
                     </div>

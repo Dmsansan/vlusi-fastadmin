@@ -77,8 +77,8 @@
                             <span class="user-nickname">{{item.nickname}}</span>
                         </p>
                         <p class="user-like-container">
-                            <img @click="likeComment(true,item.id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
-                            <img @click="likeComment(false,item.id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
+                            <img @click="likeComment(true,item.article_id)" src="/img/course-detail/like-comment.png" class="like-comment" :class="{active:!item.is_zan}">
+                            <img @click="likeComment(false,item.article_id)" src="/img/course-detail/like-comment-active.png" class="like-comment" :class="{active:item.is_zan}">
                             <span>{{item.zan}}</span>
                         </p>
                     </div>

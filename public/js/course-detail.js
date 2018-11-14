@@ -111,6 +111,18 @@ window.onload = function () {
                 });
 
             },
+            //申请课程
+            applicationClass:function (id) {
+                let self = this;
+                $.post('/api/courses/audit', {
+                    token:localStorage.getItem('token'),
+                    course_id: id,
+                }, function (data) {
+                   self.$nextTick(function () {
+                       self.courseDetails();
+                   })
+                });
+            },
             //展开列表
             openAllCourse: function () {
                 if (this.isHidden) {
@@ -148,21 +160,21 @@ window.onload = function () {
                         self.courseDetails();
                     })
                 });
-                if(flag){
+               /* if(flag){
                     mui.toast('点赞成功！');
                 }else {
                     mui.toast('取消点赞成功！');
-                }
+                }*/
             },
             //文章点赞
             likeArticle:function(id,flag) {
                 this.isLikeArt = flag;
                 if(flag) {
                     this.likeArtNums = ++this.likeArtNums;
-                    mui.toast('点赞成功！');
+                    // mui.toast('点赞成功！');
                 } else {
                     this.likeArtNums = --this.likeArtNums;
-                    mui.toast('取消点赞成功！');
+                    // mui.toast('取消点赞成功！');
                 }
                 let self = this;
                 $.post('/api/courses/course_zan', {
@@ -202,14 +214,14 @@ window.onload = function () {
 
                     })
                 });
-                if(flag) {
+               /* if(flag) {
                     self.detailList.detail.is_collection = true;
-                    mui.toast('已收藏');
+                    // mui.toast('已收藏');
                 }
                 else {
                     self.detailList.detail.is_collection = false;
-                    mui.toast('已取消收藏');
-                }
+                    // mui.toast('已取消收藏');
+                }*/
             },
             //点击发送按钮
             reviewBtn:function () {
