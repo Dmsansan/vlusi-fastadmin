@@ -58,7 +58,6 @@ class Share extends Api
         $matrixPointSize = 5;      //生成图片大小
         //生成二维码图片
         $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg";
-            dump($filename);
         $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
 
         $logo = 'img/code_png/code.jpg'; //准备好的logo图片
@@ -84,7 +83,6 @@ class Share extends Api
         imagepng($QR, $filename);
   
         $detail['QRcode'] = $filename;
-           dump($filename);die;
 
         //输出到图片
         $imageName = time().'22'.rand('100000','999999').".jpg";
@@ -139,9 +137,9 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     //封面图
     list($c_w,$c_h) = getimagesize($url.$gData['coverimage']);
-    
+    dump('create img before');
     $coverimageImg = $this->createImageFromFile($url.$gData['coverimage']);
-
+    dump('create img over');die;
     imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
 
  
