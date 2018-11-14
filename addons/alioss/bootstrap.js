@@ -14,6 +14,7 @@ if (typeof Config.upload.storage !== 'undefined' && Config.upload.storage === 'a
                     var spark = new SparkMD5.ArrayBuffer();
                     spark.append(e.target.result);
                     var md5 = spark.end();
+                    // console.log(file.key)
                     Fast.api.ajax({
                         url: "/addons/alioss/index/params",
                         data: {method: 'POST', md5: md5, name: file.name, type: file.type, size: file.size},
