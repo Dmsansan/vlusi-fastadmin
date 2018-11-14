@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" afterPath="$PROJECT_DIR$/application/admin/controller/banner/Banner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/model/Banner.php" afterPath="$PROJECT_DIR$/application/admin/model/Banner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/banner/banner/add.html" afterPath="$PROJECT_DIR$/application/admin/view/banner/banner/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/banner/banner/index.html" afterPath="$PROJECT_DIR$/application/admin/view/banner/banner/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Found.php" afterPath="$PROJECT_DIR$/application/index/controller/Found.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Index.php" afterPath="$PROJECT_DIR$/application/index/controller/Index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" afterPath="$PROJECT_DIR$/public/assets/js/backend/banner/banner.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,8 +80,8 @@
       <file leaf-file-name="Found.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/index/controller/Found.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="33" column="11" lean-forward="true" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+            <state relative-caret-position="216">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -446,12 +438,12 @@
       <workItem from="1541654814921" duration="133601000" />
       <workItem from="1542111754645" duration="502000" />
       <workItem from="1542115679462" duration="19305000" />
-      <workItem from="1542188349081" duration="3512000" />
+      <workItem from="1542188349081" duration="3544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156920000" />
+    <option name="totallyTimeSpent" value="156952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="6" />
@@ -870,8 +862,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Found.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="33" column="11" lean-forward="true" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        <state relative-caret-position="216">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
