@@ -35,9 +35,11 @@ class Share extends Api
 		if(!$detail){
 			$this->error(__('文章不存在'));
 		}
-        $detail_user =db('admin')->where(['id'=>$detail['admin_id']])->find();
-
-        $detail['nickname'] = $detail_user['nickname']?:'乐养老';
+        $detail_user =db('admin')->where(['id'=>$detail['id']])->find();
+        if(!$detail_user){
+			$this->error(__('作者不存在'));
+		}
+        $detail['nickname'] = $detail_user['nickname'];
         $detail['signtext'] = $detail_user['signtext'];
         $detail['avatar'] = $detail_user['avatar'];
         $folderName = date('Y',time()).date('m',time()).date('d',time());
