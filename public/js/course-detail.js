@@ -228,6 +228,7 @@ window.onload = function () {
             //点击发送按钮
             reviewBtn:function () {
                 let self = this;
+                self.isDisabled = true;
                 $.post('/api/courses/comment', {
                     token:localStorage.getItem('token'),
                     course_id: self.passID,
@@ -236,6 +237,7 @@ window.onload = function () {
                     self.$nextTick(function () {
                         self.courseDetails();
                         self.commentsContent = '';
+                        self.isDisabled = false;
                     })
                 });
             },
@@ -248,6 +250,21 @@ window.onload = function () {
             },
             sendToFriend:function () {
                 //发给好友
+            },
+            //解决输入框被遮挡
+            focusInput:function () {
+                var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                $('#form_article').focus(function() {
+                    //给个延迟
+                    bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
+                    interval = setInterval(function() {
+                        document.body.scrollTop = document.body.scrollHeight}, 100
+                    );
+                    window.addEventListener('touchmove', fn, false);
+
+                }).blur(function(){
+                    clearInterval(interval);
+                });
             },
             generateCard:function () {
                 let self = this;

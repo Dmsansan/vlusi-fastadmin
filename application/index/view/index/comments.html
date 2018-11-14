@@ -129,6 +129,7 @@
             <input data-emojiable="true" oninput="this.value=this.value.replace(/\s+/g,'')"
                    v-model="commentsContent"
                    class="comment-input"
+                   @click="focusInput()"
                    type="text" placeholder="写下你的评论..."/>
         </div>
         <div class="comment-icon-container">

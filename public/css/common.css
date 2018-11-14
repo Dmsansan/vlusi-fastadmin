@@ -66,5 +66,6 @@ a.mui-tab-item img {
 }
 a.mui-tab-item{
     touch-action: none;
+    cursor: pointer;
 }
 [v-cloak]{ display:none}

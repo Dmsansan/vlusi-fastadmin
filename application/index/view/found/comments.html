@@ -46,7 +46,7 @@
                             {{commentsList.content}}
                         </p>
                         <p class="comments-img" v-if="commentsList.img  ">
-                            <img v-for="n in 5" src="/img/show.jpg"/>
+                            <img  :src="commentsList.img"/>
                         </p>
                         <div class="comments-operation">
                             <p class="comments-time">{{commentsList.createtime}}</p>
@@ -127,11 +127,11 @@
         <div class="comment-input-container">
             <input data-emojiable="true" oninput="this.value=this.value.replace(/\s+/g,'')"
                    v-model="commentsContent"
-                   class="comment-input"
+                   class="comment-input" type="text"   @click="focusInput()"
                    type="text" placeholder="写下你的评论..."/>
         </div>
         <div class="comment-icon-container">
-            <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
+            <img src="/img/course-detail/upload-img.png" @click="uploadImg()" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button" class="comments-send-btn"
                     @click="reviewBtn()":disabled="isDisabled">发布</button>

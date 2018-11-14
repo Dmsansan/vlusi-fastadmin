@@ -178,7 +178,8 @@
             <input data-emojiable="true" id="form_article"
                    v-model="commentsContent" @focus="hideSmile"
                    class="comment-input"
-                   contenteditable="true"
+                   @click="focusInput()"
+                   type="text"
                    placeholder="写下你的评论...">
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">

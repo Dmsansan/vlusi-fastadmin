@@ -399,9 +399,12 @@ button.reply-comments {
     margin-left: 15px;
 }
 p.comments-img img {
+    display: inline-block;
     width: 30%;
     border-radius: 8px;
     margin-right: 5px;
+    height: 3rem;
+    background-size: cover;
 }
 p.comments-img {
     padding: 0 15px;

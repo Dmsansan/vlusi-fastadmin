@@ -183,6 +183,21 @@ $(function () {
                         mui.toast('已取消收藏');
                     }*/
                 },
+                //解决键盘遮挡
+                focusInput:function () {
+                    var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    $('#form_article').focus(function() {
+                        //给个延迟
+                        bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
+                        interval = setInterval(function() {
+                            document.body.scrollTop = document.body.scrollHeight}, 100
+                        );
+                        window.addEventListener('touchmove', fn, false);
+
+                    }).blur(function(){
+                        clearInterval(interval);
+                    });
+                },
                 goCommentsDetail:function (id) {
                     //查看评论详情
                     mui.openWindow({
@@ -263,6 +278,8 @@ $(function () {
                 },
                 //发布评论
                 sendInformation:function () {
+                    let self = this;
+                    self.isDisabled = true;
                     $.post('/api/found/comment', {
                         token:localStorage.getItem('token'),
                         article_id: self.passID,
