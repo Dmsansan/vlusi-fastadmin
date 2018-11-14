@@ -58,7 +58,7 @@ if (typeof Config.upload.storage !== 'undefined' && Config.upload.storage === 'a
                 if (info.status === 200) {
                     var url = file.key;
                     Fast.api.ajax({
-                        url: "/addons/alioss/index/notify222",
+                        url: "/addons/alioss/index/notify",
                         data: {method: 'POST', name: file.name, url: url, md5: file.md5, size: file.size, type: file.type, policy: file.policy, signature: file.signature}
                     }, function () {
                         return false;
