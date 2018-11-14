@@ -86,6 +86,8 @@ class Courses extends Api
 
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $data[$key]['desc']=mb_substr(strip_tags($val['desc']),0,30);
+
         }
 
 
@@ -142,6 +144,7 @@ class Courses extends Api
 
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $data[$key]['desc']=mb_substr(strip_tags($val['desc']),0,30);
         }
 
         $this->success("返回成功",$data,$pages);

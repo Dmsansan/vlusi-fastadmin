@@ -83,6 +83,7 @@ class Found extends Api
 
         foreach($list as $key=>$val){
             $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $list[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
         }
 
 
@@ -136,6 +137,7 @@ class Found extends Api
         $data=db('article')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
         }
 
 
