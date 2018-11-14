@@ -122,9 +122,9 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     //字体文件
 
-    $font_file = "img/code_png/MSYH.ttf";
+    $font_file = "/img/code_png/MSYH.ttf";
 
-    $font_file_bold = "img/code_png/MSYH.ttf";
+    $font_file_bold = "/img/code_png/MSYH.ttf";
     //设定字体的颜色
 
     $font_color_1 = ImageColorAllocate ($im, 140, 140, 140);
@@ -532,6 +532,7 @@ function mg_cn_substr($str,$len,$start = 0){
         $tp = 0;
         $font_color = imagecolorallocate($card, $pos["color"][0], $pos["color"][1], $pos["color"][2]);
         for ($i = 0; $i < mb_strlen($str,'utf8'); $i++) {
+            dump($font_file);
             $box = imagettfbbox($fontsize, 0, $font_file, $temp_string);
             $_string_length = $box[2] - $box[0];
             $temptext = mb_substr($str, $i, 1,'utf-8');//拆分字符串
