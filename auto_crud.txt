@@ -25,17 +25,32 @@ php think crud -t article  -c article/article  -m article/article  --relation=ar
 
 #
 
-/发布时需修改的地方
-
-index/index/index.html  TOKEN
-
-index/index/indexConttroller  TOKEN 及无需登录的方法
-
-index/index/detail 内的登录注释
-index/course/detail 内的登录注释
+/发布前需修改的地方
+1.请提交代码至码云的代码库 https://gitee.com/wangerpang/fastadmin.git
+    码云账号 18037235202
+    密码 wq252379551
 
 
-user/bind_phone/bind_phone.html  TOKEN
-index/set_data/set_data.html  TOKEN
+1  .env 文件 193.112.64.248 改为 127.0.0.1
 
-sql-mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+2.index/index/index.html  页面上的token <?php echo $token;?>需打开
+
+3. index/index/indexConttroller
+    protected $noNeedLogin = ['*'];  更改为     protected $noNeedLogin = [];
+    22行注释掉   24行注释打开
+    34-37行注释打开
+
+4。 index/course/detail   31-34行注释打开
+
+5. 服务器重置代码  git fetch --all
+             18037235202
+             wq252379551
+             git reset --hard origin master
+
+
+6 修改项目权限为755
+
+
+
+
+

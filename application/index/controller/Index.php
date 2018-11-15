@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
@@ -19,9 +19,9 @@ class Index extends Frontend
 
     public function index()
     {
-//        $token=$this->request->get('token');
-//
-        $token=$this->auth->getToken();
+        $token=$this->request->get('token');
+
+//        $token=$this->auth->getToken();
 //
         $this->assign('token',$token);
 
@@ -31,10 +31,10 @@ class Index extends Frontend
 
     public function detail()
     {
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo->mobile){
-            $this->redirect('index/user/bind_phone');
-        }
+//        $userinfo=$this->auth->getUser();
+//        if(!$userinfo->mobile){
+//            $this->redirect('index/user/bind_phone');
+//        }
         return $this->view->fetch();
     }
 
@@ -49,6 +49,20 @@ class Index extends Frontend
     //课程详情
     public function course_detail(){
         return $this->view->fetch();
+    }
+
+
+    public function getAccessToken()
+    {
+
+        $param['grant_type']='client_credential';
+        $param['appid']='wx1fab8067cbc162c7';
+        $param['secret']='d638ba9b21a7ca01277fa6a8e3f0fc9e';
+
+        $url="https://api.weixin.qq.com/cgi-bin/token?".http_build_query($param);
+        $access=file_get_contents($url);
+        dump($access);die;
+
     }
 
 }
