@@ -338,6 +338,7 @@ class Found extends Api
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/found/comment)
      * @ApiParams   (name="article_id", type="integer", required=true, description="文章id")
+     * @ApiParams   (name="comment_id", type="integer", required=false, description="评论的id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
      * @ApiParams   (name="image", type="file", required=falst, description="图片")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
@@ -353,14 +354,23 @@ class Found extends Api
     {
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
+        $comment_id  =  (int)$this->request->request("comment_id");
         $content=$this->request->request("content");
 
+
+        if(!$article_id){
+            $this->error('文章id不为空');
+        }
 
         $insert=[];
 
         if($_FILES){
             $common=new Common();
             $insert['img']= $common->upload();
+        }
+
+        if($comment_id){
+            $insert['pid']=$comment_id;
         }
 
         $insert['article_id']=$article_id;

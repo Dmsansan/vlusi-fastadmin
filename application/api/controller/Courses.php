@@ -302,6 +302,7 @@ class Courses extends Api
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/courses/comment)
      * @ApiParams   (name="course_id", type="integer", required=true, description="课程id")
+     * @ApiParams   (name="comment_id", type="integer", required=false, description="评论的id")
      * @ApiParams   (name="content", type="string", required=true, description="评论信息")
      * @ApiParams   (name="image", type="file", required=falst, description="图片")
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
@@ -318,6 +319,7 @@ class Courses extends Api
         $userid=$this->userid;
         $course_id  =  (int)$this->request->post("course_id");
         $content=$this->request->post("content");
+        $comment_id  =  (int)$this->request->request("comment_id");
 
 //        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
 //        if(!$is_course){
@@ -334,6 +336,9 @@ class Courses extends Api
             $insert['img']= $common->upload();
         }
 
+        if($comment_id){
+            $insert['pid']=$comment_id;
+        }
 
         $insert['course_id']=$course_id;
         $insert['content']=$content;
