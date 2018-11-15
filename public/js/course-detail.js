@@ -42,6 +42,7 @@ window.onload = function () {
             passID:null,
             formdata:new FormData(),
             imgs: [],
+            imgUrl:'',
             imgData: {
                 accept: 'image/gif, image/jpeg, image/png, image/jpg',
             }
@@ -93,7 +94,7 @@ window.onload = function () {
             },
 
             //课程详情
-            courseDetails:function (id) {
+            courseDetails:function () {
                 let self = this;
                 $.post('/api/courses/detail', {
                     token:localStorage.getItem('token'),
@@ -105,6 +106,7 @@ window.onload = function () {
                     self.commentsList = data.data.comment;
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
+                    self.imgUrl = data.data.detail.coverimage;
                 });
 
             },
@@ -252,10 +254,7 @@ window.onload = function () {
                     contentType:false,
                     success:function (data) {
                         self.$nextTick(function () {
-                            self.formdata.append('course_id', '');
-                            self.formdata.append('token', '');
-                            self.formdata.append('content', '');
-                            self.formdata.append('image', '');
+                            self.formdata = new FormData();
                             self.commentsContent = '';
                             self.isDisabled = false;
                             self.isFocus = false;
@@ -282,12 +281,12 @@ window.onload = function () {
                 let self = this;
                 //发给好友
                let url  = window.location.href;
-               console.log(self.detailList.coverimage)
+               console.log(1111,self.imgUrl)
                 wx.onMenuShareAppMessage({
                     title:'发给好友',// 分享标题
                     desc:'发给好友',// 分享描述
                     link:url,// 分享链接
-                   /* imgUrl:self.detailList.coverimage,// 分享图标*/
+                    imgUrl:self.imgUrl,// 分享图标
                     success: function(){
 
                     },
