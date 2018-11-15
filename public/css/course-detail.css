@@ -49,6 +49,7 @@ button.apply-course {
     background: #f5ab00;
     border: none;
     color: #FFFFFF;
+    cursor: pointer;
 }
 .img-mask {
     height: 1000px;
