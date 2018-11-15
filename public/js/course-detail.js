@@ -238,7 +238,7 @@ window.onload = function () {
             reviewBtn:function () {
                 let self = this;
                 self.isDisabled = true;
-                self.formdata.append('article_id', self.passID);
+                self.formdata.append('course_id', self.passID);
                 self.formdata.append('token', localStorage.getItem('token'));
                 self.formdata.append('content', self.commentsContent);
                 $.ajax({
@@ -251,7 +251,7 @@ window.onload = function () {
                     contentType:false,
                     success:function (data) {
                         self.$nextTick(function () {
-                            self.formdata.append('article_id', '');
+                            self.formdata.append('course_id', '');
                             self.formdata.append('token', '');
                             self.formdata.append('content', '');
                             self.formdata.append('image', '');
