@@ -20,21 +20,20 @@ class Article extends Model
     protected $append = [
         'flag_text'
     ];
-
-    protected static function init()
-    {
-        Article::event('before_insert', function ($article) {
-          $article->admin_id=session('admin')['id'];
-        });
-    }
-
+    
 
     
     public function getFlagList()
     {
         return ['recommend' => __('Flag recommend')];
-    }     
+    }
 
+    protected static function init()
+    {
+        Article::event('before_insert', function ($article) {
+            $article->admin_id=session('admin')['id'];
+        });
+    }
 
     public function getFlagTextAttr($value, $data)
     {
@@ -58,6 +57,6 @@ class Article extends Model
 
     public function r()
     {
-        return $this->belongsTo('app\admin\model\Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }

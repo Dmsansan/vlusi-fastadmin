@@ -25,16 +25,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'category.name', title: __('分类名')},
+
                         {field: 'name', title: __('Name')},
-                        {field: 'category.name', title: __('Category.name')},
                         {field: 'coverimage', title: __('Coverimage'), formatter: Table.api.formatter.image},
                         {field: 'flag', title: __('Flag'), searchList: {"recommend":__('Recommend')}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
-                        {field: 'desc', title: __('Desc')},
-                        {field: 'coursetimes', title: __('Coursetimes')},
                         {field: 'readnum', title: __('Readnum')},
                         {field: 'zan', title: __('Zan')},
+                        {field: 'comments', title: __('Comments')},
+                        {field: 'o.nickname', title: __('发布人')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
-                        {field: 'o.nickname', title: __('O.nickname')},
+
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

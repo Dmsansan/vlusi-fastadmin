@@ -20,6 +20,13 @@ class Course extends Model
     protected $append = [
         'flag_text'
     ];
+    
+
+    
+    public function getFlagList()
+    {
+        return ['recommend' => __('Recommend')];
+    }
 
 
     protected static function init()
@@ -29,12 +36,6 @@ class Course extends Model
         });
     }
 
-    
-    public function getFlagList()
-    {
-        return ['recommend' => __('Recommend')];
-    }     
-
 
     public function getFlagTextAttr($value, $data)
     {
@@ -43,6 +44,8 @@ class Course extends Model
         $list = $this->getFlagList();
         return implode(',', array_intersect_key($list, array_flip($valueArr)));
     }
+
+
 
     protected function setFlagAttr($value)
     {
@@ -58,6 +61,6 @@ class Course extends Model
 
     public function o()
     {
-        return $this->belongsTo('Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }
