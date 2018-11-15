@@ -17,7 +17,8 @@ window.onload = function () {
                 isDisabled: true,
                 //评论点赞
                 isLikeArt:false,
-                imgList:[]
+                imgList:[],
+                formdata:new FormData(),
             },
             mounted() {
 
@@ -49,16 +50,32 @@ window.onload = function () {
                 //点击发送按钮
                 reviewBtn:function () {
                     let self = this;
+                    self.isDisabled = true;
+                    self.formdata.append('article_id', localStorage.getItem('zsfId'));
+                    self.formdata.append('token', localStorage.getItem('token'));
+                    self.formdata.append('content', self.commentsContent);
+                    $.ajax({
+                        url:'/api/courses/comment',
+                        type:'post',
+                        cache:false,
+                        data:self.formdata,
+                        /*  dataType:'json',*/
+                        processData:false,
+                        contentType:false,
+                        success:function (data) {
+                            self.$nextTick(function () {
+                                self.formdata.append('article_id', '');
+                                self.formdata.append('token', '');
+                                self.formdata.append('content', '');
+                                self.formdata.append('image', '');
+                                self.commentsContent = '';
+                                self.isDisabled = false;
+                                self.replyDetails();
+                            })
+                        },
+                        error:function (data) {
 
-                    $.post('/api/courses/comment', {
-                        token:localStorage.getItem('token'),
-                        course_id:localStorage.getItem('zsfId'),
-                        content:self.commentsContent
-                    }, function (data) {
-                        self.$nextTick(function () {
-                            self.replyDetails();
-                            self.commentsContent = '';
-                        })
+                        }
                     });
                 },
                 touchStart (e) {
@@ -133,7 +150,19 @@ window.onload = function () {
                 },
                 //上传图片
                 uploadImg: function () {
+                    let self = this;
                     document.getElementById('upload-img').click();
+                    self.$nextTick(function () {
+                        self.uploadPicture();
+                    })
+                },
+                uploadPicture:function () {
+                    let self = this;
+                    self.isDisabled = false;
+                    $("#upload-img").change(function () {
+                        self.formdata.append('image', $('#upload-img')[0].files[0]);
+                    });
+
                 },
                 //返回上一步
                 goBack: function () {
@@ -167,27 +196,13 @@ window.onload = function () {
         }
     );
 
-    /**
-     * 监听文件上传框变化
-     */
-    $("#upload-img").change(function () {
-        let reads = new FileReader();
-        let f = document.getElementById('upload-img').files[0];
-        reads.readAsDataURL(f);
-        reads.onload = function (e) {
-            app.imgList.push(this.result);
-            mui.toast('文件读取成功!');
-        };
-    });
+
 
     window.emojiPicker = new EmojiPicker({
         emojiable_selector: '[data-emojiable=true]',
         assetsPath: 'assets/emoji/img/',
         popupButtonClasses: 'fa fa-smile-o'
     });
-    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-    // It can be called as many times as necessary; previously converted input fields will not be converted again
     window.emojiPicker.discover();
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
         app.commentsContent = $(this).text();

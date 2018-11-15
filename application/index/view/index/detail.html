@@ -196,7 +196,7 @@
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
             <!--<img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
-            <img src="/img/course-detail/upload-img.png" id="uploadImg" class="bottom-icon-comment"/>
+            <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button"
                     class="comments-send-btn"

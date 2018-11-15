@@ -229,70 +229,51 @@ $(function () {
                 },
                 saveImg:function () {
                     let self = this;
-                    /**
-                     * 监听文件上传框变化
-                     */
+                    self.isDisabled = false;
                     $("#upload-img").change(function () {
-                        // self.isDisabled = false;
-                        app.hideSmile();
+                        self.hideSmile();
+                        self.formdata.append('image', $('#upload-img')[0].files[0]);
                         let reads = new FileReader();
                         let f = document.getElementById('upload-img')[0].files[0];
                         console.log(f)
                         reads.readAsDataURL(f);
-                       self.imgUrl = $('#upload-img')[0].files[0];
-
                         reads.onload = function (e) {
-                            self.imgUrl  = $('#upload-img')[0].files[0];
-                            app.imgList.push( 111111111111111, self.imgUrl );
-                            console.log( app.imgList);
+
                             /*mui.toast('文件读取成功!');*/
                         };
                     });
-                    window.emojiPicker = new EmojiPicker({
-                        emojiable_selector: '[data-emojiable=true]',
-                        assetsPath: 'assets/emoji/img/',
-                        popupButtonClasses: 'fa fa-smile-o'
-                    });
-                    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-                    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-                    // It can be called as many times as necessary; previously converted input fields will not be converted again
-                    window.emojiPicker.discover();
-                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('focus', function () {
-                        app.hideSmile();
-                    });
-                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
-                        let elem = $(this);
-                        setTimeout(function () {
-                            if(app.commentsContent.length == 0 && app.imgList.length == 0) {
-                                app.showSmile();
-                            }
-                        },500);
-                        document.querySelector('#uploadImg').addEventListener('click', function () {
-                            app.isUploadImage = true;
-                            app.uploadImg();
-                        });
-                    });
-                    document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
-                        app.commentsContent = $(this).text();
-                    });
+
                 },
                 //发布评论
                 sendInformation:function () {
                     let self = this;
                     self.isDisabled = true;
-                    $.post('/api/found/comment', {
-                        token:localStorage.getItem('token'),
-                        article_id: self.passID,
-                        content:self.commentsContent,
-                        /*image:self.imgUrl*/
-                    }, function (data) {
-                        console.log(data);
-                        if (data.code == 1){
-                            self.isDisabled = false;
-                            self.commentsContent = '';
-                            self.init();
+                    self.formdata.append('article_id', self.passID);
+                    self.formdata.append('token', localStorage.getItem('token'));
+                    self.formdata.append('content', self.commentsContent);
+                    $.ajax({
+                        url:'/api/found/comment',
+                        type:'post',
+                        cache:false,
+                        data:self.formdata,
+                        /*  dataType:'json',*/
+                        processData:false,
+                        contentType:false,
+                        success:function (data) {
+                            self.$nextTick(function () {
+                                self.formdata.append('article_id', '');
+                                self.formdata.append('token', '');
+                                self.formdata.append('content', '');
+                                self.formdata.append('image', '');
+                                self.commentsContent = '';
+                                self.isDisabled = false;
+                                self.init();
+                            })
+                        },
+                        error:function (data) {
+
                         }
-                    });
+                    })
                 },
 
             },
@@ -321,6 +302,32 @@ $(function () {
             },
         }
     );
+
+    window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: 'assets/emoji/img/',
+        popupButtonClasses: 'fa fa-smile-o'
+    });
+
+    window.emojiPicker.discover();
+    document.querySelector('.emoji-wysiwyg-editor').addEventListener('focus', function () {
+        app.hideSmile();
+    });
+    document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
+        let elem = $(this);
+        setTimeout(function () {
+            if(app.commentsContent.length == 0 && app.imgList.length == 0) {
+                app.showSmile();
+            }
+        },500);
+        document.querySelector('#uploadImg').addEventListener('click', function () {
+            app.isUploadImage = true;
+            app.uploadImg();
+        });
+    });
+    document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
+        app.commentsContent = $(this).text();
+    });
 
 });
 
