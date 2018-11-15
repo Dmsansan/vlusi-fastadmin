@@ -336,8 +336,11 @@ class Api
      */
     public function cdnimg($data)
     {
-        static $match='/^yanglao\/.*?\.[1-9a-zA-Z]+/';
+        if(!is_array($data)){
+            return $data;
+        }
 
+        static $match='/^yanglao\/.*?\.[1-9a-zA-Z]+/';
         $newarr=[];
         foreach($data as $k=>$v){
             if(!is_array($v)){
