@@ -184,7 +184,7 @@ $(function () {
                     }*/
                 },
                 //解决键盘遮挡
-                focusInput:function () {
+                /*focusInput:function () {
                     let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
                     let interval;
                     $('#form_article').focus(function() {
@@ -200,7 +200,7 @@ $(function () {
                     }).blur(function(){
                         clearInterval(interval);
                     });
-                },
+                },*/
                 goCommentsDetail:function (id) {
                     //查看评论详情
                     mui.openWindow({
@@ -211,6 +211,10 @@ $(function () {
                 },
                 sendToFriend:function () {
                     //发给好友
+                },
+                blurFn:function () {
+                    let self = this;
+                    self.isFocus = false;
                 },
                 generateCard:function () {
                     let self = this;
@@ -266,10 +270,7 @@ $(function () {
                         contentType:false,
                         success:function (data) {
                             self.$nextTick(function () {
-                                self.formdata.append('article_id', '');
-                                self.formdata.append('token', '');
-                                self.formdata.append('content', '');
-                                self.formdata.append('image', '');
+                                self.formdata = new FormData();
                                 self.commentsContent = '';
                                 self.isDisabled = false;
                                 self.init();

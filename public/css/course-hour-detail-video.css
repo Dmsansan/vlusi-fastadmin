@@ -96,7 +96,9 @@ img.album-logo {
     border-radius: 100%;
 }
 span.album-title {
+    display: inline-block;
     font-size: 1.2rem;
+    width: 98%;
     color: #666666;
     font-weight: 400;
     overflow: hidden;
