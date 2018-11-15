@@ -130,9 +130,9 @@
     <!--
         底部评论栏
     -->
-    <footer class="bottom-common" v-show="showInput">
+    <footer class="bottom-common" >
         <div class="comment-input-container">
-            <input data-emojiable="true" oninput="this.value=this.value.replace(/\s+/g,'')"
+            <input data-emojiable="true"
                    v-model="commentsContent"
                    class="comment-input"
                    @click="focusInput()"

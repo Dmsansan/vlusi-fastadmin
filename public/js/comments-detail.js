@@ -19,7 +19,6 @@ window.onload = function () {
                 isLikeArt:false,
                 imgList:[],
                 formdata:new FormData(),
-                showInput:false
             },
             mounted() {
 
@@ -65,7 +64,6 @@ window.onload = function () {
                         processData:false,
                         contentType:false,
                         success:function (data) {
-                            self.showInput =  false;
                             self.$nextTick(function () {
                                 self.formdata=new FormData();
                                 localStorage.setItem('courseId',"");
@@ -133,17 +131,11 @@ window.onload = function () {
                         self.commentsList = data.data;
                         self.pageCount = data.page.page_count;
                         self.loadMore = true;
-                        self.commentsContent = '';
                     });
                 },
-               /* blurFn:function () {
-                  let self = this;
-                  self.showInput =  false;
-                  self.commentsContent = "";
-                },*/
                 //解决键盘遮挡
                 focusInput:function () {
-                   /* let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
                     let interval;
                     $('.comment-input').focus(function() {
                         //给个延迟
@@ -157,7 +149,7 @@ window.onload = function () {
 
                     }).blur(function(){
                         clearInterval(interval);
-                    });*/
+                    });
                 },
                 //上传图片
                 uploadImg: function () {
@@ -181,8 +173,6 @@ window.onload = function () {
                 },
                 //回复
                 replay:function (id,course) {
-                    let self = this;
-                    self.showInput = true;
                     localStorage.setItem('zsfId',id);
                     localStorage.setItem('courseId',course);
                     $('.emoji-wysiwyg-editor').focus();
