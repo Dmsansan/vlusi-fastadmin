@@ -48,9 +48,7 @@
             <!--
                 课程好处
             -->
-            <div class="course-benefit">
-                {{detailList.detail.content}}
-            </div>
+            <div class="course-benefit" v-html="detailList.detail.content"></div>
           <!--  &lt;!&ndash;
                 课程时间
             &ndash;&gt;
@@ -244,6 +242,7 @@
 <script type="text/javascript" src="/assets/vue/vue.min.js"></script>
 <script src="/js/course-detail.js" type="text/javascript"></script>
 <script src="/js/showLoad.js" type="text/javascript"></script>
+<script src="/js/jweixin.js" type="text/javascript"></script>
 
 </body>
 </html>

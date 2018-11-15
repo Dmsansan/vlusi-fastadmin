@@ -134,14 +134,12 @@ window.onload = function () {
             hideSmile: function () {
                 let self = this;
                 self.isFocus = true;
-                self.isFocus = true;
                 self.$nextTick(function () {
                     self.saveImg();
                 })
             },
             //隐藏上传图标
             showSmile: function () {
-                console.log('show');
                 this.isFocus = false;
             },
             //上传图片
@@ -260,6 +258,7 @@ window.onload = function () {
                             self.formdata.append('image', '');
                             self.commentsContent = '';
                             self.isDisabled = false;
+                            self.isFocus = false;
                             self.courseDetails();
 
                         })
@@ -278,24 +277,20 @@ window.onload = function () {
             },
             sendToFriend:function () {
                 //发给好友
-            },
-            //解决输入框被遮挡
-            focusInput:function () {
-                let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
-                let interval;
-                $('#form_article').focus(function() {
-                    //给个延迟
-                    bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
-                    interval = setInterval(function() {
-                        document.body.scrollTop = document.body.scrollHeight}, 100
-                    );
-                    window.addEventListener('touchmove', function () {
-                        
-                    }, false);
+               let url  = window.location.href;
+               console.log(111111,url)
+                wx.onMenuShareAppMessage({
+                    title:'发给好友',// 分享标题
+                    desc:'发给好友',// 分享描述
+                    link:url,// 分享链接
+                    imgUrl:imgUrl,// 分享图标
+                    success: function(){
 
-                }).blur(function(){
-                    clearInterval(interval);
-                });
+                    },
+                    cancel:function(){
+
+                    }
+                })
             },
             generateCard:function () {
                 let self = this;
