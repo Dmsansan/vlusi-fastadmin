@@ -141,7 +141,7 @@ let app = new Vue({
                 self.bannerList = data.data;
                 self.$nextTick(function () {
                     mui("#slider").slider({
-                        interval: 1000 * 3
+                        interval: 1000 * 5
                     });
                 })
 
