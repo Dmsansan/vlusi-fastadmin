@@ -38,3 +38,4 @@ index/course/detail 内的登录注释
 user/bind_phone/bind_phone.html  TOKEN
 index/set_data/set_data.html  TOKEN
 
+sql-mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
