@@ -57,6 +57,6 @@ class Article extends Model
 
     public function r()
     {
-        return $this->belongsTo('app\admin\model\admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }
