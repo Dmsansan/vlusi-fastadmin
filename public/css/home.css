@@ -91,14 +91,14 @@ header {
 .show-img{
     display: inline-block;
     width: 100%;
-    height: 9.3rem;
+    height: 11rem;
     background-size: cover;
 }
 .tab-content-desc {
     padding: 5px 15px;
 }
 p.tab-content-desc-title,p.tab-content-desc-content,p.tab-content-desc-date{
-    padding: 2px 0;
+    padding: 6px 0;
     white-space: nowrap;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
@@ -255,7 +255,7 @@ div#page2 header {
 }
 .mui-slider-item a{
     width: 100%;
-    height: 11rem;
+    height: 15rem;
 
 }
 .mui-slider-item a img{

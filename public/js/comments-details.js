@@ -75,7 +75,6 @@ window.onload = function () {
                 },
                 //点击发送按钮
                 reviewBtn:function () {
-
                     let self = this;
                     self.isDisabled = true;
                     self.formdata.append('article_id', localStorage.getItem('ReplyId'));
