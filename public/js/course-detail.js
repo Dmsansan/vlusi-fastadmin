@@ -282,19 +282,33 @@ window.onload = function () {
                 let self = this;
                 //发给好友
                let url  = window.location.href;
-               console.log(self.detailList.coverimage)
-                wx.onMenuShareAppMessage({
-                    title:'发给好友',// 分享标题
-                    desc:'发给好友',// 分享描述
-                    link:url,// 分享链接
-                   /* imgUrl:self.detailList.coverimage,// 分享图标*/
-                    success: function(){
+                var nativeShare = new NativeShare()
 
+                var shareData = {
+                    title: '分享标题',
+                    desc: '',
+                    // 如果是微信该link的域名必须要在微信后台配置的安全域名之内的。
+                    link: 'https://www.baidu.com',
+
+                    // 不要过于依赖以下两个回调，很多浏览器是不支持的
+                    success: function() {
+                        console.log("success")
                     },
-                    cancel:function(){
-
+                    fail: function() {
+                        console.log("fail")
                     }
-                })
+                }
+
+                nativeShare.setShareData(shareData)
+                function call(command) {
+                    try {
+                        nativeShare.call(command)
+                    } catch (err) {
+                        // 如果不支持，你可以在这里做降级处理
+                        alert(err.message)
+                        // console.log("err.message")
+                    }
+                }
             },
             generateCard:function () {
                 let self = this;
