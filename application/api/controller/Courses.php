@@ -216,13 +216,12 @@ class Courses extends Api
         $userid=$this->userid;
 
         $page   =  (int)$this->request->post("page");
-        $page = $page?$page-1:0;
 
         $course_id  =  (int)$this->request->post("course_id");
 
         $data=[];
         //初次加载
-        if($page===0){
+        if($page===1 || !$page){
             $data['detail'] =db('course')->alias('a')
                             ->where(['a.id'=>$course_id])
                             ->join('admin b','a.admin_id=b.id')
