@@ -179,21 +179,24 @@ window.onload = function () {
             },
             //文章点赞
             likeArticle:function(id,flag) {
-                this.isLikeArt = flag;
+                let self = this;
+                self.isLikeArt = flag;
                 if(flag) {
-                    this.likeArtNums = ++this.likeArtNums;
+                    self.detailList.detail.zan = ++self.detailList.detail.zan;
+                   self.detailList.is_zan = true;
                     // mui.toast('点赞成功！');
                 } else {
-                    this.likeArtNums = --this.likeArtNums;
+                    self.detailList.detail.zan = --self.detailList.detail.zan;
+                    self.detailList.is_zan = flag;
                     // mui.toast('取消点赞成功！');
                 }
-                let self = this;
+
                 $.post('/api/courses/course_zan', {
                     token:localStorage.getItem('token'),
                     course_id: id
                 }, function (data) {
                     self.$nextTick(function () {
-                        self.courseDetails();
+                        // self.courseDetails();
                     })
                 });
             },
