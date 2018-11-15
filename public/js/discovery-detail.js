@@ -215,6 +215,7 @@ $(function () {
                 generateCard:function () {
                     let self = this;
                     mui('#share-sheet').popover('toggle');
+                    mui.showLoading("正在加载..","div");
                     //生成卡片
                     self.isShowCard = true;
 
@@ -223,6 +224,7 @@ $(function () {
                         token:localStorage.getItem('token')
                     }, function (data) {
                         self.sharePictures = data.data.url;
+                        mui.hideLoading();
                     });
 
                 },

@@ -227,7 +227,10 @@
     <div class="card-view-preview" :class="{active:isShowCard}">
         <img @click="hidePreview()" src="/img/course-detail/icon-close-preview.png" class="close-preview-icon"/>
         <div class="card-view-preview-img-container">
-            <img :src="sharePictures" class="card-view-preview-img">
+
+            <img  v-if="sharePictures" :src="sharePictures" class="card-view-preview-img">
+
+
         </div>
         <button class="card-view-save-btn">长按图片保存</button>
     </div>
@@ -240,5 +243,7 @@
 <script src="/assets/emoji/js/emoji-picker.js"></script>
 <script type="text/javascript" src="/assets/vue/vue.min.js"></script>
 <script src="/js/course-detail.js" type="text/javascript"></script>
+<script src="/js/showLoad.js" type="text/javascript"></script>
+
 </body>
 </html>
