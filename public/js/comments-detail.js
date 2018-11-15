@@ -136,6 +136,11 @@ window.onload = function () {
                         self.commentsContent = '';
                     });
                 },
+               /* blurFn:function () {
+                  let self = this;
+                  self.showInput =  false;
+                  self.commentsContent = "";
+                },*/
                 //解决键盘遮挡
                 focusInput:function () {
                    /* let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
