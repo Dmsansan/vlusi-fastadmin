@@ -191,10 +191,14 @@ let app = new Vue({
         },
         //清除历史记录
         clearHistory: function () {
-            // localStorage.removeItem('history-discovery');
-            // app.historyList = JSON.parse(localStorage.getItem('history-discovery'));
-            this.historyList =[];
-            set.clear();
+            let self = this;
+            $.post(' /api/found/delete_keywords', {
+                token: localStorage.getItem('token'),
+            }, function (data) {
+                self.$nextTick(function () {
+                    self.historyList =[];
+                })
+            });
         },
         //立即搜索
         searchContent: function (content) {

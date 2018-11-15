@@ -212,10 +212,15 @@ let app = new Vue({
         },
         //清除历史记录
         clearHistory:function () {
-            this.historyList = [];
-           /* localStorage.removeItem('history-home');
-            app.historyList = JSON.parse(localStorage.getItem('history-home'));*/
-            set.clear();
+            let self = this;
+            $.post('/api/courses/delete_keywords', {
+                token: localStorage.getItem('token'),
+            }, function (data) {
+                self.$nextTick(function () {
+                    self.historyList =[];
+                })
+            });
+            
 
         },
         //立即搜索
