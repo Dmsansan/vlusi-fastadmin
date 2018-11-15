@@ -51,7 +51,8 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.formdata.append('course_id', localStorage.getItem('zsfId'));
+                    self.formdata.append('course_id', localStorage.getItem('courseId'));
+                    self.formdata.append('comment_id', localStorage.getItem('zsfId'));
                     self.formdata.append('token', localStorage.getItem('token'));
                     self.formdata.append('content', self.commentsContent);
                     $.ajax({
@@ -64,10 +65,7 @@ window.onload = function () {
                         contentType:false,
                         success:function (data) {
                             self.$nextTick(function () {
-                                self.formdata.append('course_id', '');
-                                self.formdata.append('token', '');
-                                self.formdata.append('content', '');
-                                self.formdata.append('image', '');
+                                self.formdata=new FormData();
                                 self.commentsContent = '';
                                 self.isDisabled = false;
                                 self.replyDetails();
@@ -172,8 +170,9 @@ window.onload = function () {
                     history.go(-1);
                 },
                 //回复
-                replay:function (id) {
-                    localStorage.setItem('zsfId',id)
+                replay:function (id,course) {
+                    localStorage.setItem('zsfId',id);
+                    localStorage.setItem('courseId',course);
                     $('.emoji-wysiwyg-editor').focus();
                 },
 

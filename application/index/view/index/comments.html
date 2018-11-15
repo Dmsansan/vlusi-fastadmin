@@ -52,7 +52,7 @@
                         </p>
                         <div class="comments-operation">
                             <p class="comments-time">{{commentsList.createtime}}</p>
-                            <button @click="replay(commentsList.id)" type="button" class="reply-comments">回复</button>
+                            <button @click="replay(commentsList.id,commentsList.course_id)" type="button" class="reply-comments">回复</button>
                         </div>
                     </div>
                     <!--
@@ -86,7 +86,7 @@
                                 </p>
                                 <div class="comments-operation">
                                     <p class="comments-time">刚刚</p>
-                                    <button @click="replay(item.id)" type="button" class="reply-comments">回复</button>
+                                    <button @click="replay(item.id,item.course_id)" type="button" class="reply-comments">回复</button>
                                 </div>
                             </div>
                             <!--
@@ -99,7 +99,7 @@
                                             <p class="user-info">
                                                 <span class="user-nickname">{{item.nickname}}</span>
                                             </p>
-                                            <span @click="replay(item.id)" class="reply-title">回复</span>
+                                            <span @click="replay(item.id,item.course_id)" class="reply-title">回复</span>
                                         </template>
                                         <p class="user-info">
                                             <span class="user-nickname">{{commentsList.children.nickname}}</span>

@@ -77,7 +77,10 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.formdata.append('article_id', localStorage.getItem('ReplyId'));
+
+                    self.formdata.append('article_id', localStorage.getItem('articleId')); //文章id
+                    self.formdata.append('comment_id', localStorage.getItem('ReplyId')); //文章对应的评论id
+
                     self.formdata.append('token', localStorage.getItem('token'));
                     self.formdata.append('content', self.commentsContent);
                    /* self.formdata.append('image', localStorage.getItem('aa'));*/
@@ -91,10 +94,14 @@ window.onload = function () {
                         contentType:false,
                         success:function (data) {
                             self.$nextTick(function () {
-                                self.formdata.append('article_id', '');
+                                self.formdata=new FormData();
+                              /*  self.formdata.append('article_id', '');
+                                self.formdata.append('comment_id', '');
                                 self.formdata.append('token', '');
                                 self.formdata.append('content', '');
-                                 self.formdata.append('image', '');
+                                 self.formdata.append('image', '');*/
+                                localStorage.setItem('ReplyId',"");
+                                localStorage.setItem('articleId',"");
                                  self.commentsContent = '';
                                 self.isDisabled = false;
                                 self.replyDetails();
@@ -173,8 +180,9 @@ window.onload = function () {
                     history.go(-1);
                 },
                 //回复
-                replay:function (id) {
-                    localStorage.setItem('ReplyId',id)
+                replay:function (id,article) {
+                    localStorage.setItem('ReplyId',id);
+                    localStorage.setItem('articleId',article);
                     $('.emoji-wysiwyg-editor').focus();
                 },
 
