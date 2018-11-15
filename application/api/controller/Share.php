@@ -204,9 +204,9 @@ function createSharePng($gData,$codeName,$fileName = ''){
     imagecopyresized($im, $codeImg, 100, 503, 0, 0, 70, 70, $code_w, $code_h);
 	//logo
 
-    list($l_w,$l_h) = getimagesize($url."/img/code_png/show-picture.jpg");
+    list($l_w,$l_h) = getimagesize($url."/img/code_png/logo-new.png");
 
-    $logoImg = $this->createImageFromFile($url."/img/code_png/show-picture.jpg");
+    $logoImg = $this->createImageFromFile($url."/img/code_png/logo-new.png");
 
     imagecopyresized($im, $logoImg, 210, 503, 0, 0, 70, 70, $l_w, $l_h);
  

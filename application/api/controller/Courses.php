@@ -274,7 +274,7 @@ class Courses extends Api
                         ->select();
 
         //分页
-        $allpage=db('course_comment')->alias('a')->join('user','user.id=a.user_id')->count();
+        $allpage=db('course_comment')->alias('a')->join('user','user.id=a.user_id')->where($where)->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
