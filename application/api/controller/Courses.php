@@ -70,7 +70,7 @@ class Courses extends Api
         //分类数据
         $data=db('course')->alias('a')
             ->join('course_category b','b.id=a.course_category_id')
-            ->order('flag desc,readnum desc')
+            ->order('createtime desc,flag desc,readnum desc')
             ->field('a.*,b.name as type_name')
             ->page($page,$this->pagesize)
             ->select();

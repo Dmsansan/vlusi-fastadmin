@@ -69,7 +69,7 @@ class Found extends Api
         //分类数据
          $list=db('article')->alias('a')
                 ->join('article_category b','b.id=a.article_category_id')
-                ->order('flag desc,zan desc')
+                ->order('createtime desc,flag desc,zan desc')
                 ->field('a.*,b.name as type_name')
                 ->page($page,$this->pagesize)
                 ->select();
