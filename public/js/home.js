@@ -220,7 +220,7 @@ let app = new Vue({
                     self.historyList =[];
                 })
             });
-            
+
 
         },
         //立即搜索
@@ -244,7 +244,7 @@ let app = new Vue({
                     page:self.pageNumber
                 }, function (data) {
                     console.log('立即搜索',data.data);
-                    self.historyList = data.data;
+                    self.searchList = data.data;
                     self.$nextTick(function () {
                         self.pageCount = data.page.pageCount;
                         self.loadMore = true;
