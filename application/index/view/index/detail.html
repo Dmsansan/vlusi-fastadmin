@@ -99,25 +99,25 @@
                 <p class="course-list-title">课时列表</p>
             </div>
             <ul class="course-list" :class="{hidden:isHidden}">
-                <li @click="goToCourseHour(course.id)" v-for="(course,index) in courseList" class="course-list-item">
+                <li @click="goToCourseHour(course.id,course.isviewlist)" v-for="(course,index) in courseList" class="course-list-item">
                     <p class="course-list-item-content">
                     <span class="course-list-item-title">
                        <!--{{course.id}}-->
-                        {{index <= 9 ? `0`+(++index) : index}} {{course.title}}
+                        {{course.sort <= 9 ? `0`+course.sort : course.sort}} {{course.title}}
                     </span>
                         <span class="course-list-item-desc">
                        {{course.desc}}
                     </span>
                     </p>
                     <p class="course-list-item-learn">
-                        <template v-if="course.isviewlist">
+                        <template v-if="course.isviewlist == '可体验'">
                             <span class="exp-icon">体验</span>
                             <span class="item-learn">学习</span>
                         </template>
                         <template v-else>
-                            <span class="item-learn">去申请</span>
+                            <span class="item-learn"></span>
                         </template>
-                        <img src="/img/course-detail/arrow-right.png" class="arrow-right"/>
+                        <img v-if="course.isviewlist == '可体验'" src="/img/course-detail/arrow-right.png" class="arrow-right"/>
                     </p>
                 </li>
             </ul>

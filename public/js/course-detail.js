@@ -205,13 +205,19 @@ window.onload = function () {
                 $('.emoji-wysiwyg-editor').focus();
             },
             //进入课时
-            goToCourseHour:function (id) {
-                mui.openWindow({
-                    //视频版
-                    url:'/index/index/course_detail?id=' + id
-                    // 图文版
-                    // url:'course-hour-detail-pictures.html?id=' + id
-                })
+            goToCourseHour:function (id,name) {
+                console.log(name)
+                if(name == '可体验'){
+                    mui.openWindow({
+                        //视频版
+                        url:'/index/index/course_detail?id=' + id
+                        // 图文版
+                        // url:'course-hour-detail-pictures.html?id=' + id
+                    })
+                }else {
+
+                }
+
             },
             shareCourse:function() {
                 mui('#share-sheet').popover('toggle');
