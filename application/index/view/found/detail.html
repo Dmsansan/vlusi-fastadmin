@@ -26,13 +26,15 @@
             顶部视频
         -->
         <header>
-            <template v-if="isVideo">
-                <video controls controlsList="nodownload" preload="auto" poster="/img/show.jpg" x5-video-player-fullscreen="true"
+            <template v-if="detailsList.detail.videofile">
+                <video controls controlsList="nodownload" preload="auto"
+                       :poster="detailsList.detail.coverimage"
+                       x5-video-player-fullscreen="true"
                        webkit-playsinline="true"
                        x-webkit-airplay="true"
                        playsinline="true"
                        x5-playsinline
-                       id="video-player" class="video-player" src="http://www.w3school.com.cn/i/movie.ogg">
+                       id="video-player" class="video-player" :src="detailsList.detail.videofile">
                     您的浏览器不支持 video 标签。
                 </video>
             </template>

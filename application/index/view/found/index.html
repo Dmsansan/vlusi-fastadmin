@@ -92,9 +92,18 @@
                             </div>
                             <template v-if="item.videofile">
                                 <!--视频图标-->
-                                <img class="show-img":src="item.videofile" class="icon-video-play">
+                                <video controls controlsList="nodownload" preload="auto"
+                                       :poster="item.coverimage"
+                                       webkit-playsinline="true"
+                                       x-webkit-airplay="true"
+                                       x5-playsinline
+                                       style="width: 100%"
+                                       class="video-player" :src="item.videofile">
+                                    您的浏览器不支持 video 标签。
+                                </video>
+
                             </template>
-                            <img class="show-img" :src="item.coverimage"/>
+                            <img class="show-img" v-if="!item.videofile" :src="item.coverimage"/>
                             <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
 
                         </div>
@@ -125,10 +134,17 @@
                                 <p class="class-label-name">{{item.label}}</p>
                             </div>
                             <template v-if="item.videofile">
-                                <!--视频图标-->
-                                <img :src="item.videofile" class="icon-video-play">
+                                <video controls controlsList="nodownload" preload="auto"
+                                       :poster="item.coverimage"
+                                       webkit-playsinline="true"
+                                       x-webkit-airplay="true"
+                                       x5-playsinline  style="width: 100%"
+                                       id="video-player" class="video-player" :src="item.videofile">
+                                    您的浏览器不支持 video 标签。
+                                </video>
+
                             </template>
-                            <img class="show-img" :src="item.coverimage"/>
+                            <img class="show-img" v-if="!item.videofile" :src="item.coverimage"/>
                             <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
 
                         </div>
