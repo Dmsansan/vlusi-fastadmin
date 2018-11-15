@@ -66,6 +66,8 @@ window.onload = function () {
                         success:function (data) {
                             self.$nextTick(function () {
                                 self.formdata=new FormData();
+                                localStorage.setItem('courseId',"");
+                                localStorage.setItem('zsfId',"");
                                 self.commentsContent = '';
                                 self.isDisabled = false;
                                 self.replyDetails();
