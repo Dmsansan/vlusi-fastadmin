@@ -260,13 +260,16 @@ window.onload = function () {
                             self.isDisabled = false;
                             self.isFocus = false;
                             self.courseDetails();
-
                         })
                     },
                     error:function (data) {
 
                     }
                 })
+            },
+            blruFn:function () {
+                let self = this;
+                self.isFocus = false;
             },
             goCommentsDetail:function (id) {
                 //查看评论详情
@@ -276,14 +279,15 @@ window.onload = function () {
 
             },
             sendToFriend:function () {
+                let self = this;
                 //发给好友
                let url  = window.location.href;
-               console.log(111111,url)
+               console.log(self.detailList.coverimage)
                 wx.onMenuShareAppMessage({
                     title:'发给好友',// 分享标题
                     desc:'发给好友',// 分享描述
                     link:url,// 分享链接
-                    imgUrl:imgUrl,// 分享图标
+                    imgUrl:self.detailList.coverimage,// 分享图标
                     success: function(){
 
                     },

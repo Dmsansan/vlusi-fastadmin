@@ -174,7 +174,7 @@
     <footer class="bottom-common">
         <div class="comment-input-container">
             <input data-emojiable="true" id="form_article"
-                   v-model="commentsContent" @focus="hideSmile"
+                   v-model="commentsContent" @focus="hideSmile" @blur="blruFn()"
                    class="comment-input"
                    @click="focusInput()"
                    type="text"
