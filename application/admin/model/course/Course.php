@@ -61,6 +61,6 @@ class Course extends Model
 
     public function o()
     {
-        return $this->belongsTo('app\admin\model\admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\Admin', 'admin_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }
