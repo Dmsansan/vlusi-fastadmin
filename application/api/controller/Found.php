@@ -566,4 +566,20 @@ class Found extends Api
         $this->success('获取成功',$list);
     }
 
+
+    /**
+     * 清空用户搜索历史记录
+     * @ApiMethod   (POST)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function delete_keywords()
+    {
+        $userid=$this->userid;
+        $list=db('article_search')->where(['user_id'=>$userid])->delete();
+        if($list){
+            $this->success('删除成功',$list);
+        }
+    }
+
 }

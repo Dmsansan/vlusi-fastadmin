@@ -633,15 +633,21 @@ class Courses extends Api
     }
 
 
-
-    public function test()
+    /**
+     * 清空搜索历史记录
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/courses/delete_keywords)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function delete_keywords()
     {
-        $common=new Common();
-       $file= $common->upload();
-
-
+        $userid=$this->userid;
+        $list=db('course_search')->where(['user_id'=>$userid])->delete();
+        if($list){
+            $this->success('删除成功',$list);
+        }
     }
-
 
 
 
