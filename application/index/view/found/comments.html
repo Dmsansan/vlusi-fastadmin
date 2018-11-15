@@ -131,8 +131,9 @@
     -->
     <footer class="bottom-common" v-show="showInput">
         <div class="comment-input-container">
-            <input data-emojiable="true" oninput="this.value=this.value.replace(/\s+/g,'')"
+            <input data-emojiable="true"
                    v-model="commentsContent"
+                   @blur="blurFn()"
                    class="comment-input" type="text"   @click="focusInput()"
                    type="text" placeholder="写下你的评论..."/>
         </div>

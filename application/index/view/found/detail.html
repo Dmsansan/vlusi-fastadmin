@@ -12,9 +12,12 @@
     <link href="/assets/emoji/css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/course-hour-detail-video.css"/>
     <link rel="stylesheet" href="/css/discovery-detail.css"/>
+    <style>
+        .note-video-clip{width: 100% !important;  margin-left: 0 !important;}
+    </style>
 </head>
 <body>
-<div id="app" class="mui-content" v-cloak>
+<div id="app" class="mui-content" v-cloak >
     <div class="mui-bar mui-bar-nav">
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack"></a>
         <h1 class="mui-title">文章详情</h1>
@@ -46,14 +49,14 @@
             </p>
             <div class="logo-container">
                 <img src="/img/course-detail/logo.jpg" class="logo-img"/>
-                <div class="logo-content">
-                    <p class="logo-title">{{detailsList.detail.auth}}</p>
+                <div class="logo-content" contenteditable="true">
+                    <p class="logo-title" >{{detailsList.detail.auth}}</p>
                     <p class="logo-desc">为老年人提供生活服务</p>
                 </div>
             </div>
-            <div v-if="!isVideo" class="img-and-characters">
+            <div v-if="!isVideo" class="img-and-characters" contenteditable="true">
                 <!--图文-->
-                <div v-html="detailsList.detail.content"></div>
+                <div v-html="detailsList.detail.content" contenteditable="true"></div>
 
                 <img :src="detailsList.detail.coverimage"/>
             </div>

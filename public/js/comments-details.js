@@ -174,6 +174,12 @@ window.onload = function () {
                         self.uploadPicture();
                     })
                 },
+                blurFn:function () {
+                    console.log(11111111111)
+                    let self = this;
+                    self.showInput =  false;
+                    self.commentsContent = "";
+                },
                 //返回上一步
                 goBack: function () {
                     history.go(-1);
