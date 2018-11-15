@@ -139,7 +139,7 @@ class Courses extends Api
         $data=db('course')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
 
         $allpage=db('course')->where($where)->count();
-        $pages['pageCount']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
         foreach($data as $key=>$val){
@@ -275,7 +275,7 @@ class Courses extends Api
 
         //分页
         $allpage=db('course_comment')->alias('a')->join('user','user.id=a.user_id')->count();
-        $pages['pageCount']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
 
@@ -485,7 +485,7 @@ class Courses extends Api
 
 
 
-        $pages['page_count']=ceil($allPage/$this->pagesize);
+        $pages['page_count']=ceil($allPage/$this->pagesize)?:1;
         $detail['children']=$this->commentTree($comment_id,true,$page);
 
         $this->success('获取成功',$detail,$pages);

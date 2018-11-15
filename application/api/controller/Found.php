@@ -78,7 +78,7 @@ class Found extends Api
          $allpage = db('article')->alias('a')
                     ->join('article_category b','b.id=a.article_category_id')
                     ->count('*');
-        $pages['pageCount']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
         foreach($list as $key=>$val){
@@ -130,7 +130,7 @@ class Found extends Api
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
 
         $allpage=db('article')->where($where)->count();
-        $pages['pageCount']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
 
@@ -311,7 +311,7 @@ class Found extends Api
         //分页
         $allpage = db('article_comment')->alias('a')->join('user','user.id=a.user_id')->where($where)->count('*');
 
-        $pages['pageCount']=ceil($allpage/$this->pagesize);
+        $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
 
 
         //查询该用户对评论点赞的数量
@@ -508,7 +508,7 @@ class Found extends Api
 
 
 
-        $pages['page_count']=ceil($allPage/$this->pagesize);
+        $pages['page_count']=ceil($allPage/$this->pagesize)?:1;
         $detail['children']=$this->commentTree($comment_id,true,$page);
 
         $this->success('获取成功',$detail,$pages);
