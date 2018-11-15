@@ -149,7 +149,7 @@ let app = new Vue({
             }
             let self = this;
             self.activeIndex = -1;
-            $.post('/api/found/recommend', {
+            $.post('/api/courses/recommend', {
                 token: localStorage.getItem('token'),
                 page: self.pageNumber
             }, function (data) {
@@ -212,9 +212,11 @@ let app = new Vue({
         },
         //清除历史记录
         clearHistory:function () {
-            localStorage.removeItem('history-home');
-            app.historyList = JSON.parse(localStorage.getItem('history-home'));
+            this.historyList = [];
+           /* localStorage.removeItem('history-home');
+            app.historyList = JSON.parse(localStorage.getItem('history-home'));*/
             set.clear();
+
         },
         //立即搜索
         searchContent:function (content) {
@@ -244,19 +246,19 @@ let app = new Vue({
                     })
                 });
             }
+
+        },
+        //显示历史记录
+        showHistory:function () {
+            let self = this;
+            //改变显示状态
+            self.isInput = true;
             // 获取用户课程搜索历史[10条]
             $.getJSON('/api/courses/search_keywords', {
                 token:localStorage.getItem('token'),
             }, function (data) {
                 self.historyList = data.data;
             });
-
-
-        },
-        //显示历史记录
-        showHistory:function () {
-            //改变显示状态
-            this.isInput = true;
         },
         //底部导航栏
         switchPage:function (id) {

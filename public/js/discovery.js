@@ -191,8 +191,9 @@ let app = new Vue({
         },
         //清除历史记录
         clearHistory: function () {
-            localStorage.removeItem('history-discovery');
-            app.historyList = JSON.parse(localStorage.getItem('history-discovery'));
+            // localStorage.removeItem('history-discovery');
+            // app.historyList = JSON.parse(localStorage.getItem('history-discovery'));
+            this.historyList =[];
             set.clear();
         },
         //立即搜索
@@ -217,12 +218,7 @@ let app = new Vue({
                 });
 
             }
-            // 获取用户课程搜索历史[10条]
-            $.getJSON('/api/found/search_keywords', {
-                token:localStorage.getItem('token'),
-            }, function (data) {
-                self.historyList = data.data;
-            });
+
         },
         //查看详情
         goInner: function (id) {
@@ -233,7 +229,14 @@ let app = new Vue({
         //显示历史记录
         showHistory: function () {
             //改变显示状态
-            this.isInput = true;
+            let self = this;
+            self.isInput = true;
+             // 获取用户课程搜索历史[10条]
+              $.getJSON('/api/found/search_keywords', {
+                  token:localStorage.getItem('token'),
+              }, function (data) {
+                  self.historyList = data.data;
+              });
         },
         //底部导航栏
         switchPage:function (id) {
