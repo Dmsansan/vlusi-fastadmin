@@ -135,11 +135,12 @@ window.onload = function () {
                 },
                 //解决键盘遮挡
                 focusInput:function () {
-                    var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let interval;
                     $('.comment-input').focus(function() {
                         //给个延迟
                         bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
-                        interval = setInterval(function() {
+                          interval = setInterval(function() {
                             document.body.scrollTop = document.body.scrollHeight}, 100
                         );
                         window.addEventListener('touchmove', fn, false);

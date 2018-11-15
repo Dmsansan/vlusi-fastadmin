@@ -26,7 +26,8 @@ window.onload = function () {
             methods: {
                 //解决键盘遮挡
                 focusInput:function () {
-                    var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let interval;
+                    let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
                     $('.comment-input').focus(function() {
                         //给个延迟
                         bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
