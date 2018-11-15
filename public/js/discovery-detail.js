@@ -193,7 +193,9 @@ $(function () {
                         interval = setInterval(function() {
                             document.body.scrollTop = document.body.scrollHeight}, 100
                         );
-                        window.addEventListener('touchmove', fn, false);
+                        window.addEventListener('touchmove', function () {
+                            
+                        }, false);
 
                     }).blur(function(){
                         clearInterval(interval);

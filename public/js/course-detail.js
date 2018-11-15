@@ -157,13 +157,6 @@ window.onload = function () {
                 $("#upload-img").change(function () {
                     self.hideSmile();
                     self.formdata.append('image', $('#upload-img')[0].files[0]);
-                    /*let reads = new FileReader();
-                    let f = document.getElementById('upload-img')[0].files[0];
-                    console.log(f)
-                    reads.readAsDataURL(f);
-                    reads.onload = function (e) {
-                        /!*mui.toast('文件读取成功!');*!/
-                    };*/
                 });
 
             },
@@ -285,14 +278,17 @@ window.onload = function () {
             },
             //解决输入框被遮挡
             focusInput:function () {
-                var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                let interval;
                 $('#form_article').focus(function() {
                     //给个延迟
                     bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
                     interval = setInterval(function() {
                         document.body.scrollTop = document.body.scrollHeight}, 100
                     );
-                    window.addEventListener('touchmove', fn, false);
+                    window.addEventListener('touchmove', function () {
+                        
+                    }, false);
 
                 }).blur(function(){
                     clearInterval(interval);
