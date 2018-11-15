@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/course-hour-detail-video.css"/>
 </head>
 <body>
-<div id="app" class="mui-content">
+<div id="app" class="mui-content" v-cloak>
     <div class="mui-bar mui-bar-nav">
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" @click="goBack"></a>
         <h1 class="mui-title">课时详情</h1>
@@ -19,7 +19,8 @@
     -->
     <header>
         <!--<video controls controlsList="nodownload" preload="auto" poster="/img/show.jpg" x5-video-player-fullscreen="true"-->
-        <video controls controlsList="nodownload" preload="auto"  poster="/img/show.jpg" x5-video-player-fullscreen="true"
+        <video controls controlsList="nodownload" preload="auto"
+               :poster="courseList.detail.coverimage" x5-video-player-fullscreen="true"
                webkit-playsinline="true"
                x-webkit-airplay="true"
                playsinline="true"
@@ -34,7 +35,7 @@
     -->
     <div class="class-hour-desc">
         <div class="class-hour-desc-title">
-            <span class="title-number">01</span>
+            <span class="title-number">{{courseList.detail.sort<10? '0'+courseList.detail.sort:courseList.detail.sort}}</span>
             <p class="title-name">{{courseList.detail.title}}</p>
         </div>
         <div @click="goCourse(courseList.course.id)" class="class-hour-album">

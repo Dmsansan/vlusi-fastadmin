@@ -287,7 +287,7 @@ window.onload = function () {
                     title:'发给好友',// 分享标题
                     desc:'发给好友',// 分享描述
                     link:url,// 分享链接
-                    imgUrl:self.detailList.coverimage,// 分享图标
+                   /* imgUrl:self.detailList.coverimage,// 分享图标*/
                     success: function(){
 
                     },

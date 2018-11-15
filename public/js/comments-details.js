@@ -19,6 +19,7 @@ window.onload = function () {
                 isLikeArt:false,
                 imgList:[],
                 formdata:new FormData(),
+                showInput:false,
             },
             mounted() {
 
@@ -26,7 +27,9 @@ window.onload = function () {
             methods: {
                 //解决键盘遮挡
                 focusInput:function () {
-                    let interval;
+                    let self = this;
+
+                  /*  let interval;
                     let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
                     $('.comment-input').focus(function() {
                         //给个延迟
@@ -40,7 +43,7 @@ window.onload = function () {
 
                     }).blur(function(){
                         clearInterval(interval);
-                    });
+                    });*/
                 },
                 //返回上一步
                 goBack: function () {
@@ -77,7 +80,7 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-
+                    self.commentsContent = '';
                     self.formdata.append('article_id', localStorage.getItem('articleId')); //文章id
                     self.formdata.append('comment_id', localStorage.getItem('ReplyId')); //文章对应的评论id
 
@@ -93,16 +96,12 @@ window.onload = function () {
                         processData:false,
                         contentType:false,
                         success:function (data) {
+                            self.commentsContent = '';
+                            self.showInput = false;
                             self.$nextTick(function () {
                                 self.formdata=new FormData();
-                              /*  self.formdata.append('article_id', '');
-                                self.formdata.append('comment_id', '');
-                                self.formdata.append('token', '');
-                                self.formdata.append('content', '');
-                                 self.formdata.append('image', '');*/
                                 localStorage.setItem('ReplyId',"");
                                 localStorage.setItem('articleId',"");
-                                 self.commentsContent = '';
                                 self.isDisabled = false;
                                 self.replyDetails();
                             })
@@ -181,10 +180,13 @@ window.onload = function () {
                 },
                 //回复
                 replay:function (id,article) {
+                    let self = this;
                     localStorage.setItem('ReplyId',id);
                     localStorage.setItem('articleId',article);
+                    self.showInput = true;
                     $('.emoji-wysiwyg-editor').focus();
                 },
+
 
 
             },
