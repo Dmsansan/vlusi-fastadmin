@@ -42,6 +42,7 @@ window.onload = function () {
             passID:null,
             formdata:new FormData(),
             imgs: [],
+            imgUrl:'',
             imgData: {
                 accept: 'image/gif, image/jpeg, image/png, image/jpg',
             }
@@ -93,7 +94,7 @@ window.onload = function () {
             },
 
             //课程详情
-            courseDetails:function (id) {
+            courseDetails:function () {
                 let self = this;
                 $.post('/api/courses/detail', {
                     token:localStorage.getItem('token'),
@@ -105,6 +106,7 @@ window.onload = function () {
                     self.commentsList = data.data.comment;
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
+                    self.imgUrl = data.data.detail.coverimage;
                 });
 
             },
@@ -252,10 +254,7 @@ window.onload = function () {
                     contentType:false,
                     success:function (data) {
                         self.$nextTick(function () {
-                            self.formdata.append('course_id', '');
-                            self.formdata.append('token', '');
-                            self.formdata.append('content', '');
-                            self.formdata.append('image', '');
+                            self.formdata = new FormData();
                             self.commentsContent = '';
                             self.isDisabled = false;
                             self.isFocus = false;
@@ -282,33 +281,19 @@ window.onload = function () {
                 let self = this;
                 //发给好友
                let url  = window.location.href;
-                var nativeShare = new NativeShare()
+               console.log(1111,self.imgUrl)
+                wx.onMenuShareAppMessage({
+                    title:'发给好友',// 分享标题
+                    desc:'发给好友',// 分享描述
+                    link:url,// 分享链接
+                    imgUrl:self.imgUrl,// 分享图标
+                    success: function(){
 
-                var shareData = {
-                    title: '分享标题',
-                    desc: '',
-                    // 如果是微信该link的域名必须要在微信后台配置的安全域名之内的。
-                    link: 'https://www.baidu.com',
-
-                    // 不要过于依赖以下两个回调，很多浏览器是不支持的
-                    success: function() {
-                        console.log("success")
                     },
-                    fail: function() {
-                        console.log("fail")
-                    }
-                }
+                    cancel:function(){
 
-                nativeShare.setShareData(shareData)
-                function call(command) {
-                    try {
-                        nativeShare.call(command)
-                    } catch (err) {
-                        // 如果不支持，你可以在这里做降级处理
-                        alert(err.message)
-                        // console.log("err.message")
                     }
-                }
+                })
             },
             generateCard:function () {
                 let self = this;
