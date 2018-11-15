@@ -185,14 +185,17 @@ $(function () {
                 },
                 //解决键盘遮挡
                 focusInput:function () {
-                    var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    let interval;
                     $('#form_article').focus(function() {
                         //给个延迟
                         bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
                         interval = setInterval(function() {
                             document.body.scrollTop = document.body.scrollHeight}, 100
                         );
-                        window.addEventListener('touchmove', fn, false);
+                        window.addEventListener('touchmove', function () {
+                            
+                        }, false);
 
                     }).blur(function(){
                         clearInterval(interval);
