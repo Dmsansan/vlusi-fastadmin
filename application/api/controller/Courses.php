@@ -324,6 +324,9 @@ class Courses extends Api
 //            $this->success("评论成功");
 //        }
 
+        if(!$course_id){
+            $this->error('参数错误');
+        }
         $insert=[];
 
         if($_FILES){
