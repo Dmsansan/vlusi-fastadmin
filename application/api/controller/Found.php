@@ -271,13 +271,12 @@ class Found extends Api
         $userid=$this->userid;
 
         $page   =  (int)$this->request->post("page");
-        $page = $page?$page-1:0;
 
         $article_id  =  (int)$this->request->post("article_id");
 
         $data=[];
         //初次加载
-        if($page===0){
+        if($page===1 || !$page){
             $data['detail']=db('article')->alias('a')
                             ->where(['a.id'=>$article_id])
                             ->join('admin b','a.admin_id=b.id')
@@ -310,7 +309,8 @@ class Found extends Api
                         ->select();
 
         //分页
-        $allpage = db('article_comment')->alias('a')->join('user','user.id=a.user_id')->count('*');
+        $allpage = db('article_comment')->alias('a')->join('user','user.id=a.user_id')->where($where)->count('*');
+
         $pages['pageCount']=ceil($allpage/$this->pagesize);
 
 
