@@ -266,11 +266,11 @@
     var style = 'display:inline-block;';
     style += 'width:' + iconSize + 'px;';
     style += 'height:' + iconSize + 'px;';
-    style += 'background:url(\'' + filename.replace('!', category) + '\') '
+    style += 'background:url(\'/' + filename.replace('!', category) + '\') '
         + xoffset + 'px ' + yoffset + 'px no-repeat;';
     style += 'background-size:' + scaledWidth + 'px ' + scaledHeight
         + 'px;';
-    return '<img src="' + blankGifPath + '" class="img" style="'
+    return '<img src="/' + blankGifPath + '" class="img" style="'
         + style + '" alt="' + util.htmlEntities(name) + '">';
   };
 
