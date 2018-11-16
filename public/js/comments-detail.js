@@ -19,6 +19,8 @@ window.onload = function () {
                 isLikeArt:false,
                 imgList:[],
                 formdata:new FormData(),
+                //控制回复input显示和隐藏
+                controlInputShow:false
             },
             mounted() {
 
@@ -60,16 +62,15 @@ window.onload = function () {
                         type:'post',
                         cache:false,
                         data:self.formdata,
-                        /*  dataType:'json',*/
                         processData:false,
                         contentType:false,
                         success:function (data) {
+                            self.isDisabled = false;
+                            self.controlInputShow = false;
                             self.$nextTick(function () {
                                 self.formdata=new FormData();
                                 localStorage.setItem('courseId',"");
                                 localStorage.setItem('zsfId',"");
-                                self.commentsContent = '';
-                                self.isDisabled = false;
                                 self.replyDetails();
                             })
                         },
@@ -135,7 +136,7 @@ window.onload = function () {
                 },
                 //解决键盘遮挡
                 focusInput:function () {
-                    let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                    /*let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
                     let interval;
                     $('.comment-input').focus(function() {
                         //给个延迟
@@ -149,7 +150,7 @@ window.onload = function () {
 
                     }).blur(function(){
                         clearInterval(interval);
-                    });
+                    });*/
                 },
                 //上传图片
                 uploadImg: function () {
@@ -173,9 +174,13 @@ window.onload = function () {
                 },
                 //回复
                 replay:function (id,course) {
+                    let self = this;
+                    self.controlInputShow = true;
                     localStorage.setItem('zsfId',id);
                     localStorage.setItem('courseId',course);
+                    self.commentsContent = '';
                     $('.emoji-wysiwyg-editor').focus();
+                    $('.emoji-wysiwyg-editor').text('');
                 },
 
             },

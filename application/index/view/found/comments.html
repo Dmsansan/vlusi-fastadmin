@@ -12,11 +12,6 @@
     <link href="/assets/emoji/css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/course-detail.css"/>
     <link href="/css/comments-detail.css" rel="stylesheet"/>
-    <style>
-        .fa-smile-o:before {
-            content: "" !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -129,12 +124,12 @@
     <!--
         底部评论栏
     -->
-    <footer class="bottom-common" v-show="showInput">
+    <footer class="bottom-common" v-show="controlInputShow">
         <div class="comment-input-container">
             <input data-emojiable="true"
                    v-model="commentsContent"
-                   @blur="blurFn()"
-                   class="comment-input" type="text"   @click="focusInput()"
+                   class="comment-input" type="text"
+                   @click="focusInput()"
                    type="text" placeholder="写下你的评论..."/>
         </div>
         <div class="comment-icon-container">

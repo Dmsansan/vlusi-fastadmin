@@ -19,7 +19,8 @@ window.onload = function () {
                 isLikeArt:false,
                 imgList:[],
                 formdata:new FormData(),
-                showInput:false,
+                //控制回复input显示和隐藏
+                controlInputShow:false
             },
             mounted() {
 
@@ -80,7 +81,6 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.commentsContent = '';
                     self.formdata.append('article_id', localStorage.getItem('articleId')); //文章id
                     self.formdata.append('comment_id', localStorage.getItem('ReplyId')); //文章对应的评论id
 
@@ -92,17 +92,15 @@ window.onload = function () {
                         type:'post',
                         cache:false,
                         data:self.formdata,
-                      /*  dataType:'json',*/
                         processData:false,
                         contentType:false,
                         success:function (data) {
-                            self.commentsContent = '';
-                            self.showInput = false;
+                            self.isDisabled = false;
+                            self.controlInputShow = false;
                             self.$nextTick(function () {
                                 self.formdata=new FormData();
                                 localStorage.setItem('ReplyId',"");
                                 localStorage.setItem('articleId',"");
-                                self.isDisabled = false;
                                 self.replyDetails();
                             })
                         },
@@ -174,12 +172,6 @@ window.onload = function () {
                         self.uploadPicture();
                     })
                 },
-                blurFn:function () {
-                    console.log(11111111111)
-                    let self = this;
-                    self.showInput =  false;
-                    self.commentsContent = "";
-                },
                 //返回上一步
                 goBack: function () {
                     history.go(-1);
@@ -187,10 +179,12 @@ window.onload = function () {
                 //回复
                 replay:function (id,article) {
                     let self = this;
+                    self.controlInputShow = true;
                     localStorage.setItem('ReplyId',id);
                     localStorage.setItem('articleId',article);
-                    self.showInput = true;
+                    self.commentsContent = '';
                     $('.emoji-wysiwyg-editor').focus();
+                    $('.emoji-wysiwyg-editor').text('');
                 },
 
 
