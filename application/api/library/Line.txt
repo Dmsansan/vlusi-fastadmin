@@ -23,6 +23,33 @@ php think crud -t article  -c article/article  -m article/article  --relation=ar
 需修改
 php think crud -t article  -c article/article  -m article/article  --relation=article_category  -k article_category_id -p id -e article/category  --relation=admin  --relationforeignkey=admin_id --force=true
 
+#
+
+/发布前需修改的地方
+1.请提交代码至码云的代码库 https://gitee.com/wangerpang/fastadmin.git
+    码云账号 18037235202
+    密码 wq252379551
+
+
+1  .env 文件 193.112.64.248 改为 127.0.0.1
+
+2.index/index/index.html  页面上的token <?php echo $token;?>需打开
+
+3. index/index/indexConttroller
+    protected $noNeedLogin = ['*'];  更改为     protected $noNeedLogin = [];
+    22行注释掉   24行注释打开
+    34-37行注释打开
+
+4。 index/course/detail   31-34行注释打开
+
+5. 服务器重置代码  git fetch --all
+             18037235202
+             wq252379551
+             git reset --hard origin master
+
+
+6 修改项目权限为755
+
 
 
 
