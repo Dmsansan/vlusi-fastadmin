@@ -240,6 +240,7 @@ class Courses extends Api
             $zan=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
             $data['is_zan']=$zan?1:0;
 
+
             //获取该课程的视频列表
             $node=db('course_nodes')->where(['course_id'=>$course_id])->order('sort asc')->field('id,sort,title,desc,isviewlist')->select();
             $data['detail']['node']=$node;

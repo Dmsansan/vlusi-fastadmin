@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Courses.php" afterPath="$PROJECT_DIR$/application/api/controller/Courses.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -101,8 +100,8 @@
       <file leaf-file-name="Courses.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="243" column="87" lean-forward="false" selection-start-line="243" selection-start-column="87" selection-end-line="243" selection-end-column="87" />
+            <state relative-caret-position="229">
+              <caret line="242" column="12" lean-forward="false" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -435,12 +434,12 @@
       <workItem from="1542115679462" duration="19305000" />
       <workItem from="1542188349081" duration="24404000" />
       <workItem from="1542262689595" duration="40000" />
-      <workItem from="1542267651822" duration="13087000" />
+      <workItem from="1542267651822" duration="13100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190939000" />
+    <option name="totallyTimeSpent" value="190952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="6" />
@@ -823,8 +822,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="243" column="87" lean-forward="false" selection-start-line="243" selection-start-column="87" selection-end-line="243" selection-end-column="87" />
+        <state relative-caret-position="229">
+          <caret line="242" column="12" lean-forward="false" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
           <folding />
         </state>
       </provider>
