@@ -38,7 +38,7 @@ class Index extends Api
     {
 
         $url  = $this->request->request("url");
-        $url='http%3A%2F%2Fyl.qclike.cn%2Findex%2Findex%2Fdetail%3Fid%3D44';
+//        $url='http%3A%2F%2Fyl.qclike.cn%2Findex%2Findex%2Fdetail%3Fid%3D44';
         if(!$url){$this->error('无效参数');}
 
 
