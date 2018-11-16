@@ -52,5 +52,7 @@ php think crud -t article  -c article/article  -m article/article  --relation=ar
 
 
 
+7 修改数据库配置保证大文件存储
+    sql-mode=NO_ENGINE_SUBSTITUTION   删除 xx- TABLE
 
 
