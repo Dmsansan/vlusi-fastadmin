@@ -242,7 +242,234 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
 }
 
+ /**
+     * 获取课时分享图片
+     *
+     * @ApiTitle    (获取分享图片接口)
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/share/getcourseimage)
+     * @ApiParams   (name="course_id", type="integer", required=true, description="课时id")
+     * @ApiParams   (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    public function getcourseimage()
+    {
+        $course_id =   (int)$this->request->request("course_id");
+        $course_id = 48;
+        if (!$course_id)
+        {
+            $this->error(__('课时id为空'));
+        }
+        $detail =db('course')->where(['id'=>$course_id])->find();
+		if(!$detail){
+			$this->error(__('课时不存在'));
+		}
+        $detail_user =db('admin')->where(['id'=>$detail['admin_id']])->find();
+        if(!$detail_user){
+			$this->error(__('作者不存在'));
+		}
+        $detail['nickname'] = $detail_user['nickname'];
+        $detail['signtext'] = $detail_user['signtext'];
+        $detail['avatar'] = $detail_user['avatar'];
+        $folderName = date('Y',time()).date('m',time()).date('d',time());
+        if(!is_dir("uploads/".$folderName)){
+            mkdir("uploads/".$folderName);
+        }
+        
+        //生成二维码
+        vendor ('phpqrcode.phpqrcode');
+
+        $QRcode = new \QRcode();
+        $value = "http://".$_SERVER['HTTP_HOST'].'/index/index/detail?id='.$course_id;
+
+        //二维码内容
+        $errorCorrectionLevel = 'L';  //容错级别
+        $matrixPointSize = 5;      //生成图片大小
+        //生成二维码图片
+        $filename = 'uploads/'.$folderName.'/'.time().'22'.rand('100000','999999').".jpg";
+        $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
+
+        $logo = 'img/code_png/code.jpg'; //准备好的logo图片
+        $QR = $filename;      //已经生成的原始二维码图
+        if (file_exists($logo)) {
+            $QR = imagecreatefromstring(file_get_contents($QR));    //目标图象连接资源。
+            $logo = imagecreatefromstring(file_get_contents($logo));  //源图象连接资源。
+            $QR_width = imagesx($QR);      //二维码图片宽度
+            $QR_height = imagesy($QR);     //二维码图片高度
+            $logo_width = imagesx($logo);    //logo图片宽度
+            $logo_height = imagesy($logo);   //logo图片高度
+            $logo_qr_width = $QR_width / 4;   //组合之后logo的宽度(占二维码的1/5)
+            $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
+            $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
+            $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
+    //重新组合图片并调整大小
+    /*
+     * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
+     */
+        imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
+    }
+
+        imagepng($QR, $filename);
+  
+        $detail['QRcode'] = $filename;
+
+        //输出到图片
+        $imageName = time().'22'.rand('100000','999999').".jpg";
+        $this->createcourseSharePng($detail,'','uploads/'.$folderName.'/'.$imageName);
+        $data = array(
+            'url' => "/uploads/".$folderName.'/'.$imageName,
+        );
+        $this->success("返回成功",$data);
+    }
+    /**
+
+ * 分享课时图片生成
+
+ * @param $gData  商品数据，array
+
+ * @param $codeName 二维码图片
+
+ * @param $fileName string 保存文件名,默认空则直接输入图片
+
+ */
+
+function createcourseSharePng($gData,$codeName,$fileName = ''){
+
+    //创建画布
+
+    $im = imagecreatetruecolor(375, 667);
+
+    $url = "http://".$_SERVER['HTTP_HOST'];
+
+    //填充画布背景色
+
+    $color = imagecolorallocate($im, 255, 255, 255);
+
+    imagefill($im, 0, 0, $color);
+
  
+
+    //字体文件
+
+    $font_file = "img/code_png/MSYH.ttf";
+
+    $font_file_bold = "/img/code_png/MSYH.ttf";
+    //设定字体的颜色
+
+    $font_color_1 = ImageColorAllocate ($im, 140, 140, 140);
+
+    $font_color_2 = ImageColorAllocate ($im, 131,131,131);
+
+    $fang_bg_color = ImageColorAllocate ($im, 246,246,249);
+
+ 
+
+    //封面图
+    list($c_w,$c_h) = getimagesize($url.$gData['coverimage']);
+    $coverimageImg = $this->createImageFromFile($url.$gData['coverimage']);
+    imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
+
+ 
+
+    //标题
+	$a = array(
+		'top'=>210,
+		'fontsize'=>13,
+		'width'=>340,
+		'left'=>20,
+		'hang_size'=>20,
+		'color'=>array(0,0,0)
+	);
+	$b = array(
+		'maxline'=>'',
+		'width'=>340,
+		'left'=>20,
+	);
+	$this->textalign($im,$a,$gData['name'],true,$font_file,0,$b);  
+
+	//背景图
+	imagefilledrectangle ($im, 5 , 285 , 370 , 395 , $fang_bg_color);
+	//简介
+	$c = array(
+		'top'=>290,
+		'fontsize'=>11,
+		'width'=>320,
+		'left'=>25,
+		'hang_size'=>20,
+		'color'=>array(131,131,131)
+	);
+	$d = array(
+		'maxline'=>2,
+		'width'=>320,
+		'left'=>25,
+	);
+	$this->textalign($im,$c,strip_tags($gData['content']),true,$font_file,0,$d);
+	
+    //头像
+
+    list($a_w,$a_h) = getimagesize($url.$gData['avatar']);
+
+    $avatarImg = $this->createImageFromFile($url.$gData['avatar']);
+	
+    imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
+//	作者
+	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
+	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, $gData['signtext']);
+	
+	//广告
+
+    list($g_w,$g_h) = getimagesize($url."/img/code_png/gg.jpg");
+
+    $ggImg = @imagecreatefrompng($url."/img/code_png/gg.jpg");
+	
+    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
+
+    //二维码
+
+    list($code_w,$code_h) = getimagesize($url."/".$gData['QRcode']);
+    
+    $codeImg = @imagecreatefrompng($url."/".$gData['QRcode']);
+
+    imagecopyresized($im, $codeImg, 100, 503, 0, 0, 70, 70, $code_w, $code_h);
+	//logo
+
+    list($l_w,$l_h) = getimagesize($url."/img/code_png/logo-new.png");
+
+    $logoImg = $this->createImageFromFile($url."/img/code_png/logo-new.png");
+
+    imagecopyresized($im, $logoImg, 210, 503, 0, 0, 70, 70, $l_w, $l_h);
+ 
+    //输出图片
+
+    if($fileName){
+
+        imagepng ($im,$fileName);
+
+    }else{
+
+        Header("Content-Type: image/png");
+
+        imagepng ($im);
+
+    }
+
+
+
+    //释放空间
+
+    imagedestroy($im);
+
+    imagedestroy($coverimageImg);
+
+    imagedestroy($avatarImg);
+    
+    imagedestroy($ggImg);
+            
+    imagedestroy($codeImg);
+    
+    imagedestroy($logoImg);
+
+}
 
 /**
 
