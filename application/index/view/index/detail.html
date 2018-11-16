@@ -189,9 +189,9 @@
             <img @click="collect(false)" src="/img/course-detail/like-active.png"
                  :class="{active:detailList.is_collection}"
                  class="icon-like bottom-icon-comment">
-            <!--<img @click="shareCourse()"-->
-                 <!--src="/img/course-detail/share.png"-->
-                 <!--class="icon-share bottom-icon-comment"/>-->
+            <img @click="shareCourse()"
+                 src="/img/course-detail/share.png"
+                 class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
             <!--<img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
@@ -207,10 +207,10 @@
         <!-- 可选择菜单 -->
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-               <!-- <a @click="sendToFriend()" href="#">
+                <a @click="sendToFriend()" href="#">
                     <img src="/img/course-detail/share-fri.jpg" class="share-item-icon">
                     <p class="share-item-desc">发给好友</p>
-                </a>-->
+                </a>
             </li>
             <li class="mui-table-view-cell">
                <!-- <a @click="generateCard()" href="#">

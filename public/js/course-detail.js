@@ -42,10 +42,12 @@ window.onload = function () {
             passID:null,
             formdata:new FormData(),
             imgs: [],
+            //分享内容
             imgUrl:'',
-            imgData: {
-                accept: 'image/gif, image/jpeg, image/png, image/jpg',
-            }
+            title:'',
+            desc:'',
+            shareUrl:'',
+            configWX:[],
 
         },
         mounted() {
@@ -106,7 +108,10 @@ window.onload = function () {
                     self.commentsList = data.data.comment;
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
+                    //分享内容
                     self.imgUrl = data.data.detail.coverimage;
+                    self.title = data.data.detail.name;
+                    self.desc = data.data.detail.desc;
                 });
 
             },
@@ -220,7 +225,7 @@ window.onload = function () {
 
             },
             shareCourse:function() {
-                // mui('#share-sheet').popover('toggle');
+                mui('#share-sheet').popover('toggle');
             },
             //收藏，取消收藏
             collect:function (flag) {
@@ -282,24 +287,61 @@ window.onload = function () {
                     url:'/index/index/comments?id='+id
                 })
 
+                //确保你获取用来签名的url是动态获取的，动态页面可参见实例代码中php的实现方式。
+                //如果是html的静态页面在前端通过ajax将url传到后台签名，前端需要用js获取当前页面除去'#'hash部分的链接
+                //（可用location.href.split('#')[0]获取,而且需要encodeURIComponent），
+                //因为页面一旦分享，微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败。
+
             },
             sendToFriend:function () {
                 let self = this;
                 //发给好友
-               let url  = window.location.href;
-               console.log(1111,self.imgUrl)
-                wx.onMenuShareAppMessage({
-                    title:'发给好友',// 分享标题
-                    desc:'发给好友',// 分享描述
-                    link:url,// 分享链接
-                    imgUrl:self.imgUrl,// 分享图标
-                    success: function(){
-
-                    },
-                    cancel:function(){
-
+                self.shareUrl  = location.href.split('#')[0];
+                console.log('编码后的url',encodeURIComponent(self.shareUrl));
+                console.log('不编码后的url',self.shareUrl);
+               /* let data = {"code":1,"msg":"请求成功","time":"1542349942","data":{"appid":"wx1fab8067cbc162c7","timesTamp":1542349943,"nonceStr":"z7cfPwSlOrBWcTth","signaTure":"4ccebf71ebfe4aed86653a7195ac12d2779aebea"},"page":[]};
+                self.configWX = data.data;
+                self.$nextTick(function () {
+                    shareWeChat(self.configWX);
+                })*/
+                $.post('/api/index/getShareSigna', {
+                    url: encodeURIComponent(self.shareUrl),
+                    token:localStorage.getItem('token')
+                }, function (data) {
+                    if(data.code == 1){
+                        self.configWX = data.data;
+                        self.$nextTick(function () {
+                            self.shareWeChat(self.configWX);
+                        })
                     }
-                })
+                });
+               console.log(1111,self.configWX.appid);
+               console.log(1111,self.imgUrl);
+               function shareWeChat(todo) {
+                   wx.config({
+                       debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                       appId: 'wx1fab8067cbc162c7', // 必填，公众号的唯一标识
+                       timestamp: todo.timesTamp, // 必填，生成签名的时间戳
+                       nonceStr: todo.nonceStr, // 必填，生成签名的随机串
+                       signature: todo.signaTure,// 必填，签名
+                       jsApiList: [
+                           "updateAppMessageShareData"//分享给朋友接口
+                       ] // 必填，需要使用的JS接口列表
+                   });
+                   wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                       let self = this;
+                       wx.updateAppMessageShareData({
+                           title: self.title, // 分享标题
+                           desc: self.desc, // 分享描述
+                           link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                           imgUrl: self.imgUrl, // 分享图标
+                           success: function () {
+                               // 设置成功
+                           }
+                       });
+                   })
+               }
+
             },
             generateCard:function () {
                 let self = this;

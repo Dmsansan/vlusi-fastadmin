@@ -46,7 +46,7 @@ p.discovery-detail-title {
 .read-and-like-item {
     border: 1px solid #999999;
     border-radius: 30px;
-    width: 25%;
+    padding: 5px 10px;
     display: flex;
     display: -webkit-flex;
     align-items: center;
