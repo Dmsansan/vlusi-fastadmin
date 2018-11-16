@@ -241,7 +241,7 @@ class Courses extends Api
             $data['is_zan']=$zan?1:0;
 
             //获取该课程的视频列表
-            $node=db('course_nodes')->where(['course_id'=>$course_id])->field('id,sort,title,desc,isviewlist')->select();
+            $node=db('course_nodes')->where(['course_id'=>$course_id])->order('sort asc')->field('id,sort,title,desc,isviewlist')->select();
             $data['detail']['node']=$node;
 
             //获取是否申请课程
