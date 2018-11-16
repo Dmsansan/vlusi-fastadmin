@@ -315,6 +315,10 @@ class Found extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+
+                //表情转义
+                $data['comment'][$key]['content']=$this->emoji_decode($val['content']);
+
                 $is_zan=db('article_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$val['id']])->find();
 
                 if($is_zan){
@@ -353,8 +357,12 @@ class Found extends Api
         $article_id  =  (int)$this->request->request("article_id");
         $comment_id  =  (int)$this->request->request("comment_id");
         $content=$this->request->request("content");
+
         //关键字屏蔽
         $content=$this->wordCheck($content);
+        //表情转义
+        $content=$this->emoji_encode($content);
+
 
         if(!$article_id){$this->error('文章id不为空');}
 
@@ -498,6 +506,9 @@ class Found extends Api
             ->field('u.nickname,avatar,a.*')
             ->find();
 
+        $detail['createtime']=date('Y-m-d',$detail['createtime']);
+        $detail['content']=$this->emoji_decode($detail['content']);
+
         //获取用户是否点赞
         $zan=db('article_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$comment_id])->find();
         $detail['is_zan']=($zan?1:0);
@@ -531,6 +542,8 @@ class Found extends Api
             foreach($data as $key=>$val){
                 $zan=db('article_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
                 $val['is_zan']=($zan?1:0);
+                $val['createtime']=date('Y-m-d',$val['createtime']);
+                $val['content']=$this->emoji_decode($val['content']);
 
                 $val['children']=$this->commentTree($val['id']);
                 $tree[]=$val;

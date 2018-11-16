@@ -284,6 +284,11 @@ class Courses extends Api
         if($data['comment']){
             foreach($data['comment'] as $key=>$val){
                 $data['comment'][$key]['createtime']=date('Y-m-d',$val['createtime']);
+
+                //表情处理
+                $data['comment'][$key]['content']=$this->emoji_decode($val['content']);
+
+
                 $is_zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
                 if($is_zan){
                     $data['comment'][$key]['is_zan']=1;
@@ -322,9 +327,12 @@ class Courses extends Api
         $comment_id  =  (int)$this->request->request("comment_id");
 
         $content=$this->request->post("content");
+
         //关键字屏蔽
         $content=$this->wordCheck($content);
 
+        //表情转义
+        $content=$this->emoji_encode($content);
 
 //        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
 //        if(!$is_course){
@@ -350,6 +358,7 @@ class Courses extends Api
         $insert['user_id']=$userid;
         $insert['createtime']=time();
         $res=db('course_comment')->insert($insert);
+
         if($res){
             //同步新增到course表 评论数加1
             db('course')->where('id', $course_id)->setInc('comments');
@@ -483,6 +492,10 @@ class Courses extends Api
             ->where(['a.id'=>$comment_id])
             ->field('u.nickname,avatar,a.*')
             ->find();
+        $detail['createtime']=date('Y-m-d',$detail['createtime']);
+
+        //表情处理
+        $detail['content']=$this->emoji_decode($detail['content']);
 
         //获取用户是否点赞
         $zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$comment_id])->find();
@@ -515,7 +528,8 @@ class Courses extends Api
             foreach($data as $key=>$val){
                 $zan=db('course_comment_zan')->where(['user_id'=>$this->userid,'comment_id'=>$val['id']])->find();
                 $val['is_zan']=($zan?1:0);
-
+                $val['createtime']=date('Y-m-d',$val['createtime']);
+                $val['content']=$this->emoji_decode($val['content']);
                 $val['children']=$this->commentTree($val['id']);
                 $tree[]=$val;
             }
@@ -653,6 +667,7 @@ class Courses extends Api
             $this->success('删除成功',$list);
         }
     }
+
 
 
 
