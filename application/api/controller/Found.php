@@ -356,11 +356,10 @@ class Found extends Api
         $article_id  =  (int)$this->request->request("article_id");
         $comment_id  =  (int)$this->request->request("comment_id");
         $content=$this->request->request("content");
+        //关键字屏蔽
+        $content=$this->wordCheck($content);
 
-
-        if(!$article_id){
-            $this->error('文章id不为空');
-        }
+        if(!$article_id){$this->error('文章id不为空');}
 
         $insert=[];
 

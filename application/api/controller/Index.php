@@ -5,8 +5,9 @@ namespace app\api\controller;
 use app\common\controller\Api;
 
 /**
- * ke接口
+ *
  */
+
 class Index extends Api
 {
 
@@ -20,6 +21,16 @@ class Index extends Api
     public function index()
     {
         $this->success('请求成功');
+    }
+
+    public function testWords()
+    {
+
+        $str=  $this->request->request("str");
+
+        $res=$this->wordCheck($str);
+        dump($res);
+
     }
 
 }

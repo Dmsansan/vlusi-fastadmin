@@ -334,7 +334,7 @@ class Api
      * 递归修改图片路径
      * @param $data
      */
-    public function cdnimg($data)
+    protected function cdnimg($data)
     {
         if(!is_array($data)){
             return $data;
@@ -358,4 +358,23 @@ class Api
 
     }
 
+
+    /**
+     *  关键字检测
+     */
+
+    public function wordCheck($str){
+
+        //获取关键字
+        $setWords=db('comment_keywords')->field('keywords')->select();
+
+        if(!$setWords) return true;
+
+        $setWordsString=implode('|',array_column($setWords,'keywords'));
+
+        //拼接正则
+        $preg='/'.$setWordsString.'/';
+
+        return preg_replace($preg, "*", $str);
+    }
 }

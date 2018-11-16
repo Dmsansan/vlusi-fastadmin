@@ -319,8 +319,12 @@ class Courses extends Api
     {
         $userid=$this->userid;
         $course_id  =  (int)$this->request->post("course_id");
-        $content=$this->request->post("content");
         $comment_id  =  (int)$this->request->request("comment_id");
+
+        $content=$this->request->post("content");
+        //关键字屏蔽
+        $content=$this->wordCheck($content);
+
 
 //        $is_course=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
 //        if(!$is_course){
