@@ -6,28 +6,33 @@ use app\common\controller\Api;
 use app\common\library\JSSDK;
 
 /**
- *  微信分享
+ * 微信分享
  */
-
 class Index extends Api
 {
 
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
-
-    public function index()
-    {
-        $url=urlencode('http://yl.qclike.cn/index/index/detail?id=44');
-        echo $url;die;
-        $this->success('请求成功');
-    }
+//
+//
+//    public function index()
+//    {
+//        $url=urlencode('http://yl.qclike.cn/index/index/detail?id=44');
+//        echo $url;die;
+//        $this->success('请求成功');
+//    }
 
     /**
      * 获取签名
+     * @ApiTitle    (获取签名)
+     * @ApiSummary  (测试描述信息)
      * @ApiMethod   (POST)
      * @ApiRoute    (/api/index/getShareSigna)
      * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams  (name=url, type=string, required=true, description="encode编码后的url链接")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
      */
     function getShareSigna()
     {
