@@ -311,16 +311,15 @@ window.onload = function () {
                     if(data.code == 1){
                         self.configWX = data.data;
                         self.$nextTick(function () {
-                            self.shareWeChat(self.configWX);
+                            shareWeChat(self.configWX);
                         })
                     }
                 });
-               console.log(1111,self.configWX.appid);
-               console.log(1111,self.imgUrl);
+               // console.log(1111,self.imgUrl);
                function shareWeChat(todo) {
                    wx.config({
-                       debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
-                       appId: 'wx1fab8067cbc162c7', // 必填，公众号的唯一标识
+                       debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                       appId: todo.appid, // 必填，公众号的唯一标识
                        timestamp: todo.timesTamp, // 必填，生成签名的时间戳
                        nonceStr: todo.nonceStr, // 必填，生成签名的随机串
                        signature: todo.signaTure,// 必填，签名
@@ -328,18 +327,18 @@ window.onload = function () {
                            "updateAppMessageShareData"//分享给朋友接口
                        ] // 必填，需要使用的JS接口列表
                    });
-                   wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-                       let self = this;
-                       wx.updateAppMessageShareData({
-                           title: self.title, // 分享标题
-                           desc: self.desc, // 分享描述
-                           link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                           imgUrl: self.imgUrl, // 分享图标
-                           success: function () {
-                               // 设置成功
-                           }
-                       });
-                   })
+                   // wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                   let self = this;
+                   wx.updateAppMessageShareData({
+                       title: self.title, // 分享标题
+                       desc: self.desc, // 分享描述
+                       link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                       imgUrl: self.imgUrl, // 分享图标
+                       success: function () {
+                           // 设置成功
+                       }
+                   });
+                   // })
                }
 
             },
