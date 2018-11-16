@@ -220,7 +220,7 @@ window.onload = function () {
 
             },
             shareCourse:function() {
-                mui('#share-sheet').popover('toggle');
+                // mui('#share-sheet').popover('toggle');
             },
             //收藏，取消收藏
             collect:function (flag) {
