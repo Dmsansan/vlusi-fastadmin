@@ -3,9 +3,10 @@
 namespace app\api\controller;
 
 use app\common\controller\Api;
+use app\common\library\JSSDK;
 
 /**
- *
+ *  微信分享
  */
 
 class Index extends Api
@@ -14,22 +15,48 @@ class Index extends Api
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
 
-    /**
-     * 首页
-     * 
-     */
     public function index()
     {
+        $url=urlencode('http://yl.qclike.cn/index/index/detail?id=44');
+        echo $url;die;
         $this->success('请求成功');
     }
 
-    public function testWords()
+    /**
+     * 获取签名
+     * @ApiMethod   (POST)
+     * @ApiRoute    (/api/index/getShareSigna)
+     * @ApiParams  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     */
+    function getShareSigna()
     {
 
-        $str=  $this->request->request("str");
+        $url  = $this->request->request("url");
+        $url='http%3A%2F%2Fyl.qclike.cn%2Findex%2Findex%2Fdetail%3Fid%3D44';
+        if(!$url){$this->error('无效参数');}
 
-        $res=$this->wordCheck($str);
-        dump($res);
+
+        $appID = 'wx1fab8067cbc162c7';
+        $appSecret = 'd638ba9b21a7ca01277fa6a8e3f0fc9e';
+
+        $jssdk = new JSSDK($appID, $appSecret);
+
+        //确保你获取用来签名的url是动态获取的，动态页面可参见实例代码中php的实现方式。
+        //如果是html的静态页面在前端通过ajax将url传到后台签名，前端需要用js获取当前页面除去'#'hash部分的链接
+        //（可用location.href.split('#')[0]获取,而且需要encodeURIComponent），
+        //因为页面一旦分享，微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败。
+
+        //后台接收到url 需要进行解析
+
+        $signPackage = $jssdk->GetSignPackage(urldecode($url));
+        if (!isset($signPackage)) {$this->error('签名失败');}
+        $data = [
+            'timesTamp' => $signPackage["timestamp"],
+            'nonceStr' => $signPackage["nonceStr"],
+            'signaTure' => $signPackage["signature"]
+        ];
+        $this->success('请求成功',$data);
 
     }
 
