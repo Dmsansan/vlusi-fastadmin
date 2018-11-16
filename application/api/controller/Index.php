@@ -37,8 +37,8 @@ class Index extends Api
     function getShareSigna()
     {
 
-        $url  = $this->request->request("url");
-//        $url='http%3A%2F%2Fyl.qclike.cn%2Findex%2Findex%2Fdetail%3Fid%3D44';
+//        $url  = $this->request->request("url");
+        $url='http%3A%2F%2Fyl.qclike.cn%2Findex%2Findex%2Fdetail%3Fid%3D44';
         if(!$url){$this->error('无效参数');}
 
 
@@ -57,11 +57,25 @@ class Index extends Api
         $signPackage = $jssdk->GetSignPackage(urldecode($url));
         if (!isset($signPackage)) {$this->error('签名失败');}
         $data = [
+            'appid' =>$appID,
             'timesTamp' => $signPackage["timestamp"],
             'nonceStr' => $signPackage["nonceStr"],
             'signaTure' => $signPackage["signature"]
         ];
         $this->success('请求成功',$data);
+
+    }
+
+
+    public function pregTest()
+    {
+
+//        $str=<<<EOF
+//<p class="MsoNormal"><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;"> <font face="宋体">高龄友善康健专题：日本用小学空教室照顾老人</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;"><o:p></o:p></span></p>
+//EOF;
+//
+//        $preg1='/>([\u4e00-\u9fa5]+)</';
+//        $preg2='/^[\u4e00-\u9fa5，。]+)+/';
 
     }
 
