@@ -210,7 +210,7 @@ class User extends Api
         $myCollection=db('article_collection')->alias('a')
             ->join('article b','a.article_id=b.id')
             ->where(['user_id'=>$userid])
-            ->field('a.id,a.article_id,b.title,b.coverimage,b.content,a.createtime')
+            ->field('b.id,a.article_id,b.title,b.coverimage,b.content,a.createtime')
             ->page($page,$this->pagesize)
             ->select();
 
