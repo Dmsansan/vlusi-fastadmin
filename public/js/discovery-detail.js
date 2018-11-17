@@ -111,19 +111,64 @@ $(function () {
                                 let shareData = {
                                     title: self.title, // 分享标题
                                     desc: self.desc, // 分享描述
-                                    link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                                     imgUrl: self.imgUrl, // 分享图标
+                                    success: function () {
+                                        /*alert('111')*/
+                                    },
+                                    fail: function (res) {
+                                        /* alert(JSON.stringify(res));*/
+                                    }
                                 };
-                                if(wx.onMenuShareAppMessage){
-                                    wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
-                                    wx.onMenuShareTimeline(shareData);//1.0 分享到朋友
-                                }else {
-                                    wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
-                                    wx.updateTimelineShareData(shareData);//1.4 分享到朋友圈
 
+                                if (wx.onMenuShareAppMessage) {
+                                    wx.onMenuShareAppMessage({
+                                        title: self.title, // 分享标题
+                                        desc: self.desc, // 分享描述
+                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                        imgUrl: self.imgUrl, // 分享图标
+                                        type: '', // 分享类型,music、video或link，不填默认为link
+                                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                        success: function () {
+                                            /* alert(1111);*/
+                                        }
+                                    });
+                                    wx.onMenuShareTimeline({
+                                        title: self.title, // 分享标题
+                                        desc: self.desc, // 分享描述
+                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                        imgUrl: self.imgUrl, // 分享图标
+                                        type: '', // 分享类型,music、video或link，不填默认为link
+                                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                        success: function () {
+                                            /* alert(1111);*/
+                                        }
+                                    })
+                                } else {
+                                    wx.updateTimelineShareData({
+                                        title: self.title, // 分享标题
+                                        desc: self.desc, // 分享描述
+                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                        imgUrl: self.imgUrl, // 分享图标
+                                        success: function () {
+                                            // 设置成功
+                                            /*alert(141414);*/
+                                        }
+                                    });
+                                    wx.updateAppMessageShareData({
+                                        title: self.title, // 分享标题
+                                        desc: self.desc, // 分享描述
+                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                        imgUrl: self.imgUrl, // 分享图标
+                                        success: function () {
+                                            // 设置成功
+                                            /*alert(141414);*/
+                                        }
+                                    })
                                 }
 
                             })
+                            //发给好友
                             self.shareUrl = location.href.split('#')[0];
                             $.post('/api/index/getShareSigna', {
                                 url: encodeURIComponent(self.shareUrl),

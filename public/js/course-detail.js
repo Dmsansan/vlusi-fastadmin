@@ -163,7 +163,7 @@ window.onload = function () {
                                         /*alert(141414);*/
                                     }
                                 });
-                                wx.onMenuShareTimeline({
+                                wx.updateAppMessageShareData({
                                     title: self.title, // 分享标题
                                     desc: self.desc, // 分享描述
                                     link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
