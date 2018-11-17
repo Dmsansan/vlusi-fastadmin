@@ -26,7 +26,7 @@ class Share extends Api
     public function getimage()
     {
         $article_id =   (int)$this->request->request("article_id");
-	$article_id = 68;
+
         if (!$article_id)
         {
             $this->error(__('文章id为空'));
@@ -124,7 +124,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     //字体文件
 
-    $font_file = "/img/code_png/MSYH.ttf";
+    $font_file = "img/code_png/MSYH.ttf";
 
     $font_file_bold = "/img/code_png/MSYH.ttf";
     //设定字体的颜色
@@ -197,50 +197,27 @@ function createSharePng($gData,$codeName,$fileName = ''){
 //	
 //    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
         //广告1
-	$ad1 = array(
-		'top'=>290,
-		'fontsize'=>11,
-		'width'=>320,
-		'left'=>25,
-		'hang_size'=>20,
-		'color'=>array(131,131,131)
-	);
-	$ads1 = array(
-		'maxline'=>2,
-		'width'=>320,
-		'left'=>25,
-	);
-	$this->textalign($im,$ad1,strip_tags($gData['ad1']),true,$font_file,0,$ads1);
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+
+        imagettftext($im, $fontSize, 0, $x, 420, $font_color_2, $font_file, $gData['ad1']);
+        
         //广告2
-	$ad2 = array(
-		'top'=>290,
-		'fontsize'=>11,
-		'width'=>320,
-		'left'=>25,
-		'hang_size'=>20,
-		'color'=>array(131,131,131)
-	);
-	$ads2 = array(
-		'maxline'=>2,
-		'width'=>320,
-		'left'=>25,
-	);
-	$this->textalign($im,$ad2,strip_tags($gData['ad2']),true,$font_file,0,$ads2);
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+
+        imagettftext($im, $fontSize, 0, $x, 450, $font_color_2, $font_file, $gData['ad2']);
         //广告3
-	$ad3 = array(
-		'top'=>290,
-		'fontsize'=>11,
-		'width'=>320,
-		'left'=>25,
-		'hang_size'=>20,
-		'color'=>array(131,131,131)
-	);
-	$ads3 = array(
-		'maxline'=>2,
-		'width'=>320,
-		'left'=>25,
-	);
-	$this->textalign($im,$ad3,strip_tags($gData['ad3']),true,$font_file,0,$ads3);
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+
+        imagettftext($im, $fontSize, 0, $x, 480, $font_color_2, $font_file, $gData['ad3']);
 
     //二维码
 
@@ -281,7 +258,6 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     imagedestroy($avatarImg);
     
-    imagedestroy($ggImg);
             
     imagedestroy($codeImg);
     
@@ -467,11 +443,33 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 	
 	//广告
 
-    list($g_w,$g_h) = getimagesize($url."/img/code_png/gg.jpg");
+//    list($g_w,$g_h) = getimagesize($url."/img/code_png/gg.jpg");
+//
+//    $ggImg = @imagecreatefrompng($url."/img/code_png/gg.jpg");
+//	
+//    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
+         //广告1
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
 
-    $ggImg = @imagecreatefrompng($url."/img/code_png/gg.jpg");
-	
-    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
+        imagettftext($im, $fontSize, 0, $x, 420, $font_color_2, $font_file, $gData['ad1']);
+        
+        //广告2
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+
+        imagettftext($im, $fontSize, 0, $x, 450, $font_color_2, $font_file, $gData['ad2']);
+        //广告3
+	$fontSize  = 11; 
+        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
+        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
+        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+
+        imagettftext($im, $fontSize, 0, $x, 480, $font_color_2, $font_file, $gData['ad3']);
 
     //二维码
 
@@ -511,8 +509,6 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
     imagedestroy($coverimageImg);
 
     imagedestroy($avatarImg);
-    
-    imagedestroy($ggImg);
             
     imagedestroy($codeImg);
     
