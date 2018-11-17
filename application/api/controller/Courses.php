@@ -228,7 +228,7 @@ class Courses extends Api
                             ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
                             ->find();
             $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
-            $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
+//            $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
 
             //同步新增到course浏览数+1
             db('course')->where('id',$course_id)->setInc('readnum');

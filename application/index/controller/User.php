@@ -48,7 +48,7 @@ class User extends Frontend
 
     public function third()
     {
-        $this->redirect('third/connect/wechat');
+        $this->redirect('third/connect/wechat','platform');
     }
 
     public function my_course()
