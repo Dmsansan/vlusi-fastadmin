@@ -119,8 +119,6 @@ $(function () {
                                     alert(JSON.stringify(res));
                                 }
                             };
-                                console.log(shareDate);
-                                console.log('begin');
 
                             if (wx.onMenuShareAppMessage) {
                                 wx.onMenuShareAppMessage({
@@ -268,10 +266,13 @@ $(function () {
                         token: localStorage.getItem('token')
                     }, function (data) {
                         if (data.code == 1) {
-                            self.configWX = data.data;
-                            self.$nextTick(function () {
-                                shareWeChat(self.configWX);
-                            })
+                            console.log('share begin');
+                            weixinShareTimeline('标题','秒速','url','imgurl');
+
+                            // self.configWX = data.data;
+                            // self.$nextTick(function () {
+                            //     shareWeChat(self.configWX);
+                            // })
                         }
                     });
                     function shareWeChat(todo) {
@@ -287,6 +288,18 @@ $(function () {
                             ] // 必填，需要使用的JS接口列表
                         });
                     }
+
+                    function weixinShareTimeline(title,desc,link,imgUrl){
+                        WeixinJSBridge.invoke('shareTimeline',{
+                            "img_url":imgUrl,
+                            //"img_width":"640",
+                            //"img_height":"640",
+                            "link":link,
+                            "desc": desc,
+                            "title":title
+                        });
+                    }
+
 
                     /*wx.updateAppMessageShareData({
                      title: self.title, // 分享标题
