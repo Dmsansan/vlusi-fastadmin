@@ -173,21 +173,14 @@
         底部评论栏
     -->
     <footer class="bottom-common">
-        <!--<div class="comment-input-container">
+        <div class="comment-input-container">
             <input data-emojiable="true" id="form_article"
-                   v-model="commentsContent" @focus="hideSmile" @blur="blruFn()"
+                   v-model="commentsContent" @focus="hideSmile()" @blur="blruFn()"
                    class="comment-input"
-                   @click="focusInput()"
                    type="text"
                    placeholder="写下你的评论...">
-        </div>-->
-        <div class="comment-input-container">
-            <input data-emojiable="true"
-                   :model="commentsContent"
-                   class="comment-input"
-                   @click="focusInput()"
-                   type="text" placeholder="写下你的评论..."/>
         </div>
+
         <div class="comment-icon-container" :class="{invisible:isFocus}">
            <!-- <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
             <img @click="collect(true)" src="/img/course-detail/like.png"

@@ -301,6 +301,27 @@ window.onload = function () {
                 }, function (data) {
                     if(data.code == 1){
                         self.configWX = data.data;
+                        let shareData = {
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                        };
+                        if(wx.onMenuShareAppMessage){ //微信文档中提到这两个接口即将弃用，故判断
+                            wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
+                        }else{
+                            wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
+                        }
+                       /* wx.updateAppMessageShareData({
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            success: function () {
+                                // 设置成功
+                            }
+                        });*/
+
                         self.$nextTick(function () {
                             shareWeChat(self.configWX);
                         })
@@ -318,15 +339,6 @@ window.onload = function () {
                        ] // 必填，需要使用的JS接口列表
                    });
                }
-                wx.updateAppMessageShareData({
-                    title: self.title, // 分享标题
-                    desc: self.desc, // 分享描述
-                    link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                    imgUrl: self.imgUrl, // 分享图标
-                    success: function () {
-                        // 设置成功
-                    }
-                });
 
             },
             generateCard:function () {
