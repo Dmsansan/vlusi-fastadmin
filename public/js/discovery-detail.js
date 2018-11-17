@@ -106,6 +106,20 @@ $(function () {
                         self.imgUrl = data.data.detail.coverimage;
                         self.title = data.data.detail.name;
                         self.desc = data.data.detail.desc;
+                        wx.ready(function () {
+                            let shareData = {
+                                title: self.title, // 分享标题
+                                desc: self.desc, // 分享描述
+                                link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl: self.imgUrl, // 分享图标
+                            };
+                            if(wx.onMenuShareAppMessage){
+                                wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
+                            }else {
+                                wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
+                            }
+
+                        })
                     });
 
                 },
@@ -227,17 +241,6 @@ $(function () {
                     }, function (data) {
                         if(data.code == 1){
                             self.configWX = data.data;
-                            let shareData = {
-                                title: self.title, // 分享标题
-                                desc: self.desc, // 分享描述
-                                link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                imgUrl: self.imgUrl, // 分享图标
-                            };
-                            if(wx.onMenuShareAppMessage){ //微信文档中提到这两个接口即将弃用，故判断
-                                wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
-                            }else{
-                                wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
-                            }
                             self.$nextTick(function () {
                                 shareWeChat(self.configWX);
                             })
@@ -251,6 +254,7 @@ $(function () {
                             nonceStr: todo.nonceStr, // 必填，生成签名的随机串
                             signature: todo.signaTure,// 必填，签名
                             jsApiList: [
+                                "onMenuShareAppMessage",//分享给朋友接口
                                 "updateAppMessageShareData"//分享给朋友接口
                             ] // 必填，需要使用的JS接口列表
                         });
