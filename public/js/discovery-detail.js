@@ -119,6 +119,8 @@ $(function () {
                                     alert(JSON.stringify(res));
                                 }
                             };
+                            console.log(shareData);
+
                             if(wx.onMenuShareAppMessage){
                                 wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
                             }else {
