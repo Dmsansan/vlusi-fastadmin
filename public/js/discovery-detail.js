@@ -112,6 +112,12 @@ $(function () {
                                 desc: self.desc, // 分享描述
                                 link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                                 imgUrl: self.imgUrl, // 分享图标
+                                success:function(){
+                                    alert('111')
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
                             };
                             if(wx.onMenuShareAppMessage){
                                 wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
