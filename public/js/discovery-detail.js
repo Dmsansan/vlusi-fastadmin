@@ -265,6 +265,7 @@ $(function () {
                 },
                 sendToFriend: function () {
                     //发给好友
+                    mui("#popover").popover('toggle', document.getElementById("div"));
                     let self = this;
                     self.shareUrl = location.href.split('#')[0];
                     $.post('/api/index/getShareSigna', {

@@ -31,11 +31,13 @@ window.onload = function () {
                     mui.openWindow({
                         url:'/index'
                     })
-                }else if(id == 2){//我的
+                }else if(id == 2){//f发现
                     mui.openWindow({
                         url:'/index/found'
                     })
                 }
+
+
             },
             goSetting:function () {
                 mui.openWindow({

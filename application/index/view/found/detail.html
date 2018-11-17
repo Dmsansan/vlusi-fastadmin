@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="/css/discovery-detail.css"/>
     <style>
         .note-video-clip{width: 100% !important;  margin-left: 0 !important;}
+        #popover{  top:50px !important;  width: 200px !important;  left: 150px !important;  background-color:transparent !important;  }
+        /*移除底部或顶部三角,需要在删除此代码*/
+        .mui-popover .mui-popover-arrow:after {  width: 0px;  }
+        .friends{  text-align: center;  color: #ffffff;  width: 200px;  transform:rotate(250deg);  background-size: cover;  }
     </style>
 </head>
 <body>
@@ -152,6 +156,10 @@
             <img :src="sharePictures" class="card-view-preview-img">
         </div>
         <button class="card-view-save-btn">长按图片保存</button>
+    </div>
+    <div id="div"></div>
+    <div id="popover" class="mui-popover" >
+        <img src="/img/course-detail/friend.png" class="friends">
     </div>
 </div>
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
