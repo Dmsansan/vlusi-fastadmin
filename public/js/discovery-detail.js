@@ -117,6 +117,7 @@ $(function () {
                                 wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
                             }else {
                                 wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
+
                             }
 
                         })
