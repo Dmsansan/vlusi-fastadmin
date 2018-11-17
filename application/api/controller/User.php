@@ -185,6 +185,7 @@ class User extends Api
         foreach($myCollection as $key=>$val){
             $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
             $myCollection[$key]['course_nodes']=$nodes;
+            $myCollection[$key]['createtime']=date('Y-m-d',$val['createtime']);
         }
 
         $this->success('获取成功',$myCollection,$pages);
@@ -220,7 +221,9 @@ class User extends Api
 
        $pages['page_count']=ceil($allpage/$this->pagesize);
         foreach($myCollection as $key=>$val){
-            $myCollection[$key]['content']=strip_tags($val['content']);//$this->strip($val['content']);
+            $myCollection[$key]['content']=mb_substr(strip_tags($val['content']),0,40);//$this->strip($val['content']);
+            $myCollection[$key]['createtime']=$val['createtime'];//$this->strip($val['content']);
+
         }
 
 

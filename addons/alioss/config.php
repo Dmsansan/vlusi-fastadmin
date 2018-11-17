@@ -131,7 +131,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => '80M',
+    'value' => '2000M',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
