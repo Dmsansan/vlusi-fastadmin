@@ -130,7 +130,8 @@ window.onload = function () {
                        }else {
                            self.reviewUnpass();
                        }
-
+                   }else {
+                       mui.toast('取消课程失败！')
                    }
                 });
             },

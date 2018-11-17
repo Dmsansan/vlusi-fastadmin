@@ -69,9 +69,9 @@
                 <template v-if="item.coverimage">
                     <div class="top-part">
                         <p class="tab-content-item-title">{{item.name}}</p>
-                        <button type="button"
-                                @click="cancelCourse(item.id,1)"
-                                class="cancel-course">取消课程</button>
+                       <!-- <button type="button"
+                                @click.stop="cancelCourse(item.id,1)"
+                                class="cancel-course">取消课程</button>-->
                     </div>
                     <div @click="goCourse(item.id)"  class="img-and-desc">
                         <img class="tab-content-item-img" :src="item.coverimage">
@@ -99,7 +99,7 @@
             <li v-for="(item,index) in unauditList" class="tab-content-item">
                 <div class="top-part">
                     <p class="tab-content-item-title">{{item.name}}</p>
-                    <button type="button"  @click="cancelCourse(item.id,2)"
+                    <button type="button"  @click.stop="cancelCourse(item.id,2)"
                             class="cancel-course">取消课程</button>
                 </div>
                 <div @click="goCourse(item.id)" class="img-and-desc">
