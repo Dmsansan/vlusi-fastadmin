@@ -48,7 +48,13 @@ window.onload = function () {
                 },
                 //返回上一步
                 goBack: function () {
-                    history.go(-1);
+                    if( document.referrer === ''){
+                        mui.openWindow({
+                            url:'/index'
+                        })
+                    }else {
+                        history.go(-1);
+                    }
                 },
                 uploadPicture:function () {
                     let self = this;
@@ -174,7 +180,13 @@ window.onload = function () {
                 },
                 //返回上一步
                 goBack: function () {
-                    history.go(-1);
+                    if( document.referrer === ''){
+                        mui.openWindow({
+                            url:'/index'
+                        })
+                    }else {
+                        history.go(-1);
+                    }
                 },
                 //回复
                 replay:function (id,article) {

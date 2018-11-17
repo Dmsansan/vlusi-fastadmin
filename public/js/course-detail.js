@@ -171,7 +171,15 @@ window.onload = function () {
                 document.getElementById('upload-img').click();
             },
             goBack: function () {
-                history.go(-1);
+                if( document.referrer === ''){
+                    mui.openWindow({
+                        url:'/index'
+                    })
+                }else {
+                    history.go(-1);
+                }
+
+
             },
             saveImg:function () {
                 let self = this;

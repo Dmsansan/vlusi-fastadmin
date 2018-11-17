@@ -169,7 +169,13 @@ $(function () {
                 },
                 //返回上一步
                 goBack: function () {
-                    history.go(-1);
+                    if( document.referrer === ''){
+                        mui.openWindow({
+                            url:'/index'
+                        })
+                    }else {
+                        history.go(-1);
+                    }
                 },
                 likeComment: function (flag, id) {
                     let self = this;

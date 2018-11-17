@@ -28,7 +28,13 @@ window.onload = function () {
             methods: {
                 //返回上一步
                 goBack: function () {
-                    history.go(-1);
+                    if( document.referrer === ''){
+                        mui.openWindow({
+                            url:'/index'
+                        })
+                    }else {
+                        history.go(-1);
+                    }
                 },
                 //评论点赞
                 likeComment:function(id,flag) {
@@ -170,7 +176,13 @@ window.onload = function () {
                 },
                 //返回上一步
                 goBack: function () {
-                    history.go(-1);
+                    if( document.referrer === ''){
+                        mui.openWindow({
+                            url:'/index'
+                        })
+                    }else {
+                        history.go(-1);
+                    }
                 },
                 //回复
                 replay:function (id,course) {
