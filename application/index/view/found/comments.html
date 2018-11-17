@@ -46,7 +46,7 @@
                         <p class="comments-content">
                             {{commentsList.content}}
                         </p>
-                        <p class="comments-img" v-if="commentsList.img  ">
+                        <p class="comments-img" v-if="commentsList.img">
                             <img  :src="commentsList.img"/>
                         </p>
                         <div class="comments-operation">
@@ -81,7 +81,7 @@
                                     {{item.content}}
                                 </p>
                                 <p class="comments-img" v-if="item.img">
-                                    <img v-for="n in 5" src="/img/show.jpg"/>
+                                    <img  :src="item.img"/>
                                 </p>
                                 <div class="comments-operation">
                                     <p class="comments-time">刚刚</p>
