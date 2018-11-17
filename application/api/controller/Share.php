@@ -257,7 +257,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
     public function getcourseimage()
     {
         $course_id =   (int)$this->request->request("course_id");
-$course_id = 48;
+
         if (!$course_id)
         {
             $this->error(__('课时id为空'));
