@@ -330,7 +330,7 @@ class User extends Api
         $userid = $this->auth->getUser()->id;
         $course_id =(int)$this->request->post("course_id");
 
-        $res=db('course_audit')->where(['user_id'=>$userid,'course_id'=>$course_id])->delete();
+        $res=db('course_audit')->where(['user_id'=>$userid,'id'=>$course_id])->delete();
         if($res){
             $this->success('取消成功');
         }else{
