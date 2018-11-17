@@ -84,7 +84,7 @@
                                     <img  :src="item.img"/>
                                 </p>
                                 <div class="comments-operation">
-                                    <p class="comments-time">刚刚</p>
+                                    <p class="comments-time">{{item.createtime}}</p>
                                     <button @click="replay(item.id,item.article_id)" type="button" class="reply-comments">回复</button>
                                 </div>
                             </div>
