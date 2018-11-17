@@ -64,8 +64,11 @@ class Service
                 $fields = ['username' => 'u' . $user->id, 'email' => 'u' . $user->id . '@fastadmin.net'];
                 if (isset($params['userinfo']['nickname']))
                     $fields['nickname'] = $params['userinfo']['nickname'];
-                if (isset($params['userinfo']['avatar']))
+                if (isset($params['userinfo']['avatar'])){
                     $fields['avatar'] = $params['userinfo']['avatar'];
+                }else{
+                    $fields['avatar']='http://leyanglao.oss-cn-hangzhou.aliyuncs.com/yanglao/20181116/603f8cd1cbdf717c776a24d1614b078c.png';
+                }
 
                 // 更新会员资料
                 $user = User::get($user->id);
