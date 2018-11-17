@@ -318,6 +318,7 @@ window.onload = function () {
             //因为页面一旦分享，微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败。
             sendToFriend:function () {
                 let self = this;
+                mui("#popover").popover('toggle', document.getElementById("div"));
                 //发给好友
                 self.shareUrl  = location.href.split('#')[0];
                 $.post('/api/index/getShareSigna', {

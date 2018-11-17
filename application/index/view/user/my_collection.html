@@ -68,7 +68,7 @@
                     <div class="top-part">
                         <p class="tab-content-item-title">{{item.name}}</p>
                     </div>
-                    <div  @click="goCourse(item.id)" class="img-and-desc">
+                    <div  @click="goCourse(item.course_id)" class="img-and-desc">
                         <img class="tab-content-item-img"
                              :src="item.coverimage">
                         <div class="right-part">
@@ -97,7 +97,7 @@
                 <div class="top-part">
                     <p class="tab-content-item-title">{{item.title}}</p>
                 </div>
-                <div @click="goDiscovery(item.id)" class="img-and-desc">
+                <div @click="goDiscovery(item.article_id)" class="img-and-desc">
                     <img class="tab-content-item-img" :src="item.coverimage">
                     <div class="right-part">
                         <div class="right-top">

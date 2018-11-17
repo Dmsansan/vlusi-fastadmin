@@ -73,7 +73,7 @@
                                 @click.stop="cancelCourse(item.id,1)"
                                 class="cancel-course">取消课程</button>-->
                     </div>
-                    <div @click="goCourse(item.id)"  class="img-and-desc">
+                    <div @click="goCourse(item.course_id)"  class="img-and-desc">
                         <img class="tab-content-item-img" :src="item.coverimage">
                         <div class="right-part">
                             <div class="right-top">
@@ -102,7 +102,7 @@
                     <button type="button"  @click.stop="cancelCourse(item.id,2)"
                             class="cancel-course">取消课程</button>
                 </div>
-                <div @click="goCourse(item.id)" class="img-and-desc">
+                <div @click="goCourse(item.course_id)" class="img-and-desc">
                     <img class="tab-content-item-img" :src="item.coverimage">
                     <div class="right-part">
                         <div class="right-top">

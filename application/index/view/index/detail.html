@@ -10,6 +10,21 @@
     <!-- Begin emoji-picker Stylesheets -->
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
     <link href="/assets/emoji/css/emoji.css" rel="stylesheet">
+    <style>
+        #div {
+            width: 0px;
+            height: 0px;
+            background: red;
+            position: fixed;
+            top: 70%;
+            left: 50%;
+        }
+        #popover{  top:150px !important;}
+        /*移除底部或顶部三角,需要在删除此代码*/
+        .mui-popover .mui-popover-arrow:after {
+            width: 0px;
+        }
+    </style>
 </head>
 <body>
 <div id="app" class="mui-content" v-cloak>
@@ -231,6 +246,11 @@
 
         </div>
         <button class="card-view-save-btn">长按图片保存</button>
+    </div>
+    <div id="div"></div>
+    <div id="popover" class="mui-popover" style="height: 250px;">
+        <div class="mui-popover-arrow"></div>
+        <div>点击右上角可以分享给好友</div>
     </div>
 </div>
 <script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
