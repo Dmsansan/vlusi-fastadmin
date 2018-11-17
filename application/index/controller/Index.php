@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
@@ -19,8 +19,8 @@ class Index extends Frontend
 
     public function index()
     {
-        $token=$this->request->get('token');
-//        $token=$this->auth->getToken();
+//        $token=$this->request->get('token');
+        $token=$this->auth->getToken();
         $this->assign('token',$token);
 
         return $this->view->fetch();
@@ -57,9 +57,9 @@ class Index extends Frontend
         $param['appid']='wx1fab8067cbc162c7';
         $param['secret']='d638ba9b21a7ca01277fa6a8e3f0fc9e';
 
-        $url="https://api.weixin.qq.com/cgi-bin/token?".http_build_query($param);
-        $access=file_get_contents($url);
-        dump($access);die;
+//        $url="https://api.weixin.qq.com/cgi-bin/token?".http_build_query($param);
+//        $access=file_get_contents($url);
+//        dump($access);die;
 
     }
 
