@@ -30,7 +30,13 @@ let app = new Vue({
             })
         },
         goBack:function () {
-            history.go(-1);
+            if( document.referrer === ''){
+                mui.openWindow({
+                    url:'/index'
+                })
+            }else {
+                history.go(-1);
+            }
         }
     },
     created: function () {

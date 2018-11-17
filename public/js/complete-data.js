@@ -60,7 +60,13 @@
             },
             //返回上一步
             goBack: function () {
-                history.go(-1);
+                if( document.referrer === ''){
+                    mui.openWindow({
+                        url:'/index'
+                    })
+                }else {
+                    history.go(-1);
+                }
             },
             skipChange:function () {
                 // mui.toast('跳过')
