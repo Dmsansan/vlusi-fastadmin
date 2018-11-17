@@ -355,8 +355,8 @@ window.onload = function () {
                 //生成卡片
                 self.isShowCard = true;
 
-                $.post('/api/share/getimage', {
-                    article_id: self.passID,
+                $.post('/api/share/getcourseimage', {
+                    course_id: self.passID,
                     token:localStorage.getItem('token')
                 }, function (data) {
                     self.sharePictures = data.data.url;
