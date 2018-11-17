@@ -185,7 +185,7 @@ class User extends Api
         foreach($myCollection as $key=>$val){
             $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
             $myCollection[$key]['course_nodes']=$nodes;
-            $myCollection[$key]['createtime']=date('Y-m-d',$val['createtime']);
+            $myCollection[$key]['createtime']=date('Y-m-d H:i:s',$val['createtime']);
         }
 
         $this->success('获取成功',$myCollection,$pages);
@@ -222,7 +222,7 @@ class User extends Api
        $pages['page_count']=ceil($allpage/$this->pagesize);
         foreach($myCollection as $key=>$val){
             $myCollection[$key]['content']=mb_substr(strip_tags($val['content']),0,40);//$this->strip($val['content']);
-            $myCollection[$key]['createtime']=$val['createtime'];//$this->strip($val['content']);
+            $myCollection[$key]['createtime']=date('Y-m-d H:i:s',$val['createtime']);//$this->strip($val['content']);
 
         }
 
@@ -263,6 +263,7 @@ class User extends Api
         foreach($mycourse as $key=>$val){
             $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
             $mycourse[$key]['course_nodes']=$nodes;
+            $mycourse[$key]['createtime']=date('Y-m-d H:i:s',$val['createtime']);
         }
 
 
@@ -304,6 +305,8 @@ class User extends Api
         foreach($mycourse as $key=>$val){
             $nodes=db('course_nodes')->where(['course_id'=>$val['course_id']])->field('title as node_title')->limit(0,3)->select();
             $mycourse[$key]['course_nodes']=$nodes;
+            $mycourse[$key]['createtime']=date('Y-m-d H:i:s',$val['createtime']);
+
         }
 
 
