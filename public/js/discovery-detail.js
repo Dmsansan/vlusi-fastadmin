@@ -116,8 +116,10 @@ $(function () {
                                 };
                                 if(wx.onMenuShareAppMessage){
                                     wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
+                                    wx.onMenuShareTimeline(shareData);//1.0 分享到朋友
                                 }else {
                                     wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
+                                    wx.updateTimelineShareData(shareData);//1.4 分享到朋友圈
 
                                 }
 
@@ -146,7 +148,9 @@ $(function () {
                                     signature: todo.signaTure,// 必填，签名
                                     jsApiList: [
                                         "onMenuShareAppMessage",//分享给朋友接口
-                                        "updateAppMessageShareData"//分享给朋友接口
+                                        "updateAppMessageShareData",//分享给朋友接口
+                                        "onMenuShareTimeline",//分享到朋友圈
+                                        "updateTimelineShareData"//分享到朋友圈
                                     ] // 必填，需要使用的JS接口列表
                                 });
                             }
