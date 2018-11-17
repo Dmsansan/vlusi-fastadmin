@@ -83,7 +83,7 @@
                             </div>
                             <p class="info-time">
                                 <span></span>
-                                <span>1小时前</span>
+                                <span>{{item.createtime}}</span>
                             </p>
                         </div>
                     </div>
@@ -107,12 +107,12 @@
                     <div class="right-part">
                         <div class="right-top">
                             <p class="course-hour" v-for="(item,index) in item.course_nodes">
-                                {{item}}
+                                {{item.node_title}}
                             </p>
                         </div>
                         <p class="info-time">
                             <span></span>
-                            <span>1小时前</span>
+                            <span>{{item.createtime}}</span>
                         </p>
                     </div>
                 </div>

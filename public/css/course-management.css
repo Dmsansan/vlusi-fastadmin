@@ -90,6 +90,10 @@ img.tab-content-item-img {
     border-radius: 8px;
 }
 p.tab-content-item-title {
+    width: 80%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     font-size: 1.2rem;
     color: #333333;
     font-weight: 400;

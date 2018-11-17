@@ -38,6 +38,8 @@ img.user-info-logo {
     position: absolute;
     top: -45px;
     width: 100%;
+    z-index: 2;
+    height: 200px;
 }
 p.user-info-nickname {
     font-size: 1rem;
