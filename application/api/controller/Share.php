@@ -111,6 +111,8 @@ function createSharePng($gData,$codeName,$fileName = ''){
     $im = imagecreatetruecolor(375, 667);
 
     $url = "http://".$_SERVER['HTTP_HOST'];
+    
+    $urls = 'http://leyanglao.oss-cn-hangzhou.aliyuncs.com/';
 
     //填充画布背景色
 
@@ -136,8 +138,8 @@ function createSharePng($gData,$codeName,$fileName = ''){
  
 
     //封面图
-    list($c_w,$c_h) = getimagesize($url.$gData['coverimage']);
-    $coverimageImg = $this->createImageFromFile($url.$gData['coverimage']);
+    list($c_w,$c_h) = getimagesize($urls.$gData['coverimage']);
+    $coverimageImg = $this->createImageFromFile($urls.$gData['coverimage']);
     imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
 
  
@@ -178,14 +180,14 @@ function createSharePng($gData,$codeName,$fileName = ''){
 	
     //头像
 
-    list($a_w,$a_h) = getimagesize($url.$gData['avatar']);
+    list($a_w,$a_h) = getimagesize($urls.$gData['avatar']);
 
-    $avatarImg = $this->createImageFromFile($url.$gData['avatar']);
+    $avatarImg = $this->createImageFromFile($urls.$gData['avatar']);
 	
     imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
 	//作者
 	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
-	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, $gData['signtext']);
+	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, '乐养老官方账号');
 	
 	//广告
 
@@ -255,7 +257,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
     public function getcourseimage()
     {
         $course_id =   (int)$this->request->request("course_id");
-        $course_id = 48;
+$course_id = 48;
         if (!$course_id)
         {
             $this->error(__('课时id为空'));
@@ -340,6 +342,8 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
     $im = imagecreatetruecolor(375, 667);
 
     $url = "http://".$_SERVER['HTTP_HOST'];
+    
+    $urls = 'http://leyanglao.oss-cn-hangzhou.aliyuncs.com/';
 
     //填充画布背景色
 
@@ -365,8 +369,8 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
  
 
     //封面图
-    list($c_w,$c_h) = getimagesize($url.$gData['coverimage']);
-    $coverimageImg = $this->createImageFromFile($url.$gData['coverimage']);
+    list($c_w,$c_h) = getimagesize($urls.$gData['coverimage']);
+    $coverimageImg = $this->createImageFromFile($urls.$gData['coverimage']);
     imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
 
  
@@ -407,14 +411,14 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 	
     //头像
 
-    list($a_w,$a_h) = getimagesize($url.$gData['avatar']);
+    list($a_w,$a_h) = getimagesize($urls.$gData['avatar']);
 
-    $avatarImg = $this->createImageFromFile($url.$gData['avatar']);
+    $avatarImg = $this->createImageFromFile($urls.$gData['avatar']);
 	
     imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
 //	作者
 	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
-	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, $gData['signtext']);
+	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, '乐养老官方账号');
 	
 	//广告
 
