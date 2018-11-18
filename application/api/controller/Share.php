@@ -69,7 +69,7 @@ class Share extends Api
             $QR_height = imagesy($QR);     //二维码图片高度
             $logo_width = imagesx($logo);    //logo图片宽度
             $logo_height = imagesy($logo);   //logo图片高度
-            $logo_qr_width = $QR_width / 4;   //组合之后logo的宽度(占二维码的1/5)
+            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
             $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
             $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
             $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
@@ -321,7 +321,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
             $QR_height = imagesy($QR);     //二维码图片高度
             $logo_width = imagesx($logo);    //logo图片宽度
             $logo_height = imagesy($logo);   //logo图片高度
-            $logo_qr_width = $QR_width / 4;   //组合之后logo的宽度(占二维码的1/5)
+            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
             $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
             $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
             $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
