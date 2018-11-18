@@ -105,7 +105,7 @@ $(function () {
 
                         //分享内容
                         self.imgUrl = data.data.detail.coverimage;
-                        self.title = data.data.detail.name;
+                        self.title = data.data.detail.title;
                         self.desc = data.data.detail.desc;
                         wx.ready(function () {
                             let shareData = {
