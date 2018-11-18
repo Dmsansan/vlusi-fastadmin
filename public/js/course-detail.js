@@ -6,9 +6,9 @@ window.onload = function () {
             isHidden: true,
             openTitle: '展开全部',
             //获取课程数据
-            detailList:[],
+            detailList: [],
             //课时列表
-            courseList:[],
+            courseList: [],
             //评论输入的内容
             commentsContent: '',
             //评论发表聚焦
@@ -16,207 +16,168 @@ window.onload = function () {
             //发送按钮禁用
             isDisabled: true,
             //是否点击上传按钮
-            isUploadImage:true,
+            isUploadImage: true,
             //上传图片地址数组
-            imgList:[],
-           /* //是否收藏
-            isCollect:false,*/
+            imgList: [],
+            /* //是否收藏
+             isCollect:false,*/
             //页面页码
-            pageNumber:1,
+            pageNumber: 1,
             //页面总页数
-            pageCount:null,
+            pageCount: null,
             //加载更多
-            loadMore:false,
+            loadMore: false,
             //文章点赞
-            isLikeArt:false,
-            likeArtNums:0,
+            isLikeArt: false,
+            likeArtNums: 0,
             //课程状态0:可以申请，1：审核中，2：开放
-            courseStatus:0,
+            courseStatus: 0,
             //是否展示卡片视图
-            isShowCard:false,
+            isShowCard: false,
             //课程评论
-            commentsList:[],
+            commentsList: [],
             //分享图片
-            sharePictures:'',
+            sharePictures: '',
             //页面跳转时传递的id
-            passID:null,
-            formdata:new FormData(),
+            passID: null,
+            formdata: new FormData(),
             imgs: [],
             //分享内容
-            imgUrl:'',
-            title:'',
-            desc:'',
-            shareUrl:'',
-            configWX:[],
+            imgUrl: '',
+            title: '',
+            desc: '',
+            shareUrl: '',
+            configWX: [],
 
         },
         mounted() {
 
         },
         methods: {
-            touchStart (e) {
+            touchStart(e) {
                 this.startY = e.targetTouches[0].pageY
             },
-            touchMove (e) {
+            touchMove(e) {
                 if (e.targetTouches[0].pageY < this.startY) { // 上拉
-                    if(this.loadMore){
+                    if (this.loadMore) {
                         this.judgeScrollBarToTheEnd()
                     }
                 }
             },
             // 判断滚动条是否到底
-            judgeScrollBarToTheEnd () {
+            judgeScrollBarToTheEnd() {
                 let innerHeight = document.querySelector('.active').clientHeight
                 // 变量scrollTop是滚动条滚动时，距离顶部的距离
                 let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
                 // 变量scrollHeight是滚动条的总高度
                 let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
                 // 滚动条到底部的条件
-                if (scrollTop + scrollHeight >= innerHeight-6000) {
+                if (scrollTop + scrollHeight >= innerHeight - 6000) {
                     this.infiniteLoadDone()
                 }
             },
-            infiniteLoadDone () {
+            infiniteLoadDone() {
                 let self = this;
                 //总页数
-                if(self.pageCount >self.pageNumber){
-                    self.pageNumber +=1;
+                if (self.pageCount > self.pageNumber) {
+                    self.pageNumber += 1;
                     $.post('/api/courses/course', {
                         title: self.searchKeys,
-                        token:localStorage.getItem('token'),
-                        page:self.pageNumber
+                        token: localStorage.getItem('token'),
+                        page: self.pageNumber
                     }, function (data) {
-                        data.data.forEach(function (item,index) {
+                        data.data.forEach(function (item, index) {
                             self.searchList.push(item)
                         });
                     });
-                }else {
+                } else {
                     return
                 }
             },
 
             //课程详情
-            courseDetails:function () {
+            courseDetails: function () {
                 let self = this;
                 $.post('/api/courses/detail', {
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     course_id: self.passID,
-                    page:self.pageNumber
+                    page: self.pageNumber
                 }, function (data) {
                     self.detailList = data.data;
                     self.courseList = data.data.detail.node;
                     self.commentsList = data.data.comment;
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
-                    self.$nextTick(function () {
-                        //分享内容
-                        self.imgUrl = data.data.detail.coverimage;
-                        self.title = data.data.detail.name;
-                        self.desc = data.data.detail.desc;
 
-                        wx.ready(function () {
-                            let shareData = {
+                    //分享内容
+                    self.imgUrl = data.data.detail.coverimage;
+                    self.title = data.data.detail.name;
+                    self.desc = data.data.detail.desc;
+
+                    wx.ready(function () {
+                        let shareData = {
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            success: function () {
+                                /*alert('111')*/
+                            },
+                            fail: function (res) {
+                                /* alert(JSON.stringify(res));*/
+                            }
+                        };
+
+                        if (wx.onMenuShareAppMessage) {
+                            wx.onMenuShareAppMessage({
+                                title: self.title, // 分享标题
+                                desc: self.desc, // 分享描述
+                                link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl: self.imgUrl, // 分享图标
+                                type: '', // 分享类型,music、video或link，不填默认为link
+                                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                success: function () {
+                                    /* alert(1111);*/
+                                }
+                            });
+
+                            wx.onMenuShareTimeline({
+                                title: self.title, // 分享标题
+                                desc: self.desc, // 分享描述
+                                link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl: self.imgUrl, // 分享图标
+                                type: '', // 分享类型,music、video或link，不填默认为link
+                                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                success: function () {
+                                    /* alert(1111);*/
+                                }
+                            })
+                        } else {
+                            wx.updateTimelineShareData({
                                 title: self.title, // 分享标题
                                 desc: self.desc, // 分享描述
                                 link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
-                                    /*alert('111')*/
-                                },
-                                fail: function (res) {
-                                    /* alert(JSON.stringify(res));*/
+                                    // 设置成功
+                                    /*alert(141414);*/
                                 }
-                            };
-
-                            if (wx.onMenuShareAppMessage) {
-                                wx.onMenuShareAppMessage({
-                                    title: self.title, // 分享标题
-                                    desc: self.desc, // 分享描述
-                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: self.imgUrl, // 分享图标
-                                    type: '', // 分享类型,music、video或link，不填默认为link
-                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                                    success: function () {
-                                        /* alert(1111);*/
-                                    }
-                                });
-
-                                wx.onMenuShareTimeline({
-                                    title: self.title, // 分享标题
-                                    desc: self.desc, // 分享描述
-                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: self.imgUrl, // 分享图标
-                                    type: '', // 分享类型,music、video或link，不填默认为link
-                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                                    success: function () {
-                                        /* alert(1111);*/
-                                    }
-                                })
-                            } else {
-                                wx.updateTimelineShareData({
-                                    title: self.title, // 分享标题
-                                    desc: self.desc, // 分享描述
-                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: self.imgUrl, // 分享图标
-                                    success: function () {
-                                        // 设置成功
-                                        /*alert(141414);*/
-                                    }
-                                });
-                                wx.updateAppMessageShareData({
-                                    title: self.title, // 分享标题
-                                    desc: self.desc, // 分享描述
-                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: self.imgUrl, // 分享图标
-                                    success: function () {
-                                        // 设置成功
-                                        /*alert(141414);*/
-                                    }
-                                })
-                            }
-
-                        })
-
-                        //发给好友
-                        self.shareUrl  = location.href.split('#')[0];
-                        $.post('/api/index/getShareSigna', {
-                            url: encodeURIComponent(self.shareUrl),
-                            token:localStorage.getItem('token')
-                        }, function (data) {
-                            if(data.code == 1){
-                                weixinShareTimeline('标题','秒速','url','imgurl');
-                                /* self.configWX = data.data;
-                                 self.$nextTick(function () {
-                                     shareWeChat(self.configWX);
-                                 })*/
-                            }
-                        });
-                        function shareWeChat(todo) {
-                            wx.config({
-                                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
-                                appId: todo.appid, // 必填，公众号的唯一标识
-                                timestamp: todo.timesTamp, // 必填，生成签名的时间戳
-                                nonceStr: todo.nonceStr, // 必填，生成签名的随机串
-                                signature: todo.signaTure,// 必填，签名
-                                jsApiList: [
-                                    "onMenuShareAppMessage",//分享给朋友接口
-                                    "updateAppMessageShareData",//分享给朋友接口
-                                    "onMenuShareTimeline",//分享到朋友圈
-                                    "updateTimelineShareData"//分享到朋友圈
-                                ] // 必填，需要使用的JS接口列表
                             });
+                            wx.updateAppMessageShareData({
+                                title: self.title, // 分享标题
+                                desc: self.desc, // 分享描述
+                                link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl: self.imgUrl, // 分享图标
+                                success: function () {
+                                    // 设置成功
+                                    /*alert(141414);*/
+                                }
+                            })
                         }
-                        function weixinShareTimeline(title,desc,link,imgUrl){
-                            WeixinJSBridge.invoke('shareTimeline',{
-                                "img_url":imgUrl,
-                                //"img_width":"640",
-                                //"img_height":"640",
-                                "link":link,
-                                "desc": desc,
-                                "title":title
-                            });
-                        }
+
                     })
+
+
                     /*
                     //分享内容
                     self.imgUrl = data.data.detail.coverimage;
@@ -268,15 +229,15 @@ window.onload = function () {
 
             },
             //申请课程
-            applicationClass:function (id) {
+            applicationClass: function (id) {
                 let self = this;
                 $.post('/api/courses/audit', {
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     course_id: id,
                 }, function (data) {
-                   self.$nextTick(function () {
-                       self.courseDetails();
-                   })
+                    self.$nextTick(function () {
+                        self.courseDetails();
+                    })
                 });
             },
             //展开列表
@@ -306,17 +267,17 @@ window.onload = function () {
                 document.getElementById('upload-img').click();
             },
             goBack: function () {
-                if( document.referrer === ''){
+                if (document.referrer === '') {
                     mui.openWindow({
-                        url:'/index'
+                        url: '/index'
                     })
-                }else {
+                } else {
                     history.go(-1);
                 }
 
 
             },
-            saveImg:function () {
+            saveImg: function () {
                 let self = this;
                 self.isDisabled = false;
                 $("#upload-img").change(function () {
@@ -326,29 +287,29 @@ window.onload = function () {
 
             },
             //评论点赞
-            likeComment:function (flag,id) {
+            likeComment: function (flag, id) {
                 let self = this;
                 $.post(' /api/courses/comment_zan', {
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     comment_id: id
                 }, function (data) {
                     self.$nextTick(function () {
                         self.courseDetails();
                     })
                 });
-               /* if(flag){
-                    mui.toast('点赞成功！');
-                }else {
-                    mui.toast('取消点赞成功！');
-                }*/
+                /* if(flag){
+                     mui.toast('点赞成功！');
+                 }else {
+                     mui.toast('取消点赞成功！');
+                 }*/
             },
             //文章点赞
-            likeArticle:function(id,flag) {
+            likeArticle: function (id, flag) {
                 let self = this;
                 self.isLikeArt = flag;
-                if(flag) {
+                if (flag) {
                     self.detailList.detail.zan = ++self.detailList.detail.zan;
-                   self.detailList.is_zan = true;
+                    self.detailList.is_zan = true;
                     // mui.toast('点赞成功！');
                 } else {
                     self.detailList.detail.zan = --self.detailList.detail.zan;
@@ -357,7 +318,7 @@ window.onload = function () {
                 }
 
                 $.post('/api/courses/course_zan', {
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     course_id: id
                 }, function (data) {
                     self.$nextTick(function () {
@@ -366,32 +327,32 @@ window.onload = function () {
                 });
             },
             //回复
-            replay:function (id) {
+            replay: function (id) {
                 $('.emoji-wysiwyg-editor').focus();
             },
             //进入课时
-            goToCourseHour:function (id,name) {
+            goToCourseHour: function (id, name) {
                 console.log(name)
-                if(name == '可体验'){
+                if (name == '可体验') {
                     mui.openWindow({
                         //视频版
-                        url:'/index/index/course_detail?id=' + id
+                        url: '/index/index/course_detail?id=' + id
                         // 图文版
                         // url:'course-hour-detail-pictures.html?id=' + id
                     })
-                }else {
+                } else {
 
                 }
 
             },
-            shareCourse:function() {
+            shareCourse: function () {
                 mui('#share-sheet').popover('toggle');
             },
             //收藏，取消收藏
-            collect:function (flag) {
+            collect: function (flag) {
                 let self = this;
                 $.post('/api/courses/collection', {
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     course_id: self.passID
                 }, function (data) {
                     self.$nextTick(function () {
@@ -399,31 +360,31 @@ window.onload = function () {
 
                     })
                 });
-               /* if(flag) {
-                    self.detailList.detail.is_collection = true;
-                    // mui.toast('已收藏');
-                }
-                else {
-                    self.detailList.detail.is_collection = false;
-                    // mui.toast('已取消收藏');
-                }*/
+                /* if(flag) {
+                     self.detailList.detail.is_collection = true;
+                     // mui.toast('已收藏');
+                 }
+                 else {
+                     self.detailList.detail.is_collection = false;
+                     // mui.toast('已取消收藏');
+                 }*/
             },
             //点击发送按钮
-            reviewBtn:function () {
+            reviewBtn: function () {
                 let self = this;
                 self.isDisabled = true;
                 self.formdata.append('course_id', self.passID);
                 self.formdata.append('token', localStorage.getItem('token'));
                 self.formdata.append('content', self.commentsContent);
                 $.ajax({
-                    url:'/api/courses/comment',
-                    type:'post',
-                    cache:false,
-                    data:self.formdata,
+                    url: '/api/courses/comment',
+                    type: 'post',
+                    cache: false,
+                    data: self.formdata,
                     /*  dataType:'json',*/
-                    processData:false,
-                    contentType:false,
-                    success:function (data) {
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
                         self.$nextTick(function () {
                             self.formdata = new FormData();
                             self.commentsContent = '';
@@ -432,42 +393,43 @@ window.onload = function () {
                             self.courseDetails();
                         })
                     },
-                    error:function (data) {
+                    error: function (data) {
 
                     }
                 })
             },
-            blruFn:function () {
+            blruFn: function () {
                 let self = this;
                 self.isFocus = false;
             },
-            goCommentsDetail:function (id) {
+            goCommentsDetail: function (id) {
                 //查看评论详情
                 mui.openWindow({
-                    url:'/index/index/comments?id='+id
+                    url: '/index/index/comments?id=' + id
                 })
             },
             //确保你获取用来签名的url是动态获取的，动态页面可参见实例代码中php的实现方式。
             //如果是html的静态页面在前端通过ajax将url传到后台签名，前端需要用js获取当前页面除去'#'hash部分的链接
             //（可用location.href.split('#')[0]获取,而且需要encodeURIComponent），
             //因为页面一旦分享，微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败。
-            sendToFriend:function () {
+            sendToFriend: function () {
                 let self = this;
-              /*  mui("#popover").popover('toggle', document.getElementById("div"));
+                mui("#popover").popover('toggle', document.getElementById("div"));
                 //发给好友
-                self.shareUrl  = location.href.split('#')[0];
+                self.shareUrl = location.href.split('#')[0];
                 $.post('/api/index/getShareSigna', {
                     url: encodeURIComponent(self.shareUrl),
-                    token:localStorage.getItem('token')
+                    token: localStorage.getItem('token')
                 }, function (data) {
-                    if(data.code == 1){
-                        weixinShareTimeline('标题','秒速','url','imgurl');
-                        /!* self.configWX = data.data;
+                    if (data.code == 1) {
+                        weixinShareTimeline('标题', '秒速', 'url', 'imgurl');
+                        /* self.configWX = data.data;
                          self.$nextTick(function () {
                              shareWeChat(self.configWX);
-                         })*!/
+                         })*/
                     }
                 });
+
                 function shareWeChat(todo) {
                     wx.config({
                         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
@@ -481,34 +443,35 @@ window.onload = function () {
                         ] // 必填，需要使用的JS接口列表
                     });
                 }
-                function weixinShareTimeline(title,desc,link,imgUrl){
-                    WeixinJSBridge.invoke('shareTimeline',{
-                        "img_url":imgUrl,
+
+                function weixinShareTimeline(title, desc, link, imgUrl) {
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": imgUrl,
                         //"img_width":"640",
                         //"img_height":"640",
-                        "link":link,
+                        "link": link,
                         "desc": desc,
-                        "title":title
+                        "title": title
                     });
-                }*/
+                }
 
             },
-            generateCard:function () {
+            generateCard: function () {
                 let self = this;
                 mui('#share-sheet').popover('toggle');
-                mui.showLoading("正在加载..","div");
+                mui.showLoading("正在加载..", "div");
                 //生成卡片
                 self.isShowCard = true;
 
                 $.post('/api/share/getcourseimage', {
                     course_id: self.passID,
-                    token:localStorage.getItem('token')
+                    token: localStorage.getItem('token')
                 }, function (data) {
                     self.sharePictures = data.data.url;
                     mui.hideLoading();
                 });
             },
-            hidePreview:function () {
+            hidePreview: function () {
                 //关闭图片预览
                 this.isShowCard = false;
             },
@@ -523,7 +486,7 @@ window.onload = function () {
                 }
 
             },
-            isUploadImage:function (newVal,oldVal) {
+            isUploadImage: function (newVal, oldVal) {
 
             }
         },
@@ -551,10 +514,10 @@ window.onload = function () {
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
         let elem = $(this);
         setTimeout(function () {
-            if(app.commentsContent.length == 0 && app.imgList.length == 0) {
+            if (app.commentsContent.length == 0 && app.imgList.length == 0) {
                 app.showSmile();
             }
-        },500);
+        }, 500);
         document.querySelector('#uploadImg').addEventListener('click', function () {
             app.isUploadImage = true;
             app.uploadImg();

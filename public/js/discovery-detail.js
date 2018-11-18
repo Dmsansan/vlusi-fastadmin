@@ -44,15 +44,15 @@ $(function () {
                 shareUrl: '',
                 configWX: [],
             },
-            mounted(){
+            mounted() {
                 /* //初始化数据
                  this.init();*/
             },
             methods: {
-                touchStart (e) {
+                touchStart(e) {
                     this.startY = e.targetTouches[0].pageY
                 },
-                touchMove (e) {
+                touchMove(e) {
                     if (e.targetTouches[0].pageY < this.startY) { // 上拉
                         if (this.loadMore) {
                             this.judgeScrollBarToTheEnd()
@@ -60,7 +60,7 @@ $(function () {
                     }
                 },
                 // 判断滚动条是否到底
-                judgeScrollBarToTheEnd () {
+                judgeScrollBarToTheEnd() {
                     let innerHeight = document.querySelector('.active').clientHeight
                     // 变量scrollTop是滚动条滚动时，距离顶部的距离
                     let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
@@ -71,7 +71,7 @@ $(function () {
                         this.infiniteLoadDone()
                     }
                 },
-                infiniteLoadDone () {
+                infiniteLoadDone() {
                     let self = this;
                     //总页数
                     if (self.pageCount > self.pageNumber) {
@@ -102,116 +102,8 @@ $(function () {
                         self.pageCount = data.page.pageCount;
                         self.loadMore = true;
                         self.isVideo = data.data.detail.videofile ? true : false;
-                        self.$nextTick(function () {
-                            //分享内容
-                            self.imgUrl = data.data.detail.coverimage;
-                            self.title = data.data.detail.name;
-                            self.desc = data.data.detail.desc;
-                            wx.ready(function () {
-                                let shareData = {
-                                    title: self.title, // 分享标题
-                                    desc: self.desc, // 分享描述
-                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: self.imgUrl, // 分享图标
-                                    success: function () {
-                                        /*alert('111')*/
-                                    },
-                                    fail: function (res) {
-                                        /* alert(JSON.stringify(res));*/
-                                    }
-                                };
 
-                                if (wx.onMenuShareAppMessage) {
-                                    wx.onMenuShareAppMessage({
-                                        title: self.title, // 分享标题
-                                        desc: self.desc, // 分享描述
-                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                        imgUrl: self.imgUrl, // 分享图标
-                                        type: '', // 分享类型,music、video或link，不填默认为link
-                                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                                        success: function () {
-                                            /* alert(1111);*/
-                                        }
-                                    });
-                                    wx.onMenuShareTimeline({
-                                        title: self.title, // 分享标题
-                                        desc: self.desc, // 分享描述
-                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                        imgUrl: self.imgUrl, // 分享图标
-                                        type: '', // 分享类型,music、video或link，不填默认为link
-                                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                                        success: function () {
-                                            /* alert(1111);*/
-                                        }
-                                    })
-                                } else {
-                                    wx.updateTimelineShareData({
-                                        title: self.title, // 分享标题
-                                        desc: self.desc, // 分享描述
-                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                        imgUrl: self.imgUrl, // 分享图标
-                                        success: function () {
-                                            // 设置成功
-                                            /*alert(141414);*/
-                                        }
-                                    });
-                                    wx.updateAppMessageShareData({
-                                        title: self.title, // 分享标题
-                                        desc: self.desc, // 分享描述
-                                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                        imgUrl: self.imgUrl, // 分享图标
-                                        success: function () {
-                                            // 设置成功
-                                            /*alert(141414);*/
-                                        }
-                                    })
-                                }
-
-                            })
-                            //发给好友
-                            self.shareUrl = location.href.split('#')[0];
-                            $.post('/api/index/getShareSigna', {
-                                url: encodeURIComponent(self.shareUrl),
-                                token: localStorage.getItem('token')
-                            }, function (data) {
-                                if (data.code == 1) {
-                                    console.log('share begin');
-                                    weixinShareTimeline('标题','秒速','url','imgurl');
-
-                                    // self.configWX = data.data;
-                                    // self.$nextTick(function () {
-                                    //     shareWeChat(self.configWX);
-                                    // })
-                                }
-                            });
-                            function shareWeChat(todo) {
-                                wx.config({
-                                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
-                                    appId: todo.appid, // 必填，公众号的唯一标识
-                                    timestamp: todo.timesTamp, // 必填，生成签名的时间戳
-                                    nonceStr: todo.nonceStr, // 必填，生成签名的随机串
-                                    signature: todo.signaTure,// 必填，签名
-                                    jsApiList: [
-                                        "onMenuShareAppMessage",//分享给朋友接口
-                                        "updateAppMessageShareData",//分享给朋友接口
-                                        "onMenuShareTimeline",//分享到朋友圈
-                                        "updateTimelineShareData"//分享到朋友圈
-                                    ] // 必填，需要使用的JS接口列表
-                                });
-                            }
-
-                            function weixinShareTimeline(title,desc,link,imgUrl){
-                                WeixinJSBridge.invoke('shareTimeline',{
-                                    "img_url":imgUrl,
-                                    //"img_width":"640",
-                                    //"img_height":"640",
-                                    "link":link,
-                                    "desc": desc,
-                                    "title":title
-                                });
-                            }
-                        })
-                       /* //分享内容
+                        //分享内容
                         self.imgUrl = data.data.detail.coverimage;
                         self.title = data.data.detail.name;
                         self.desc = data.data.detail.desc;
@@ -219,17 +111,63 @@ $(function () {
                             let shareData = {
                                 title: self.title, // 分享标题
                                 desc: self.desc, // 分享描述
-                                link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                                 imgUrl: self.imgUrl, // 分享图标
+                                success: function () {
+                                    /*alert('111')*/
+                                },
+                                fail: function (res) {
+                                    /* alert(JSON.stringify(res));*/
+                                }
                             };
-                            if(wx.onMenuShareAppMessage){
-                                wx.onMenuShareAppMessage(shareData);//1.0 分享到朋友
-                            }else {
-                                wx.updateAppMessageShareData(shareData);//1.4 分享到朋友
 
+                            if (wx.onMenuShareAppMessage) {
+                                wx.onMenuShareAppMessage({
+                                    title: self.title, // 分享标题
+                                    desc: self.desc, // 分享描述
+                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                    imgUrl: self.imgUrl, // 分享图标
+                                    type: '', // 分享类型,music、video或link，不填默认为link
+                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                    success: function () {
+                                        /* alert(1111);*/
+                                    }
+                                });
+                                wx.onMenuShareTimeline({
+                                    title: self.title, // 分享标题
+                                    desc: self.desc, // 分享描述
+                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                    imgUrl: self.imgUrl, // 分享图标
+                                    type: '', // 分享类型,music、video或link，不填默认为link
+                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                    success: function () {
+                                        /* alert(1111);*/
+                                    }
+                                })
+                            } else {
+                                wx.updateTimelineShareData({
+                                    title: self.title, // 分享标题
+                                    desc: self.desc, // 分享描述
+                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                    imgUrl: self.imgUrl, // 分享图标
+                                    success: function () {
+                                        // 设置成功
+                                        /*alert(141414);*/
+                                    }
+                                });
+                                wx.updateAppMessageShareData({
+                                    title: self.title, // 分享标题
+                                    desc: self.desc, // 分享描述
+                                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                    imgUrl: self.imgUrl, // 分享图标
+                                    success: function () {
+                                        // 设置成功
+                                        /*alert(141414);*/
+                                    }
+                                })
                             }
 
-                        })*/
+                        })
 
 
                     });
@@ -253,11 +191,11 @@ $(function () {
                 },
                 //返回上一步
                 goBack: function () {
-                    if( document.referrer === ''){
+                    if (document.referrer === '') {
                         mui.openWindow({
-                            url:'/index'
+                            url: '/index'
                         })
-                    }else {
+                    } else {
                         history.go(-1);
                     }
                 },
@@ -354,14 +292,14 @@ $(function () {
                     //发给好友
                     mui("#popover").popover('toggle', document.getElementById("div"));
 
-                  /*  self.shareUrl = location.href.split('#')[0];
+                    self.shareUrl = location.href.split('#')[0];
                     $.post('/api/index/getShareSigna', {
                         url: encodeURIComponent(self.shareUrl),
                         token: localStorage.getItem('token')
                     }, function (data) {
                         if (data.code == 1) {
                             console.log('share begin');
-                            weixinShareTimeline('标题','秒速','url','imgurl');
+                            weixinShareTimeline('标题', '秒速', 'url', 'imgurl');
 
                             // self.configWX = data.data;
                             // self.$nextTick(function () {
@@ -369,6 +307,7 @@ $(function () {
                             // })
                         }
                     });
+
                     function shareWeChat(todo) {
                         wx.config({
                             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
@@ -383,25 +322,26 @@ $(function () {
                         });
                     }
 
-                    function weixinShareTimeline(title,desc,link,imgUrl){
-                        WeixinJSBridge.invoke('shareTimeline',{
-                            "img_url":imgUrl,
+                    function weixinShareTimeline(title, desc, link, imgUrl) {
+                        WeixinJSBridge.invoke('shareTimeline', {
+                            "img_url": imgUrl,
                             //"img_width":"640",
                             //"img_height":"640",
-                            "link":link,
+                            "link": link,
                             "desc": desc,
-                            "title":title
+                            "title": title
                         });
-                    }*/
-                    /*wx.updateAppMessageShareData({
-                     title: self.title, // 分享标题
-                     desc: self.desc, // 分享描述
-                     link:  self.shareUrl , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                     imgUrl: self.imgUrl, // 分享图标
-                     success: function () {
-                     // 设置成功
-                     }
-                     });*/
+                    }
+
+                    wx.updateAppMessageShareData({
+                        title: self.title, // 分享标题
+                        desc: self.desc, // 分享描述
+                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: self.imgUrl, // 分享图标
+                        success: function () {
+                            // 设置成功
+                        }
+                    });
 
                 },
                 blurFn: function () {
@@ -495,7 +435,7 @@ $(function () {
                     self.init();
                 })
             },
-            beforeDestroy(){
+            beforeDestroy() {
                 $(window).unbind('scroll');
             },
         }
