@@ -63,8 +63,8 @@ class Article extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                
-                
+                $row->content=$this->emoji_decode($row->content);
+
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);

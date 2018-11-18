@@ -27,7 +27,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id')},
                         {field: 'article.title', title: __('Article.title')},
                         {field: 'content', title: __('Content')},
-                        {field: 'user.username', title: __('User.username')},
+                        {field: 'img', title: __('Img'),formatter: Controller.api.formatter.url, operate: false},
+                        {field: 'user.nickname', title: __('评论人')},
+                        {field: 'user.avatar',title: __('用户头像'),formatter: Table.api.formatter.image, operate: false},
+                        {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                     ]
                 ]
@@ -47,6 +50,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+
+                url: function (value, row, index) {
+                    return '<a href="' +row.img + '" target="_blank" class="label bg-green"></a>';
+                },
+
             }
         }
     };
