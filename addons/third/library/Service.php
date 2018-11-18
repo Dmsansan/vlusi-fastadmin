@@ -62,8 +62,10 @@ class Service
                 }
                 $user = $auth->getUser();
                 $fields = ['username' => 'u' . $user->id, 'email' => 'u' . $user->id . '@fastadmin.net'];
-                if (isset($params['userinfo']['nickname']))
+                if (isset($params['userinfo']['nickname'])){
                     $fields['nickname'] = $params['userinfo']['nickname'];
+                }
+
                 if (isset($params['userinfo']['avatar'])){
                     $fields['avatar'] = $params['userinfo']['avatar'];
                 }else{

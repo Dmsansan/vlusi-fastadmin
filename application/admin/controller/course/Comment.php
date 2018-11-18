@@ -5,7 +5,7 @@ namespace app\admin\controller\course;
 use app\common\controller\Backend;
 
 /**
- * 
+ * 评论管理
  *
  * @icon fa fa-circle-o
  */
@@ -14,7 +14,7 @@ class Comment extends Backend
     
     /**
      * Comment模型对象
-     * @var \app\admin\model\course\Comment
+     * @var \app\admin\model\Comment
      */
     protected $model = null;
 
@@ -50,27 +50,43 @@ class Comment extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['course','admin'])
+                    ->with(['course','user'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['course','admin'])
+                    ->with(['course','user'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
 
             foreach ($list as $row) {
-                
-                
+                $row->content=$this->emoji_decode($row->content);
+                $row->visible(['id','course_id','user_id','content','img','createtime']);
+                $row->visible(['course']);
+				$row->getRelation('course')->visible(['name']);
+				$row->visible(['user']);
+				$row->getRelation('user')->visible(['nickname','avatar']);
             }
+//            foreach($list as $kk=>$vv){
+//                $list[$kk]['content']=$this->emoji_decode($vv['content']);
+//            }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
 
             return json($result);
         }
         return $this->view->fetch();
+    }
+
+    //对emoji表情转反义
+    function emoji_decode($str){
+        $strDecode = preg_replace_callback('|\[\[EMOJI:(.*?)\]\]|', function($matches){
+            return rawurldecode($matches[1]);
+        }, $str);
+
+        return $strDecode;
     }
 }
