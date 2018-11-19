@@ -33,6 +33,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'readnum', title: __('Readnum')},
                         {field: 'zan', title: __('Zan')},
                         {field: 'comments', title: __('Comments')},
+                        {field: 'readnum_set', title: __('阅读数设置')},
+                        {field: 'zan_set', title: __('赞数设置')},
+                        {field: 'comments_set', title: __('评论数设置')},
                         {field: 'r.nickname', title: __('发布人')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
