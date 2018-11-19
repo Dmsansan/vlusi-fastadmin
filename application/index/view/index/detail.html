@@ -106,7 +106,10 @@
                 <p class="course-list-title">课时列表</p>
             </div>
             <ul class="course-list" :class="{hidden:isHidden}">
-                <li @click="goToCourseHour(course.id,course.isviewlist)" v-for="(course,index) in courseList" class="course-list-item">
+                <!--审核通过看所有课程-->
+                <li @click="enterCourse(course.id)"
+                    v-if="detailList.is_can_study == 1"
+                    v-for="(course,index) in courseList" class="course-list-item">
                     <p class="course-list-item-content">
                     <span class="course-list-item-title">
                        <!--{{course.id}}-->
@@ -120,6 +123,37 @@
                         <template v-if="course.isviewlist == '可体验'">
                             <span class="exp-icon">体验</span>
                             <span class="item-learn">学习</span>
+                        </template>
+                        <template v-else-if="detailList.is_can_study == 1">
+                            <span class="exp-icon">学习</span>
+                        </template>
+                        <template v-else>
+                            <span class="item-learn"></span>
+                        </template>
+                        <img v-if="course.isviewlist == '可体验' || detailList.is_can_study == 1" src="/img/course-detail/arrow-right.png" class="arrow-right"/>
+                    </p>
+                </li>
+                <!--审核不通过只能看体验课程-->
+
+                <li @click="goToCourseHour(course.id,course.isviewlist)"
+                    v-if="detailList.is_can_study == 0"
+                    v-for="(course,index) in courseList" class="course-list-item">
+                    <p class="course-list-item-content">
+                    <span class="course-list-item-title">
+                       <!--{{course.id}}-->
+                        {{course.sort <= 9 ? `0`+course.sort : course.sort}} {{course.title}}
+                    </span>
+                        <span class="course-list-item-desc">
+                       {{course.desc}}
+                    </span>
+                    </p>
+                    <p class="course-list-item-learn">
+                        <template v-if="course.isviewlist == '可体验'">
+                            <span class="exp-icon">体验</span>
+                            <span class="item-learn">学习</span>
+                        </template>
+                        <template v-else-if="detailList.is_can_study == 1">
+                            <span class="exp-icon">学习</span>
                         </template>
                         <template v-else>
                             <span class="item-learn"></span>

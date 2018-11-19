@@ -148,13 +148,13 @@ img.icon-like.active.bottom-icon-comment {
     display: block;
 }
 input.comment-input {
-    padding-top: 3px;
     padding-left: 10px;
     padding-right: 50px;
     margin: 0;
     width: 98%;
     border-radius: 20px;
     height: 30px;
+    line-height: 30px;
     font-size: 0.8rem;
     color: #999999;
     background: rgb(246,246,249);
@@ -392,7 +392,7 @@ p.comments-content {
     padding:6px 15px;
 }
 button.reply-comments {
-    padding: 5px 15px;
+    padding: 5px 8px;
     border-radius: 20px;
     border: none;
     background: rgb(246,246,249);
@@ -401,14 +401,16 @@ button.reply-comments {
 }
 p.comments-img img {
     display: inline-block;
-    width: 30%;
-    border-radius: 8px;
+    width: 100%;
+    height: 100%;
     margin-right: 5px;
-    height: 3rem;
     background-size: cover;
 }
 p.comments-img {
     padding: 0 15px;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
 }
 li.course-comments-item {
     margin-bottom: 20px;
