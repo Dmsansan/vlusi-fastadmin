@@ -59,31 +59,36 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.formdata.append('course_id', localStorage.getItem('courseId'));
-                    self.formdata.append('comment_id', localStorage.getItem('zsfId'));
-                    self.formdata.append('token', localStorage.getItem('token'));
-                    self.formdata.append('content', self.commentsContent);
-                    $.ajax({
-                        url:'/api/courses/comment',
-                        type:'post',
-                        cache:false,
-                        data:self.formdata,
-                        processData:false,
-                        contentType:false,
-                        success:function (data) {
-                            self.isDisabled = false;
-                            self.controlInputShow = false;
-                            self.$nextTick(function () {
-                                self.formdata=new FormData();
-                                localStorage.setItem('courseId',"");
-                                localStorage.setItem('zsfId',"");
-                                self.replyDetails();
-                            })
-                        },
-                        error:function (data) {
+                    if(self.commentsContent){
+                        self.formdata.append('course_id', localStorage.getItem('courseId'));
+                        self.formdata.append('comment_id', localStorage.getItem('zsfId'));
+                        self.formdata.append('token', localStorage.getItem('token'));
+                        self.formdata.append('content', self.commentsContent);
+                        $.ajax({
+                            url:'/api/courses/comment',
+                            type:'post',
+                            cache:false,
+                            data:self.formdata,
+                            processData:false,
+                            contentType:false,
+                            success:function (data) {
+                                self.isDisabled = false;
+                                self.controlInputShow = false;
+                                self.$nextTick(function () {
+                                    self.formdata=new FormData();
+                                    localStorage.setItem('courseId',"");
+                                    localStorage.setItem('zsfId',"");
+                                    self.replyDetails();
+                                })
+                            },
+                            error:function (data) {
 
-                        }
-                    });
+                            }
+                        });
+                    }else {
+                        mui.toast('请输入内容！');
+                    }
+
                 },
                 touchStart (e) {
                     this.startY = e.targetTouches[0].pageY
