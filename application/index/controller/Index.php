@@ -15,16 +15,12 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo){
-            $this->redirect('user/login');
-        }
     }
 
     public function index()
     {
-        $token=$this->request->get('token');
-//        $token=$this->auth->getToken();
+//        $token=$this->request->get('token');
+        $token=$this->auth->getToken();
         $this->assign('token',$token);
 
         return $this->view->fetch();
