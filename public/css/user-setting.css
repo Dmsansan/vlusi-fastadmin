@@ -133,3 +133,38 @@ li.visible {
 div.mui-poppicker.mui-active {
     border: none;
 }
+div.sex-group {
+    float: right;
+    width: 75%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+    height: 60px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+span.sex-group-item {
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    margin-right: 15px;
+    border-radius: 6px;
+}
+span.sex-group-item.male.active{
+    background: rgba(140,219,255,1);
+    color: #ffffff;
+    border: none;
+}
+span.sex-group-item.female.active{
+    background: rgba(255,184,205,1);
+    color: #ffffff;
+    border: none;
+}

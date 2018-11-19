@@ -31,6 +31,17 @@
             <label>用户名</label>
             <input :value="userInformation.nickname" readonly type="text">
         </div>
+        <div class="mui-input-row">
+            <label>性别</label>
+            <div class="sex-group">
+                <span @click="selectSex('male')" class="sex-group-item male" :class="{active:isMale}">男</span>
+                <span @click="selectSex('female')"  class="sex-group-item female" :class="{active:!isMale}">女</span>
+            </div>
+        </div>
+        <div class="mui-input-row">
+            <label>生日</label>
+            <input  :value="birthDate" id="show-date" placeholder="请选择日期（选填）" readonly/>
+        </div>
         <div  @click="modifyPhone(userInformation.mobile)"class="mui-input-row">
             <label>修改手机号</label>
             <input :value="userInformation.mobile"

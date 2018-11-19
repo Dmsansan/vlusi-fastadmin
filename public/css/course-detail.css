@@ -24,6 +24,7 @@ img.back-icon-white {
     bottom: 0;
     width: 100%;
     color: #FFFFFF;
+    background: rgba(0,0,0,0.5);
     display: flex;
     display: -webkit-flex;
     align-items: center;
