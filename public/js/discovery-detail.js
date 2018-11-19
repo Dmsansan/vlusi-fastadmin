@@ -298,8 +298,7 @@ $(function () {
                         token: localStorage.getItem('token')
                     }, function (data) {
                         if (data.code == 1) {
-                            console.log('share begin');
-                            weixinShareTimeline('标题', '秒速', 'url', 'imgurl');
+                            weixinShareTimeline(self.title, self.desc, self.shareUrl, self.imgUrl);
 
                             // self.configWX = data.data;
                             // self.$nextTick(function () {
@@ -317,7 +316,9 @@ $(function () {
                             signature: todo.signaTure,// 必填，签名
                             jsApiList: [
                                 "onMenuShareAppMessage",//分享给朋友接口
-                                "updateAppMessageShareData"//分享给朋友接口
+                                "onMenuShareTimeline",//分享给朋友接口
+                                "updateAppMessageShareData",//分享给朋友接口
+                                "updateTimelineShareData",//分享给朋友接口
                             ] // 必填，需要使用的JS接口列表
                         });
                     }

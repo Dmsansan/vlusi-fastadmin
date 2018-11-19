@@ -121,10 +121,10 @@ window.onload = function () {
                             link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: self.imgUrl, // 分享图标
                             success: function () {
-                                /*alert('111')*/
+                                console.log(1111111111)
                             },
                             fail: function (res) {
-                                /* alert(JSON.stringify(res));*/
+                                 alert(JSON.stringify(res));
                             }
                         };
 
@@ -178,8 +178,7 @@ window.onload = function () {
                     })
 
 
-                    /*
-                    //分享内容
+                   /* //分享内容
                     self.imgUrl = data.data.detail.coverimage;
                     self.title = data.data.detail.name;
                     self.desc = data.data.detail.desc;
@@ -191,7 +190,7 @@ window.onload = function () {
                             link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: self.imgUrl, // 分享图标
                             success: function () {
-                                /!*alert('111')*!/
+                               /!* alert('111')*!/
                             },
                             fail: function (res) {
                                 /!* alert(JSON.stringify(res));*!/
@@ -218,7 +217,7 @@ window.onload = function () {
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
                                     // 设置成功
-                                    /!*alert(141414);*!/
+                                   /!* alert(141414);*!/
                                 }
                             })
                         }
@@ -435,7 +434,7 @@ window.onload = function () {
                     token: localStorage.getItem('token')
                 }, function (data) {
                     if (data.code == 1) {
-                        weixinShareTimeline('标题', '秒速', 'url', 'imgurl');
+                        weixinShareTimeline(self.title, self.desc, self.shareUrl, self.imgUrl);
                         /* self.configWX = data.data;
                          self.$nextTick(function () {
                              shareWeChat(self.configWX);
@@ -445,7 +444,7 @@ window.onload = function () {
 
                 function shareWeChat(todo) {
                     wx.config({
-                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
                         appId: todo.appid, // 必填，公众号的唯一标识
                         timestamp: todo.timesTamp, // 必填，生成签名的时间戳
                         nonceStr: todo.nonceStr, // 必填，生成签名的随机串
