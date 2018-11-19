@@ -54,7 +54,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             formatter: {
 
                 url: function (value, row, index) {
-                    return '<a href="' +row.img + '" target="_blank" class="label bg-green"></a>';
+                    console.log(vale);
+                    if(value){
+                        return '<a href="' +row.img + '" target="_blank" class="label bg-green"></a>';
+                    }else{
+                        return '-';
+                    }
                 },
 
             }

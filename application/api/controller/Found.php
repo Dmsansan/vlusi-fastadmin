@@ -361,7 +361,7 @@ class Found extends Api
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
         $comment_id  =  (int)$this->request->request("comment_id");
-        if(!$article_id || !$comment_id){$this->error('参数不正确');}
+        if(!$article_id ){$this->error('参数不正确');}
 
         $content=$this->request->request("content");
         if(!$content){ $this->error('请填写内容');}

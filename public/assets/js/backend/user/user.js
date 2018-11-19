@@ -32,7 +32,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         // {field: 'email', title: __('Email'), operate: 'LIKE'},
                         {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},
                         // {field: 'level', title: __('Level'), operate: 'BETWEEN', sortable: true},
-                        {field: 'gender', title: __('Gender'), visible: false, searchList: {1: __('Male'), 0: __('Female')}},
+                        {field: 'gender', title: __('Gender'), formatter: Controller.api.formatter.gender, searchList: {1: __('Male'), 0: __('Female')}},
                         // {field: 'score', title: __('Score'), operate: 'BETWEEN', sortable: true},
                         {field: 'successions', title: __('Successions'), visible: false, operate: 'BETWEEN', sortable: true},
                         {field: 'maxsuccessions', title: __('Maxsuccessions'), visible: false, operate: 'BETWEEN', sortable: true},
@@ -58,7 +58,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+
+                gender: function (value, row, index) {
+                    return value==2?'女':"男";
+                },
+
             }
+
         }
     };
     return Controller;

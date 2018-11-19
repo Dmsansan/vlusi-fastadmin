@@ -339,7 +339,7 @@ class Courses extends Api
         $userid=$this->userid;
         $course_id  =  (int)$this->request->post("course_id");
         $comment_id  =  (int)$this->request->request("comment_id");
-        if(!$course_id || !$comment_id){$this->error('参数不正确');}
+        if(!$course_id ){$this->error('参数不正确');}
 
         $content=$this->request->post("content");
         if(!$content){ $this->error('请填写内容');}
