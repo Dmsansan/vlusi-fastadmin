@@ -94,6 +94,11 @@ class Courses extends Api
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
             $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
 
+            //点赞数处理
+            $data[$key]['comments'] =$val['comments']+$val['comments_set'];
+            $data[$key]['readnum']  =$val['readnum']+$val['readnum_set'];
+            $data[$key]['zan']      =$val['zan']+$val['zan_set'];
+
         }
 
 
@@ -143,7 +148,11 @@ class Courses extends Api
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
 
         //分类数据
-        $data=db('course')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
+        $data=db('course')->alias('a')
+            ->join('admin b','a.admin_id=b.id')
+            ->field('a.*,b.nickname as auth')
+            ->where($where)->order('createtime desc')
+            ->page($page,$this->pagesize)->select();
 
         $allpage=db('course')->where($where)->count();
         $pages['pageCount']=ceil($allpage/$this->pagesize)?:1;
@@ -152,6 +161,13 @@ class Courses extends Api
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
             $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+            $data[$key]['comments'] =$val['comments']+$val['comments_set'];
+
+            //点赞处理
+            $data[$key]['readnum']  =$val['readnum']+$val['readnum_set'];
+            $data[$key]['zan']      =$val['zan']+$val['zan_set'];
+            $data[$key]['comments'] =$val['comments']+$val['comments_set'];
+
         }
 
         $this->success("返回成功",$data,$pages);
@@ -238,6 +254,10 @@ class Courses extends Api
                             ->find();
             $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
             $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
+            //
+            $data['detail']['comments'] =$data['detail']['comments']+$data['detail']['comments_set'];
+            $data['detail']['readnum']  =$data['detail']['readnum']+$data['detail']['readnum_set'];
+            $data['detail']['zan']      =$data['detail']['zan']+$data['detail']['zan_set'];
 
 
 

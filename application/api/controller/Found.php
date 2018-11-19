@@ -69,8 +69,9 @@ class Found extends Api
         //分类数据
          $list=db('article')->alias('a')
                 ->join('article_category b','b.id=a.article_category_id')
+                ->join('admin c','c.id=a.admin_id')
                 ->order('createtime desc,flag desc,zan desc')
-                ->field('a.*,b.name as type_name')
+                ->field('a.*,b.name as type_name,c.nickname as auth')
                 ->page($page,$this->pagesize)
                 ->select();
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
@@ -134,10 +135,22 @@ class Found extends Api
 
 
 
-        $data=db('article')->where($where)->order('createtime desc')->page($page,$this->pagesize)->select();
+        $data=  db('article')->alias('a')
+                ->join('admin b','a.admin_id=b.id')
+                ->field('a.*,b.nickname as auth')
+                ->where($where)
+                ->order('createtime desc')
+                ->page($page,$this->pagesize)
+                ->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
             $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+
+            //点赞处理
+            $data[$key]['readnum']  =$val['readnum']+$val['readnum_set'];
+            $data[$key]['zan']      =$val['zan']+$val['zan_set'];
+            $data[$key]['comments'] =$val['comments']+$val['comments_set'];
+
         }
 
 
@@ -282,8 +295,13 @@ class Found extends Api
                             ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
                             ->find();
 
-            $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
-            $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
+            $data['detail']['desc']         =mb_substr(strip_tags($data['detail']['content']),0,40).'...';
+            $data['detail']['createtime']   =date('Y-m-d',$data['detail']['createtime']);
+
+            $data['detail']['comments']     =$data['detail']['comments']+$data['detail']['comments_set'];
+            $data['detail']['readnum']      =$data['detail']['readnum']+$data['detail']['readnum_set'];
+            $data['detail']['zan']          =$data['detail']['zan']+$data['detail']['zan_set'];
+
 
             //同步新增到article浏览数+1
             db('article')->where('id',$article_id)->setInc('readnum');
