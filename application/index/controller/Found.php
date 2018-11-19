@@ -15,10 +15,10 @@ class Found extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo){
-            $this->redirect('user/login');
-        }
+//        $userinfo=$this->auth->getUser();
+//        if(!$userinfo){
+//            $this->redirect('user/login');
+//        }
     }
 
     public function index()
