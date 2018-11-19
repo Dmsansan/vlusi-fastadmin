@@ -63,8 +63,8 @@ class Comment extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                
-                
+                $row->content=$this->emoji_decode($row->content);
+
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
@@ -72,5 +72,17 @@ class Comment extends Backend
             return json($result);
         }
         return $this->view->fetch();
+    }
+
+
+
+
+    //对emoji表情转反义
+    function emoji_decode($str){
+        $strDecode = preg_replace_callback('|\[\[EMOJI:(.*?)\]\]|', function($matches){
+            return rawurldecode($matches[1]);
+        }, $str);
+
+        return $strDecode;
     }
 }

@@ -13,7 +13,7 @@ use think\Db;
 class Courses extends Api
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $pagesize= 10;
     protected $userid;
@@ -70,8 +70,9 @@ class Courses extends Api
         //分类数据
         $data=db('course')->alias('a')
             ->join('course_category b','b.id=a.course_category_id')
+            ->join('admin c','c.id=a.admin_id')
             ->order('createtime desc,flag desc,readnum desc')
-            ->field('a.*,b.name as type_name')
+            ->field('a.*,b.name as type_name,c.nickname as auth')
             ->page($page,$this->pagesize)
             ->select();
 //            ->field('id,title,coverimage,content,videfile,views,comments,auth,createtime')
