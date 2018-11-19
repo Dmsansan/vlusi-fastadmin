@@ -345,6 +345,14 @@ window.onload = function () {
                 }
 
             },
+            enterCourse:function (id) {
+                mui.openWindow({
+                    //视频版
+                    url: '/index/index/course_detail?id=' + id
+                    // 图文版
+                    // url:'course-hour-detail-pictures.html?id=' + id
+                })
+            },
             shareCourse: function () {
                 mui('#share-sheet').popover('toggle');
             },

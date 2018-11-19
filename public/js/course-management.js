@@ -138,7 +138,7 @@ window.onload = function () {
             goCourse:function (id) {
                 //进入课程
                 mui.openWindow({
-                    url:'/index/found/detail?id='+id
+                    url:'/index/index/detail?id='+id
                 })
             },
         },
