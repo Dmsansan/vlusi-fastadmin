@@ -51,7 +51,7 @@ class Share extends Api
         vendor ('phpqrcode.phpqrcode');
 
         $QRcode = new \QRcode();
-        $value = "http://".$_SERVER['HTTP_HOST'].'/index/index/course_detail?id='.$article_id;
+        $value = "http://".$_SERVER['HTTP_HOST'].'/index/found/detail?id='.$article_id;
 
         //二维码内容
         $errorCorrectionLevel = 'L';  //容错级别
