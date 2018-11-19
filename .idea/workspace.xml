@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/controller/article/Article.php" afterPath="$PROJECT_DIR$/application/admin/controller/article/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/controller/article/Comment.php" afterPath="$PROJECT_DIR$/application/admin/controller/article/Comment.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Courses.php" afterPath="$PROJECT_DIR$/application/api/controller/Courses.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/index/index.html" afterPath="$PROJECT_DIR$/application/index/view/index/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Found.php" afterPath="$PROJECT_DIR$/application/api/controller/Found.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="378">
+              <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -94,8 +92,8 @@
       <file leaf-file-name="Courses.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+            <state relative-caret-position="258">
+              <caret line="500" column="6" lean-forward="false" selection-start-line="500" selection-start-column="6" selection-end-line="501" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -111,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Found.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Found.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4950">
-              <caret line="319" column="62" lean-forward="false" selection-start-line="319" selection-start-column="62" selection-end-line="319" selection-end-column="62" />
+            <state relative-caret-position="276">
+              <caret line="603" column="17" lean-forward="true" selection-start-line="603" selection-start-column="17" selection-end-line="603" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -198,7 +196,6 @@
         <option value="$PROJECT_DIR$/application/api/library/Line.txt" />
         <option value="$PROJECT_DIR$/application/admin/view/comment/keywords/index.html" />
         <option value="$PROJECT_DIR$/public/js/course-detail.js" />
-        <option value="$PROJECT_DIR$/application/api/controller/Found.php" />
         <option value="$PROJECT_DIR$/application/admin/view/index/login.html" />
         <option value="$PROJECT_DIR$/application/admin/view/general/profile/index.html" />
         <option value="$PROJECT_DIR$/application/admin/view/user/user/edit.html" />
@@ -226,8 +223,9 @@
         <option value="$PROJECT_DIR$/public/assets/js/backend/article/comment.js" />
         <option value="$PROJECT_DIR$/application/admin/controller/article/Article.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/article/Comment.php" />
-        <option value="$PROJECT_DIR$/application/api/controller/Courses.php" />
         <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
+        <option value="$PROJECT_DIR$/application/api/controller/Courses.php" />
+        <option value="$PROJECT_DIR$/application/api/controller/Found.php" />
       </list>
     </option>
   </component>
@@ -642,12 +640,12 @@
       <workItem from="1542267651822" duration="17103000" />
       <workItem from="1542338779757" duration="33346000" />
       <workItem from="1542521157101" duration="65000" />
-      <workItem from="1542549286007" duration="9328000" />
+      <workItem from="1542549286007" duration="11454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238482000" />
+    <option name="totallyTimeSpent" value="240608000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1064,22 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4950">
-          <caret line="319" column="62" lean-forward="false" selection-start-line="319" selection-start-column="62" selection-end-line="319" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/common/library/Auth.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4018">
@@ -1106,8 +1088,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/index/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="378">
+          <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="500" column="6" lean-forward="false" selection-start-line="500" selection-start-column="6" selection-end-line="501" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="603" column="17" lean-forward="true" selection-start-line="603" selection-start-column="17" selection-end-line="603" selection-end-column="17" />
           <folding />
         </state>
       </provider>

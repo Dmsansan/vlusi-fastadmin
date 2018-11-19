@@ -168,6 +168,7 @@ class Found extends Api
     {
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
+        if(!$article_id){$this->error('参数不正确');}
 
         $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
         if($res){
@@ -218,6 +219,8 @@ class Found extends Api
     {
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
+        if(!$article_id){$this->error('参数不正确');}
+
 
         $res=db('article_zan')->where(['user_id'=>$userid,'article_id'=>$article_id])->find();
         if($res){
@@ -267,6 +270,8 @@ class Found extends Api
         $page   =  (int)$this->request->post("page");
 
         $article_id  =  (int)$this->request->post("article_id");
+
+        if(!$article_id){$this->error('参数不正确');}
 
         $data=[];
         //初次加载
@@ -356,6 +361,8 @@ class Found extends Api
         $userid=$this->userid;
         $article_id  =  (int)$this->request->request("article_id");
         $comment_id  =  (int)$this->request->request("comment_id");
+        if(!$article_id || $comment_id){$this->error('参数不正确');}
+
         $content=$this->request->request("content");
 
         //关键字屏蔽
@@ -411,6 +418,9 @@ class Found extends Api
     {
         $userid=$this->userid;
         $comment_id  =  (int)$this->request->request("comment_id");
+        if(!$comment_id){$this->error('参数不正确');}
+
+
         $res=db('article_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
         if($res){
 
@@ -456,6 +466,9 @@ class Found extends Api
         $userid=$this->userid;
 
         $article_id= (int)$this->request->request("article_id");
+        if(!$article_id ){$this->error('参数不正确');}
+
+
         $is_have=db('article_collection')->where(['article_id'=>$article_id,'user_id'=>$userid])->find();
         if($is_have){
 
@@ -493,6 +506,7 @@ class Found extends Api
     {
         $comment_id= (int)$this->request->request("comment_id");
         $page= (int)$this->request->request("page");
+        if(!$comment_id ){$this->error('参数不正确');}
 
         $allPage=db('article_comment')->alias('a')
             ->join('user u','u.id=a.user_id')

@@ -118,6 +118,7 @@ class Courses extends Api
         $page   =   (int)$this->request->post("page");
         $typeid =  (int)$this->request->post("type_id");
         $search = $this->request->request('title');
+
         if(strlen($search)>100){
             $search=mb_substr($search,0,20);
         }
@@ -173,6 +174,7 @@ class Courses extends Api
     {
         $userid=$this->userid;
         $course_id  =  (int)$this->request->request("course_id");
+        if(!$course_id){$this->error('参数不正确');}
 
         $res=db('course_zan')->where(['user_id'=>$userid,'course_id'=>$course_id])->find();
         if($res){
@@ -219,6 +221,7 @@ class Courses extends Api
         $page   =  (int)$this->request->post("page");
 
         $course_id  =  (int)$this->request->post("course_id");
+        if(!$course_id){$this->error('参数不正确');}
 
         $data=[];
         //初次加载
@@ -230,6 +233,11 @@ class Courses extends Api
                             ->find();
             $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
             $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
+            //判断该用户是否可学习
+            $is_can=db('course_audit')->where(['course_id'=>$course_id,'user_id'=>$userid,'checklist'=>'通过'])->find();
+            $data['is_can_study']=$is_can?1:0;
+
+
 
             //同步新增到course浏览数+1
             db('course')->where('id',$course_id)->setInc('readnum');
@@ -244,7 +252,10 @@ class Courses extends Api
 
             //获取该课程的视频列表
             $node=db('course_nodes')->where(['course_id'=>$course_id])->order('sort asc')->field('id,sort,title,desc,isviewlist')->select();
+
             $data['detail']['node']=$node;
+
+
 
             //获取是否申请课程
             $audit=db('course_audit')->where(['course_id'=>$course_id,'user_id'=>$userid])->find();
@@ -326,6 +337,7 @@ class Courses extends Api
         $userid=$this->userid;
         $course_id  =  (int)$this->request->post("course_id");
         $comment_id  =  (int)$this->request->request("comment_id");
+        if(!$course_id || !$comment_id){$this->error('参数不正确');}
 
         $content=$this->request->post("content");
 
@@ -389,6 +401,9 @@ class Courses extends Api
     {
         $userid=$this->userid;
         $comment_id  =  (int)$this->request->post("comment_id");
+        if(!$comment_id){$this->error('参数不正确');}
+
+
         $res=db('course_comment_zan')->where(['user_id'=>$userid,'comment_id'=>$comment_id])->find();
         if($res){
 
@@ -440,6 +455,8 @@ class Courses extends Api
 
         $course_id= (int)$this->request->post("course_id");
 
+        if(!$course_id ){$this->error('参数不正确');}
+
         $is_course=db('course')->where(['id'=>$course_id])->find();
         if(!$is_course){
             $this->success("收藏成功");
@@ -481,6 +498,8 @@ class Courses extends Api
     public function comment_detail()
     {
         $comment_id= (int)$this->request->request("comment_id");
+        if(!$comment_id){$this->error('参数不正确');}
+
         $page= (int)$this->request->request("page");
 
         $allPage=db('course_comment')->alias('a')
@@ -557,6 +576,7 @@ class Courses extends Api
     public function audit()
     {
         $course_id= (int)$this->request->request("course_id");
+        if(!$course_id ){$this->error('参数不正确');}
 
         $userid=$this->userid;
 
@@ -596,6 +616,7 @@ class Courses extends Api
     public function nodes_detail()
     {
         $nodes_id= (int)$this->request->request("nodes_id");
+        if(!$nodes_id ){$this->error('参数不正确');}
 
         $userid=$this->userid;
 
