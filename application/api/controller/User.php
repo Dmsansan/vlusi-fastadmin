@@ -352,7 +352,7 @@ class User extends Api
     {
         $userid = $this->auth->getUser()->id;
 
-        $userinfo=db('user')->where(['id'=>$userid])->field('nickname,address,avatar,mobile')->find();
+        $userinfo=db('user')->where(['id'=>$userid])->field('nickname,address,avatar,mobile,gender,birthday')->find();
 
         $mobile=$userinfo['mobile'];
         $userinfo['mobile']=substr($mobile,0,3)."****".substr($mobile,7,4);
