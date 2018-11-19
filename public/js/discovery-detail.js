@@ -389,29 +389,34 @@ $(function () {
                 sendInformation: function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.formdata.append('article_id', self.passID);
-                    self.formdata.append('token', localStorage.getItem('token'));
-                    self.formdata.append('content', self.commentsContent);
-                    $.ajax({
-                        url: '/api/found/comment',
-                        type: 'post',
-                        cache: false,
-                        data: self.formdata,
-                        /*  dataType:'json',*/
-                        processData: false,
-                        contentType: false,
-                        success: function (data) {
-                            self.$nextTick(function () {
-                                self.formdata = new FormData();
-                                self.commentsContent = '';
-                                self.isDisabled = false;
-                                self.init();
-                            })
-                        },
-                        error: function (data) {
+                    if(self.commentsContent){
+                        self.formdata.append('article_id', self.passID);
+                        self.formdata.append('token', localStorage.getItem('token'));
+                        self.formdata.append('content', self.commentsContent);
+                        $.ajax({
+                            url: '/api/found/comment',
+                            type: 'post',
+                            cache: false,
+                            data: self.formdata,
+                            /*  dataType:'json',*/
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                self.$nextTick(function () {
+                                    self.formdata = new FormData();
+                                    self.commentsContent = '';
+                                    self.isDisabled = false;
+                                    self.init();
+                                })
+                            },
+                            error: function (data) {
 
-                        }
-                    })
+                            }
+                        })
+                    }else {
+                        mui.toast('请输入内容!');
+                    }
+
                 },
 
             },
