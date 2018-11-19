@@ -1,4 +1,4 @@
-window.onload = function () {
+
     let app = new Vue({
             el: '#app',
             data: {
@@ -233,4 +233,3 @@ window.onload = function () {
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
         app.commentsContent = $(this).text();
     });
-};

@@ -115,6 +115,9 @@
                                     <p class="user-comments-comment">
                                         {{todo.content}}
                                     </p>
+                                    <p class="comments-img" v-if="todo.img">
+                                        <img  :src="todo.img"/>
+                                    </p>
                                 </li>
                             </ul>
                         </li>
