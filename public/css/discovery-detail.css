@@ -14,8 +14,8 @@ img.logo-img {
 p.logo-title {
     color: #333333;
     font-size: 1rem;
-    font-weight: 400;
     padding: 6px 0;
+    font-weight: 600;
 }
 p.discovery-detail-title {
     padding: 10px 15px;
