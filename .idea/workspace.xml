@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="95d167ff-5514-447d-9d38-3aa4e779fa73" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/article/article/add.html" afterPath="$PROJECT_DIR$/application/admin/view/article/article/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/article/article/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/article/article/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/banner/banner/add.html" afterPath="$PROJECT_DIR$/application/admin/view/banner/banner/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/banner/banner/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/course/comment/index.html" afterPath="$PROJECT_DIR$/application/admin/view/course/comment/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/course/course/add.html" afterPath="$PROJECT_DIR$/application/admin/view/course/course/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/course/course/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/course/course/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/course/nodes/add.html" afterPath="$PROJECT_DIR$/application/admin/view/course/nodes/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/course/nodes/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/course/nodes/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/admin/view/user/user/edit.html" afterPath="$PROJECT_DIR$/application/admin/view/user/user/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Courses.php" afterPath="$PROJECT_DIR$/application/api/controller/Courses.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/api/controller/Found.php" afterPath="$PROJECT_DIR$/application/api/controller/Found.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/backend/article/comment.js" afterPath="$PROJECT_DIR$/public/assets/js/backend/article/comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/backend/course/comment.js" afterPath="$PROJECT_DIR$/public/assets/js/backend/course/comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/backend/user/user.js" afterPath="$PROJECT_DIR$/public/assets/js/backend/user/user.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,40 +19,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/course/course/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="83" column="33" lean-forward="true" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/course/course/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="186" lean-forward="true" selection-start-line="9" selection-start-column="186" selection-end-line="9" selection-end-column="186" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/course/comment/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="162" lean-forward="false" selection-start-line="10" selection-start-column="162" selection-end-line="10" selection-end-column="162" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Courses.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Courses.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="-180">
               <caret line="344" column="32" lean-forward="true" selection-start-line="344" selection-start-column="32" selection-end-line="344" selection-end-column="32" />
               <folding />
             </state>
@@ -91,31 +49,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="comment.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/backend/article/comment.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/comment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="56" column="38" lean-forward="false" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comment.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Comment.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Found.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="363" column="25" lean-forward="false" selection-start-line="363" selection-start-column="25" selection-end-line="363" selection-end-column="25" />
+            <state relative-caret-position="249">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,8 +72,50 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/view/article/comment/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="-84">
               <caret line="8" column="133" lean-forward="false" selection-start-line="8" selection-start-column="133" selection-end-line="8" selection-end-column="133" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Nodes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Nodes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Course.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Course.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1002">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="require-table.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/require-table.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="372" column="16" lean-forward="false" selection-start-line="372" selection-start-column="16" selection-end-line="376" selection-end-column="18" />
+              <folding>
+                <marker date="1541494985000" expanded="true" signature="22697:22723" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Comment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -214,7 +204,6 @@
         <option value="$PROJECT_DIR$/application/config.php" />
         <option value="$PROJECT_DIR$/application/admin/view/common/menu.html" />
         <option value="$PROJECT_DIR$/application/admin/view/common/header.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/backend/article/comment.js" />
         <option value="$PROJECT_DIR$/application/admin/controller/article/Article.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/article/Comment.php" />
         <option value="$PROJECT_DIR$/application/index/view/index/index.html" />
@@ -235,9 +224,10 @@
         <option value="$PROJECT_DIR$/application/admin/view/course/course/index.html" />
         <option value="$PROJECT_DIR$/application/admin/view/course/comment/index.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/course/Comment.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/backend/course/comment.js" />
         <option value="$PROJECT_DIR$/application/api/controller/Found.php" />
         <option value="$PROJECT_DIR$/application/api/controller/Courses.php" />
+        <option value="$PROJECT_DIR$/public/assets/js/backend/course/comment.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/backend/article/comment.js" />
       </list>
     </option>
   </component>
@@ -393,7 +383,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="course" />
+              <option name="myItemId" value="article" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -575,6 +565,62 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="article" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vlusi_fastadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vlusi_fastadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="article" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comment" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vlusi_fastadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vlusi_fastadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -601,7 +647,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="course" />
+              <option name="myItemId" value="article" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -710,12 +756,12 @@
       <workItem from="1542267651822" duration="17103000" />
       <workItem from="1542338779757" duration="33346000" />
       <workItem from="1542521157101" duration="65000" />
-      <workItem from="1542549286007" duration="19764000" />
+      <workItem from="1542549286007" duration="20507000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248918000" />
+    <option name="totallyTimeSpent" value="249661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -760,22 +806,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/common/library/Menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/model/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/model/Command.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-408">
@@ -880,14 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Course.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/article/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -951,7 +973,7 @@
         <state relative-caret-position="220">
           <caret line="181" column="23" lean-forward="false" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="23" />
           <folding>
-            <element signature="e#41#69#0#PHP" expanded="true" />
+            <element signature="e#41#69#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -993,7 +1015,7 @@
         <state relative-caret-position="180">
           <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="20" selection-end-column="11" />
           <folding>
-            <element signature="e#40#75#0#PHP" expanded="true" />
+            <element signature="e#40#75#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1010,14 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/article/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="59" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1102,14 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/article/comment/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="133" lean-forward="false" selection-start-line="8" selection-start-column="133" selection-end-line="8" selection-end-column="133" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/course/course/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1126,34 +1132,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/course.js">
+    <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/user/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="56" column="38" lean-forward="false" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+        <state relative-caret-position="184">
+          <caret line="363" column="25" lean-forward="false" selection-start-line="363" selection-start-column="25" selection-end-line="363" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1166,18 +1148,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/api/controller/Found.php">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/require-table.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="363" column="25" lean-forward="false" selection-start-line="363" selection-start-column="25" selection-end-line="363" selection-end-column="25" />
+        <state relative-caret-position="239">
+          <caret line="372" column="16" lean-forward="false" selection-start-line="372" selection-start-column="16" selection-end-line="376" selection-end-column="18" />
+          <folding>
+            <marker date="1541494985000" expanded="true" signature="22697:22723" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Nodes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1002">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/api/controller/Courses.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="-180">
           <caret line="344" column="32" lean-forward="true" selection-start-line="344" selection-start-column="32" selection-end-line="344" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/course/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/article/comment/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="8" column="133" lean-forward="false" selection-start-line="8" selection-start-column="133" selection-end-line="8" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/user/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/course.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/course/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/backend/article/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
           <folding />
         </state>
       </provider>
