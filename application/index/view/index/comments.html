@@ -99,21 +99,21 @@
                                 回复回复层主的人
                             -->
                             <ul class="replyer-replyer-comments" v-if="item.children">
-                                <li v-for="(item,index) in item.children" class="replyer-replyer-item">
+                                <li v-for="(todo,index) in item.children" class="replyer-replyer-item">
                                     <div class="replyer-container">
                                         <template >
                                             <p class="user-info">
-                                                <span class="user-nickname">{{item.nickname}}</span>
+                                                <span class="user-nickname">{{todo.nickname}}</span>
                                             </p>
-                                            <span @click="replay(item.id,item.course_id)" class="reply-title">回复</span>
+                                            <span @click="replay(todo.id,todo.course_id)" class="reply-title">回复</span>
                                         </template>
                                         <p class="user-info">
-                                            <span class="user-nickname">{{commentsList.children.nickname}}</span>
+                                            <span class="user-nickname">{{item.nickname}}</span>
                                             <img @click="likeComment()" src="/img/course-detail/like-comment.png" class="like-comment">
                                         </p>
                                     </div>
                                     <p class="user-comments-comment">
-                                        {{item.content}}
+                                        {{todo.content}}
                                     </p>
                                 </li>
                             </ul>
@@ -136,7 +136,7 @@
                    v-model="commentsContent"
                    class="comment-input"
                    @click="focusInput()"
-                   type="text" placeholder="写下你的评论..."/>
+                   type="email"  placeholder="写下你的评论..."/>
         </div>
         <div class="comment-icon-container">
             <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
@@ -155,5 +155,4 @@
 <script src="/assets/emoji/js/emoji-picker.js"></script>
 <script type="text/javascript" src="/js/comments-detail.js"></script>
 </body>
-
 </html>
