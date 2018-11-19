@@ -108,16 +108,16 @@ $(function () {
                         self.title = data.data.detail.title;
                         self.desc = data.data.detail.desc;
                        /* wx.ready(function () {*/
-                            let shareData = {
+                           /* let shareData = {
                                 title: self.title, // 分享标题
                                 desc: self.desc, // 分享描述
                                 link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
-                                    /*alert('111')*/
+                                    /!*alert('111')*!/
                                 },
                                 fail: function (res) {
-                                    /* alert(JSON.stringify(res));*/
+                                    /!* alert(JSON.stringify(res));*!/
                                 }
                             };
 
@@ -130,7 +130,7 @@ $(function () {
                                     type: '', // 分享类型,music、video或link，不填默认为link
                                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                     success: function () {
-                                        /* alert(1111);*/
+                                        /!* alert(1111);*!/
                                     }
                                 });
                                 wx.onMenuShareTimeline({
@@ -141,7 +141,7 @@ $(function () {
                                     type: '', // 分享类型,music、video或link，不填默认为link
                                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                     success: function () {
-                                        /* alert(1111);*/
+                                        /!* alert(1111);*!/
                                     }
                                 })
                             } else {
@@ -152,7 +152,7 @@ $(function () {
                                     imgUrl: self.imgUrl, // 分享图标
                                     success: function () {
                                         // 设置成功
-                                        /*alert(141414);*/
+                                        /!*alert(141414);*!/
                                     }
                                 });
                                 wx.updateAppMessageShareData({
@@ -162,10 +162,10 @@ $(function () {
                                     imgUrl: self.imgUrl, // 分享图标
                                     success: function () {
                                         // 设置成功
-                                        /*alert(141414);*/
+                                        /!*alert(141414);*!/
                                     }
                                 })
-                            }
+                            }*/
 
                       /*  })*/
 
@@ -334,15 +334,63 @@ $(function () {
                         });
                     }
 
-                    wx.updateAppMessageShareData({
+                    let shareData = {
                         title: self.title, // 分享标题
                         desc: self.desc, // 分享描述
                         link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                         imgUrl: self.imgUrl, // 分享图标
                         success: function () {
-                            // 设置成功
+                            /*alert('111')*/
+                        },
+                        fail: function (res) {
+                            /* alert(JSON.stringify(res));*/
                         }
-                    });
+                    };
+                    wx.ready(function () {
+                        wx.onMenuShareAppMessage({
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            type: '', // 分享类型,music、video或link，不填默认为link
+                            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                            success: function () {
+                                /* alert(1111);*/
+                            }
+                        });
+                        wx.onMenuShareTimeline({
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            type: '', // 分享类型,music、video或link，不填默认为link
+                            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                            success: function () {
+                                /* alert(1111);*/
+                            }
+                        });
+                        wx.updateTimelineShareData({
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            success: function () {
+                                // 设置成功
+                                /*alert(141414);*/
+                            }
+                        });
+                        wx.updateAppMessageShareData({
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            success: function () {
+                                // 设置成功
+                                /*alert(141414);*/
+                            }
+                        })
+                    })
+
 
                 },
                 blurFn: function () {
