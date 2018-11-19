@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use addons\third\model\Third;
 use think\Model;
 
 class User extends Model
@@ -21,6 +22,7 @@ class User extends Model
         'jointime_text'
     ];
 
+
     protected static function init()
     {
         self::beforeUpdate(function ($row) {
@@ -35,6 +37,12 @@ class User extends Model
                     unset($row->password);
                 }
             }
+        });
+
+        User::event('before_delete', function ($user) {
+            Third::destroy(function($query)use($user){
+                $query->where(['user_id'=>$user->id]);
+            });
         });
     }
 
