@@ -290,6 +290,43 @@
 <script src="/js/course-detail.js" type="text/javascript"></script>
 <script src="/js/showLoad.js" type="text/javascript"></script>
 
+<script>
+    wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+        appId: <?php echo $signdata["appid"];?>,
+        timestamp:<?php echo $signdata['timesTamp'];?>,
+        nonceStr: :<?php echo $signdata['nonceStr'];?>,
+        signature::<?php echo $signdata['signaTure'];?>,
+        jsApiList: [
+        "onMenuShareAppMessage",//分享给朋友接口
+        "onMenuShareTimeline",//分享给朋友接口
+        "updateAppMessageShareData",//分享给朋友接口
+        "updateTimelineShareData",//分享给朋友接口
+    ]
+    });
+wx.ready({
+    wx.updateTimelineShareData({
+    title: <?php echo $sharedata['title'];?>, // 分享标题
+    desc: <?php echo $sharedata['desc'];?>, // 分享描述
+    link: <?php echo $sharedata['link'];?>, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: <?php echo $sharedata['img'];?>, // 分享图标
+    success: function () {
+
+    }
+    });
+    wx.updateAppMessageShareData({
+        title: <?php echo $sharedata['title'];?>, // 分享标题
+        desc: <?php echo $sharedata['desc'];?>, // 分享描述
+        link: <?php echo $sharedata['link'];?>, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: <?php echo $sharedata['img'];?>, // 分享图标
+        success: function () {
+
+        }
+    })
+})
+
+
+</script>
 
 </body>
 </html>

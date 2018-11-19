@@ -7,16 +7,19 @@
     <script type="text/javascript" src="js/loader.js"></script>
     <link rel="stylesheet" href="css/home.css"/>
     <style>
-        .tvp_poster_img{
+        .tvp_poster_img {
             margin-left: -35% !important;
         }
-        .tvp_overlay_play, .tvp_overlay_play_try, .tvp_overlay_replay{left: -20% !important;}
+
+        .tvp_overlay_play, .tvp_overlay_play_try, .tvp_overlay_replay {
+            left: -20% !important;
+        }
     </style>
 </head>
 <body>
 <div id="app" v-cloak>
-    <input type="hidden" name="token" value="<?php echo $token;?>">
-    <!--<input type="hidden" name="token" value="e7420d11-91a4-4f4c-b783-0e6917138cfb">-->
+    <!--<input type="hidden" name="token" value="<?php echo $token;?>">-->
+    <input type="hidden" name="token" value="e7420d11-91a4-4f4c-b783-0e6917138cfb">
 
 
     <div id="page1" class="page" :class="{active:currentPage == 1}">
@@ -31,7 +34,7 @@
             <!--
                 轮播图
             -->
-            <div id="slider" class="mui-slider" >
+            <div id="slider" class="mui-slider">
                 <div class="mui-slider-group mui-slider-loop" id="stul">
                     <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
                     <div class="mui-slider-item mui-slider-item-duplicate"
@@ -87,12 +90,12 @@
                             <img src="img/home/label.png"/>
                             <p class="class-label-name">{{item.type_name}}</p>
                         </div>
-                        <img  class="show-img" :src="item.coverimage"/>
+                        <img class="show-img" :src="item.coverimage"/>
                         <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                     </div>
                     <div class="tab-content-desc">
                         <p class="tab-content-desc-title">{{item.name}}</p>
-                        <p class="tab-content-desc-content"  v-html="item.content"></p>
+                        <p class="tab-content-desc-content" v-html="item.content"></p>
                         <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                     </div>
                 </div>
@@ -108,7 +111,7 @@
                 <div @click="goInner(item.id)" v-for="item in detailsList" class="tab-content-item">
                     <div class="img-container">
                         <div class="class-label">
-                           <!-- <img src="img/home/label.png"/>-->
+                            <!-- <img src="img/home/label.png"/>-->
                             <p class="class-label-name">{{item.desc}}</p>
                         </div>
                         <img :src="item.coverimage" class="show-img"/>
@@ -165,7 +168,8 @@
                 </div>
             </div>
             <div class="history-record-show">
-                <p @click="searchContent(item.word)" v-for="item in historyList" class="history-record-item">{{item.word}}</p>
+                <p @click="searchContent(item.word)" v-for="item in historyList" class="history-record-item">
+                    {{item.word}}</p>
             </div>
         </div>
         <!--搜索内容展示-->
@@ -178,13 +182,13 @@
                         <!--<img src="img/home/label.png"/>-->
                         <p class="class-label-name">{{item.label}}</p>
                     </div>
-                    <img  class="show-img" :src="item.coverimage"/>
+                    <img class="show-img" :src="item.coverimage"/>
                     <p class="comments-and-times">{{item.readnum}}浏览 &#8226; {{item.comments}}评论</p>
                 </div>
                 <div class="tab-content-desc">
                     <p class="tab-content-desc-title">{{item.name}}</p>
                     <p class="tab-content-desc-content">{{item.desc}}</p>
-                    <p class="tab-content-desc-date">{{item.auth}}   {{item.createtime}}</p>
+                    <p class="tab-content-desc-date">{{item.auth}} {{item.createtime}}</p>
                 </div>
             </div>
 
@@ -198,6 +202,7 @@
 <script src="/assets/mui/js/mui.min.js?version=1.0" type="text/javascript"></script>
 <script type="text/javascript" src="/assets/vue/vue.min.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
+
 
 </body>
 </html>
