@@ -60,7 +60,7 @@ class JSSDK
         // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
 //        $data = json_decode(file_get_contents("jsapi_ticket.json",true),true);
         $data= Cache::get('jsapi_ticket');
-        if (!isset($data) || !$data) {
+        if (!isset($data['jsapi_ticket']) || !$data) {
             $accessToken = $this->getAccessToken();
             $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
             $res = json_decode($this->httpGet($url));
@@ -86,7 +86,7 @@ class JSSDK
         // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
 //        $data = json_decode(file_get_contents("access_token.json",true),true);
         $data= Cache::get('jsapi_access_token');
-        if (!isset($data)|| !$data){
+        if (!isset($data['jsapi_access_token'])|| !$data){
             $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
             $res = json_decode($this->httpGet($url));
             $access_token = $res->access_token;
