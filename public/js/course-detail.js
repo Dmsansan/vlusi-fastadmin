@@ -113,7 +113,7 @@ window.onload = function () {
                     self.imgUrl = data.data.detail.coverimage;
                     self.title = data.data.detail.name;
                     self.desc = data.data.detail.desc;
-                    wx.ready(function () {
+                    // wx.ready(function () {
                         let shareData = {
                             title: self.title, // 分享标题
                             desc: self.desc, // 分享描述
@@ -174,7 +174,7 @@ window.onload = function () {
                             })
                         }
 
-                    })
+                    // })
 
 
                    /* //分享内容
