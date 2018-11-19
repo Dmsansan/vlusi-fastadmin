@@ -87,33 +87,38 @@ window.onload = function () {
                 reviewBtn:function () {
                     let self = this;
                     self.isDisabled = true;
-                    self.formdata.append('article_id', localStorage.getItem('articleId')); //文章id
-                    self.formdata.append('comment_id', localStorage.getItem('ReplyId')); //文章对应的评论id
+                    if(self.commentsContent){
+                        self.formdata.append('article_id', localStorage.getItem('articleId')); //文章id
+                        self.formdata.append('comment_id', localStorage.getItem('ReplyId')); //文章对应的评论id
 
-                    self.formdata.append('token', localStorage.getItem('token'));
-                    self.formdata.append('content', self.commentsContent);
-                   /* self.formdata.append('image', localStorage.getItem('aa'));*/
-                    $.ajax({
-                        url:'/api/found/comment',
-                        type:'post',
-                        cache:false,
-                        data:self.formdata,
-                        processData:false,
-                        contentType:false,
-                        success:function (data) {
-                            self.isDisabled = false;
-                            self.controlInputShow = false;
-                            self.$nextTick(function () {
-                                self.formdata=new FormData();
-                                localStorage.setItem('ReplyId',"");
-                                localStorage.setItem('articleId',"");
-                                self.replyDetails();
-                            })
-                        },
-                        error:function (data) {
-                            
-                        }
-                    })
+                        self.formdata.append('token', localStorage.getItem('token'));
+                        self.formdata.append('content', self.commentsContent);
+                        /* self.formdata.append('image', localStorage.getItem('aa'));*/
+                        $.ajax({
+                            url:'/api/found/comment',
+                            type:'post',
+                            cache:false,
+                            data:self.formdata,
+                            processData:false,
+                            contentType:false,
+                            success:function (data) {
+                                self.isDisabled = false;
+                                self.controlInputShow = false;
+                                self.$nextTick(function () {
+                                    self.formdata=new FormData();
+                                    localStorage.setItem('ReplyId',"");
+                                    localStorage.setItem('articleId',"");
+                                    self.replyDetails();
+                                })
+                            },
+                            error:function (data) {
+
+                            }
+                        })
+                    }else {
+                        mui.toast('请输入内容！');
+                    }
+
                 },
                 touchStart (e) {
                     this.startY = e.targetTouches[0].pageY
