@@ -115,12 +115,18 @@ window.onload = function () {
                     self.desc = data.data.detail.desc;
 
                     wx.ready(function () {
-                        // let shareData = {
-                        //     title: self.title, // 分享标题
-                        //     desc: self.desc, // 分享描述
-                        //     link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        //     imgUrl: self.imgUrl
-                        // };
+                        let shareData = {
+                            title: self.title, // 分享标题
+                            desc: self.desc, // 分享描述
+                            link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: self.imgUrl, // 分享图标
+                            success: function () {
+                                console.log(1111111111)
+                            },
+                            fail: function (res) {
+                                 alert(JSON.stringify(res));
+                            }
+                        };
 
                         if (wx.onMenuShareAppMessage) {
                             wx.onMenuShareAppMessage({
