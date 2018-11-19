@@ -433,10 +433,10 @@ window.onload = function () {
                 }, function (data) {
                     if (data.code == 1) {
                         weixinShareTimeline(self.title, self.desc, self.shareUrl, self.imgUrl);
-                        /* self.configWX = data.data;
+                         self.configWX = data.data;
                          self.$nextTick(function () {
                              shareWeChat(self.configWX);
-                         })*/
+                         })
                     }
                 });
 
