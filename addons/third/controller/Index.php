@@ -99,7 +99,7 @@ class Index extends Controller
                 $this->redirect($url);
             }
         }
-        echo '错误';die;
+        dump($result);die;
 //        $this->error(__('Operation failed'));
     }
 
