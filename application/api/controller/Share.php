@@ -60,25 +60,27 @@ class Share extends Api
         $filename = 'uploads/'.$folderName.'/'.time().'11'.rand('100000','999999').".jpg";
         $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
 
-        $logo = 'img/code_png/code.jpg'; //准备好的logo图片
+     //   $logo = 'img/code_png/code.jpg'; //准备好的logo图片
         $QR = $filename;      //已经生成的原始二维码图
-        if (file_exists($logo)) {
-            $QR = imagecreatefromstring(file_get_contents($QR));    //目标图象连接资源。
-            $logo = imagecreatefromstring(file_get_contents($logo));  //源图象连接资源。
-            $QR_width = imagesx($QR);      //二维码图片宽度
-            $QR_height = imagesy($QR);     //二维码图片高度
-            $logo_width = imagesx($logo);    //logo图片宽度
-            $logo_height = imagesy($logo);   //logo图片高度
-            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
-            $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
-            $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
-            $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
-    //重新组合图片并调整大小
-    /*
-     * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
-     */
-        imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
-    }
+//        if (file_exists($logo)) {
+//            $QR = imagecreatefromstring(file_get_contents($QR));    //目标图象连接资源。
+//            $logo = imagecreatefromstring(file_get_contents($logo));  //源图象连接资源。
+//            $QR_width = imagesx($QR);      //二维码图片宽度
+//            $QR_height = imagesy($QR);     //二维码图片高度
+//            $logo_width = imagesx($logo);    //logo图片宽度
+//            $logo_height = imagesy($logo);   //logo图片高度
+//            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
+//            $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
+//            $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
+//            $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
+//    //重新组合图片并调整大小
+//    /*
+//     * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
+//     */
+//        imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
+//        }
+        $QR = imagecreatefromstring(file_get_contents($QR));
+    
 
         imagepng($QR, $filename);
   
@@ -138,8 +140,14 @@ function createSharePng($gData,$codeName,$fileName = ''){
  
 
     //封面图
-    list($c_w,$c_h) = getimagesize($urls.$gData['coverimage']);
-    $coverimageImg = $this->createImageFromFile($urls.$gData['coverimage']);
+    preg_match("/^yanglao\/.*?\.[1-9a-zA-Z]+/",$gData['coverimage'],$imgs);
+    if($imgs){
+        $gData['coverimage'] = $urls.$gData['coverimage'];
+    }
+
+    list($c_w,$c_h) = getimagesize($gData['coverimage']);
+    $coverimageImg = $this->createImageFromFile($gData['coverimage']);
+
     imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
 
  
@@ -312,25 +320,26 @@ function createSharePng($gData,$codeName,$fileName = ''){
         $filename = 'uploads/'.$folderName.'/'.time().'22'.rand('100000','999999').".jpg";
         $QRcode->png($value,$filename , $errorCorrectionLevel, $matrixPointSize, 2);
 
-        $logo = 'img/code_png/code.jpg'; //准备好的logo图片
+//        $logo = 'img/code_png/code.jpg'; //准备好的logo图片
         $QR = $filename;      //已经生成的原始二维码图
-        if (file_exists($logo)) {
-            $QR = imagecreatefromstring(file_get_contents($QR));    //目标图象连接资源。
-            $logo = imagecreatefromstring(file_get_contents($logo));  //源图象连接资源。
-            $QR_width = imagesx($QR);      //二维码图片宽度
-            $QR_height = imagesy($QR);     //二维码图片高度
-            $logo_width = imagesx($logo);    //logo图片宽度
-            $logo_height = imagesy($logo);   //logo图片高度
-            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
-            $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
-            $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
-            $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
-    //重新组合图片并调整大小
-    /*
-     * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
-     */
-        imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
-    }
+//        if (file_exists($logo)) {
+//            $QR = imagecreatefromstring(file_get_contents($QR));    //目标图象连接资源。
+//            $logo = imagecreatefromstring(file_get_contents($logo));  //源图象连接资源。
+//            $QR_width = imagesx($QR);      //二维码图片宽度
+//            $QR_height = imagesy($QR);     //二维码图片高度
+//            $logo_width = imagesx($logo);    //logo图片宽度
+//            $logo_height = imagesy($logo);   //logo图片高度
+//            $logo_qr_width = $QR_width / 6;   //组合之后logo的宽度(占二维码的1/5)
+//            $scale = $logo_width/$logo_qr_width;  //logo的宽度缩放比(本身宽度/组合后的宽度)
+//            $logo_qr_height = $logo_height/$scale; //组合之后logo的高度
+//            $from_width = ($QR_width - $logo_qr_width) / 2;  //组合之后logo左上角所在坐标点
+//    //重新组合图片并调整大小
+//    /*
+//     * imagecopyresampled() 将一幅图像(源图象)中的一块正方形区域拷贝到另一个图像中
+//     */
+//        imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
+//    }
+    $QR = imagecreatefromstring(file_get_contents($QR));
 
         imagepng($QR, $filename);
   
@@ -540,47 +549,31 @@ function createImageFromFile($file){
 
  
 
-    if(!$fileSuffix) return false;
+    $ename=getimagesize($file); 
+  $ename=explode('/',$ename['mime']); 
+  $ext=$ename[1]; 
+  switch($ext){ 
+   case "png": 
+    
+    $image=imagecreatefrompng($file); 
+    break; 
+   case "jpeg": 
+    
+    $image=imagecreatefromjpeg($file); 
+    break; 
+   case "jpg": 
+    
+    $image=imagecreatefromjpeg($file); 
+    break; 
+   case "gif": 
+    
+    $image=imagecreatefromgif($file); 
+    break; 
+  } 
 
  
 
-    switch ($fileSuffix){
-
-        case 'jpeg':
-
-            $theImage = @imagecreatefromjpeg($file);
-
-            break;
-
-        case 'jpg':
-
-            $theImage = @imagecreatefromjpeg($file);
-
-            break;
-
-        case 'png':
-
-            $theImage = @imagecreatefrompng($file);
-
-            break;
-
-        case 'gif':
-
-            $theImage = @imagecreatefromgif($file);
-
-            break;
-
-        default:
-
-            $theImage = @imagecreatefromstring(file_get_contents($file));
-
-            break;
-
-    }
-
- 
-
-    return $theImage;
+    return $image;
 
 }
 

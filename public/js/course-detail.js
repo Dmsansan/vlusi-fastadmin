@@ -113,18 +113,17 @@ window.onload = function () {
                     self.imgUrl = data.data.detail.coverimage;
                     self.title = data.data.detail.name;
                     self.desc = data.data.detail.desc;
-
-                    wx.ready(function () {
+                    // wx.ready(function () {
                         let shareData = {
                             title: self.title, // 分享标题
                             desc: self.desc, // 分享描述
                             link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: self.imgUrl, // 分享图标
                             success: function () {
-                                console.log(1111111111)
+                                /*console.log(1111111111)*/
                             },
                             fail: function (res) {
-                                 alert(JSON.stringify(res));
+                                 /*alert(JSON.stringify(res));*/
                             }
                         };
 
@@ -137,7 +136,7 @@ window.onload = function () {
                                 type: '', // 分享类型,music、video或link，不填默认为link
                                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                 success: function () {
-                                    /* alert(1111);*/
+                                     // alert(1111);
                                 }
                             });
 
@@ -160,7 +159,7 @@ window.onload = function () {
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
                                     // 设置成功
-                                    /*alert(141414);*/
+                                   /* alert(141414);*/
                                 }
                             });
                             wx.updateAppMessageShareData({
@@ -175,7 +174,7 @@ window.onload = function () {
                             })
                         }
 
-                    })
+                    // })
 
 
                    /* //分享内容
@@ -331,7 +330,6 @@ window.onload = function () {
             },
             //进入课时
             goToCourseHour: function (id, name) {
-                console.log(name)
                 if (name == '可体验') {
                     mui.openWindow({
                         //视频版
@@ -451,7 +449,9 @@ window.onload = function () {
                         signature: todo.signaTure,// 必填，签名
                         jsApiList: [
                             "onMenuShareAppMessage",//分享给朋友接口
-                            "updateAppMessageShareData"//分享给朋友接口
+                            "onMenuShareTimeline",//分享给朋友接口
+                            "updateAppMessageShareData",//分享给朋友接口
+                            "updateTimelineShareData",//分享给朋友接口
                         ] // 必填，需要使用的JS接口列表
                     });
                 }
@@ -463,7 +463,8 @@ window.onload = function () {
                         //"img_height":"640",
                         "link": link,
                         "desc": desc,
-                        "title": title
+                        "title": title,
+
                     });
                 }
 
