@@ -136,7 +136,7 @@
                 <!--审核不通过只能看体验课程-->
 
                 <li @click="goToCourseHour(course.id,course.isviewlist)"
-                    v-if="detailList.is_can_study == 0"
+                    v-if="!detailList.is_can_study"
                     v-for="(course,index) in courseList" class="course-list-item">
                     <p class="course-list-item-content">
                     <span class="course-list-item-title">
