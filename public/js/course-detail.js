@@ -114,16 +114,16 @@ window.onload = function () {
                     self.title = data.data.detail.name;
                     self.desc = data.data.detail.desc;
                     // wx.ready(function () {
-                        let shareData = {
+                        /*let shareData = {
                             title: self.title, // 分享标题
                             desc: self.desc, // 分享描述
                             link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: self.imgUrl, // 分享图标
                             success: function () {
-                                /*console.log(1111111111)*/
+                                /!*console.log(1111111111)*!/
                             },
                             fail: function (res) {
-                                 /*alert(JSON.stringify(res));*/
+                                 /!*alert(JSON.stringify(res));*!/
                             }
                         };
 
@@ -148,7 +148,7 @@ window.onload = function () {
                                 type: '', // 分享类型,music、video或link，不填默认为link
                                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                 success: function () {
-                                    /* alert(1111);*/
+                                    /!* alert(1111);*!/
                                 }
                             })
                         } else {
@@ -159,7 +159,7 @@ window.onload = function () {
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
                                     // 设置成功
-                                   /* alert(141414);*/
+                                   /!* alert(141414);*!/
                                 }
                             });
                             wx.updateAppMessageShareData({
@@ -169,10 +169,10 @@ window.onload = function () {
                                 imgUrl: self.imgUrl, // 分享图标
                                 success: function () {
                                     // 设置成功
-                                    /*alert(141414);*/
+                                    /!*alert(141414);*!/
                                 }
                             })
-                        }
+                        }*/
 
                     // })
 
@@ -467,6 +467,69 @@ window.onload = function () {
 
                     });
                 }
+
+                let shareData = {
+                    title: self.title, // 分享标题
+                    desc: self.desc, // 分享描述
+                    link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: self.imgUrl, // 分享图标
+                    success: function () {
+                        /*console.log(1111111111)*/
+                    },
+                    fail: function (res) {
+                        /*alert(JSON.stringify(res));*/
+                    }
+                };
+
+
+                if (wx.onMenuShareAppMessage) {
+                    wx.onMenuShareAppMessage({
+                        title: self.title, // 分享标题
+                        desc: self.desc, // 分享描述
+                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: self.imgUrl, // 分享图标
+                        type: '', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function () {
+                            // alert(1111);
+                        }
+                    });
+
+                    wx.onMenuShareTimeline({
+                        title: self.title, // 分享标题
+                        desc: self.desc, // 分享描述
+                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: self.imgUrl, // 分享图标
+                        type: '', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function () {
+                            /* alert(1111);*/
+                        }
+                    })
+                } else {
+                    wx.updateTimelineShareData({
+                        title: self.title, // 分享标题
+                        desc: self.desc, // 分享描述
+                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: self.imgUrl, // 分享图标
+                        success: function () {
+                            // 设置成功
+                            /* alert(141414);*/
+                        }
+                    });
+                    wx.updateAppMessageShareData({
+                        title: self.title, // 分享标题
+                        desc: self.desc, // 分享描述
+                        link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: self.imgUrl, // 分享图标
+                        success: function () {
+                            // 设置成功
+                            /*alert(141414);*/
+                        }
+                    })
+                }
+
+
 
             },
             generateCard: function () {
