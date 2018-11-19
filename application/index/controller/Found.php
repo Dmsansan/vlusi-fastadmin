@@ -8,13 +8,17 @@ use app\common\library\Token;
 class Found extends Frontend
 {
 
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
     public function _initialize()
     {
         parent::_initialize();
+        $userinfo=$this->auth->getUser();
+        if(!$userinfo){
+            $this->redirect('user/login');
+        }
     }
 
     public function index()
@@ -23,6 +27,7 @@ class Found extends Frontend
         $this->assign('banner',$list);
         return $this->view->fetch();
     }
+
 
 
     public function detail()

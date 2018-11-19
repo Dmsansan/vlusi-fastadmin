@@ -22,7 +22,12 @@ class Courses extends Api
     public function _initialize()
     {
         parent::_initialize();
-        $this->userid = $this->auth->getUser()->id;
+        $userinfo = $this->auth->getUser();
+        if($userinfo){
+            $this->userid=$userinfo->id;
+        }else{
+            $this->error('用户信息失效',[],[],403);
+        }
     }
     /**
      * 课程分类
@@ -233,9 +238,6 @@ class Courses extends Api
                             ->find();
             $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
             $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
-            //判断该用户是否可学习
-            $is_can=db('course_audit')->where(['course_id'=>$course_id,'user_id'=>$userid,'checklist'=>'通过'])->find();
-            $data['is_can_study']=$is_can?1:0;
 
 
 
@@ -340,7 +342,7 @@ class Courses extends Api
         if(!$course_id || !$comment_id){$this->error('参数不正确');}
 
         $content=$this->request->post("content");
-
+        if(!$content){ $this->error('请填写内容');}
         //关键字屏蔽
         $content=$this->wordCheck($content);
 

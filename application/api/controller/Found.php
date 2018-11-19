@@ -364,6 +364,8 @@ class Found extends Api
         if(!$article_id || $comment_id){$this->error('参数不正确');}
 
         $content=$this->request->request("content");
+        if(!$content){ $this->error('请填写内容');}
+
 
         //关键字屏蔽
         $content=$this->wordCheck($content);
