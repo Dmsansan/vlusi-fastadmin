@@ -26,7 +26,7 @@ class Share extends Api
     public function getimage()
     {
         $article_id =   (int)$this->request->request("article_id");
-$article_id  = 68;
+
         if (!$article_id)
         {
             $this->error(__('文章id为空'));
@@ -140,8 +140,14 @@ function createSharePng($gData,$codeName,$fileName = ''){
  
 
     //封面图
-    list($c_w,$c_h) = getimagesize($urls.$gData['coverimage']);
-    $coverimageImg = $this->createImageFromFile($urls.$gData['coverimage']);
+    preg_match("/^yanglao\/.*?\.[1-9a-zA-Z]+/",$gData['coverimage'],$imgs);
+    if($imgs){
+        $gData['coverimage'] = $urls.$gData['coverimage'];
+    }
+
+    list($c_w,$c_h) = getimagesize($gData['coverimage']);
+    $coverimageImg = $this->createImageFromFile($gData['coverimage']);
+
     imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
 
  
@@ -543,47 +549,31 @@ function createImageFromFile($file){
 
  
 
-    if(!$fileSuffix) return false;
+    $ename=getimagesize($file); 
+  $ename=explode('/',$ename['mime']); 
+  $ext=$ename[1]; 
+  switch($ext){ 
+   case "png": 
+    
+    $image=imagecreatefrompng($file); 
+    break; 
+   case "jpeg": 
+    
+    $image=imagecreatefromjpeg($file); 
+    break; 
+   case "jpg": 
+    
+    $image=imagecreatefromjpeg($file); 
+    break; 
+   case "gif": 
+    
+    $image=imagecreatefromgif($file); 
+    break; 
+  } 
 
  
 
-    switch ($fileSuffix){
-
-        case 'jpeg':
-
-            $theImage = @imagecreatefromjpeg($file);
-
-            break;
-
-        case 'jpg':
-
-            $theImage = @imagecreatefromjpeg($file);
-
-            break;
-
-        case 'png':
-
-            $theImage = @imagecreatefrompng($file);
-
-            break;
-
-        case 'gif':
-
-            $theImage = @imagecreatefromgif($file);
-
-            break;
-
-        default:
-
-            $theImage = @imagecreatefromstring(file_get_contents($file));
-
-            break;
-
-    }
-
- 
-
-    return $theImage;
+    return $image;
 
 }
 
