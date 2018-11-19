@@ -381,30 +381,35 @@ window.onload = function () {
             reviewBtn: function () {
                 let self = this;
                 self.isDisabled = true;
-                self.formdata.append('course_id', self.passID);
-                self.formdata.append('token', localStorage.getItem('token'));
-                self.formdata.append('content', self.commentsContent);
-                $.ajax({
-                    url: '/api/courses/comment',
-                    type: 'post',
-                    cache: false,
-                    data: self.formdata,
-                    /*  dataType:'json',*/
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        self.$nextTick(function () {
-                            self.formdata = new FormData();
-                            self.commentsContent = '';
-                            self.isDisabled = false;
-                            self.isFocus = false;
-                            self.courseDetails();
-                        })
-                    },
-                    error: function (data) {
+                if(self.commentsContent){
+                    self.formdata.append('course_id', self.passID);
+                    self.formdata.append('token', localStorage.getItem('token'));
+                    self.formdata.append('content', self.commentsContent);
+                    $.ajax({
+                        url: '/api/courses/comment',
+                        type: 'post',
+                        cache: false,
+                        data: self.formdata,
+                        /*  dataType:'json',*/
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            self.$nextTick(function () {
+                                self.formdata = new FormData();
+                                self.commentsContent = '';
+                                self.isDisabled = false;
+                                self.isFocus = false;
+                                self.courseDetails();
+                            })
+                        },
+                        error: function (data) {
 
-                    }
-                })
+                        }
+                    })
+                }else {
+                    mui.toast('请输入内容！');
+                }
+
             },
             blruFn: function () {
                 let self = this;
