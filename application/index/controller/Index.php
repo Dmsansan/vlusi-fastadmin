@@ -24,8 +24,6 @@ class Index extends Frontend
     public function index()
     {
 //        $token=$this->request->get('token');
-
-
         $token=$this->auth->getToken();
         $this->assign('token',$token);
 
