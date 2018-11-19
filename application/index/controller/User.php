@@ -24,11 +24,10 @@ class User extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-//        $this->userid = $this->auth;
-//        $userinfo=$this->auth->getUser();
-//        if(!$userinfo){
-//            $this->redirect('user/login');
-//        }
+        $userinfo=$this->auth->getUser();
+        if(!$userinfo){
+            $this->redirect('user/login');
+        }
     }
 
 
