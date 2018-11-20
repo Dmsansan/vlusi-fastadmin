@@ -28,10 +28,12 @@ window.onload = function () {
             //底部导航栏
             switchPage:function (id) {
                 if(id == 1){//课程
+                    window.location.href = '/index';
                     mui.openWindow({
                         url:'/index'
                     })
                 }else if(id == 2){//f发现
+                    window.location.href = '/index/found';
                     mui.openWindow({
                         url:'/index/found'
                     })

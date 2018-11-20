@@ -6,6 +6,11 @@
     <title>我的</title>
     <script type="text/javascript" src="/js/loader.js"></script>
     <link rel="stylesheet" href="/css/person-home.css"/>
+    <style>
+        .mui-bar-tab .mui-tab-item{
+            width: 33.3% !important;
+        }
+    </style>
 </head>
 <body>
 <div id="app" class="mui-content" v-cloak>
@@ -54,11 +59,11 @@
 
 
     <nav class="mui-bar mui-bar-tab">
-        <a class="mui-tab-item" href="http://yl.qclike.cn/index"  @click="switchPage(item.id)">
+        <a class="mui-tab-item"   @click="switchPage(1)">
             <img src="/img/course.png"/>
             <span class="mui-tab-label">课程</span>
         </a>
-        <a class="mui-tab-item" href="http://yl.qclike.cn/index/found"  @click="switchPage(item.id)">
+        <a class="mui-tab-item" href="http://yanglao.cc/index/found"  @click="switchPage(2)">
             <img src="/img/discovery.png"/>
             <span class="mui-tab-label">发现</span>
         </a>
