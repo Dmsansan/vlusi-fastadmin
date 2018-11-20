@@ -15,6 +15,7 @@
         /*移除底部或顶部三角,需要在删除此代码*/
         .mui-popover .mui-popover-arrow:after {  width: 0px;  }
         .friends{  text-align: center;  color: #ffffff;  width: 200px;   background-size: cover; box-shadow: 0 0 0 ; }
+        .logo-desc{font-size: 12px !important;}
     </style>
 </head>
 <body>
@@ -181,6 +182,7 @@
                 <p class="course-comments-title">课程评论</p>
             </div>
             <ul class="course-comments-list">
+                <a name="2" id="2"></a>
                 <li v-for="item in commentsList" class="course-comments-item">
                     <div class="user-info">
                         <p class="user-info-logo-nickname">
@@ -223,7 +225,7 @@
                    placeholder="写下你的评论...">
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">
-           <!-- <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
+            <a href="#2"><img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/></a>
             <img @click="collect(true)" src="/img/course-detail/like.png"
                  :class="{active:!detailList.is_collection}"
                  class="icon-like bottom-icon-comment"/>
@@ -235,7 +237,7 @@
                  class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
-            <!--<img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>-->
+            <a href="#2"><img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/></a>
             <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button"

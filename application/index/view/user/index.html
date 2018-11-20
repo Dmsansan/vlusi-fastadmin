@@ -10,6 +10,10 @@
         .mui-bar-tab .mui-tab-item{
             width: 33.3% !important;
         }
+        .mui-toast-container {
+            bottom: 50% !important;
+        }
+
     </style>
 </head>
 <body>
@@ -23,7 +27,7 @@
                 <div class="img-container">
                     <img :src="userInformation.avatar" class="user-info-logo"/>
                     <p class="user-info-nickname">{{userInformation.nickname}}</p>
-                    <div class="user-info-authentication">
+                    <div class="user-info-authentication" @click="authentication">
                         企业用户认证
                         <img src="/img/person-home/author.png" class="auth-img">
                     </div>
