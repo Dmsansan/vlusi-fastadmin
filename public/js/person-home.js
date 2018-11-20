@@ -10,6 +10,8 @@ window.onload = function () {
             ],
             //用户信息
             userInformation:[],
+            //手动改变值变化
+            tabContentTracker: 0,
         },
         mounted() {
 
