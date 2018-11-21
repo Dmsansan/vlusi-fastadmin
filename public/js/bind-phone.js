@@ -12,6 +12,7 @@ window.onload = function () {
             clearPhone:false
         },
         mounted() {
+            mui.toast('注册会员可继续阅读！');
         },
         methods: {
             test:function() {

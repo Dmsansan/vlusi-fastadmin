@@ -110,7 +110,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     //创建画布
 
-    $im = imagecreatetruecolor(375, 667);
+    $im = imagecreatetruecolor(750, 1334);
 
     $url = "http://".$_SERVER['HTTP_HOST'];
     
@@ -148,41 +148,41 @@ function createSharePng($gData,$codeName,$fileName = ''){
     list($c_w,$c_h) = getimagesize($gData['coverimage']);
     $coverimageImg = $this->createImageFromFile($gData['coverimage']);
 
-    imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
+    imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 750, 376, $c_w, $c_h);
 
  
 
     //标题
 	$a = array(
-		'top'=>210,
-		'fontsize'=>13,
-		'width'=>340,
-		'left'=>20,
-		'hang_size'=>20,
+		'top'=>420,
+		'fontsize'=>26,
+		'width'=>680,
+		'left'=>40,
+		'hang_size'=>40,
 		'color'=>array(0,0,0)
 	);
 	$b = array(
 		'maxline'=>'',
-		'width'=>340,
-		'left'=>20,
+		'width'=>680,
+		'left'=>40,
 	);
 	$this->textalign($im,$a,$gData['title'],true,$font_file,0,$b);  
 
 	//背景图
-	imagefilledrectangle ($im, 5 , 285 , 370 , 395 , $fang_bg_color);
+	imagefilledrectangle ($im, 10 , 570 , 740 , 790 , $fang_bg_color);
 	//简介
 	$c = array(
-		'top'=>290,
-		'fontsize'=>11,
-		'width'=>320,
-		'left'=>25,
-		'hang_size'=>20,
+		'top'=>580,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
 		'color'=>array(131,131,131)
 	);
 	$d = array(
 		'maxline'=>2,
-		'width'=>320,
-		'left'=>25,
+		'width'=>640,
+		'left'=>50,
 	);
 	$this->textalign($im,$c,strip_tags($gData['content']),true,$font_file,0,$d);
 	
@@ -192,10 +192,10 @@ function createSharePng($gData,$codeName,$fileName = ''){
 
     $avatarImg = $this->createImageFromFile($urls.$gData['avatar']);
 	
-    imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
+    imagecopyresized($im, $avatarImg, 56, 686, 0, 0, 80, 80, $a_w, $a_h);
 	//作者
-	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
-	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, '乐养老官方账号');
+	imagettftext($im, 22,0, 150, 725, $font_color_2 ,$font_file, $gData['nickname']);
+	imagettftext($im, 22,0, 150, 760, $font_color_2 ,$font_file, '乐养老官方账号');
 	
 	//广告
 
@@ -205,27 +205,27 @@ function createSharePng($gData,$codeName,$fileName = ''){
 //	
 //    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
         //广告1
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 420, $font_color_2, $font_file, $gData['ad1']);
+        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
         
         //广告2
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 450, $font_color_2, $font_file, $gData['ad2']);
+        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
         //广告3
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 480, $font_color_2, $font_file, $gData['ad3']);
+        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
 
     //二维码
 
@@ -233,14 +233,14 @@ function createSharePng($gData,$codeName,$fileName = ''){
     
     $codeImg = @imagecreatefrompng($url."/".$gData['QRcode']);
 
-    imagecopyresized($im, $codeImg, 100, 503, 0, 0, 70, 70, $code_w, $code_h);
+    imagecopyresized($im, $codeImg, 200, 1006, 0, 0, 140, 140, $code_w, $code_h);
 	//logo
 
     list($l_w,$l_h) = getimagesize($url."/img/code_png/logo-new.png");
 
     $logoImg = $this->createImageFromFile($url."/img/code_png/logo-new.png");
 
-    imagecopyresized($im, $logoImg, 210, 503, 0, 0, 70, 70, $l_w, $l_h);
+    imagecopyresized($im, $logoImg, 420, 1006, 0, 0, 140, 140, $l_w, $l_h);
  
     //输出图片
 
@@ -369,7 +369,7 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 
     //创建画布
 
-    $im = imagecreatetruecolor(375, 667);
+    $im = imagecreatetruecolor(750, 1334);
 
     $url = "http://".$_SERVER['HTTP_HOST'];
     
@@ -401,41 +401,41 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
     //封面图
     list($c_w,$c_h) = getimagesize($urls.$gData['coverimage']);
     $coverimageImg = $this->createImageFromFile($urls.$gData['coverimage']);
-    imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 375, 188, $c_w, $c_h);
+    imagecopyresized($im, $coverimageImg, 0, 0, 0, 0, 750, 376, $c_w, $c_h);
 
  
 
     //标题
 	$a = array(
-		'top'=>210,
-		'fontsize'=>13,
-		'width'=>340,
-		'left'=>20,
-		'hang_size'=>20,
+		'top'=>420,
+		'fontsize'=>26,
+		'width'=>680,
+		'left'=>40,
+		'hang_size'=>40,
 		'color'=>array(0,0,0)
 	);
 	$b = array(
 		'maxline'=>'',
-		'width'=>340,
-		'left'=>20,
+		'width'=>680,
+		'left'=>40,
 	);
 	$this->textalign($im,$a,$gData['name'],true,$font_file,0,$b);  
 
 	//背景图
-	imagefilledrectangle ($im, 5 , 285 , 370 , 395 , $fang_bg_color);
+	imagefilledrectangle ($im, 10 , 570 , 740 , 790 , $fang_bg_color);
 	//简介
 	$c = array(
-		'top'=>290,
-		'fontsize'=>11,
-		'width'=>320,
-		'left'=>25,
-		'hang_size'=>20,
+		'top'=>580,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
 		'color'=>array(131,131,131)
 	);
 	$d = array(
 		'maxline'=>2,
-		'width'=>320,
-		'left'=>25,
+		'width'=>640,
+		'left'=>50,
 	);
 	$this->textalign($im,$c,strip_tags($gData['content']),true,$font_file,0,$d);
 	
@@ -445,10 +445,10 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 
     $avatarImg = $this->createImageFromFile($urls.$gData['avatar']);
 	
-    imagecopyresized($im, $avatarImg, 28, 343, 0, 0, 40, 40, $a_w, $a_h);
-//	作者
-	imagettftext($im, 11,0, 75, 363, $font_color_2 ,$font_file, $gData['nickname']);
-	imagettftext($im, 11,0, 75, 380, $font_color_2 ,$font_file, '乐养老官方账号');
+    imagecopyresized($im, $avatarImg, 56, 686, 0, 0, 80, 80, $a_w, $a_h);
+	//作者
+	imagettftext($im, 22,0, 150, 725, $font_color_2 ,$font_file, $gData['nickname']);
+	imagettftext($im, 22,0, 150, 760, $font_color_2 ,$font_file, '乐养老官方账号');
 	
 	//广告
 
@@ -458,27 +458,27 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 //	
 //    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
          //广告1
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 420, $font_color_2, $font_file, $gData['ad1']);
+        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
         
         //广告2
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 450, $font_color_2, $font_file, $gData['ad2']);
+        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
         //广告3
-	$fontSize  = 11; 
-        $fontWidth = imagefontwidth($fontSize);//获取文字宽度
-        $textWidth = $fontWidth * mb_strlen($gData['ad1']);
-        $x         = ceil((375 - $textWidth) / 2); //计算文字的水平位置
+	$fontSize  = 22; 
+        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
+        $textWidth = $fontWidth[2] - $fontWidth[0];
+        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
 
-        imagettftext($im, $fontSize, 0, $x, 480, $font_color_2, $font_file, $gData['ad3']);
+        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
 
     //二维码
 
@@ -486,14 +486,14 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
     
     $codeImg = @imagecreatefrompng($url."/".$gData['QRcode']);
 
-    imagecopyresized($im, $codeImg, 100, 503, 0, 0, 70, 70, $code_w, $code_h);
+    imagecopyresized($im, $codeImg, 200, 1006, 0, 0, 140, 140, $code_w, $code_h);
 	//logo
 
     list($l_w,$l_h) = getimagesize($url."/img/code_png/logo-new.png");
 
     $logoImg = $this->createImageFromFile($url."/img/code_png/logo-new.png");
 
-    imagecopyresized($im, $logoImg, 210, 503, 0, 0, 70, 70, $l_w, $l_h);
+    imagecopyresized($im, $logoImg, 420, 1006, 0, 0, 140, 140, $l_w, $l_h);
  
     //输出图片
 

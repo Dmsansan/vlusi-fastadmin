@@ -27,6 +27,10 @@ window.onload = function () {
                     self.userInformation = data.data;
                 });
             },
+            //认证弹窗
+            authentication:function () {
+                mui.toast('功能开发中，敬请期待！');
+            },
             //底部导航栏
             switchPage:function (id) {
                 if(id == 1){//课程

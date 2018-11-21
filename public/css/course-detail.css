@@ -166,7 +166,7 @@ input.comment-input {
 }
 .comment-input-container{
     position: relative;
-    width: 80%;
+    width: 70%;
 }
 img.icon-expression.bottom-icon-comment {
     position: absolute;
@@ -177,7 +177,7 @@ img.icon-expression.bottom-icon-comment.invisible{
     display: none;
 }
 .comment-icon-container {
-    width: 20%;
+    width: 30%;
     display: inline-flex;
     align-items: center;
     justify-content: space-around;
