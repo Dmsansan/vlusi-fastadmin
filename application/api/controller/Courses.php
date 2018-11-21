@@ -252,7 +252,7 @@ class Courses extends Api
                             ->join('admin b','a.admin_id=b.id')
                             ->field('a.*,b.nickname as auth,b.signtext,b.avatar as auth_avatar')
                             ->find();
-            $data['detail']['desc']=mb_substr(strip_tags($data['detail']['content']),0,40).'...';
+            $data['detail']['desc']=$data['detail']['coverdesc'];
             $data['detail']['createtime']=date('Y-m-d',$data['detail']['createtime']);
             //
             $data['detail']['comments'] =$data['detail']['comments']+$data['detail']['comments_set'];
