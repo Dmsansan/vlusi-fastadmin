@@ -6,10 +6,29 @@
             <input id="c-course_category_id" data-rule="required" data-source="course/category/index" class="form-control selectpage form-control" name="row[course_category_id]" type="text" value="{$row.course_category_id}">
         </div>
     </div>
+
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
         <div class="col-xs-12 col-sm-8">
             <input id="c-name" data-rule="required" class="form-control form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Flag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-flag" class="form-control selectpicker" multiple="" name="row[flag][]">
+                {foreach name="flagList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.flag"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('封面描述')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-coverdesc" data-rule="required" class="form-control" rows="5" name="row[coverdesc]" cols="50">{$row.coverdesc}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -26,18 +45,7 @@
             <ul class="row list-inline plupload-preview" id="p-coverimage"></ul>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Flag')}:</label>
-        <div class="col-xs-12 col-sm-8">
-                        
-            <select  id="c-flag" class="form-control selectpicker" multiple="" name="row[flag][]">
-                {foreach name="flagList" item="vo"}
-                    <option value="{$key}" {in name="key" value="$row.flag"}selected{/in}>{$vo}</option>
-                {/foreach}
-            </select>
 
-        </div>
-    </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
         <div class="col-xs-12 col-sm-8">

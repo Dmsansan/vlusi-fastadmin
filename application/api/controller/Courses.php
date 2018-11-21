@@ -48,7 +48,7 @@ class Courses extends Api
     public function category()
     {
         //分类数据
-        $cate=db('course_category')->select();
+        $cate=db('course_category')->order('weight desc')->select();
         $this->success("返回成功",$cate);
     }
 
@@ -76,7 +76,7 @@ class Courses extends Api
         $data=db('course')->alias('a')
             ->join('course_category b','b.id=a.course_category_id')
             ->join('admin c','c.id=a.admin_id')
-            ->order('createtime desc,flag desc,readnum desc')
+            ->order('flag desc,createtime desc')
             ->field('a.*,b.name as type_name,c.nickname as auth')
             ->page($page,$this->pagesize)
             ->select();

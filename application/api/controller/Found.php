@@ -42,7 +42,7 @@ class Found extends Api
     public function category()
     {
         //分类数据
-        $cate=db('article_category')->select();
+        $cate=db('article_category')->order('weight desc')->select();
         $this->success("返回成功",$cate);
     }
 
@@ -70,7 +70,7 @@ class Found extends Api
          $list=db('article')->alias('a')
                 ->join('article_category b','b.id=a.article_category_id')
                 ->join('admin c','c.id=a.admin_id')
-                ->order('createtime desc,flag desc,zan desc')
+                ->order('flag desc,createtime desc,zan desc')
                 ->field('a.*,b.name as type_name,c.nickname as auth')
                 ->page($page,$this->pagesize)
                 ->select();
@@ -139,7 +139,7 @@ class Found extends Api
                 ->join('admin b','a.admin_id=b.id')
                 ->field('a.*,b.nickname as auth')
                 ->where($where)
-                ->order('createtime desc')
+                ->order('weight desc,createtime desc')
                 ->page($page,$this->pagesize)
                 ->select();
         foreach($data as $key=>$val){
