@@ -26,7 +26,7 @@ class Share extends Api
     public function getimage()
     {
         $article_id =   (int)$this->request->request("article_id");
-$article_id = 107;
+
         if (!$article_id)
         {
             $this->error(__('文章id为空'));
@@ -328,7 +328,7 @@ function createSharePng($gData,$codeName,$fileName = ''){
     public function getcourseimage()
     {
         $course_id =   (int)$this->request->request("course_id");
-$course_id = 46;
+
         if (!$course_id)
         {
             $this->error(__('课时id为空'));
