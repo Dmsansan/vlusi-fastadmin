@@ -92,7 +92,7 @@ class Courses extends Api
 
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
-            $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+            $data[$key]['content']=$val['coverdesc'];
 
             //点赞数处理
             $data[$key]['comments'] =$val['comments']+$val['comments_set'];
@@ -160,7 +160,7 @@ class Courses extends Api
 
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
-            $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+            $data[$key]['content']=$val['coverdesc'];
             $data[$key]['comments'] =$val['comments']+$val['comments_set'];
 
             //点赞处理

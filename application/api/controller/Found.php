@@ -84,7 +84,7 @@ class Found extends Api
 
         foreach($list as $key=>$val){
             $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
-            $list[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+            $list[$key]['content']=$val['coverdesc'];
         }
 
 
@@ -144,7 +144,7 @@ class Found extends Api
                 ->select();
         foreach($data as $key=>$val){
             $data[$key]['createtime']=date('Y-m-d',$val['createtime']);
-            $data[$key]['content']=mb_substr(strip_tags($val['content']),0,30);
+            $data[$key]['content']=$val['coverdesc'];
 
             //点赞处理
             $data[$key]['readnum']  =$val['readnum']+$val['readnum_set'];
