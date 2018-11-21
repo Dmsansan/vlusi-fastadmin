@@ -20,7 +20,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'weight',
+                sortName: 'weigh',
                 columns: [
                     [
                         {checkbox: true},
@@ -37,7 +37,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'zan_set', title: __('显示赞数')},
                         {field: 'comments_set', title: __('显示评论数')},
                         {field: 'r.nickname', title: __('发布人')},
-                        {field: 'weight', title: __('权重')},
+                        {field: 'weigh', title: __('权重')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]

@@ -21,6 +21,8 @@ class AuthRule extends Model
         });
     }
 
+
+
     public function getTitleAttr($value, $data)
     {
         return __($value);

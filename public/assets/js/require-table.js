@@ -492,15 +492,15 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     buttons.forEach(function (item) {
                         names.push(item.name);
                     });
-                    if (options.extend.dragsort_url !== '' && names.indexOf('dragsort') === -1) {
-                        buttons.push({
-                            name: 'dragsort',
-                            icon: 'fa fa-arrows',
-                            title: __('Drag to sort'),
-                            extend: 'data-toggle="tooltip"',
-                            classname: 'btn btn-xs btn-primary btn-dragsort'
-                        });
-                    }
+                    // if (options.extend.dragsort_url !== '' && names.indexOf('dragsort') === -1) {
+                    //     buttons.push({
+                    //         name: 'dragsort',
+                    //         icon: 'fa fa-arrows',
+                    //         title: __('Drag to sort'),
+                    //         extend: 'data-toggle="tooltip"',
+                    //         classname: 'btn btn-xs btn-primary btn-dragsort'
+                    //     });
+                    // }
                     if (options.extend.edit_url !== '' && names.indexOf('edit') === -1) {
                         buttons.push({
                             name: 'edit',

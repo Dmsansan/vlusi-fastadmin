@@ -16,6 +16,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             var table = $("#table");
 
+            //当表格数据加载完成时
+            table.on('load-success.bs.table', function (e, data) {
+                //这里可以获取从服务端获取的JSON数据
+                console.log(data);
+                //这里我们手动设置底部的值
+                $("#money").text(data.extend.money);
+                $("#price").text(data.extend.price);
+            });
+
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,

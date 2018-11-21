@@ -56,8 +56,7 @@ class User extends Backend
             {
                 $v->hidden(['password', 'salt']);
             }
-            $result = array("total" => $total, "rows" => $list);
-
+            $result = array("total" => $total, "rows" => $list, "extend" => ['money' => 1024, 'price' => 888]);
             return json($result);
         }
         return $this->view->fetch();

@@ -19,7 +19,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
-                sortName: 'weight',
+                sortName: 'weigh',
                 escape: false,
                 columns: [
                     [
@@ -28,7 +28,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                         {field: 'title', title: __('Title'), align: 'left', formatter: Controller.api.formatter.title},
                         {field: 'icon', title: __('Icon'), formatter: Controller.api.formatter.icon},
                         {field: 'name', title: __('Name'), align: 'left', formatter: Controller.api.formatter.name},
-                        {field: 'weight', title: __('权重')},
+                        {field: 'weigh', title: __('权重')},
                         {field: 'status', title: __('Status'), formatter: Table.api.formatter.status},
                         {
                             field: 'ismenu',
