@@ -18,11 +18,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             //当表格数据加载完成时
             table.on('load-success.bs.table', function (e, data) {
-                //这里可以获取从服务端获取的JSON数据
-                console.log(data);
                 //这里我们手动设置底部的值
-                $("#money").text(data.extend.money);
-                $("#price").text(data.extend.price);
+                $("#money").text(data.extend.totals);
+                $("#price").text(data.extend.bands);
             });
 
             // 初始化表格
@@ -39,7 +37,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'mobile', title: __('Mobile'), operate: 'LIKE'},
                         {field: 'nickname', title: __('Nickname'), operate: 'LIKE'},
                         // {field: 'email', title: __('Email'), operate: 'LIKE'},
-                        {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},
+                        {field: 'avatar', title: __('Avatar'), formatter: Controller.api.formatter.myimage, operate: false},
                         // {field: 'level', title: __('Level'), operate: 'BETWEEN', sortable: true},
                         {field: 'gender', title: __('Gender'), formatter: Controller.api.formatter.gender, searchList: {1: __('Male'), 0: __('Female')}},
                         // {field: 'score', title: __('Score'), operate: 'BETWEEN', sortable: true},
@@ -73,7 +71,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 gender: function (value, row, index) {
                     return value==2?'女':"男";
                 },
+                myimage: function (value, row, index) {
+                    value = value ? value : 'yanglao/20181116/603f8cd1cbdf717c776a24d1614b078c.png';
+                    var classname = typeof this.classname !== 'undefined' ? this.classname : 'img-sm img-center';
+                    return '<a href="' + Fast.api.cdnurl(value) + '" target="_blank"><img class="' + classname + '" src="' + Fast.api.cdnurl(value) + '" /></a>';
 
+                },
             }
 
         }

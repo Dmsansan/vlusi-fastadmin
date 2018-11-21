@@ -13,15 +13,15 @@
                                 <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
                                 <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
                             </ul>
+                            <a href="javascript:;" class="btn btn-default" style="font-size:14px;color:dodgerblue;">
+                                <span class="extend">
+                                    会员数：<span id="money">0</span>
+                                    已绑定数：<span id="price">0</span>
+                                </span>
+                            </a>
                         </div>
                     </div>
-                    <a href="javascript:;" class="btn btn-default" style="font-size:14px;color:dodgerblue;">
-                        <i class="fa fa-dollar"></i>
-                        <span class="extend">
-                            会员数：<span id="money">0</span>
-                            已绑定数：<span id="price">0</span>
-                        </span>
-                    </a>
+
 
                     <table id="table" class="table table-striped table-bordered table-hover" 
                            data-operate-edit="{:$auth->check('user/user/edit')}" 

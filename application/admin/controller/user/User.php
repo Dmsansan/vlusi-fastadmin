@@ -56,7 +56,9 @@ class User extends Backend
             {
                 $v->hidden(['password', 'salt']);
             }
-            $result = array("total" => $total, "rows" => $list, "extend" => ['money' => 1024, 'price' => 888]);
+
+            $bands=$this->model->where('mobile','>',0)->count();
+            $result = array("total" => $total, "rows" => $list, "extend" => ['totals' => $total, 'bands' => $bands]);
             return json($result);
         }
         return $this->view->fetch();
