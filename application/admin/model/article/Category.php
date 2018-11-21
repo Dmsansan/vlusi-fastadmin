@@ -20,6 +20,14 @@ class Category extends Model
     protected $append = [
 
     ];
+
+//    protected static function init()
+//    {
+//        Category::event('before_insert', function ($data) {
+//            $ab=Category::max('weight');
+//            $data->weight=$abt+1;
+//        });
+//    }
     
 
     

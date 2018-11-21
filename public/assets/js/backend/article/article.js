@@ -20,7 +20,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'id',
+                sortName: 'weight',
                 columns: [
                     [
                         {checkbox: true},
@@ -30,13 +30,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'flag', title: __('Flag'), searchList: {"recommend":__('Flag recommend')}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
                         {field: 'coverimage', title: __('Coverimage'), formatter: Table.api.formatter.image},
                         {field: 'videofile', title: __('Videofile')},
-                        {field: 'readnum', title: __('Readnum')},
-                        {field: 'zan', title: __('Zan')},
-                        {field: 'comments', title: __('Comments')},
-                        {field: 'readnum_set', title: __('阅读数设置')},
-                        {field: 'zan_set', title: __('赞数设置')},
-                        {field: 'comments_set', title: __('评论数设置')},
+                        {field: 'readnum', title: __('实际阅读数')},
+                        {field: 'zan', title: __('实际赞')},
+                        {field: 'comments', title: __('实际评论数')},
+                        {field: 'readnum_set', title: __('显示阅读数')},
+                        {field: 'zan_set', title: __('显示赞数')},
+                        {field: 'comments_set', title: __('显示评论数')},
                         {field: 'r.nickname', title: __('发布人')},
+                        {field: 'weight', title: __('权重')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]

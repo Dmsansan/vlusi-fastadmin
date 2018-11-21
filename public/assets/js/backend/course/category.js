@@ -20,12 +20,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'id',
+                sortName: 'weight',
                 columns: [
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'name', title: __('Name')},
+                        {field: 'weight', title: __('权重')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
