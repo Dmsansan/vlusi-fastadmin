@@ -1,6 +1,4 @@
-let app = '';
-window.onload = function () {
-    app = new Vue({
+let  app = new Vue({
         el: '#app',
         data: {
             isHidden: true,
@@ -625,4 +623,3 @@ window.onload = function () {
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('input', function () {
         app.commentsContent = $(this).text();
     });
-};
