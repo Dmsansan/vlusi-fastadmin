@@ -331,6 +331,10 @@ class Courses extends Api
                 }else{
                     $data['comment'][$key]['is_zan']=0;
                 }
+                //数据显示
+                $data['comment'][$key]['comment_count']=$this->getCommentNum($val['id']);
+
+
             }
         }
 
@@ -715,6 +719,23 @@ class Courses extends Api
     }
 
 
+    protected function getCommentNum($pid,$num=0){
+
+        $number=db('course_comment')->where(['pid'=>$pid])->count();
+        $num+=$number;
+        unset($number);
+        $list=db('course_comment')->where(['pid'=>$pid])->select();
+        if(is_array($list)){
+            foreach($list as $key=>$val){
+                $child=db('course_comment')->where(['pid'=>$val['id']])->find();
+                if($child){
+                    $num+= $this->getCommentNum($val['id'],$num);
+                }
+            }
+        }
+
+        return $num;
+    }
 
 
 

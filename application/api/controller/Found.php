@@ -349,6 +349,10 @@ class Found extends Api
                 }else{
                     $data['comment'][$key]['is_zan']=0;
                 }
+
+                //查询该评论下的评论数
+               $data['comment'][$key]['comment_count']=$this->getCommentNum($val['id']);
+
             }
         }
 
@@ -623,6 +627,25 @@ class Found extends Api
         if($list){
             $this->success('删除成功',$list);
         }
+    }
+
+
+
+    protected function getCommentNum($pid,$num=0){
+
+        $number=db('article_comment')->where(['pid'=>$pid])->count();
+        $num+=$number;
+        $list=db('article_comment')->where(['pid'=>$pid])->select();
+        if(is_array($list)){
+            foreach($list as $key=>$val){
+                $child=db('article_comment')->where(['pid'=>$val['id']])->find();
+                if($child){
+                  $num+= $this->getCommentNum($val['id'],$num);
+                }
+            }
+        }
+
+        return $num;
     }
 
 }
