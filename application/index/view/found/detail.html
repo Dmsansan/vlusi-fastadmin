@@ -14,12 +14,14 @@
     <link rel="stylesheet" href="/css/discovery-detail.css"/>
     <style>
         .note-video-clip{width: 100% !important;  margin-left: 0 !important;}
-        #popover{  top:20px !important;  width: 200px !important;  left: 150px !important;  background-color:transparent !important; box-shadow: 0 0 0; }
+        #popover{  top:20px !important;  width: 80px !important;  left: 180px !important;  background-color:transparent !important; box-shadow: 0 0 0; }
         /*移除底部或顶部三角,需要在删除此代码*/
         .mui-popover .mui-popover-arrow:after {  width: 0px;  }
-        .friends{  text-align: center;  color: #ffffff;  width: 200px;  background-size: cover;  }
+        .friends{  text-align: center;  color: #ffffff;  width: 130px;  background-size: cover;  }
         video{  width: 100%; height: 14rem;  }
         .logo-desc{font-size: 12px !important;}
+        .dingwei{position: relative;}
+        .num{position: absolute;top: -15px; left: 5px; font-size: 12px;background-color: red;display: inline-block; color: #ffffff;border-radius: 8px;padding: 0px 4px;}
     </style>
 </head>
 <body>
@@ -105,7 +107,7 @@
                     <div class="comments-operation" @click="goCommentsDetail(item.id)">
                         <p class="comments-time">{{item.createtime}}</p>
 
-                        <button @click="replay()" type="button" class="reply-comments">回复</button>
+                        <button @click="replay()" type="button" class="reply-comments">{{item.comment_count}}&nbsp;回复</button>
                     </div>
                 </li>
             </ul>
@@ -128,14 +130,20 @@
                    placeholder="写下你的评论...">
         </div>
         <div class="comment-icon-container" :class="{invisible:isFocus}">
-            <a href="#2"><img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/></a>
+            <a href="#2" class="dingwei">
+                <span class="num">{{detailsList.detail.comments}}</span>
+                <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
+            </a>
 
             <img @click="collect(true)" src="/img/course-detail/like.png" :class="{active:!detailsList.is_collection}" class="icon-like bottom-icon-comment"/>
             <img @click="collect(false)" src="/img/course-detail/like-active.png" :class="{active:detailsList.is_collection}" class="icon-like bottom-icon-comment">
             <img @click="shareCourse()" src="/img/course-detail/share.png" class="icon-share bottom-icon-comment"/>
         </div>
         <div class="comment-icon-container" :class="{invisible:!isFocus}">
-            <a href="#2"><img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/></a>
+            <a href="#2"  class="dingwei">
+                <span class="num">{{detailsList.detail.comments}}</span>
+                <img src="/img/course-detail/comment.png" class="icon-comment bottom-icon-comment"/>
+            </a>
             <img src="/img/course-detail/upload-img.png" @click="uploadImg" class="bottom-icon-comment"/>
             <input type="file" hidden id="upload-img" accept="image/*" mutiple="mutiple"/>
             <button type="button" class="comments-send-btn" :disabled="isDisabled" @click="sendInformation()">发布</button>
