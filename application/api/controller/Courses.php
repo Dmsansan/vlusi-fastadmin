@@ -48,7 +48,7 @@ class Courses extends Api
     public function category()
     {
         //分类数据
-        $cate=db('course_category')->order('weight desc')->select();
+        $cate=db('course_category')->order('weigh desc')->select();
         $this->success("返回成功",$cate);
     }
 
