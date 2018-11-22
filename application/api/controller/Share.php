@@ -205,27 +205,69 @@ function createSharePng($gData,$codeName,$fileName = ''){
 //	
 //    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
         //广告1
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
-        
-        //广告2
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
-        //广告3
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
+        $ad1 = array(
+		'top'=>840,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads1 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad1,strip_tags($gData['ad1']),true,$font_file,0,$ads1);
+//        
+//        //广告2
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
+        $ad2 = array(
+		'top'=>900,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads2 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad2,strip_tags($gData['ad2']),true,$font_file,0,$ads2);
+//        //广告3
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
+        $ad3 = array(
+		'top'=>960,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads3 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad3,strip_tags($gData['ad3']),true,$font_file,0,$ads3);
 
     //二维码
 
@@ -458,27 +500,69 @@ function createcourseSharePng($gData,$codeName,$fileName = ''){
 //	
 //    imagecopyresized($im, $ggImg, 0, 443, 0, 0, 380, 60, $g_w, $g_h);
          //广告1
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
-        
-        //广告2
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
-        //广告3
-	$fontSize  = 22; 
-        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
-        $textWidth = $fontWidth[2] - $fontWidth[0];
-        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
-
-        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad1']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 840, $font_color_2, $font_file, $gData['ad1']);
+        $ad1 = array(
+		'top'=>840,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads1 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad1,strip_tags($gData['ad1']),true,$font_file,0,$ads1);
+//        
+//        //广告2
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad2']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 900, $font_color_2, $font_file, $gData['ad2']);
+        $ad2 = array(
+		'top'=>900,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads2 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad2,strip_tags($gData['ad2']),true,$font_file,0,$ads2);
+//        //广告3
+//	$fontSize  = 22; 
+//        $fontWidth = ImageTTFBBox($fontSize,0,$font_file,$gData['ad3']);
+//        $textWidth = $fontWidth[2] - $fontWidth[0];
+//        $x         = ceil((750 - $textWidth) / 2); //计算文字的水平位置
+//
+//        imagettftext($im, $fontSize, 0, $x, 960, $font_color_2, $font_file, $gData['ad3']);
+        $ad3 = array(
+		'top'=>960,
+		'fontsize'=>22,
+		'width'=>640,
+		'left'=>50,
+		'hang_size'=>40,
+		'color'=>array(131,131,131)
+	);
+	$ads3 = array(
+		'maxline'=>4,
+		'width'=>640,
+		'left'=>50,
+	);
+	$this->textalign($im,$ad3,strip_tags($gData['ad3']),true,$font_file,0,$ads3);
 
     //二维码
 
