@@ -182,6 +182,7 @@ input.comment-input {
     color: #999999;
     background: rgb(246,246,249);
     border: none;
+    vertical-align: middle;
 }
 .mui-content{
     padding-bottom: 60px;
