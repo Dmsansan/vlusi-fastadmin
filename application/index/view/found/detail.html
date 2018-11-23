@@ -64,7 +64,7 @@
             </div>
             <div v-if="!isVideo" class="img-and-characters" contenteditable="true">
                 <!--图文-->
-                <div v-html="detailsList.detail.content" contenteditable="true"></div>
+                <div   onselectstart="return false;" v-html="detailsList.detail.content" contenteditable="true"></div>
 
                 <!--<img :src="detailsList.detail.coverimage"/>-->
             </div>
