@@ -1,5 +1,5 @@
-window.onload = function () {
-    let app = new Vue({
+
+let app = new Vue({
             el: '#app',
             data: {
                 //回复传递ID
@@ -225,8 +225,7 @@ window.onload = function () {
                     this.replyDetails();
                 })
             },
-        }
-    );
+        });
 
     /**
      * 监听文件上传框变化
@@ -241,4 +240,4 @@ window.onload = function () {
         app.commentsContent = $(this).text();
     });
 
-};
+

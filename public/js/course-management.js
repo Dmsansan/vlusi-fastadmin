@@ -1,5 +1,5 @@
-window.onload = function () {
-    let app = new Vue({
+
+let app = new Vue({
         el: '#app',
         data: {
             //页面页码
@@ -150,4 +150,3 @@ window.onload = function () {
             this.reviewPass();
         },
     });
-}
