@@ -85,6 +85,12 @@ class Found extends Api
         foreach($list as $key=>$val){
             $list[$key]['createtime']=date('Y-m-d',$val['createtime']);
             $list[$key]['content']=$val['coverdesc'];
+
+            //点赞数处理
+            $list[$key]['comments'] =$val['comments']+$val['comments_set'];
+            $list[$key]['readnum']  =$val['readnum']+$val['readnum_set'];
+            $list[$key]['zan']      =$val['zan']+$val['zan_set'];
+
         }
 
 
