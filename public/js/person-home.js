@@ -1,5 +1,5 @@
-window.onload = function () {
-    let app = new Vue({
+
+let app = new Vue({
         el: '#app',
         data: {
             //底部导航
@@ -69,4 +69,3 @@ window.onload = function () {
             this.init();
         },
     });
-};

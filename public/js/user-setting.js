@@ -13,6 +13,7 @@ let app = new Vue({
     mounted() {
         //获取用户信息
         this.init();
+
     },
     methods: {
         //获取用户信息

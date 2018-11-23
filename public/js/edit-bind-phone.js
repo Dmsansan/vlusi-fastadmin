@@ -1,5 +1,5 @@
-window.onload = function () {
-    let app = new Vue({
+
+let app = new Vue({
         el: '#app',
         data: {
             sendCodeContent: '获取验证码',
@@ -105,4 +105,3 @@ window.onload = function () {
             }
         }
     })
-};

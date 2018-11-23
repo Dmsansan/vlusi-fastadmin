@@ -1,5 +1,5 @@
-window.onload = function () {
-    let app = new Vue({
+
+let app = new Vue({
         el: "#app",
         data: {
             nickNames:'',
@@ -52,4 +52,3 @@ window.onload = function () {
             }
         }
     })
-};
