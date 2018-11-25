@@ -330,8 +330,6 @@ let  app = new Vue({
                     }
                 });
 
-
-
                 function shareWeChat(todo) {
                     wx.config({
                         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
