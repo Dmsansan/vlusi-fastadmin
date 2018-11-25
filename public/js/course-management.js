@@ -84,7 +84,7 @@ let app = new Vue({
                     self.pageCount = data.page.page_count;
                     self.loadMore = true;
                     //分享内容
-                    self.imgUrl = '/img/logo.png';
+                    self.imgUrl = 'http://yl.qclike.cn/img/logo.png';
                     self.title = '乐养老';
                     self.desc = '文化养老综合服务提供商';
                     self.$nextTick(function () {
@@ -103,7 +103,7 @@ let app = new Vue({
                     self.pageCount = data.page.page_count;
                     self.loadMore = true;
                     //分享内容
-                    self.imgUrl = '/img/logo.png';
+                    self.imgUrl = 'http://yl.qclike.cn/img/logo.png';
                     self.title = '乐养老';
                     self.desc = '文化养老综合服务提供商';
                     self.$nextTick(function () {
