@@ -134,7 +134,7 @@ let app = new Vue({
             }, function (data) {
                 self.detailsList = data.data;
                 //分享内容
-                self.imgUrl = '/img/code_png/logo.jpg';
+                self.imgUrl = 'http://yl.qclike.cn/img/logo.png';
                 self.title = '乐养老';
                 self.desc = '文化养老综合服务提供商';
                 self.sharingMethod();
@@ -182,7 +182,7 @@ let app = new Vue({
             }, function (data) {
                 self.detailsList = data.data;
                 //分享内容
-                self.imgUrl = '/img/code_png/logo.jpg';
+                self.imgUrl = 'http://yl.qclike.cn/img/logo.png';
                 self.title = '乐养老';
                 self.desc = '文化养老综合服务提供商';
                 self.sharingMethod();
