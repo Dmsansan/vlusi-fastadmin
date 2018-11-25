@@ -8,17 +8,17 @@ use app\common\library\Token;
 class Found extends Frontend
 {
 
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
     protected $layout = '';
 
     public function _initialize()
     {
         parent::_initialize();
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo){
-            $this->redirect('user/login');
-        }
+//        $userinfo=$this->auth->getUser();
+//        if(!$userinfo){
+//            $this->redirect('user/login');
+//        }
 
     }
 
@@ -34,10 +34,10 @@ class Found extends Frontend
     public function detail()
     {
 
-        $userinfo=$this->auth->getUser();
-        if(!$userinfo->mobile){
-            $this->redirect('index/user/bind_phone');
-        }
+//        $userinfo=$this->auth->getUser();
+//        if(!$userinfo->mobile){
+//            $this->redirect('index/user/bind_phone');
+//        }
         return $this->view->fetch();
     }
 
