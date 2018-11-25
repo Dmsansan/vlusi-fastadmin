@@ -137,9 +137,10 @@ let app = new Vue({
                 self.imgUrl = '/img/logo.png';
                 self.title = '乐养老';
                 self.desc = '文化养老综合服务提供商';
+                self.sharingMethod();
                 self.$nextTick(function () {
                     self.pageCount = data.page.pageCount;
-                    self.sharingMethod();
+
                     self.loadMore = true;
                 })
             });
@@ -184,10 +185,11 @@ let app = new Vue({
                 self.imgUrl = '/img/logo.png';
                 self.title = '乐养老';
                 self.desc = '文化养老综合服务提供商';
+                self.sharingMethod();
                 self.$nextTick(function () {
                     self.pageCount = data.page.pageCount;
                     self.loadMore = true;
-                    self.sharingMethod();
+
                 })
 
             });

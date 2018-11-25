@@ -322,7 +322,6 @@ let  app = new Vue({
                     token: localStorage.getItem('token')
                 }, function (data) {
                     if (data.code == 1) {
-                        weixinShareTimeline(self.title, self.desc, self.shareUrl, self.imgUrl);
                          self.configWX = data.data;
                          self.$nextTick(function () {
                              shareWeChat(self.configWX);
@@ -345,19 +344,6 @@ let  app = new Vue({
                         ] // 必填，需要使用的JS接口列表
                     });
                 }
-
-                function weixinShareTimeline(title, desc, link, imgUrl) {
-                    WeixinJSBridge.invoke('shareTimeline', {
-                        "img_url": imgUrl,
-                        //"img_width":"640",
-                        //"img_height":"640",
-                        "link": link,
-                        "desc": desc,
-                        "title": title,
-
-                    });
-                }
-
                 let shareData = {
                     title: self.title, // 分享标题
                     desc: self.desc, // 分享描述
