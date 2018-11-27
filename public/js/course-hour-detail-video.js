@@ -67,7 +67,7 @@ let app = new Vue({
 
             function shareWeChat(todo) {
                 wx.config({
-                    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
                     appId: todo.appid, // 必填，公众号的唯一标识
                     timestamp: todo.timesTamp, // 必填，生成签名的时间戳
                     nonceStr: todo.nonceStr, // 必填，生成签名的随机串
