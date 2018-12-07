@@ -1,0 +1,14 @@
+home.js 文件把分享的 self.imgUrl = 'http://yl.qclike.cn/img/logo.png'，
+只需要改“http://yl.qclike.cn ”把它改成线上的域名
+
+course-hour-detail-video.js 文件把分享的 self.imgUrl = 'http://yl.qclike.cn/img/logo.png'，
+只需要改“http://yl.qclike.cn ”把它改成线上的域名
+
+course-management.js 文件把分享的 self.imgUrl = 'http://yl.qclike.cn/img/logo.png'，
+只需要改“http://yl.qclike.cn ”把它改成线上的域名
+
+discovery.js 文件把分享的 self.imgUrl = 'http://yl.qclike.cn/img/logo.png' ，
+只需要改“http://yl.qclike.cn ”把它改成线上的域名
+
+my-collection.jss 文件把分享的 self.imgUrl = 'http://yl.qclike.cn/img/logo.png'，
+只需要改“http://yl.qclike.cn ”把它改成线上的域名

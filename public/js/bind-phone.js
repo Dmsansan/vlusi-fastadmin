@@ -36,6 +36,9 @@ let app = new Vue({
                         mobile:self.phone,
                         event:'changemobile'
                     },function (data) {
+                        if(data.code == 0){
+                            mui.toast(data.msg);
+                        }
 
                     });
                     app.sendCodeContent = `${app.waitSeconds}s重新获取`;
@@ -65,18 +68,23 @@ let app = new Vue({
                 event:'changemobile',
                 captcha:self.code
             },function (data) {
-                self.$nextTick(function () {
-                    mui.openWindow({
-                        url:'/index/user/set_data?token='+localStorage.getItem('token')
-                    })
-                })
+                if(data.code == 0){
+                    mui.toast(data.msg);
+                }else {
+                    self.$nextTick(function () {
+                     mui.openWindow({
+                         url:'/index/user/set_data?token='+localStorage.getItem('token')
+                     })
+                 })
+                }
+
             });
-            if(app.hasCode) {
+           /* if(app.hasCode) {
                 mui.toast('绑定了');
             }
             else {
                 mui.toast('信息填写有误');
-            }
+            }*/
         },
         //跳过绑定
         skipBindPhone:function () {

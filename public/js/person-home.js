@@ -1,5 +1,5 @@
 
-let app = new Vue({
+var app = new Vue({
         el: '#app',
         data: {
             //底部导航
@@ -19,7 +19,7 @@ let app = new Vue({
         methods: {
             init:function () {
                 //获取用户信息数据
-                let self = this;
+                var self = this;
                 //请求获取数据
                 $.post('/api/user/userinfo', {
                     token: localStorage.getItem('token'),
