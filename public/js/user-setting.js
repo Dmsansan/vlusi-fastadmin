@@ -1,14 +1,14 @@
-let app = new Vue({
+var app = new Vue({
     el: '#app',
     data: {
-        city:'',
-        imgUrl:'',
+        city: '',
+        imgUrl: '',
         //用户信息
-        userInformation:[],
-        showAddress:false,
+        userInformation: [],
+        showAddress: false,
         birthDate: '',
-        selectedSex:'male',
-        isMale:true,
+        selectedSex: 'male',
+        isMale: true,
     },
     mounted() {
         //获取用户信息
@@ -17,36 +17,36 @@ let app = new Vue({
     },
     methods: {
         //获取用户信息
-        init:function () {
-            let self = this;
+        init: function () {
+            var self = this;
             $.post('/api/user/userinfo', {
-                token:localStorage.getItem('token')
-            },function (data) {
+                token: localStorage.getItem('token')
+            }, function (data) {
                 self.userInformation = data.data;
-                self.city =  data.data.address;
+                self.city = data.data.address;
                 self.imgUrl = data.data.avatar;
                 self.birthDate = data.data.birthday;
                 self.selectedSex = data.data.gender;
-                self.isMale = data.data.gender ==1?true:false;
+                self.isMale = data.data.gender == 1 ? true : false;
             })
 
         },
-        selectSex:function (sex) {
+        selectSex: function (sex) {
             this.selectedSex = sex;
             this.isMale = (sex == 'male' ? true : false);
         },
         //修改地址
-        modifyAddress:function () {
+        modifyAddress: function () {
             this.showAddress = true;
             this.userInformation.address = this.city;
         },
         //
-        submitBtn:function () {
-            let self = this;
+        submitBtn: function () {
+            var self = this;
             $.post('/api/user/profile', {
-                token:localStorage.getItem('token'),
-                address:self.city
-            },function (data) {
+                token: localStorage.getItem('token'),
+                address: self.city
+            }, function (data) {
                 /*if(data.code == 1){
 
                     mui.toast('修改地址成功！')
@@ -54,23 +54,23 @@ let app = new Vue({
             })
         },
         //修改手机号
-        modifyPhone:function (phone) {
-            localStorage.setItem('phoneNumber',phone);
+        modifyPhone: function (phone) {
+            localStorage.setItem('phoneNumber', phone);
             mui.openWindow({
-                url: '/index/user/set_phone?token='+localStorage.getItem('token')
+                url: '/index/user/set_phone?token=' + localStorage.getItem('token')
             })
         },
         //修改用户名
-        editUserInfo:function (name) {
-            localStorage.setItem('userName',name);
+        editUserInfo: function (name) {
+            localStorage.setItem('userName', name);
             mui.openWindow({
-                url: '/index/user/set_name?token='+localStorage.getItem('token')
+                url: '/index/user/set_name?token=' + localStorage.getItem('token')
             })
         },
         //修改头像
-        reviseImage:function () {
-            let self = this;
-            mui('body').on('tap', '#editLogo', function() {
+        reviseImage: function () {
+            var self = this;
+            mui('body').on('tap', '#editLogo', function () {
                 $("#file").click();
             });
             var clipArea = new bjj.PhotoClip("#clipArea", {
@@ -79,47 +79,47 @@ let app = new Vue({
                 file: "#file",
                 view: "#view",
                 ok: "#confirm-btn",
-                loadStart: function() {
+                loadStart: function () {
                     $("#wait-loading").css("display", "flex");
                 },
-                loadComplete: function() {
+                loadCompvare: function () {
                     $("#wait-loading").css("display", "none");
                     mui('#sheet').popover('toggle');
                 },
-                clipFinish: function(dataURL) {
+                clipFinish: function (dataURL) {
                     mui('#sheet').popover('toggle');
-                    let img = $("#view").css("background-image");
+                    var img = $("#view").css("background-image");
                     img = img.substring(5, img.length - 1);
                     //上传图片
-                    console.log('上传图片',self.imgUrl);
+                    console.log('上传图片', self.imgUrl);
 
                     $.post('/api/user/profile', {
-                        token:localStorage.getItem('token'),
-                        avatar:self.imgUrl
-                    },function (data) {
+                        token: localStorage.getItem('token'),
+                        avatar: self.imgUrl
+                    }, function (data) {
                         mui.toast('头像修改成功！')
                     })
                 }
             });
         },
         //修改性别
-        selectSex:function (sex) {
-            let self = this;
+        selectSex: function (sex) {
+            var self = this;
             self.selectedSex = sex;
             self.isMale = (sex == 'male' ? true : false);
             $.post('/api/user/binduserinfo', {
-                token:localStorage.getItem('token'),
-                gender:self.selectedSex == 'male'? 1:2,
-            },function (data) {
+                token: localStorage.getItem('token'),
+                gender: self.selectedSex == 'male' ? 1 : 2,
+            }, function (data) {
             });
         },
         //修改生日
-        amendBirthday:function () {
-            let self = this;
+        amendBirthday: function () {
+            var self = this;
             $.post('/api/user/binduserinfo', {
-                token:localStorage.getItem('token'),
-                birthday:self.birthDate,
-            },function (data) {
+                token: localStorage.getItem('token'),
+                birthday: self.birthDate,
+            }, function (data) {
 
             });
         }
@@ -127,9 +127,9 @@ let app = new Vue({
     created: function () {
         //获取用户信息
     },
-    watch:{
-        city:function (newVal,oldVal) {
-            if(newVal != oldVal) {
+    watch: {
+        city: function (newVal, oldVal) {
+            if (newVal != oldVal) {
                 this.$nextTick(function () {
                     this.submitBtn();
                 })
@@ -138,8 +138,8 @@ let app = new Vue({
             }
         },
         //生日
-        birthDate:function (newVal,oldVal) {
-            if(newVal != oldVal) {
+        birthDate: function (newVal, oldVal) {
+            if (newVal != oldVal) {
                 this.$nextTick(function () {
                     this.amendBirthday();
                 })
@@ -165,7 +165,7 @@ let app = new Vue({
                 _self.picker = null;
             });
         } else {
-            var options = {"type": "date","beginYear":"1900"};
+            var options = {"type": "date", "beginYear": "1900"};
             /*
             * 首次显示时实例化组件
             * 示例为了简洁，将 options 放在了按钮的 dom 上
@@ -202,14 +202,14 @@ let app = new Vue({
      * 选择城市
      */
 
-    let _getParam = function (obj, param) {
+    var _getParam = function (obj, param) {
         return obj[param] || '';
     };
-    let cityPicker = new mui.PopPicker({
+    var cityPicker = new mui.PopPicker({
         layer: 3
     });
     cityPicker.setData(cityData);
-    let showCityPickerButton = document.getElementById('city');
+    var showCityPickerButton = document.getElementById('city');
     showCityPickerButton.addEventListener('tap', function (event) {
         cityPicker.show(function (items) {
             showCityPickerButton.value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
@@ -220,6 +220,7 @@ let app = new Vue({
     }, false);
 
 })(mui);
+
 //保存头像
 function saveImg() {
     console.log('111');
@@ -228,14 +229,14 @@ function saveImg() {
 /**
  * 城市选择
  */
-let _getParam = function (obj, param) {
+var _getParam = function (obj, param) {
     return obj[param] || '';
 };
-let cityPicker = new mui.PopPicker({
+var cityPicker = new mui.PopPicker({
     layer: 3
 });
 cityPicker.setData(cityData);
-let showCityPickerButton = document.getElementById('city');
+var showCityPickerButton = document.getElementById('city');
 showCityPickerButton.addEventListener('tap', function (event) {
     cityPicker.show(function (items) {
         showCityPickerButton.value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');

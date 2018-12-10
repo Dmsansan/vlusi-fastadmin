@@ -1,5 +1,5 @@
 $(function () {
-    let app = new Vue({
+    var app = new Vue({
             el: '#app',
             data: {
                 //第几页
@@ -61,18 +61,18 @@ $(function () {
                 },
                 // 判断滚动条是否到底
                 judgeScrollBarToTheEnd() {
-                    let innerHeight = document.querySelector('.active').clientHeight
+                    var innerHeight = document.querySelector('.active').clientHeight
                     // 变量scrollTop是滚动条滚动时，距离顶部的距离
-                    let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                    var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
                     // 变量scrollHeight是滚动条的总高度
-                    let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+                    var scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
                     // 滚动条到底部的条件
                     if (scrollTop + scrollHeight >= innerHeight - 10000) {
                         this.infiniteLoadDone()
                     }
                 },
                 infiniteLoadDone() {
-                    let self = this;
+                    var self = this;
                     //总页数
                     if (self.pageCount > self.pageNumber) {
                         self.pageNumber += 1;
@@ -91,7 +91,7 @@ $(function () {
                 },
                 //初始化数据
                 init: function () {
-                    let self = this;
+                    var self = this;
                     $.post(' /api/found/detail', {
                         article_id: self.passID,
                         token: localStorage.getItem('token'),
@@ -119,7 +119,7 @@ $(function () {
                 },
                 //显示上传图片图标等
                 hideSmile: function () {
-                    let self = this;
+                    var self = this;
                     self.isFocus = true;
                     self.$nextTick(function () {
                         self.saveImg();
@@ -140,7 +140,7 @@ $(function () {
                     }
                 },
                 likeComment: function (flag, id) {
-                    let self = this;
+                    var self = this;
                     $.post(' /api/found/comment_zan', {
                         token: localStorage.getItem('token'),
                         comment_id: id,
@@ -153,7 +153,7 @@ $(function () {
 
                 //文章点赞
                 likeArticle: function (id, flag) {
-                    let self = this;
+                    var self = this;
                     $.post('/api/found/article_zan', {
                         article_id: id,
                         token: localStorage.getItem('token')
@@ -182,7 +182,7 @@ $(function () {
                 },
                 //收藏，取消收藏
                 collect: function (flag) {
-                    let self = this;
+                    var self = this;
                     $.post('/api/found/collection', {
                         article_id: self.passID,
                         token: localStorage.getItem('token')
@@ -203,8 +203,8 @@ $(function () {
                 },
                 //解决键盘遮挡
                 focusInput: function () {
-                    /*  let bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
-                     let interval;
+                    /*  var bfscrolltop = 0;//获取软键盘唤起前浏览器滚动部分的高度
+                     var interval;
                      $('#form_article').focus(function() {
                      //给个延迟
                      bfscrolltop = document.body.scrollTop;//获取软键盘唤起前浏览器滚动部分的高度
@@ -228,7 +228,7 @@ $(function () {
 
                 },
                 sendToFriend: function () {
-                    let self = this;
+                    var self = this;
                     //发给好友
                     mui("#popover").popover('toggle', document.getElementById("div"));
 
@@ -274,7 +274,7 @@ $(function () {
                         });
                     }
 
-                    let shareData = {
+                    var shareData = {
                         title: self.title, // 分享标题
                         desc: self.desc, // 分享描述
                         link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -334,11 +334,11 @@ $(function () {
 
                 },
                 blurFn: function () {
-                    let self = this;
+                    var self = this;
                     self.isFocus = false;
                 },
                 generateCard: function () {
-                    let self = this;
+                    var self = this;
                     mui('#share-sheet').popover('toggle');
                     mui.showLoading("正在加载..", "div");
                     //生成卡片
@@ -358,13 +358,13 @@ $(function () {
                     this.isShowCard = false;
                 },
                 saveImg: function () {
-                    let self = this;
+                    var self = this;
                     self.isDisabled = false;
                     $("#upload-img").change(function () {
                         self.hideSmile();
                         self.formdata.append('image', $('#upload-img')[0].files[0]);
-                        let reads = new FileReader();
-                        let f = document.getElementById('upload-img')[0].files[0];
+                        var reads = new FileReader();
+                        var f = document.getElementById('upload-img')[0].files[0];
                         console.log(f)
                         reads.readAsDataURL(f);
                         reads.onload = function (e) {
@@ -376,9 +376,9 @@ $(function () {
                 },
                 //发布评论
                 sendInformation: function () {
-                    let self = this;
+                    var self = this;
                     self.isDisabled = true;
-                    if(self.commentsContent){
+                    if (self.commentsContent) {
                         self.formdata.append('article_id', self.passID);
                         self.formdata.append('token', localStorage.getItem('token'));
                         self.formdata.append('content', self.commentsContent);
@@ -402,7 +402,7 @@ $(function () {
 
                             }
                         })
-                    }else {
+                    } else {
                         mui.toast('请输入内容!');
                     }
 
@@ -421,8 +421,8 @@ $(function () {
                 }
             },
             created: function () {
-                let self = this;
-                let code = window.location.href.split('?')[1];
+                var self = this;
+                var code = window.location.href.split('?')[1];
                 self.passID = code.split('=')[1];
                 self.$nextTick(function () {
                     //初始化数据
@@ -446,7 +446,7 @@ $(function () {
         app.hideSmile();
     });
     document.querySelector('.emoji-wysiwyg-editor').addEventListener('blur', function () {
-        let elem = $(this);
+        var elem = $(this);
         setTimeout(function () {
             if (app.commentsContent.length == 0 && app.imgList.length == 0) {
                 app.showSmile();

@@ -1,9 +1,9 @@
 //vue实例化
-let app = new Vue({
+var app = new Vue({
     el: '#app',
     data: {
-        courseID:null,//课时详情id
-        courseList:[],//课时详情返回数据
+        courseID: null,//课时详情id
+        courseList: [],//课时详情返回数据
         isPlay: false,
         videoTotalTime: '00:00',
         currentTime: '00:00',
@@ -19,13 +19,13 @@ let app = new Vue({
     mounted() {
     },
     methods: {
-        periodDetails:function () {
-            let self = this;
+        periodDetails: function () {
+            var self = this;
             $.post('/api/courses/nodes_detail', {
-                token:localStorage.getItem('token'),
+                token: localStorage.getItem('token'),
                 nodes_id: self.courseID
             }, function (data) {
-                console.log('课时详情id',data.data);
+                console.log('课时详情id', data.data);
                 self.courseList = data.data;
                 //分享内容
                 self.imgUrl = 'http://yl.qclike.cn/img/logo.png';
@@ -34,23 +34,23 @@ let app = new Vue({
                 self.sendToFriend();
             });
         },
-        goCourse:function (id) {
+        goCourse: function (id) {
             //进入课程
             mui.openWindow({
-                url:'/index/index/detail?id='+id
+                url: '/index/index/detail?id=' + id
             })
         },
-        goBack:function () {
-            if( document.referrer === ''){
+        goBack: function () {
+            if (document.referrer === '') {
                 mui.openWindow({
-                    url:'/index'
+                    url: '/index'
                 })
-            }else {
+            } else {
                 history.go(-1);
             }
         },
         sendToFriend: function () {
-            let self = this;
+            var self = this;
             //发给好友
             self.shareUrl = location.href.split('#')[0];
             $.post('/api/index/getShareSigna', {
@@ -80,7 +80,8 @@ let app = new Vue({
                     ] // 必填，需要使用的JS接口列表
                 });
             }
-            let shareData = {
+
+            var shareData = {
                 title: self.title, // 分享标题
                 desc: self.desc, // 分享描述
                 link: self.shareUrl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -143,17 +144,13 @@ let app = new Vue({
                 });
 
 
-
             })
-
-
-
 
 
         },
     },
     created: function () {
-        let code = window.location.href.split('?')[1];
+        var code = window.location.href.split('?')[1];
         this.courseID = code.split('=')[1];
         this.$nextTick(function () {
             //获取课时详情
@@ -163,8 +160,8 @@ let app = new Vue({
 });
 
 function transformTime(ms) {
-    let minute = parseInt(ms / 60);
-    let seconds = parseInt((ms / 60 - minute) * 60);
+    var minute = parseInt(ms / 60);
+    var seconds = parseInt((ms / 60 - minute) * 60);
     minute = minute < 10 ? `0${minute}` : minute;
     seconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${minute} : ${seconds}`;

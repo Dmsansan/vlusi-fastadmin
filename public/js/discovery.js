@@ -1,26 +1,25 @@
-
-let set = new Set(JSON.parse(localStorage.getItem('history-discovery')));
-let app = new Vue({
+var set = new Set(JSON.parse(localStorage.getItem('history-discovery')));
+var app = new Vue({
     el: '#app',
     data: {
         //选中的选项卡
         activeIndex: -1,
         //底部导航
-        navigationList:[
-            {"id":"1","title":"课程"},
-            {"id":"2","title":"发现"},
-            {"id":"3","title":"我的"}
+        navigationList: [
+            {"id": "1", "title": "课程"},
+            {"id": "2", "title": "发现"},
+            {"id": "3", "title": "我的"}
         ],
         //轮播图
-        bannerList:[],
+        bannerList: [],
         //选项卡
-        tabList:[],
+        tabList: [],
         //详情列表
-        detailsList:[],
+        detailsList: [],
         //搜索返回的结果
         searchList: [],
         //加载更多
-        loadMore:false,
+        loadMore: false,
         //tab页内容
         tabContent: new Map(),
         //手动改变值变化
@@ -30,9 +29,9 @@ let app = new Vue({
         //搜索的关键字
         searchKeys: '',
         //页面页码
-        pageNumber:1,
+        pageNumber: 1,
         //页面总页数
-        pageCount:null,
+        pageCount: null,
         //显示的页面标记
         currentPage: 1,
         //显示历史记录还是搜索内容
@@ -50,69 +49,69 @@ let app = new Vue({
     },
 
     methods: {
-        touchStart (e) {
+        touchStart(e) {
             this.startY = e.targetTouches[0].pageY
         },
-        touchMove (e) {
+        touchMove(e) {
             if (e.targetTouches[0].pageY < this.startY) { // 上拉
-                if(this.loadMore){
+                if (this.loadMore) {
                     this.judgeScrollBarToTheEnd()
                 }
             }
         },
 
         // 判断滚动条是否到底
-        judgeScrollBarToTheEnd () {
-            let innerHeight = document.querySelector('.active').clientHeight
+        judgeScrollBarToTheEnd() {
+            var innerHeight = document.querySelector('.active').clientHeight
             // 变量scrollTop是滚动条滚动时，距离顶部的距离
-            let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+            var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
             // 变量scrollHeight是滚动条的总高度
-            let scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
+            var scrollHeight = document.documentElement.clientHeight || document.body.scrollHeight
             // 滚动条到底部的条件
-            if (scrollTop + scrollHeight >= innerHeight-1000) {
+            if (scrollTop + scrollHeight >= innerHeight - 1000) {
                 this.infiniteLoad()
             }
         },
 
-        infiniteLoad () {
+        infiniteLoad() {
             this.infiniteLoadDone();
         },
-        infiniteLoadDone () {
-            let self = this;
+        infiniteLoadDone() {
+            var self = this;
             //总页数
-            if(self.pageCount >self.pageNumber){
-                self.pageNumber +=1;
-                if (self.activeIndex == -1){
+            if (self.pageCount > self.pageNumber) {
+                self.pageNumber += 1;
+                if (self.activeIndex == -1) {
                     $.post('/api/found/recommend', {
-                        token:localStorage.getItem('token'),
+                        token: localStorage.getItem('token'),
                         page: self.pageNumber
                     }, function (data) {
-                        data.data.forEach(function (item,index) {
+                        data.data.forEach(function (item, index) {
                             self.detailsList.push(item)
                         });
                     });
-                }else {
+                } else {
                     //获取列表数据
-                    let self = this;
+                    var self = this;
                     //请求获取数据
                     $.post('/api/found/article', {
-                        token:localStorage.getItem('token'),
+                        token: localStorage.getItem('token'),
                         page: self.pageNumber
                     }, function (data) {
-                        data.data.forEach(function (item,index) {
+                        data.data.forEach(function (item, index) {
                             self.detailsList.push(item)
                         });
                     });
                 }
 
-            }else {
+            } else {
                 return
             }
         },
         //获取 tab页内容和页面初始化数据
         init: function () {
-            let self = this;
-            $.getJSON('/api/found/category',{  token:localStorage.getItem('token'),}, function (data) {
+            var self = this;
+            $.getJSON('/api/found/category', {token: localStorage.getItem('token'),}, function (data) {
                 self.tabList = data.data;
 
                 self.$nextTick(function () {
@@ -123,13 +122,13 @@ let app = new Vue({
         },
         //获取推荐数据
         getRecommendList: function () {
-            if(document.documentElement.scrollTop>0){
-                document.documentElement.scrollTop=0;
+            if (document.documentElement.scrollTop > 0) {
+                document.documentElement.scrollTop = 0;
             }
-            let self = this;
+            var self = this;
             self.activeIndex = -1;
             $.post('/api/found/recommend', {
-                token:localStorage.getItem('token'),
+                token: localStorage.getItem('token'),
                 page: self.pageNumber
             }, function (data) {
                 self.detailsList = data.data;
@@ -146,10 +145,10 @@ let app = new Vue({
             });
         },
         //获取轮播图数据
-        sowingMap:function () {
-            let self = this;
+        sowingMap: function () {
+            var self = this;
             $.getJSON('/api/banner/lists', function (data) {
-                console.log('获取轮播图数据',data.data)
+                console.log('获取轮播图数据', data.data)
                 self.bannerList = data.data;
                 self.$nextTick(function () {
                     mui("#slider").slider({
@@ -165,19 +164,19 @@ let app = new Vue({
             this.pageNumber = 1;
             this.pageCount = null;
             self.detailsList = [];
-            if(document.documentElement.scrollTop>0){
-                document.documentElement.scrollTop=0;
+            if (document.documentElement.scrollTop > 0) {
+                document.documentElement.scrollTop = 0;
             }
             //获取列表数据
             this.getDetailsList(tabId);
         },
         //获取详情数据
         getDetailsList: function (tabId) {
-            let self = this;
+            var self = this;
             //请求获取数据
             $.post('/api/found/article', {
                 type_id: tabId,
-                token:localStorage.getItem('token'),
+                token: localStorage.getItem('token'),
                 page: self.pageNumber,
             }, function (data) {
                 self.detailsList = data.data;
@@ -209,18 +208,18 @@ let app = new Vue({
         },
         //清除历史记录
         clearHistory: function () {
-            let self = this;
-            $.post(' /api/found/delete_keywords', {
+            var self = this;
+            $.post(' /api/found/devare_keywords', {
                 token: localStorage.getItem('token'),
             }, function (data) {
                 self.$nextTick(function () {
-                    self.historyList =[];
+                    self.historyList = [];
                 })
             });
         },
         //立即搜索
         searchContent: function (content) {
-            let self = this;
+            var self = this;
             if (content) {
                 self.searchKeys = content;
             }
@@ -233,7 +232,7 @@ let app = new Vue({
                 //请求搜索接口获取数据
                 $.post('/api/found/article', {
                     title: self.searchKeys,
-                    token:localStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     page: self.pageNumber,
                 }, function (data) {
                     self.searchList = data.data;
@@ -245,36 +244,36 @@ let app = new Vue({
         //查看详情
         goInner: function (id) {
             mui.openWindow({
-                url: '/index/found/detail?id='+id,
+                url: '/index/found/detail?id=' + id,
             })
         },
         //显示历史记录
         showHistory: function () {
             //改变显示状态
-            let self = this;
+            var self = this;
             self.isInput = true;
-             // 获取用户课程搜索历史[10条]
-              $.getJSON('/api/found/search_keywords', {
-                  token:localStorage.getItem('token'),
-              }, function (data) {
-                  self.historyList = data.data;
-              });
+            // 获取用户课程搜索历史[10条]
+            $.getJSON('/api/found/search_keywords', {
+                token: localStorage.getItem('token'),
+            }, function (data) {
+                self.historyList = data.data;
+            });
         },
         //底部导航栏
-        switchPage:function (id) {
-            if(id == 1){//课程
+        switchPage: function (id) {
+            if (id == 1) {//课程
                 mui.openWindow({
-                    url:'/index'
+                    url: '/index'
                 })
-            }else if(id == 3){//我的
+            } else if (id == 3) {//我的
                 mui.openWindow({
-                    url:'/index/user/index?token='+localStorage.getItem('token')
+                    url: '/index/user/index?token=' + localStorage.getItem('token')
                 })
             }
         },
         //分享方法
-        sharingMethod:function () {
-            let self = this;
+        sharingMethod: function () {
+            var self = this;
             self.shareUrl = location.href.split('#')[0];
             $.post('/api/index/getShareSigna', {
                 url: encodeURIComponent(self.shareUrl),
@@ -287,6 +286,7 @@ let app = new Vue({
                     })
                 }
             });
+
             function shareWeChat(todo) {
                 wx.config({
                     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
@@ -302,6 +302,7 @@ let app = new Vue({
                     ] // 必填，需要使用的JS接口列表
                 });
             }
+
             wx.ready(function () {
                 wx.onMenuShareTimeline({
                     title: self.title, // 分享标题
@@ -353,7 +354,6 @@ let app = new Vue({
                 });
 
 
-
             })
 
         }
@@ -362,7 +362,7 @@ let app = new Vue({
         //获取轮播图数据
         this.sowingMap();
     },
-    beforeDestroy(){
+    beforeDestroy() {
         $(window).unbind('scroll');
     },
 });
@@ -370,11 +370,11 @@ let app = new Vue({
  * 固定tab
  */
     //获取 id="course_container" 元素，offsetTop是当前元素·距离网页窗口顶部的距离
-let offset_top = document.getElementById("tab-container").offsetTop;
-let isSetHeight = false;
+var offset_top = document.getElementById("tab-container").offsetTop;
+var isSetHeight = false;
 $(window).scroll(function () {
     //获取垂直滚动的距离（scrollTop()是从顶部开始滚动产生的距离）
-    let scroll_top = $(document).scrollTop();
+    var scroll_top = $(document).scrollTop();
     //防止重复设置高度页面抖动
     if (scroll_top > offset_top) {
         // 到达顶部位置，动态的添加元素属性，并给元素添加相应的元素样式

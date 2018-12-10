@@ -1,4 +1,4 @@
-let app = new Vue({
+var app = new Vue({
     el: '#app',
     data: {
         hasCode: true,
@@ -27,8 +27,8 @@ let app = new Vue({
         },
         //发送验证码
         sendPhoneCode: function () {
-            let self = this;
-            let phoneReg = /^1(3|4|5|7|8)\d{9}$/;
+            var self = this;
+            var phoneReg = /^1(3|4|5|7|8)\d{9}$/;
             if (phoneReg.test(this.phone)) {
                 if (this.waitSeconds == 60) {
                     $.post('/api/Sms/send', {
@@ -42,7 +42,7 @@ let app = new Vue({
 
                     });
                     app.sendCodeContent = `${app.waitSeconds}s重新获取`;
-                    let interval = setInterval(function () {
+                    var interval = setInterval(function () {
                         if (app.waitSeconds == 1) {
                             clearInterval(interval);
                             app.waitSeconds = 60;
@@ -60,7 +60,7 @@ let app = new Vue({
         },
         //确认绑定
         goBindPhone:function () {
-            let self = this;
+            var self = this;
             console.log(self.code)
             $.post('/api/user/changemobile', {
                 token:localStorage.getItem('token'),
@@ -137,7 +137,7 @@ let app = new Vue({
         }
     },
     created: function () {
-        let token = $('input[name="token"]').val();
+        var token = $('input[name="token"]').val();
         localStorage.setItem('token',token);
     },
 });

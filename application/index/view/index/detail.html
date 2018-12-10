@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
     <title>乐养老</title>
-    <link rel="stylesheet" href="/assets/mui/css/mui.min.css"/>
-    <link rel="stylesheet" href="/css/common.css"/>
-    <link rel="stylesheet" href="/css/course-detail.css"/>
+    <link rel="stylesheet" href="../../../../public/css/mui.min.css"/>
+    <link rel="stylesheet" href="../../../../public/css/common.css"/>
+    <link rel="stylesheet" href="../../../../public/css/course-detail.css"/>
     <!-- Begin emoji-picker Stylesheets -->
-    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
-    <link href="/assets/emoji/css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../public/css/font-awesome.min.css"/>
+    <link href="../../../../public/css/emoji.css" rel="stylesheet">
 
     <style>
         #popover{  top:20px !important;  width: 130px !important;  left:58% !important;  background-color:transparent !important;  box-shadow: 0 0 0;  }
@@ -52,7 +52,6 @@
                 <img :src="detailList.detail.auth_avatar" class="logo-img"/>
                 <div class="logo-content">
                     <p class="logo-title">{{detailList.detail.auth}}</p>
-                   <!-- <p class="logo-desc">{{detailList.detail.signtext}}</p>-->
                     <p class="logo-desc">乐养老官方账号</p>
                 </div>
             </div>
@@ -60,36 +59,7 @@
                 课程好处
             -->
             <div class="course-benefit" v-html="detailList.detail.content"></div>
-          <!--  &lt;!&ndash;
-                课程时间
-            &ndash;&gt;
-            <div class="course-time">
-                <p class="course-time-title">课程时间</p>
-                <p class="course-time-content">{{detailList.detail.coursetimes}}</p>
-            </div>
-            &lt;!&ndash;
-                课程原则
-            &ndash;&gt;
-            <div class="course-principle">
-                <p class="course-principle-title">课程原则</p>
-                <ul class="course-principle-list">
-                    &lt;!&ndash; <li class="course-principle-item" v-for="n in 3">&ndash;&gt;
-                    <li class="course-principle-item" >
-                        {{detailList.detail.attention}}
-                    </li>
-                </ul>
-            </div>
-            &lt;!&ndash;
-                注意事项
-            &ndash;&gt;
-            <div id="careful" class="course-principle">
-                <p class="course-principle-title">注意事项</p>
-                <ul class="course-principle-list">
-                    <li class="course-principle-item">
-                        {{detailList.detail.notice}}
-                    </li>
-                </ul>
-            </div>-->
+
             <!--
                 点赞数
             -->
@@ -290,16 +260,16 @@
         <img src="/img/course-detail/friend.png" class="friends">
     </div>
 </div>
-<script type="text/javascript" src="/assets/jquery/jquery-3.3.1.min.js"></script>
-<script src="/js/jweixin.js" type="text/javascript"></script>
-<script src="/assets/mui/js/mui.min.js" type="text/javascript"></script>
-<script src="/assets/emoji/js/config.js"></script>
-<script src="/assets/emoji/js/util.js"></script>
-<script src="/assets/emoji/js/jquery.emojiarea.js"></script>
-<script src="/assets/emoji/js/emoji-picker.js"></script>
-<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
-<script src="/js/course-detail.js" type="text/javascript"></script>
-<script src="/js/showLoad.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../../../public/js/jquery-3.3.1.min.js"></script>
+<script src="../../../../public/js/jweixin.js" type="text/javascript"></script>
+<script src="../../../../public/js/mui.min.js" type="text/javascript"></script>
+<script src="../../../../public/js/config.js"></script>
+<script src="../../../../public/js/util.js"></script>
+<script src="../../../../public/js/jquery.emojiarea.js"></script>
+<script src="../../../../public/js/emoji-picker.js"></script>
+<script type="text/javascript" src="../../../../public/js/vue.min.js"></script>
+<script src="../../../../public/js/course-detail.js" type="text/javascript"></script>
+<script src="../../../../public/js/showLoad.js" type="text/javascript"></script>
 
 </body>
 </html>
