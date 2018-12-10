@@ -1,0 +1,26 @@
+
+
+服务器修改
+ mysql数据库配置修改  保证大文件存储
+    sql-mode=NO_ENGINE_SUBSTITUTION   删除 xx- TABLE
+
+运行环境 版本
+    php7.1
+    mysql 5.7
+    nginx 1.8 => 需开启rewrite重写规则
+
+微信配置安全域名 需修改为新的域名
+
+微信配置 ip白名单需添加新的Ip
+
+微信配置  需上传新的安全认证文件至  /public 下
+
+
+数据库 IP： 193.112.64.248
+数据库库名  yanglao
+数据库账户  root
+数据库密码  94c3c062abb18a0e
+数据库端口  3306
+
+
+

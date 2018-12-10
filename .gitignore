@@ -6,3 +6,4 @@ runtime/*
 /nbproject/private/
 
 ./auto_crud.txt
+/public/uploads/
